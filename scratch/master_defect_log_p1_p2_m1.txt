@@ -1,0 +1,561 @@
+# 🛡️ Attendance 2 — Master Consolidated Defect Log
+
+> **Service:** `SP.AttendanceSvc` (.NET 9 Microservice) | **Environment:** Sahab DEV (`sp.dev.zoolwork.com`)
+> **Database:** MongoDB (`Sahab` @ `10.1.0.4:27018`) | **Author:** QA Engineering & Microservice Architecture Team
+> **Status:** **Active Master Defect Register** | **Date:** 04 November 2026
+
+---
+
+## 📑 Table of Contents
+- [1. Executive Summary & Defect Metrics Dashboard](#1-executive-summary--defect-metrics-dashboard)
+- [2. Master Defect Quick-Reference Matrix (All 54 Defects)](#2-master-defect-quick-reference-matrix)
+- [3. Module 1: Holiday Calendar Module (`ERP.Attendance.HolidayCalendars`)](#3-module-1-holiday-calendar-module)
+- [4. Module 2: Work Template & Location Cascade Module (`ERP.Attendance.WorkTemplates`)](#4-module-2-work-template--location-cascade-module)
+- [5. Module 3: Work Plans, Shift Rosters & Attendance Policies](#5-module-3-work-plans-shift-rosters--attendance-policies)
+- [6. Module 4: Security, Authentication & Multi-Tenancy Architecture](#6-module-4-security-authentication--multi-tenancy-architecture)
+- [7. Verified Business Scenarios Confirmed as 'Not a Bug' (By Design)](#7-verified-business-scenarios-confirmed-as-not-a-bug)
+- [8. Developer Remediation Action Checklist](#8-developer-remediation-action-checklist)
+
+---
+
+## 1. Executive Summary & Defect Metrics Dashboard
+
+During rigorous manual, Swagger, Web UI (`sp.dev.zoolwork.com`), and MongoDB Compass testing of the Attendance 2 microservice, a total of **54 defects and architecture gaps** were identified and verified with photographic proof.
+
+### Defect Severity Breakdown
+
+| Severity Level | Count | Impact Summary |
+| :--- | :---: | :--- |
+| 🔴 **P0 (Blocker)** | **7** | **System Blockers:** Blocks operations entirely. Expired JWT bypass, inverted shifts, PATCH deadlock (`1706`), publishing empty calendar, missing holiday names/types. |
+| 🟠 **P1 (Critical)** | **43** | **Critical Domain / Data Integrity:** Unassigned location templates (Delhi gap), HTTP 500 server crashes, negative durations, broken math invariants, empty tenant persistence. |
+| 🟡 **P2 (Major)** | **4** | **Audit / DX / Contracts:** Audit fields stored as plain emails instead of composite user objects, redundant DTO fields, missing Swagger OAuth2 login flow. |
+| **TOTAL** | **54** | **100% Verified with live screenshots & MongoDB Compass records.** |
+
+### Defect Distribution by Functional Module
+
+| Module | Target Collection / Component | Total | P0 Blocker | P1 Critical | P2 Major |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Module 1: Holiday Calendars** | `ERP.Attendance.HolidayCalendars` | **15** | 5 | 9 | 1 |
+| **Module 2: Work Templates & Location Cascade** | `ERP.Attendance.WorkTemplates` | **26** | 1 | 24 | 1 |
+| **Module 3: Work Plans, Rosters & Policies** | `ERP.Attendance.WorkPlans`, `Policies` | **7** | 0 | 6 | 1 |
+| **Module 4: Security, Auth & Multi-Tenancy** | Kestrel JWT Middleware, Multi-Tenancy | **6** | 1 | 4 | 1 |
+| **TOTAL** | **All 4 Modules Combined** | **54** | **7** | **43** | **4** |
+
+---
+
+## 2. Master Defect Quick-Reference Matrix
+
+| Defect ID | Severity | Module | Short Summary | Affected Route / Target | Evidence Link |
+| :--- | :---: | :--- | :--- | :--- | :---: |
+| [`DEFECT-20261103-01`](#defect-20261103-01) | 🟡 P2 | Holiday Calendar | Audit field `CreatedBy` stores plain email string instead of composite user identity | `MongoDB `HolidayCalendars`` | [Evidence 18](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg) |
+| [`DEFECT-20261103-02`](#defect-20261103-02) | 🟠 P1 | Holiday Calendar | `TenantName` persists as `Object (empty)` `{}` on creation & update | ``POST` / `PATCH /holidaylist`` | [Evidence 19](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) |
+| [`DEFECT-20261103-03`](#defect-20261103-03) | 🟠 P1 | Holiday Calendar | `isActive: false` in request payload ignored by backend and saved as `true` in DB | ``POST /holidaylist`` | [Evidence 20](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg) |
+| [`DEFECT-20261103-04`](#defect-20261103-04) | 🟠 P1 | Holiday Calendar | Non-existing holiday type ID (`holidayTypeId`) accepted without catalog verification | ``POST /holidaylist`` | [Evidence 21 & 22](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) |
+| [`DEFECT-20261103-05`](#defect-20261103-05) | 🟠 P1 | Holiday Calendar | Missing mandatory English calendar name (`name.en` & `holidayName.en`) validation | ``POST` / `PATCH /holidaylist`` | [Evidence 23](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_23_holiday_calendar_arabic_only_name_accepted.jpg) |
+| [`DEFECT-20261103-06`](#defect-20261103-06) | 🟠 P1 | Holiday Calendar | Empty `holidayLists: []` array accepted with HTTP 200 OK on calendar creation | ``POST /holidaylist`` | [Evidence 24](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) |
+| [`DEFECT-20261103-07`](#defect-20261103-07) | 🟠 P1 | Holiday Calendar | Duplicate `shortCode` allowed within same company (missing unique index in DB) | ``POST /holidaylist`` | [Evidence 25](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg) |
+| [`DEFECT-20261103-08`](#defect-20261103-08) | 🟠 P1 | Holiday Calendar | Invalid `calendarType` (`999`, `0`) silently accepted and overwritten to default `1` | ``POST /holidaylist`` | [Evidence 26](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png) |
+| [`DEFECT-20261103-09`](#defect-20261103-09) | 🟠 P1 | Holiday Calendar | Outer `year` (2026) vs inner `yearlyCalendar.year` (2027) mismatch accepted | ``POST /holidaylist`` | [Evidence 27](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_27_holiday_calendar_outer_year_yearlycalendar_year_mismatch.png) |
+| [`DEFECT-20261103-10`](#defect-20261103-10) | 🔴 P0 | Holiday Calendar | Child holiday empty English name (`holidayName.en: ""`) accepted and stored in DB | ``POST /holidaylist`` | [Evidence 28](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_28_holiday_calendar_child_holiday_empty_english_name.jpg) |
+| [`DEFECT-20261103-11`](#defect-20261103-11) | 🔴 P0 | Holiday Calendar | Chronological inversion allowed: `endDate` earlier than `startDate` (negative duration) | ``POST /holidaylist`` | [Evidence 29](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png) |
+| [`DEFECT-20261103-12`](#defect-20261103-12) | 🟠 P1 | Holiday Calendar | Holiday dates outside calendar year allowed (2027 holiday persisted in 2026 calendar) | ``POST /holidaylist`` | [Evidence 30](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg) |
+| [`DEFECT-20261103-13`](#defect-20261103-13) | 🔴 P0 | Holiday Calendar | Missing `holidayTypeId` allowed on child holidays; stored as empty GUID (`00000000...`) | ``POST /holidaylist`` | [Evidence 31](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_31_holiday_calendar_missing_holidaytypeid_stored_empty_guid.jpg) |
+| [`DEFECT-20261103-14`](#defect-20261103-14) | 🔴 P0 | Holiday Calendar | **BLOCKER:** `PATCH /holidaylist/{id}/{year}` and Web UI deadlocked by `Cit.Attendance:1706` | ``PATCH /holidaylist` & UI` | [Evidence 32 & 33](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_33_holiday_patch_1706_ui_blocked_dev_zoolwork.jpg) |
+| [`DEFECT-20261103-15`](#defect-20261103-15) | 🔴 P0 | Holiday Calendar | **BLOCKER:** Publish API allows publishing empty calendar with 0 holidays (`IsPublished: true`) | ``POST /holidaylist/publish`` | [Evidence 34 & 35](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_34_holiday_publish_empty_calendar_compass_proof.jpg) |
+| [`DEFECT-20261103-16`](#defect-20261103-16) | 🟠 P1 | Work Template / Sync | **MAJOR GAP:** Newly created location (Delhi) NOT auto-assigned Company Default Work Template | ``CompanySvc` & `AttendanceSvc`` | [Evidence 37 & 38](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_37_cdwt_compass_only_4_templates_missing_delhi.jpg) |
+| [`DEFECT-20261102-01`](#defect-20261102-01) | 🟠 P1 | Work Template | Missing mandatory English template name (`templateName.en`); Arabic-only accepted | ``POST /worktemplates/fixed`` | [Evidence 01](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_01_worktemplates_created_with_placeholder.png) |
+| [`DEFECT-20261102-02`](#defect-20261102-02) | 🟠 P1 | Work Template | Ambiguous `shortCode` contract: system silently generates random code if omitted or empty | ``POST /worktemplates`` | Schema & MongoDB |
+| [`DEFECT-20261102-03`](#defect-20261102-03) | 🟠 P1 | Work Template | `shortCode` minimum length boundary (>= 2 chars) not enforced; single char (`"A"`) accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-04`](#defect-20261102-04) | 🟠 P1 | Work Template | `shortCode` maximum length (<= 7) and regex bypassed: 9 chars & special chars (`CDW@#99`) accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-05`](#defect-20261102-05) | 🟠 P1 | Work Template | Loose `templateType` enum deserialization accepts string & int without strict range validation | ``POST /worktemplates`` | DTO Binding |
+| [`DEFECT-20261102-06`](#defect-20261102-06) | 🟠 P1 | Work Template | `totalWorkDurationInMinutes` missing validation: zero (`0`), negative, or omitted field accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-07`](#defect-20261102-07) | 🟠 P1 | Work Template | Omitting `totalWorkingDays` or `totalDaysOff` throws unhandled HTTP 500 crash instead of HTTP 400 | ``POST /worktemplates`` | Unhandled Exception |
+| [`DEFECT-20261102-08`](#defect-20261102-08) | 🟠 P1 | Work Template | Daily `workDurationInMinutes` accepts zero or negative minutes on active working days | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-09`](#defect-20261102-09) | 🟠 P1 | Work Template | Unhandled HTTP 500 `ValidationException` crash on day abbreviation string `"Mon"` | ``POST /worktemplates/fixed`` | Invariant Rule |
+| [`DEFECT-20261102-10`](#defect-20261102-10) | 🔴 P0 | Work Template | **CRITICAL:** Inverted shift timings (`endTime < startTime`, e.g. 10:00 to 09:00) accepted | ``POST /worktemplates/fixed`` | Temporal Invariant |
+| [`DEFECT-20261102-11`](#defect-20261102-11) | 🟠 P1 | Work Template | Slot duration math invariant violation: `workDurationInMinutes` (120m) != `(end - start = 480m)` | ``POST /worktemplates`` | Math Invariant |
+| [`DEFECT-20261102-12`](#defect-20261102-12) | 🟠 P1 | Work Template | Contradictory off-day configuration: `isWorkingDay: false` allowed with active working shift timings | ``POST /worktemplates`` | Calendar Invariant |
+| [`DEFECT-20261102-13`](#defect-20261102-13) | 🟠 P1 | Work Template | Template type mutability via PATCH across incompatible categories (Fixed -> Split) corrupts schema | ``PATCH /worktemplates/{id}`` | Domain Guard |
+| [`DEFECT-20261102-14`](#defect-20261102-14) | 🟠 P1 | Work Template | TemplateType vs FlexibleType inconsistency: `templateType: "Fixed"` with `flexibleType: 1` accepted | ``POST /worktemplates`` | Contract Invariant |
+| [`DEFECT-20261102-15`](#defect-20261102-15) | 🟠 P1 | Work Template | Out-of-range `dayEnum` (value `8`) accepted in `flexiTimeSlots` without validation | ``POST /worktemplates/flexi`` | Enum Boundary |
+| [`DEFECT-20261102-16`](#defect-20261102-16) | 🟠 P1 | Work Template | Invalid recurrence `recurrenceOfMonth: ["NotApplicable"]` or `0` accepted on Flexi templates | ``POST /worktemplates/flexi`` | Recurrence Invariant |
+| [`DEFECT-20261102-17`](#defect-20261102-17) | 🟠 P1 | Work Template | Negative duration and data type mismatch: `flexiTimeSlots` accepts negative duration (`-60`) | ``POST /worktemplates/flexi`` | DTO Validation |
+| [`DEFECT-20261102-18`](#defect-20261102-18) | 🟠 P1 | Work Template | Split shift empty interval crash: sending `timeSlots: []` throws unhandled HTTP 500 crash | ``POST /worktemplates/split`` | [Evidence 09](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_09_split_overlap_500_validation_exception.png) |
+| [`DEFECT-20261028-01`](#defect-20261028-01) | 🟠 P1 | Work Template | Flexi daily work duration exceeding 24 hours (`1441` minutes) accepted with HTTP 200 OK | ``POST /worktemplates/flexi`` | Boundary Invariant |
+| [`DEFECT-20261028-02`](#defect-20261028-02) | 🟠 P1 | Work Template | FluentValidation `ValidationException` throws unhandled HTTP 500 crash across 13 user scenarios | `ASP.NET Core Middleware` | Exception Filter |
+| [`DEFECT-20261028-03`](#defect-20261028-03) | 🟠 P1 | Work Template | Active Company Default template can be archived or deleted without guard while work plans use it | ``PATCH /worktemplates/{id}/archive`` | Lifecycle Guard |
+| [`DEFECT-20261027-05`](#defect-20261027-05) | 🟠 P1 | Work Template | Header `Location` model binding trap during CDWT setup causes ASP.NET Core binding collision | ``POST /worktemplates`` | Controller Binding |
+| [`DEFECT-20261027-01`](#defect-20261027-01) | 🟠 P1 | Work Plans | Missing `locationId` in `POST /workplans` throws unhandled HTTP 500 crash instead of clean 400 | ``POST /workplans`` | [Evidence 11](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_11_workplan_missing_locationid_400.png) |
+| [`DEFECT-20261027-02`](#defect-20261027-02) | 🟡 P2 | Work Plans | Redundant DTO validation on audit field `CreatedBy` forces client to submit user identity in body | ``POST /workplans`` | Audit DTO Contract |
+| [`DEFECT-20261027-03`](#defect-20261027-03) | 🟠 P1 | Attendance Policies | Missing boundary check on grace period minutes: negative grace period (`-15`m) accepted with 200 OK | ``POST /policies`` | [Evidence 08](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_08_negative_grace_accepted_200.png) |
+| [`DEFECT-20261027-04`](#defect-20261027-04) | 🟠 P1 | Attendance Policies | Missing boundary check on break policy duration: negative break (`-30`m) accepted with 200 OK | ``POST /policies`` | [Evidence 10](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_10_negative_break_accepted_200.png) |
+| [`DEFECT-20261027-06`](#defect-20261027-06) | 🟠 P1 | Work Plans / Split | Split shift overlapping intervals & zero break gap: second slot starts before first ends, accepted | ``POST /workplans`` | [Evidence 09](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_09_split_overlap_500_validation_exception.png) |
+| [`DEFECT-20261027-07`](#defect-20261027-07) | 🟠 P1 | Work Plans | Missing 7-day calendar invariant validation: schedule with 6 or 8 days throws unhandled 500 crash | ``POST /workplans`` | [Evidence 12](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_12_calendar_sum_not_7_500_validation_exception.png) |
+| [`DEFECT-20261028-07`](#defect-20261028-07) | 🟠 P1 | Attendance Policies | Negative grace and break durations accepted across Attendance Policies endpoints | ``POST /policies`` | Policy Invariants |
+| [`DEFECT-20261029-01`](#defect-20261029-01) | 🔴 P0 | Security / Auth | **CRITICAL SECURITY:** JWT lifetime & signature validation disabled; accepts expired & forged tokens | `Kestrel JWT Middleware` | Security Bypass |
+| [`DEFECT-20261029-02`](#defect-20261029-02) | 🟡 P2 | Swagger / OpenAPI | Attendance Swagger missing interactive OAuth2 (`authorizationCode`) flow unlike Company Service | `Swagger UI Config` | [Evidence 16 & 17](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_16_attendance_swagger_missing_oauth2.png) |
+| [`DEFECT-20261026-01`](#defect-20261026-01) | 🟠 P1 | Cross-Service Sync | Cross-service sync failure: Company Service `Checklist: false` not reflected in Attendance Service | ``CompanySvc` Sync` | [Evidence 02](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_02_companiesmaster_checklist_false.png) |
+| [`DEFECT-20261026-02`](#defect-20261026-02) | 🟠 P1 | Multi-Tenancy | `TenantName` persisted as empty object `{}` across MongoDB documents (`WorkTemplates`, `HolidayCalendars`) | `MongoDB `TenantName`` | [Evidence 06](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_06_tenantname_empty_object_compass.png) |
+| [`DEFECT-20261026-03`](#defect-20261026-03) | 🟡 P2 | Audit Infrastructure | `CreatedBy` audit field stores plain email string instead of composite user identity object | `MongoDB Audit Fields` | [Evidence 04 & 05](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_05_createdby_plain_email_highlighted.png) |
+| [`DEFECT-20261026-04`](#defect-20261026-04) | 🟠 P1 | API Contracts | `tenantName` still exposed in request body DTOs across 26 POST & PATCH APIs instead of auto-injected | `26 Controller Endpoints` | [Evidence 07](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_07_swagger_tenantname_still_present.png) |
+| [`DEFECT-20261028-04`](#defect-20261028-04) | 🟠 P1 | Multi-Tenancy Scoping | Cross-company scoping fallback: requesting another company's resource returns HTTP 200 instead of 404 | `Company Scoping Guard` | Authorization Boundary |
+
+---
+
+## 3. Module 1: Holiday Calendar Module (`ERP.Attendance.HolidayCalendars`)
+
+> **Target Collection:** `Sahab.ERP.Attendance.HolidayCalendars` | **Service:** `SP.AttendanceSvc` (.NET 9)
+> **Base Route:** `/api/companies/{companyId}/holidaylist` | **Controller:** `HolidayCalendarController`
+
+### <a id="defect-20261103-01"></a>🔴 DEFECT-20261103-01: Audit Field `CreatedBy` Persists as Plain Email String Instead of Composite User Identity
+- **Severity:** 🟡 P2 (Major / Audit Trail)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.CreatedBy`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+When a holiday calendar is created, the system stores `CreatedBy` as a raw string `"syed.mohamed@comm-it.in"` instead of a structured composite identity object (`{ "userId": "...", "loginId": "...", "name": "..." }`). This violates Sahab enterprise audit guidelines.
+
+#### 2. Steps to Reproduce
+1. Authenticate via Swagger or UI as an admin user.
+1. Execute `POST /api/companies/{companyId}/holidaylist` to create a holiday calendar.
+1. Inspect the created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** `CreatedBy` must persist as a composite object `{ userId, loginId, name, email }` populated from JWT claims.
+- **Actual:** `CreatedBy` persists as a simple string `"syed.mohamed@comm-it.in"`.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 18](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg)
+
+![DEFECT-20261103-01](defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-01
+In `CreateHolidayCalendarCommandHandler.cs`, inject `ICurrentUser` and map `calendar.CreatedBy = new AuditUser { UserId = _currentUser.Id, Email = _currentUser.Email, Name = _currentUser.Name };`.
+```
+
+---
+
+### <a id="defect-20261103-02"></a>🔴 DEFECT-20261103-02: `TenantName` Persists as `Object (empty)` `{}` in MongoDB During Creation & Updates
+- **Severity:** 🟠 P1 (Critical / Data Integrity)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist` & `PATCH /{id}/{year}`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.TenantName`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Holiday calendar documents created in MongoDB Compass store `TenantName: Object (empty)` `{}`. The backend handler fails to resolve or populate the tenant name from `ICurrentTenant` or JWT claims.
+
+#### 2. Steps to Reproduce
+1. Execute `POST /api/companies/{companyId}/holidaylist` with valid calendar payload.
+1. Open MongoDB Compass and view the persisted document.
+
+#### 3. Expected vs Actual Result
+- **Expected:** `TenantName` must be populated with multilingual values `{ en: "Attendance", ar: "الحضور" }`.
+- **Actual:** `TenantName` is stored as an empty BSON object `{}`.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 19](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg)
+
+![DEFECT-20261103-02](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-02
+In `CreateHolidayCalendarCommandHandler.cs`, inject `ICurrentTenant` and assign `calendar.TenantName = new MultilingualString { En = _currentTenant.Name, Ar = _currentTenant.ArabicName };`.
+```
+
+---
+
+### <a id="defect-20261103-03"></a>🔴 DEFECT-20261103-03: `isActive: false` in Request Payload Ignored by Backend Handler and Persisted as `IsActive: true`
+- **Severity:** 🟠 P1 (Critical / API Contract)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.IsActive`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+When creating a calendar with `"isActive": false`, the server accepts the payload with HTTP 200 OK but forcibly overrides `IsActive = true` in MongoDB. Clients cannot create a draft inactive calendar.
+
+#### 2. Steps to Reproduce
+1. Send `POST /api/companies/{companyId}/holidaylist` with `"isActive": false`.
+1. Inspect the created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** MongoDB document must preserve client's `IsActive: false` setting.
+- **Actual:** MongoDB document has `IsActive: true` (hardcoded by backend handler).
+
+#### 4. Photographic Proof
+[🔍 View Evidence 20](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg)
+
+![DEFECT-20261103-03](defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-03
+In `CreateHolidayCalendarCommandHandler.cs`, replace `calendar.IsActive = true;` with `calendar.IsActive = command.IsActive;`.
+```
+
+---
+
+### <a id="defect-20261103-04"></a>🔴 DEFECT-20261103-04: Non-Existing Holiday Type ID (`holidayTypeId`) Accepted Without Master Catalog Validation
+- **Severity:** 🟠 P1 (Critical / Referential Integrity)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists[].HolidayType`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Client submits arbitrary fake UUIDs for `holidayTypeId` (e.g. `"11111111-2222-3333-4444-555555555555"`). The server accepts with HTTP 200 OK and stores non-existing holiday types in MongoDB without checking catalog.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with random non-existing UUID for `holidayTypeId`.
+1. Verify server response and inspect MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request (`Cit.Attendance:1708`: 'Holiday type ID does not exist in the master catalog.').
+- **Actual:** HTTP 200 OK. Fake holiday type saved into MongoDB.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 21 & 22](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg)
+
+![DEFECT-20261103-04](defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-04
+In `CreateHolidayCalendarCommandValidator.cs`, add `RuleForEach(x => x.YearlyCalendar.HolidayLists).MustAsync(async (item, ct) => await _holidayTypeRepo.ExistsAsync(item.HolidayTypeId, ct));`.
+```
+
+---
+
+### <a id="defect-20261103-05"></a>🔴 DEFECT-20261103-05: Missing Mandatory English Calendar Name (`name.en` & `holidayName.en`) Validation
+- **Severity:** 🟠 P1 (Critical / Data Integrity)
+- **Affected Route:** `POST` & `PATCH /holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.Name.en`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Submitting a calendar with English name omitted, whitespace, or empty string `"en": ""` (Arabic-only name provided) is accepted with HTTP 200 OK. Stored with null/empty English name, breaking English UI view.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with `"name": { "ar": "تقويم تجريبي" }` (omit `"en"`).
+1. Send PATCH update omitting English holiday name.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request: English name is mandatory.
+- **Actual:** HTTP 200 OK. Persisted in MongoDB with `Name.en: null` or empty.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 23](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_23_holiday_calendar_arabic_only_name_accepted.jpg)
+
+![DEFECT-20261103-05](defect_evidence/evidence_23_holiday_calendar_arabic_only_name_accepted.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-05
+Add `RuleFor(x => x.Name.En).Cascade(CascadeMode.Stop).NotEmpty().WithMessage('English calendar name is mandatory.');` in both Create and Update validators.
+```
+
+---
+
+### <a id="defect-20261103-06"></a>🔴 DEFECT-20261103-06: Empty `holidayLists: []` Array Accepted with HTTP 200 OK on Creation
+- **Severity:** 🟠 P1 (Critical / Business Invariant)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Server allows creating a holiday calendar with zero holidays (`"holidayLists": []`). A calendar shell with no holiday days is saved and can cause empty schedule propagation.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with `"yearlyCalendar": { "year": 2026, "holidayLists": [] }`.
+1. Verify MongoDB document created.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request: A holiday calendar must contain at least one holiday entry upon creation.
+- **Actual:** HTTP 200 OK. Shell calendar persisted with empty array `HolidayLists: []`.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 24](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg)
+
+![DEFECT-20261103-06](defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-06
+In `CreateHolidayCalendarCommandValidator.cs`, add `RuleFor(x => x.YearlyCalendar.HolidayLists).NotEmpty().WithMessage('At least one holiday must be configured.');`.
+```
+
+---
+
+### <a id="defect-20261103-07"></a>🔴 DEFECT-20261103-07: Duplicate `shortCode` Allowed Within Same Company (Missing Unique Index)
+- **Severity:** 🟠 P1 (Critical / Data Integrity)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.ShortCode`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Two holiday calendars with identical `shortCode: "HOLP03"` were created for the same company. MongoDB has no partial unique index on `{ TenantId, CompanyId, ShortCode }`, and validator lacks uniqueness check.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with shortCode `"HOLP03"`.
+1. Send another `POST /holidaylist` for same company with `"shortCode": "HOLP03"`.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 / 409 Conflict: `ShortCode 'HOLP03' already exists for this company.`
+- **Actual:** HTTP 200 OK. Two identical shortCodes stored in MongoDB Compass.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 25](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg)
+
+![DEFECT-20261103-07](defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-07
+1. In Validator: Add `MustAsync` checking repository.ExistsByShortCode. 2. In Mongo configuration: Add unique index on `{ TenantId: 1, CompanyId: 1, LocationId: 1, ShortCode: 1 }`.
+```
+
+---
+
+### <a id="defect-20261103-08"></a>🔴 DEFECT-20261103-08: Invalid `calendarType` (`999`, `0`) Silently Accepted and Overwritten to Default `1`
+- **Severity:** 🟠 P1 (Critical / Contract Violation)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.CalendarType`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Client submits `"calendarType": 999`. The server does not reject the invalid enum. Instead, it accepts with HTTP 200 OK and silently converts it to `1` (CompanyDefault) in MongoDB Compass.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with `"calendarType": 999`.
+1. Inspect created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request: Invalid calendar type 999. Allowed values are 1 (CompanyDefault) or 2 (LocationDefault).
+- **Actual:** HTTP 200 OK. Saved in DB with `CalendarType: 1`.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 26](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png)
+
+![DEFECT-20261103-08](defect_evidence/evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-08
+In Validator: `RuleFor(x => x.CalendarType).IsInEnum().Must(x => (int)x == 1 || (int)x == 2).WithMessage('Invalid calendar type.');`.
+```
+
+---
+
+### <a id="defect-20261103-09"></a>🔴 DEFECT-20261103-09: Outer `year` (2026) vs Inner `yearlyCalendar.year` (2027) Mismatch Accepted
+- **Severity:** 🟠 P1 (Critical / Invariant Violation)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.Year` & `YearlyCalendar.Year`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Payload with outer `"year": 2026` and inner `"yearlyCalendar": { "year": 2027 }` is accepted with HTTP 200 OK. The document is persisted with conflicting years in MongoDB.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with `"year": 2026` and `"yearlyCalendar": { "year": 2027, ... }`.
+1. Verify MongoDB document created.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request (`Cit.Attendance:1705`: 'Outer calendar year must match yearly calendar year.').
+- **Actual:** HTTP 200 OK. Conflicting years saved in DB.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 27](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_27_holiday_calendar_outer_year_yearlycalendar_year_mismatch.png)
+
+![DEFECT-20261103-09](defect_evidence/evidence_27_holiday_calendar_outer_year_yearlycalendar_year_mismatch.png)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-09
+In Validator: `RuleFor(x => x).Must(x => x.Year == x.YearlyCalendar.Year).WithMessage('Calendar year and yearly calendar year must be equal.');`.
+```
+
+---
+
+### <a id="defect-20261103-10"></a>🔴 DEFECT-20261103-10: Child Holiday Empty English Name (`holidayLists[].holidayName.en: ""`) Accepted
+- **Severity:** 🔴 P0 (Blocker / Data Integrity)
+- **Affected Route:** `POST` & `PATCH /holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists[].HolidayName.en`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Submitting a child holiday with `"holidayName": { "en": "", "ar": "عطلة عامة" }` is accepted with HTTP 200 OK. Saved in MongoDB with empty string `""`, rendering blank entries in UI schedules.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with `holidayName.en = ""`.
+1. Inspect created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request: English holiday name is mandatory.
+- **Actual:** HTTP 200 OK. Document created with `en: ""` in child holiday item.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 28](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_28_holiday_calendar_child_holiday_empty_english_name.jpg)
+
+![DEFECT-20261103-10](defect_evidence/evidence_28_holiday_calendar_child_holiday_empty_english_name.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-10
+In `HolidayItemValidator.cs`, add `RuleFor(x => x.HolidayName.En).Cascade(CascadeMode.Stop).NotEmpty().Must(x => !string.IsNullOrWhiteSpace(x));`.
+```
+
+---
+
+### <a id="defect-20261103-11"></a>🔴 DEFECT-20261103-11: Chronological Inversion Allowed: `endDate` Earlier Than `startDate` Accepted
+- **Severity:** 🔴 P0 (Blocker / Temporal Invariant)
+- **Affected Route:** `POST` & `PATCH /holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists[].StartDate` & `EndDate`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Payload with `startDate: 2026-11-05` and `endDate: 2026-11-03` (end before start) accepted with HTTP 200 OK. Persisted in MongoDB with negative date range, breaking attendance engines.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` with start Nov 5, 2026 and end Nov 3, 2026.
+1. Check MongoDB document persisted.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request (`Cit.Attendance:1705`: 'End date must be greater than or equal to start date.').
+- **Actual:** HTTP 200 OK. Chronologically inverted dates persisted in MongoDB.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 29](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png)
+
+![DEFECT-20261103-11](defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-11
+In `HolidayItemValidator.cs`, add `RuleFor(x => x).Must(h => h.EndDate >= h.StartDate).WithMessage('Holiday end date cannot be earlier than start date.');`.
+```
+
+---
+
+### <a id="defect-20261103-12"></a>🔴 DEFECT-20261103-12: Holiday Dates Outside Calendar Year Allowed (2027 Holiday in 2026 Calendar)
+- **Severity:** 🟠 P1 (Critical / Boundary Violation)
+- **Affected Route:** `POST` & `PATCH /holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+A calendar for year 2026 accepted a child holiday dated in 2027 (`2027-01-01`). Stored in MongoDB without boundary validation, creating year corruption.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` for year 2026 with child holiday dated `2027-01-01`.
+1. Inspect created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request (`Cit.Attendance:1705`: 'Holiday dates must fall within calendar year 2026.').
+- **Actual:** HTTP 200 OK. 2027 dates persisted inside 2026 calendar document.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 30](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg)
+
+![DEFECT-20261103-12](defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-12
+In Validator: `RuleFor(x => x).Must(c => c.YearlyCalendar.HolidayLists.All(h => h.StartDate.Year == c.Year && h.EndDate.Year == c.Year));`.
+```
+
+---
+
+### <a id="defect-20261103-13"></a>🔴 DEFECT-20261103-13: Missing `holidayTypeId` Allowed on Child Holidays — Stored as Empty GUID (`00000000...`)
+- **Severity:** 🔴 P0 (Blocker / Referential Integrity)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.YearlyCalendar.HolidayLists[].HolidayType._id`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Omitting `holidayTypeId` on child holidays accepted with HTTP 200 OK. Persisted as empty GUID `00000000-0000-0000-0000-000000000000` in MongoDB, breaking payroll categorization.
+
+#### 2. Steps to Reproduce
+1. Send `POST /holidaylist` omitting `holidayTypeId` in child holiday.
+1. Inspect created document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request: `holidayTypeId` is mandatory.
+- **Actual:** HTTP 200 OK. Stored with `_id: UUID('00000000-0000-0000-0000-000000000000')`.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 31](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_31_holiday_calendar_missing_holidaytypeid_stored_empty_guid.jpg)
+
+![DEFECT-20261103-13](defect_evidence/evidence_31_holiday_calendar_missing_holidaytypeid_stored_empty_guid.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-13
+In `HolidayItemValidator.cs`, add `RuleFor(x => x.HolidayTypeId).NotEmpty().Must(id => id != Guid.Empty).WithMessage('Holiday type ID is required.');`.
+```
+
+---
+
+### <a id="defect-20261103-14"></a>🔴 DEFECT-20261103-14: BLOCKER: `PATCH /holidaylist/{id}/{year}` and Web UI Deadlocked by `Cit.Attendance:1706`
+- **Severity:** 🔴 P0 (Blocker / Operational Deadlock)
+- **Affected Route:** `PATCH /api/companies/{companyId}/holidaylist/{id}/{year}` & UI
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+When updating a holiday calendar for the current year, backend rule checks `holiday.StartDate > DateTime.UtcNow.Date`. Today's date (`2026-11-03`) is rejected, and re-validating the full holiday array blocks any edits if prior holidays exist, completely locking the UI modal.
+
+#### 2. Steps to Reproduce
+1. Open Web UI (`sp.dev.zoolwork.com`) > Add Holidays 2026.
+1. Add holiday with start date today (`2026-11-03`), or update a calendar with existing holidays.
+1. Click Submit. Network tab shows HTTP 400 with `Cit.Attendance:1706`.
+
+#### 3. Expected vs Actual Result
+- **Expected:** Today's date is allowed (`startDate >= today`), and historical existing holidays in array are not re-validated.
+- **Actual:** HTTP 400 `Cit.Attendance:1706`: *'For current year updates, holiday dates must be future dates.'* UI modal deadlocked.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 32 & 33](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_33_holiday_patch_1706_ui_blocked_dev_zoolwork.jpg)
+
+![DEFECT-20261103-14](defect_evidence/evidence_33_holiday_patch_1706_ui_blocked_dev_zoolwork.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-14
+In `UpdateHolidayCalendarCommandValidator.cs`: 1. Allow today (`h.StartDate >= today`). 2. Only validate future date rule for newly added holidays, not untouched existing holidays.
+```
+
+---
+
+### <a id="defect-20261103-15"></a>🔴 DEFECT-20261103-15: BLOCKER: Publish API Allows Publishing Empty Calendar with 0 Holidays (`IsPublished: true`)
+- **Severity:** 🔴 P0 (Blocker / Publish Lifecycle Invariant)
+- **Affected Route:** `POST /api/companies/{companyId}/holidaylist/publish/{year}`
+- **Database Target:** `Sahab.ERP.Attendance.HolidayCalendars.IsPublished`
+- **Status:** ❌ **Open / Verified on Swagger & MongoDB Compass**
+
+#### 1. Problem Summary
+Executing `POST /holidaylist/publish/2026` returns HTTP 200 OK and marks an empty calendar (`COMPHOL` with 0 holidays) as `IsPublished: true` in MongoDB. Overwrites all branch location calendars with zero holidays.
+
+#### 2. Steps to Reproduce
+1. Create empty calendar `COMPHOL` with `"holidayLists": []`.
+1. Call `POST /api/companies/{companyId}/holidaylist/publish/2026`.
+1. Inspect document in MongoDB Compass.
+
+#### 3. Expected vs Actual Result
+- **Expected:** HTTP 400 Bad Request (`Cit.Attendance:1704`: 'Cannot publish an empty holiday calendar. At least one holiday must be configured before publishing.').
+- **Actual:** HTTP 200 OK. `IsPublished: true` set on calendar with 0 holidays.
+
+#### 4. Photographic Proof
+[🔍 View Evidence 34 & 35](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_34_holiday_publish_empty_calendar_compass_proof.jpg)
+
+![DEFECT-20261103-15](defect_evidence/evidence_34_holiday_publish_empty_calendar_compass_proof.jpg)
+
+#### 5. Developer Remediation (.NET 9 C#)
+```csharp
+// Remediation for DEFECT-20261103-15
+In `PublishHolidayCalendarCommandHandler.cs`, add guard: `if (calendar.YearlyCalendar?.HolidayLists == null || !calendar.YearlyCalendar.HolidayLists.Any()) throw new SbpBusinessException("Cit.Attendance:1704", "Cannot publish an empty holiday calendar.");`.
+```
+
+---

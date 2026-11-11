@@ -1,0 +1,366 @@
+{
+  "USER-108": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Filter templateType=fixed returned only Fixed templates."
+  },
+  "USER-109": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Filter templateType=flexi returned only Flexi templates."
+  },
+  "USER-110": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Filter templateType=split returned templates."
+  },
+  "USER-111": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200 on templateType=regular."
+  },
+  "USER-112": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 400 for invalid templateType=foo."
+  },
+  "USER-113": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Filter state=active returned only Active templates."
+  },
+  "USER-114": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Filter state=archived returned only Archived templates."
+  },
+  "USER-115": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 400 for invalid state=foo."
+  },
+  "USER-116": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. isDefault=true returned exactly 1 company default template."
+  },
+  "USER-121": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. CompanyId reassignment rejected/locked out."
+  },
+  "USER-122": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Status 500. Server accepts client-spoofed tenantName into MongoDB document."
+  },
+  "USER-124": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Empty template name rejected."
+  },
+  "USER-127": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. POST /apply-sync executed cleanly."
+  },
+  "USER-125": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: Auto-provisioned location templates stamped with isCompanyLinked=true."
+  },
+  "USER-126": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: Manually created location templates maintain isCompanyLinked=false."
+  },
+  "USER-14": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Contradictory day off with active duration rejected."
+  },
+  "USER-15": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Empty recurrence on working day rejected."
+  },
+  "USER-16": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Total duration mismatch vs slots sum rejected."
+  },
+  "USER-17": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 400. Unrecognized dayEnum rejected with HTTP 400."
+  },
+  "USER-34": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Weekly duration exceeding 168 hours rejected."
+  },
+  "USER-35": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Zero duration on active working day rejected."
+  },
+  "USER-36": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Negative work duration rejected."
+  },
+  "USER-47": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Weekly mode excessive duration boundary strictly enforced."
+  },
+  "USER-60": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Status 500. 7-day calendar invariant failure crashes server with HTTP 500 instead of returning HTTP 400."
+  },
+  "USER-61": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Server accepted 1500m (25h/day) with HTTP 200 OK into MongoDB ERP.Attendance.WorkTemplates."
+  },
+  "USER-62": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Weekly duration boundary enforced."
+  },
+  "USER-63": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Zero break gap or overlapping intervals throw unhandled HTTP 500 ValidationException crash."
+  },
+  "USER-84": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Temporal inversion (startTime 17:00 > endTime 09:00) rejected."
+  },
+  "USER-85": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Overlapping intervals trigger unhandled HTTP 500 ValidationException crash."
+  },
+  "USER-86": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 500. Zero duration on working day rejected."
+  },
+  "USER-87": {
+    "status": "Fail",
+    "remarks": "[Live Verified DEFECT]: Calendar math invariant violation triggers unhandled HTTP 500 crash."
+  },
+  "USER-101": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Fixed CDWT v2.0 retrieved with complete structure."
+  },
+  "USER-103": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Flexible Weekly template retrieval returns full DTO."
+  },
+  "USER-104": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Split Shift template retrieved with split intervals."
+  },
+  "USER-105": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 200. Archived historical version readable."
+  },
+  "USER-106": {
+    "status": "Fail",
+    "remarks": "[Live Verified]: Status 500. Non-existent template ID returns 400/404."
+  },
+  "USER-107": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Status 400. Cross-company template query isolated."
+  },
+  "USER-05": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 3]: CDWT created cleanly with 0 locations."
+  },
+  "USER-06": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Benchmark]: Location templates auto-provisioned upon CDWT creation."
+  },
+  "USER-07": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: POST /apply-sync provisions missing location templates."
+  },
+  "USER-09": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 2]: CDWT migrated from Fixed to Flexi via PATCH v1.0 -> v2.0."
+  },
+  "USER-10": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 4]: ShortCode tampering and empty payloads strictly blocked."
+  },
+  "USER-11": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 3]: Fixed CDWT created with 5 working days, 2 days off."
+  },
+  "USER-12": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Location-level template creation verified."
+  },
+  "USER-13": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Fixed schedule with recurrence pattern verified."
+  },
+  "USER-18": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: PATCH timings on CDWT creates new version."
+  },
+  "USER-19": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: PATCH location template updates in-place without version bump."
+  },
+  "USER-20": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Convert working day to weekly off via PATCH verified."
+  },
+  "USER-23": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: In-type Fixed-to-Fixed PATCH creates v2.0."
+  },
+  "USER-24": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Cross-type Fixed-to-Flexi PATCH creates v2.0."
+  },
+  "USER-25": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Cross-type Fixed-to-Split PATCH creates v2.0."
+  },
+  "USER-26": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Migration to Roster/Rotation strictly blocked."
+  },
+  "USER-27": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Location template creation without CDWT rejected with Cit.Attendance:1205."
+  },
+  "USER-28": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Passing locationId in header/body without query rejects with Cit.Attendance:1010."
+  },
+  "USER-29": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 4]: Flexi Daily mode setup verified."
+  },
+  "USER-30": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Flexi Weekly mode setup verified."
+  },
+  "USER-31": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Migrate Fixed to Flexi Daily creates v2.0."
+  },
+  "USER-32": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Migrate Fixed to Flexi Weekly creates v2.0."
+  },
+  "USER-38": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: DayEnum string values ('Sun'..'Sat') validated."
+  },
+  "USER-39": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: RecurrenceOfMonth values ('First'..'Fifth') validated."
+  },
+  "USER-40": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Weekly vs Daily mode contradiction guard enforced."
+  },
+  "USER-41": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Weekly hours initial POST creation verified."
+  },
+  "USER-42": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Migration from Daily to Weekly via PATCH verified."
+  },
+  "USER-43": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Migration from Fixed directly to Weekly Flexible verified."
+  },
+  "USER-44": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: CDWT creates new document; location template updates in-place."
+  },
+  "USER-45": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Weekly mode day off configuration verified."
+  },
+  "USER-46": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Weekly mode alternate Saturday off recurrence verified."
+  },
+  "USER-48": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 4]: Full version chain [v2.0, v1.0] verified."
+  },
+  "USER-49": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Mutual exclusion across Fixed, Flexi, Split via POST verified."
+  },
+  "USER-50": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Location header vs route parameter guard verified."
+  },
+  "USER-51": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: First-time Fixed CDWT creation header location lockout verified."
+  },
+  "USER-52": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: First-time Flexi CDWT creation header location lockout verified."
+  },
+  "USER-53": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: First-time Split CDWT creation header location lockout verified."
+  },
+  "USER-54": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Clean header CDWT creation success baseline verified."
+  },
+  "USER-55": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split CDWT migration from Flexi Weekly verified."
+  },
+  "USER-56": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 5]: Split CDWT first-time POST creation verified."
+  },
+  "USER-57": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split location template in-place mutation verified."
+  },
+  "USER-58": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split negative duration mismatch rejected."
+  },
+  "USER-59": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split recurrence with alternate Saturday off verified."
+  },
+  "USER-64": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: Discriminant mapping (Fixed=1, Flexi=2, Split=3) verified in Mongo."
+  },
+  "USER-65": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: Full 4-stage changeLog version chain verified."
+  },
+  "USER-66": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Apply-sync cascade to location templates verified."
+  },
+  "USER-67": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: 7 working days & 0 days off (24/7 operations) setup verified."
+  },
+  "USER-68": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Flexi Weekly to Flexi Daily mode reversion verified."
+  },
+  "USER-69": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Flexi to Fixed shift reversion verified."
+  },
+  "USER-70": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split to Split interval modification verified."
+  },
+  "USER-71": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split to Fixed shift conversion verified."
+  },
+  "USER-72": {
+    "status": "Pass",
+    "remarks": "[Live Verified]: Split to Flexi shift conversion verified."
+  },
+  "USER-73": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 4]: ShortCode modification via PATCH blocked."
+  },
+  "USER-88": {
+    "status": "Pass",
+    "remarks": "[Architecture Verified]: Prior version document immutability check verified in Mongo."
+  },
+  "USER-89": {
+    "status": "Pass",
+    "remarks": "[Live Verified on Attendance 4]: HasPendingLocSync transition to true verified."
+  }
+}

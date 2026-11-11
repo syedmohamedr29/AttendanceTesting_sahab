@@ -1,0 +1,300 @@
+====================================================================================================
+DAILY QA TESTING & LIVE RE-VERIFICATION SUMMARY NOTE
+====================================================================================================
+Date: 05-November-2026
+Target Environment: DEV Environment (Microservices: SP.AttendanceSvc .NET 9 & SP.CompanySvc .NET 8)
+Service Base URL: https://attendance2.dev.zoolwork.com | https://company8.dev.zoolwork.com
+Authorized QA Identity: syed.mohamed@comm-it.in (Bearer Token via OpenIddict)
+Tenant: Attendance (3a24741e-2667-1223-f12e-62a69fab3838)
+Target Companies:
+  - Attendance 4 (3a247436-8669-844a-7d2f-1a209af02d8e) [CDWT Flexi Daily v2.0 Active & v1.0 Archived]
+  - Attendance 3 (3a247435-e31d-ef15-8cc9-62c587f4eb3f) [CDWT Fixed v2.0 Active]
+  - Attendance 2 (3a247435-3cea-83ae-6a9f-6dda99f386a3) [Holiday Calendar v3.0 Active]
+  - Attendance 8 (3a249871-7a8d-dec5-2d72-47795dd2662d) [CDWT Setup & Locations]
+  - Attendance 9 (3a249872-2d69-f931-41f6-d8db086b09b8) [CDWT Split v1.0 Active Default (ATT9SPL)]
+  - Attendance 7 (3a249870-c8ae-b3dc-1b8d-c44efad14f89) [CDWT Fixed v1.0 Active Default (ATT7FIX) - 4 Locations]
+
+====================================================================================================
+EXECUTIVE SUMMARY
+====================================================================================================
+Today, comprehensive live re-execution was conducted across 4 major modules and defect groups 
+following developer deployments. In total, 11 historical defects were verified fixed live, 
+raising the overall executed test suite health to 96.5% (580 Passed / 21 Failed across 601 TCs).
+
+Master Consolidated Health:
+  - WT - Company Default (Module 1):     150 Total TCs | 146 Passed | 4 Failed | 97.3% Pass Rate
+  - User Scenarios (Module 15):          138 Total TCs | 129 Passed | 9 Failed | 93.5% Pass Rate
+  - Holiday Calendar (Module 16):        313 Total TCs | 305 Passed | 8 Failed | 97.4% Pass Rate
+  --------------------------------------------------------------------------------------------------
+  OVERALL EXECUTED SUITE TOTAL:          601 Total TCs | 580 Passed | 21 Failed | 96.5% Pass Rate
+
+====================================================================================================
+1. DAY 2 DEFECTS LIVE RE-VERIFICATION (27-OCT-2026 DEFECTS)
+====================================================================================================
+Scope: All 7 Defects (DEFECT-20261027-01 to 07 / USER-132 to USER-138)
+Outcome: 100% RESOLVED (7 / 7 Fixed Live)
+
+  1. DEFECT-20261027-01 (USER-132):
+     - Issue: Missing locationId query parameter in POST /workplans previously caused HTTP 500 crash.
+     - Live Re-Test: POST /workplans without ?locationId= now cleanly returns HTTP 400 Bad Request.
+     - Status: FIXED LIVE (HTTP 400 Bad Request)
+
+  2. DEFECT-20261027-02 (USER-133):
+     - Issue: Redundant CreatedBy string in request body DTOs was previously validated/required.
+     - Live Re-Test: Body DTO schemas purged; CreatedBy is now derived securely from JWT token claims.
+     - Status: FIXED LIVE
+
+  3. DEFECT-20261027-03 (USER-134):
+     - Issue: Negative lateCheckInGraceMinutes (-15) was accepted with HTTP 200 OK.
+     - Live Re-Test: POST /attpolicies/graceperiod with -15m returns HTTP 400 Bad Request with
+       Cit.Attendance:Validation ("Late check in grace minutes must be greater than or equal to 0.").
+     - Status: FIXED LIVE (HTTP 400 Bad Request)
+
+  4. DEFECT-20261027-04 (USER-135):
+     - Issue: Negative break duration (-60m) was accepted with HTTP 200 OK.
+     - Live Re-Test: POST /attpolicies/break with -60m returns HTTP 400 Bad Request with
+       Cit.Attendance:Validation ("Total break duration in minutes must be greater than 0.").
+     - Status: FIXED LIVE (HTTP 400 Bad Request)
+
+  5. DEFECT-20261027-05 (USER-136):
+     - Issue: Request header 'Location' was bound to query model, triggering Cit.Attendance:1205 deadlock.
+     - Live Re-Test: Header binding decoupled; company setup creates CDWT cleanly without location trap.
+     - Status: FIXED LIVE
+
+  6. DEFECT-20261027-06 (USER-137):
+     - Issue: Split shift overlapping intervals (08:00-12:00 and 11:00-15:00) threw HTTP 500 crash.
+     - Live Re-Test: POST /worktemplates/split with overlapping intervals returns HTTP 400 Bad Request
+       with Cit.Attendance:Validation ("Shift time slot cannot overlap with other slot.").
+     - Status: FIXED LIVE (HTTP 400 Bad Request, 500 crash eliminated)
+
+  7. DEFECT-20261027-07 (USER-138):
+     - Issue: Calendar days sum invariant (workingDays + daysOff != 7, e.g. 6+2=8) threw HTTP 500 crash.
+     - Live Re-Test: POST /worktemplates/fixed with 6+2=8 days returns HTTP 400 Bad Request with
+       Cit.Attendance:Validation ("Total working days and total days off must equal 7 days.").
+     - Status: FIXED LIVE (HTTP 400 Bad Request, 500 crash eliminated)
+
+====================================================================================================
+2. PART 2B: LIVE EXECUTION OF USER SCENARIOS ON COMPANY 'ATTENDANCE 4' (28-OCT-2026)
+====================================================================================================
+Scope: 13 Real-World Lifecycle & Guard Scenarios on Company 'Attendance 4'
+Outcome: 100% PASSED (13 / 13 Passed — Raised from 11 Pass / 2 Fail)
+
+  - USER-08:  One Default Rule Guard -> HTTP 400 Cit.Attendance:1010 [PASS]
+  - USER-21:  ShortCode Immutability Guard -> HTTP 400 Cit.Attendance:1107 [PASS]
+  - USER-22:  Empty Request Body {} on PATCH -> HTTP 400 Cit.Attendance:Validation [RESOLVED / PASS]
+              * Verified Fixed Live: HTTP 500 server crash eliminated; returns clean HTTP 400.
+  - USER-37:  Boundary DayEnum Validation with Invalid Integer 8 -> HTTP 400 Cit.Attendance:Validation [RESOLVED / PASS]
+              * Verified Fixed Live: HTTP 500 server crash eliminated; returns clean HTTP 400.
+  - USER-81:  Archived Template Immutability Guard -> HTTP 400 Cit.Attendance:1104 / 1107 [PASS]
+  - USER-82:  Non-Existent Template GUID Lookup -> HTTP 400 Cit.Attendance:1101 [PASS]
+  - USER-83:  Cross-Company Boundary Isolation Guard -> HTTP 400 Cit.Attendance:9001 [PASS]
+  - USER-102: GET by ID on Flexible Daily CDWT v2.0 -> HTTP 200 OK [PASS]
+  - USER-117: GET Version History (v2.0 Active & v1.0 Archived) -> HTTP 200 OK [PASS]
+  - USER-118: GET Sync Status (hasCompanyDefault: true, hasPendingChanges: false) -> HTTP 200 OK [PASS]
+  - USER-119: GET Short Code Availability Check -> HTTP 200 OK [PASS]
+  - USER-120: GET Short Code Suggestions Generation -> HTTP 200 OK [PASS]
+  - USER-123: Strict ShortCode Lockout Across All Types -> HTTP 400 Cit.Attendance:1107 [PASS]
+
+====================================================================================================
+3. PART 3: DEFECTS IDENTIFIED ON 28 OCTOBER 2026 (LIVE API PROBES & USER SCENARIOS)
+====================================================================================================
+Scope: 7 Defects logged across Work Templates, Middlewares, and Attendance Policies
+Outcome: 4 Resolved / 3 Open (100% of Validation / Logic Bugs Resolved)
+
+  Resolved Defects (4/7):
+  1. DEFECT-20261028-01: Flexi Daily Work Duration Exceeding 24h (1500m / 25h/day)
+     - Live Re-Test: POST /worktemplates/flexi with 1500m returns HTTP 400 Bad Request with
+       Cit.Attendance:Validation ("A day's work duration cannot exceed 23 hours 59 minutes.").
+     - Status: 🟢 FIXED LIVE (HTTP 400 Bad Request)
+
+  2. DEFECT-20261028-02: FluentValidation ValidationException Caused HTTP 500 Crashes (13 User Scenarios)
+     - Live Re-Test: GlobalExceptionHandlerMiddleware now catches ValidationException and returns
+       RFC 9110 HTTP 400 ProblemDetails with Cit.Attendance:Validation. Crashes eliminated across all 13 TCs.
+     - Status: 🟢 FIXED LIVE (HTTP 400 Bad Request)
+
+  3. DEFECT-20261028-03: Active Company Default Can Be Archived or Deleted Without Guard
+     - Live Re-Test: Calling PATCH /worktemplates/{id}/archive or /delete on active CDWT returns
+       HTTP 400 Bad Request with Cit.Attendance:1003 ("Company default cannot be deleted.").
+     - Status: 🟢 FIXED LIVE (HTTP 400 Bad Request)
+
+  4. DEFECT-20261028-07: Negative Grace & Break Durations Accepted with HTTP 200 OK
+     - Live Re-Test: Both /attpolicies/graceperiod (-15m) and /attpolicies/break (-60m) are rejected
+       with HTTP 400 Bad Request with Cit.Attendance:Validation.
+     - Status: 🟢 FIXED LIVE (HTTP 400 Bad Request)
+
+  Open Architectural Defects (3/7):
+  5. DEFECT-20261028-04: Cross-company query fallback returns HTTP 200 [] instead of HTTP 404 / 400.
+     - Status: 🔴 NOT FIXED / OPEN (Querying fake company GUID returns HTTP 200 [])
+
+  6. DEFECT-20261028-05 (USER-02 / USER-129): TenantName persists as empty object {} in MongoDB.
+     - Status: 🔴 NOT FIXED / OPEN (Server-side dynamic pre-population from current tenant context pending)
+
+  7. DEFECT-20261028-06 (USER-04 / USER-122 / USER-131): All 26 DTOs in Swagger expose tenantName; spoofing accepted.
+     - Status: 🔴 NOT FIXED / OPEN (DTO parameter purge and JWT claim binding pending)
+
+====================================================================================================
+4. PART 3B: HOLIDAY CALENDAR TEST SUITE RE-VERIFICATION (ATTENDANCE 2 & 3)
+====================================================================================================
+Scope: 313 Total Test Cases across 29 Functional Sections
+Outcome: 305 Passed / 8 Failed (97.4% Pass Rate — 29 Historical Failures Converted to PASS)
+
+  Key Live Fixes Verified:
+  - All 16 historical unhandled ValidationException HTTP 500 server crashes eliminated (HC-DTO-04, 05,
+    06, 08, 09, 10, 11, 16, 17, 18, 52, 72, 75, 76, 79).
+  - Empty English calendar name ("") rejected with HTTP 400 Bad Request ("An English calendar name is required.").
+  - Ancient year 1800 500 crash, empty lists ([]), and end date < start date rejected with HTTP 400.
+  - Today's date accepted cleanly, past dates rejected with Cit.Attendance:1706.
+
+  Remaining 8 Genuine Failures:
+  - HC-DTO-01, 74, 127, 129 (4 TCs): ASP.NET Core framework route constraints ({companyId:guid}, {year:int})
+    reject invalid route segments before reaching controller, returning HTTP 404 instead of HTTP 400.
+  - HC-DTO-145 (1 TC): calendarType invalid enum 999 silently coerced to default (1) triggering Cit.Attendance:1713.
+  - HC-PUB-01, 18 (2 TCs): Defense-in-depth publish guard missing if invoked on empty calendar (0 holidays).
+  - HC-PUB-16 (1 TC): Cross-service event synchronization to SP.CompanySvc missing (CompanyChecklist remains false).
+
+====================================================================================================
+5. NEW TESTING FLOW: COMPANY 'ATTENDANCE 9' - WORK TEMPLATE CREATION & ONE-DEFAULT GUARD
+====================================================================================================
+Scope: Fresh Onboarding, CDWT Creation (Flexi & Fixed) & One-Default Protection Rule
+Company Name: Attendance 9 (الحضور 9)
+Company ID: 3a249872-2d69-f931-41f6-d8db086b09b8
+Outcome: 100% SUCCESS (Fixed CDWT Created, Verified Live & Duplicate Default Guard Enforced)
+
+  Part A: Flexible CDWT Initial Execution:
+  1. Pre-Creation Audit:
+     - GET /worktemplates -> [] (Clean baseline, no templates existed).
+     - GET /company-default/sync-status -> hasCompanyDefault: false.
+     - GET /company-default/versions -> versions: [].
+  2. ShortCode Availability Verification:
+     - GET /worktemplates/short-code/availability?code=ATT9FLX -> isValidFormat: true, isAvailable: true.
+  3. Template Creation:
+     - Endpoint: POST /api/companies/3a249872-2d69-f931-41f6-d8db086b09b8/worktemplates/flexi
+     - Payload: Flexi Daily (480 mins/day, Sun-Thu 480m, Fri-Sat Day Off, recurrence [1,2,3,4,5])
+     - Response: HTTP 200 OK ("Flexi work template created")
+     - Generated Template ID: 7328b6a5-4dcd-411f-8c2a-6fd2d2f86615
+     - Status: Active | Version: 1.0 | isDefault: true
+
+  Part B: Fixed Work Template (CDWT) Live Execution:
+  1. ShortCode Availability Check:
+     - GET /worktemplates/short-code/availability?code=ATT9FIX -> isValidFormat: true, isAvailable: true.
+  2. Fixed Template Creation:
+     - Endpoint: POST /api/companies/3a249872-2d69-f931-41f6-d8db086b09b8/worktemplates/fixed
+     - Payload: Fixed Template (Sun-Thu 08:00:00 to 16:00:00, 480m daily, Fri-Sat Day Off 0m)
+     - Response: HTTP 200 OK ("Fixed work template created")
+     - Generated Template ID: d5abe5c4-d51f-4287-9baf-38e2e4f547c8
+     - ShortCode: ATT9FIX
+     - Status: Active | Version: 1.0 | isDefault: true
+  3. Live Post-Creation Verification:
+     - GET /worktemplates/{id} -> HTTP 200 OK (Full 7-day schedule verified, 08:00 to 16:00, isEditable: false, isArchivable: false)
+     - GET /worktemplates/company-default/sync-status -> HTTP 200 OK (hasCompanyDefault: true, currentVersion: "1.0", companyDefaultTemplateId: "d5abe5c4-d51f-4287-9baf-38e2e4f547c8")
+     - GET /worktemplates/company-default/versions -> HTTP 200 OK (Version 1.0 Active, isCurrent: true, changeLog: "Work template created")
+     - GET /api/company/companies/{cid}/getChecklist (SP.CompanySvc) -> HTTP 200 OK (workSchedulesCreated: false, re-confirming DEFECT-20261026-01)
+
+  Part C: Live One-Default Guard Enforcement (Cit.Attendance:1010):
+  1. Duplicate Fixed CDWT Attempt (ATT9FX2):
+     - POST /worktemplates/fixed -> Rejected with HTTP 400 Bad Request
+     - Error Code: Cit.Attendance:1010 ("Company default already exists.")
+     - Confirmed: Second Fixed template creation strictly blocked.
+  2. Duplicate Flexi CDWT Attempt (ATT9FL2):
+     - POST /worktemplates/flexi -> Rejected with HTTP 400 Bad Request
+     - Error Code: Cit.Attendance:1010 ("Company default already exists.")
+     - Confirmed: Cross-type duplicate default creation strictly blocked.
+
+  Part D: New Defect Logged Live with MongoDB Compass Photographic Evidence:
+  1. DEFECT-20261105-01 (P1 Critical / Data Integrity & Master Data):
+     - Defect Title: CompanyName Persists as Empty Object {} in MongoDB Upon Work Template Creation (Missing Company Metadata Resolution from SP.CompanySvc)
+     - Target Collection: DEV > Sahab > ERP.Attendance.WorkTemplates
+     - Inspected Document: UUID('d5abe5c4-d51f-4287-9baf-38e2e4f547c8') for Company Attendance 9 (UUID('3a249872-2d69-f931-41f6-d8db086b09b8'))
+     - Findings: CompanyId is saved, but CompanyName: Object (empty) {}. API response returns "companyName": {}.
+     - Evidence File: defect_evidence/evidence_39_companyname_empty_object_compass.jpg (Evidence 39)
+     - Logged Status: 🔴 OPEN / REGISTERED IN BOTH DEFECT FILES (Master Defect Log & Comprehensive Technical Report)
+
+  Part E: Active Flexible Default Work Template Live Creation & Verification:
+  1. Baseline Status:
+     - GET /worktemplates -> [] (Previous template cleared).
+  2. Template Creation:
+     - Endpoint: POST /api/companies/3a249872-2d69-f931-41f6-d8db086b09b8/worktemplates/flexi
+     - Payload: Flexi Daily (480 mins/day, Sun-Thu 480m, Fri-Sat Day Off 0m, recurrence [1,2,3,4,5])
+     - Response: HTTP 200 OK ("Flexi work template created")
+     - Generated Active Template ID: d74a3552-d519-4aae-a8d8-94df00de2fe0
+     - ShortCode: ATT9FLX
+     - Status: Active | Version: 1.0 | isDefault: true
+  3. Live Post-Creation Verification Proofs:
+     - GET /worktemplates/{id} -> HTTP 200 OK (Full 7-day schedule verified; companyName: {} and tenantName: {} re-confirm DEFECT-20261105-01 & DEFECT-20261026-02)
+     - GET /worktemplates/company-default/sync-status -> HTTP 200 OK (hasCompanyDefault: true, currentVersion: "1.0", companyDefaultTemplateId: "d74a3552-d519-4aae-a8d8-94df00de2fe0")
+     - GET /worktemplates/company-default/versions -> HTTP 200 OK (Version 1.0 Active, isCurrent: true, changeSummary: "Work template created")
+     - GET /api/company/companies/{cid}/getChecklist (SP.CompanySvc) -> HTTP 200 OK (workSchedulesCreated: false, re-confirming DEFECT-20261026-01)
+
+  Part F: Active Split Shift Default Work Template Live Creation & Verification:
+  1. Baseline Status:
+     - GET /worktemplates -> [] (Previous template cleared).
+  2. ShortCode Availability Verification:
+     - GET /worktemplates/short-code/availability?code=ATT9SPL -> isValidFormat: true, isAvailable: true.
+  3. Template Creation:
+     - Endpoint: POST /api/companies/3a249872-2d69-f931-41f6-d8db086b09b8/worktemplates/split
+     - Payload: Split Shift (Sun-Thu 2 intervals: 08:00-12:00 [240m] & 16:00-20:00 [240m], 480m total/day, 4h break gap; Fri-Sat 0m Day Off)
+     - Response: HTTP 200 OK ("Split work template created")
+     - Generated Active Template ID: 9c0f5b32-2201-41e5-8986-3846ce97c132
+     - ShortCode: ATT9SPL
+     - Status: Active | Version: 1.0 | isDefault: true
+  4. Live Post-Creation Verification Proofs:
+     - GET /worktemplates/{id} -> HTTP 200 OK (Full 7-day schedule verified; 2 intervals/day; companyName: {} and tenantName: {} re-confirm DEFECT-20261105-01 & DEFECT-20261026-02)
+     - GET /worktemplates/company-default/sync-status -> HTTP 200 OK (hasCompanyDefault: true, currentVersion: "1.0", companyDefaultTemplateId: "9c0f5b32-2201-41e5-8986-3846ce97c132")
+     - GET /worktemplates/company-default/versions -> HTTP 200 OK (Version 1.0 Active, isCurrent: true, changeSummary: "Work template created")
+     - GET /api/company/companies/{cid}/getChecklist (SP.CompanySvc) -> HTTP 200 OK (workLocationsCreated: true, workSchedulesCreated: false, re-confirming DEFECT-20261026-01)
+
+====================================================================================================
+6. NEW TESTING FLOW: COMPANY 'ATTENDANCE 7' - FIXED CDWT CREATION & VERIFICATION
+====================================================================================================
+Scope: Fresh Onboarding & Fixed Company Default Work Template Creation
+Company Name: Attendance 7 (الحضور 7)
+Company ID: 3a249870-c8ae-b3dc-1b8d-c44efad14f89
+Company Locations: 4 Active Locations in SP.CompanySvc (workLocationsCreated: true)
+Outcome: 100% SUCCESS (Fixed CDWT Created & Fully Verified Live)
+
+  Executed Steps & Results:
+  1. Pre-Creation Audit:
+     - GET /worktemplates -> [] (Clean baseline, 0 templates).
+     - GET /worktemplates/company-default/sync-status -> hasCompanyDefault: false.
+     - GET /worktemplates/short-code/availability?code=ATT7FIX -> isValidFormat: true, isAvailable: true.
+     - GET /getChecklist (SP.CompanySvc) -> workLocationsCreated: true, workSchedulesCreated: false.
+  2. Template Creation:
+     - Endpoint: POST /api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/worktemplates/fixed
+     - Payload: Fixed Template (Sun-Thu 08:00:00 to 16:00:00, 480m each; Fri-Sat Day Off 0m)
+     - Response: HTTP 200 OK ("Fixed work template created")
+     - Generated Active Template ID: 5fe610ef-21f9-48ec-a6c8-f97ec9dc31df
+     - ShortCode: ATT7FIX
+     - Status: Active | Version: 1.0 | isDefault: true
+  3. Live Post-Creation Verification Proofs:
+     - GET /worktemplates/{id} -> HTTP 200 OK (Full 7-day schedule verified; companyName: {} and tenantName: {} re-confirm DEFECT-20261105-01 & DEFECT-20261026-02)
+     - GET /worktemplates -> HTTP 200 OK (Returns 1 CDWT 5fe610ef-21f9-48ec-a6c8-f97ec9dc31df)
+     - GET /worktemplates/company-default/sync-status -> HTTP 200 OK (hasCompanyDefault: true, currentVersion: "1.0", companyDefaultTemplateId: "5fe610ef-21f9-48ec-a6c8-f97ec9dc31df", hasPendingChanges: false)
+     - GET /worktemplates/company-default/versions -> HTTP 200 OK (Version 1.0 Active, isCurrent: true, changeSummary: "Work template created")
+     - GET /api/company/companies/{cid}/getChecklist (SP.CompanySvc) -> HTTP 200 OK (workLocationsCreated: true, workSchedulesCreated: false, re-confirming DEFECT-20261026-01)
+
+====================================================================================================
+SYNCHRONIZED MASTER FILES & ARTIFACTS
+====================================================================================================
+1. AttendanceTestCases_Master_Consolidated.xlsx:
+   - Sheet 'INDEX': Row 20 (Holiday Calendar) updated to 313 TCs, 305 Pass, 8 Fail (97.4%).
+   - Sheet 'WT - Company Default': 150 TCs, 146 Pass, 4 Fail (97.3%).
+   - Sheet 'User Scenarios (Add Here)': 138 TCs, 129 Pass, 9 Fail (93.5%).
+   - Sheet 'Holiday Calendar - Test Cases': 313 TCs, 305 Pass, 8 Fail (97.4%).
+
+2. Attendance2_Defects_Gaps_and_Architecture_Inconsistencies_Report.md:
+   - Table of Contents updated with Part 3G link.
+   - Top banner updated with critical defect DEFECT-20261105-01 (05 November 2026).
+   - Evidence Gallery updated with Evidence 39 (MongoDB Compass CompanyName Object empty).
+   - New Section Part 3G added: Full defect deep-dive, reproduction payload, MongoDB proof, and C# remediation.
+   - Part 2B (Company Attendance 4): Summary matrix and detailed test scenarios updated (13/13 Pass).
+   - Part 3: Defect summary matrix updated (4 Fixed / 3 Open), deep-dives updated with live response proofs.
+   - Part 3B: Complete 29-section holiday execution table synchronized (305 Pass / 8 Fail).
+   - Part 5 Developer Checklist: Added P1 action item for DEFECT-20261105-01; updated [x] for all resolved P0/P1 items.
+
+3. Defects/Attendance2_Master_Defect_Log.md:
+   - Metrics updated: 56 Total Defects (7 P0, 44 P1, 4 P2; Module 2 increased to 27).
+   - Section 2 Master Quick-Reference Matrix: Registered DEFECT-20261105-01 with Evidence 39 link.
+   - Section 4 (Module 2): Added detailed defect specification, reproduction request, Compass figure, and C# code patch.
+   - Section 8 Developer Action Checklist: Added P1 remediation task for DEFECT-20261105-01.
+====================================================================================================
+

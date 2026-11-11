@@ -1,0 +1,65 @@
+{
+  "DOC-A-04": {
+    "code": 200,
+    "body": "{\"templates\":[{\"type\":\"Fixed\",\"fixedTimeSlots\":[{\"startTime\":\"09:00:00\",\"endTime\":\"17:00:00\",\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrence",
+    "status": "Fail",
+    "actual": "HTTP 200 (Cross-tenant access returned 200 instead of 401/403)",
+    "defect": "DEFECT-20261029-01 / Multi-Tenancy Scoping"
+  },
+  "DOC-A-05": {
+    "code": 200,
+    "body": "{\"message\":\"No Work Templates are found\",\"templates\":[]}",
+    "status": "Fail",
+    "actual": "HTTP 200 (Cross-company access fallback returned 200)",
+    "defect": "DEFECT-20261028-04: Cross-company scoping fallback"
+  },
+  "DOC-B-05": {
+    "code": 400,
+    "body": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"details\":null,\"data\":null,\"validati",
+    "status": "Fail",
+    "actual": "HTTP 400 ({\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digit)",
+    "defect": "Cit.Attendance:1010 vs generic RFC 9110 error"
+  },
+  "DOC-D-05": {
+    "code": 400,
+    "body": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"An English template name is required. All 7 days of the week must be defined, each d",
+    "status": "Pass",
+    "actual": "HTTP 400 (Empty PATCH body returned 400)",
+    "defect": "DEFECT-20261028-02 / DEFECT-20261102-18: HTTP 500 crash on empty PATCH body"
+  },
+  "DOC-F-01": {
+    "code": 400,
+    "body": "{\"error\":{\"code\":\"Cit.Attendance:1003\",\"message\":\"Company default cannot be deleted.\",\"details\":null,\"data\":{\"workTemplateId\":\"ff2205bd-4a49",
+    "status": "Pass",
+    "actual": "HTTP 400 ({\"error\":{\"code\":\"Cit.Attendance:1003\",\"message\":\"Company default cannot be deleted.\",\"details\":null)",
+    "defect": "DEFECT-20261028-03: Active Company Default archived without guard (returns 200)"
+  },
+  "DOC-F-02": {
+    "code": 400,
+    "body": "{\"error\":{\"code\":\"Cit.Attendance:1003\",\"message\":\"Company default cannot be deleted.\",\"details\":null,\"data\":{\"workTemplateId\":\"ff2205bd-4a49",
+    "status": "Pass",
+    "actual": "HTTP 400 ({\"error\":{\"code\":\"Cit.Attendance:1003\",\"message\":\"Company default cannot be deleted.\",\"details\":null)",
+    "defect": "DEFECT-20261028-03: Active Company Default deleted without guard (returns 200)"
+  },
+  "ROOT-B-02": {
+    "code": 400,
+    "body": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"details\":null,\"data\":null,\"validati",
+    "status": "Fail",
+    "actual": "HTTP 400 ({\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digit)",
+    "defect": "Cit.Attendance:1010 guard check"
+  },
+  "ROOT-D-06": {
+    "code": 200,
+    "body": "{\"message\":\"Fixed company default work template patched (new document created)\",\"oldTemplateId\":\"ff2205bd-4a49-4b98-b14e-b9dd38420dda\",\"newT",
+    "status": "Pass",
+    "actual": "HTTP 200 ({\"message\":\"Fixed company default work template patched (new document created)\",\"oldTemplateId\":\"ff2)",
+    "defect": "State machine transition error 1104"
+  },
+  "ROOT-D-06a": {
+    "code": 200,
+    "body": "{\"companyDefaultSyncState\":{\"hasCompanyDefault\":true,\"hasPendingChanges\":true,\"companyDefaultTemplateId\":\"0ccb873b-aed8-4fd3-93c4-7f0b166627",
+    "status": "Pass",
+    "actual": "HTTP 200 ({\"companyDefaultSyncState\":{\"hasCompanyDefault\":true,\"hasPendingChanges\":true,\"companyDefaultTemplat)",
+    "defect": "HasPendingLocSync flag verification"
+  }
+}

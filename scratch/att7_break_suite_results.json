@@ -1,0 +1,3424 @@
+[
+  {
+    "tc_id": "BRK-POST-P01",
+    "name": "Create with two break entries (baseline)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Standard Break Policy P01",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629 1"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 1,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Standard Break Policy P01",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629 1"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.1688589Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P02",
+    "name": "Create with one break entry",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Single Break Policy P02",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "d5abd499-041c-4f92-ad77-143516c01660",
+        "name": {
+          "en": "Single Break Policy P02",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:10.412324Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "d5abd499-041c-4f92-ad77-143516c01660"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P03",
+    "name": "Create with multiple break entries (4 breaks)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Multiple Break Policy P03",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629 3"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Morning Break",
+          "type": 1,
+          "durationMinutes": 10
+        },
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 45
+        },
+        {
+          "name": "Evening Break",
+          "type": 1,
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "8891c484-ace3-4791-9c6e-b1b4d646d906",
+        "name": {
+          "en": "Multiple Break Policy P03",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629 3"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:11.4001877Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "8891c484-ace3-4791-9c6e-b1b4d646d906"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P04",
+    "name": "Create with minimum positive duration (1m)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "One Minute Break Policy P04",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u062f\u0642\u064a\u0642\u0629 \u0648\u0627\u062d\u062f\u0629 4"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Short Break",
+          "type": 1,
+          "durationMinutes": 1
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "980f9a1e-82e0-44fd-ac64-9c41b1a52925",
+        "name": {
+          "en": "One Minute Break Policy P04",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u062f\u0642\u064a\u0642\u0629 \u0648\u0627\u062d\u062f\u0629 4"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:12.4340521Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "980f9a1e-82e0-44fd-ac64-9c41b1a52925"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P05",
+    "name": "Create with longer duration (60m)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Long Break Policy P05",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0637\u0648\u064a\u0644\u0629 5"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 60
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "6d9ab2e1-7214-4a61-b661-2c69f1d214ad",
+        "name": {
+          "en": "Long Break Policy P05",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0637\u0648\u064a\u0644\u0629 5"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:13.4881518Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "6d9ab2e1-7214-4a61-b661-2c69f1d214ad"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P06",
+    "name": "Create inactive policy",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Inactive Break Policy P06",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0646\u0634\u0637\u0629 6"
+      },
+      "isActive": false,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P07",
+    "name": "Create with English-only policy name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "English Break Policy P07"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P08",
+    "name": "Create with Arabic-only policy name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 8"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "\u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0627\u0644\u0634\u0627\u064a",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "39d76112-c7ba-401d-8b11-219c2358508b",
+        "name": {
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 8"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:16.7176883Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "39d76112-c7ba-401d-8b11-219c2358508b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P09",
+    "name": "Create with different break names and same duration",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Same Duration Break Policy P09",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0628\u0646\u0641\u0633 \u0627\u0644\u0645\u062f\u0629 9"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Personal Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Prayer Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "62a0cf99-124a-434e-b067-ff2ef6cd7db7",
+        "name": {
+          "en": "Same Duration Break Policy P09",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0628\u0646\u0641\u0633 \u0627\u0644\u0645\u062f\u0629 9"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:17.695944Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "62a0cf99-124a-434e-b067-ff2ef6cd7db7"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-P10",
+    "name": "Create with different durations (5, 20, 45)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Variable Duration Break Policy P10",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0628\u0645\u062f\u062f \u0645\u062e\u062a\u0644\u0641\u0629 10"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Short Break",
+          "type": 1,
+          "durationMinutes": 5
+        },
+        {
+          "name": "Medium Break",
+          "type": 1,
+          "durationMinutes": 20
+        },
+        {
+          "name": "Long Break",
+          "type": 2,
+          "durationMinutes": 45
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N01",
+    "name": "Empty request body",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {},
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Name is required for the policy. At least one break item is required.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Name is required for the policy.",
+            "members": [
+              "Name"
+            ]
+          },
+          {
+            "message": "At least one break item is required.",
+            "members": [
+              "Breaks"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N02",
+    "name": "Invalid policy type",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "InvalidBreak",
+      "name": {
+        "en": "Invalid Type Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0646\u0648\u0639 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N03",
+    "name": "Null policy name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": null,
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-14cddf065e9c5e487dcbab00a145c858-5b2d69524ad1a852-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N04",
+    "name": "Empty English policy name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N05",
+    "name": "Null tenant name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Null Tenant Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0645\u0633\u062a\u0623\u062c\u0631"
+      },
+      "isActive": true,
+      "tenantName": null,
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N06",
+    "name": "Missing type property",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "name": {
+        "en": "Missing Type Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0646\u0648\u0639"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N07",
+    "name": "Missing breaks property",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Missing Breaks Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      }
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "At least one break item is required.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "At least one break item is required.",
+            "members": [
+              "Breaks"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N08",
+    "name": "Null breaks",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Null Breaks Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0641\u0627\u0631\u063a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": null
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Breaks": [
+          "The Breaks field is required."
+        ]
+      },
+      "traceId": "00-40b897ead4c07b383023453c1900bcd6-c887df42bbc9b7be-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N09",
+    "name": "Empty breaks array []",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Empty Breaks Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0639\u0646\u0627\u0635\u0631 \u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": []
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "At least one break item is required.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "At least one break item is required.",
+            "members": [
+              "Breaks"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N10",
+    "name": "Null break item in array",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Null Break Item Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0639\u0646\u0635\u0631 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0641\u0627\u0631\u063a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        null
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N11",
+    "name": "Missing break name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Missing Break Name Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0627\u0633\u0645 \u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Breaks[0].Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-d2ee1e296a90efd02c8305c2531b26b7-e645344bc14c5915-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N12",
+    "name": "Empty break name",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Empty Break Name Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u0645 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0641\u0627\u0631\u063a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N13",
+    "name": "Invalid break type (999)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Invalid Break Type Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0646\u0648\u0639 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 999,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N14",
+    "name": "Negative duration (-1)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Negative Duration Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0633\u0627\u0644\u0628\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": -1
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N15",
+    "name": "Zero duration (0)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Zero Duration Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0635\u0641\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N16",
+    "name": "Decimal duration (15.5)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Decimal Duration Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0639\u0634\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.breaks[0].durationMinutes": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].durationMinutes | LineNumber: 0 | BytePositionInLine: 292."
+        ]
+      },
+      "traceId": "00-21477c7c4f3a2f2611d2b9b54022d251-7aa7a580f113488d-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N17",
+    "name": "String duration ('15')",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "String Duration Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0646\u0635\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": "15"
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N18",
+    "name": "String break type ('1')",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "String Break Type Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0646\u0648\u0639 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0646\u0635\u064a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": "1",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N19",
+    "name": "String isActive ('true')",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Invalid Active Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u062d\u0627\u0644\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+      },
+      "isActive": "true",
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.isActive": [
+          "The JSON value could not be converted to System.Boolean. Path: $.isActive | LineNumber: 0 | BytePositionInLine: 192."
+        ]
+      },
+      "traceId": "00-6b69df5ee316f5368746ad7337eecb47-097412b5483a7c72-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-POST-N20",
+    "name": "Duplicate break entries in array",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Duplicate Break Entries Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0639\u0646\u0627\u0635\u0631 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0645\u0643\u0631\u0631\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P01",
+    "name": "Update policy name",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Updated Standard Break Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629 \u0627\u0644\u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 1,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Updated Standard Break Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629 \u0627\u0644\u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:41.6943291Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P02",
+    "name": "Deactivate policy (isActive: false)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Deactivated Break Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0646\u0634\u0637\u0629"
+      },
+      "isActive": false,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 1,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Deactivated Break Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0646\u0634\u0637\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:42.7593195Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P03",
+    "name": "Activate an inactive policy (isActive: true)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Activated Break Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0646\u0634\u0637\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 1,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Activated Break Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0646\u0634\u0637\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:43.8273549Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P04",
+    "name": "Update one break duration (20m)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Updated Break Duration Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 20
+        },
+        {
+          "name": "Lunch Break",
+          "type": 1,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Updated Break Duration Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:44.7105369Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P05",
+    "name": "Update all break durations (10, 45, 10)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "All Durations Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u062a\u062d\u062f\u064a\u062b \u062c\u0645\u064a\u0639 \u0645\u062f\u062f \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Morning Break",
+          "type": 1,
+          "durationMinutes": 10
+        },
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 45
+        },
+        {
+          "name": "Evening Break",
+          "type": 1,
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "All Durations Updated Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u062a\u062d\u062f\u064a\u062b \u062c\u0645\u064a\u0639 \u0645\u062f\u062f \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:45.7525058Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P06",
+    "name": "Add a new break entry (3 breaks)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Break Policy With New Entry",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0645\u0639 \u0639\u0646\u0635\u0631 \u062c\u062f\u064a\u062f"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 30
+        },
+        {
+          "name": "Evening Break",
+          "type": 1,
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Break Policy With New Entry",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0645\u0639 \u0639\u0646\u0635\u0631 \u062c\u062f\u064a\u062f"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:46.8528094Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P07",
+    "name": "Remove an existing break entry (1 break)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Break Policy With Removed Entry",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0628\u0639\u062f \u062d\u0630\u0641 \u0639\u0646\u0635\u0631"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P08",
+    "name": "Change break names",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Renamed Break Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0628\u0623\u0633\u0645\u0627\u0621 \u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Morning Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Afternoon Lunch Break",
+          "type": 2,
+          "durationMinutes": 30
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Renamed Break Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0628\u0623\u0633\u0645\u0627\u0621 \u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:49.224042Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P09",
+    "name": "Update to minimum positive duration (1m)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Minimum Duration Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u062f\u0646\u064a\u0627 \u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Short Break",
+          "type": 1,
+          "durationMinutes": 1
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "980f9a1e-82e0-44fd-ac64-9c41b1a52925",
+          "duplicatePolicyName": {
+            "en": "One Minute Break Policy P04",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u062f\u0642\u064a\u0642\u0629 \u0648\u0627\u062d\u062f\u0629 4"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P10",
+    "name": "Update to longer duration (120m)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Long Duration Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0637\u0648\u064a\u0644\u0629 \u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Long Duration Updated Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062f\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0637\u0648\u064a\u0644\u0629 \u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:51.5756633Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P11",
+    "name": "Update with multiple break entries (5 breaks)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Multiple Breaks Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629 \u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Morning Break",
+          "type": 1,
+          "durationMinutes": 10
+        },
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": 2,
+          "durationMinutes": 45
+        },
+        {
+          "name": "Evening Break",
+          "type": 1,
+          "durationMinutes": 10
+        },
+        {
+          "name": "Personal Break",
+          "type": 1,
+          "durationMinutes": 5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Multiple Breaks Updated Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629 \u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:52.6173109Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-P12",
+    "name": "Update policy with an empty breaks array []",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Empty Breaks Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u062f\u0648\u0646 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": []
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "At least one break item is required.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "At least one break item is required.",
+            "members": [
+              "Breaks"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N01",
+    "name": "Null policy name",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": null,
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-d7f68f8ef7eb91575370fc9ff29dce68-5822f07b27ebd310-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N02",
+    "name": "Invalid policy type",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "InvalidBreak",
+      "name": {
+        "en": "Invalid Policy Type",
+        "ar": "\u0646\u0648\u0639 \u0633\u064a\u0627\u0633\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N03",
+    "name": "Null breaks",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Null Breaks Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0641\u0627\u0631\u063a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": null
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Breaks": [
+          "The Breaks field is required."
+        ]
+      },
+      "traceId": "00-fa94f225bc65b6060aff1bf6d8694c50-2c5fbe7ba66e9a51-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N04",
+    "name": "Missing breaks property",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Missing Breaks Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u062f\u0648\u0646 \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      }
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "At least one break item is required.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "At least one break item is required.",
+            "members": [
+              "Breaks"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N05",
+    "name": "Invalid break type (999)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Invalid Break Type Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0646\u0648\u0639 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 999,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Invalid Break Type Update",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0646\u0648\u0639 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:53:58.8011477Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test BRK-PATCH-N05 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "BRK-PATCH-N06",
+    "name": "Negative duration (-5)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Negative Duration Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u062f\u0629 \u0633\u0627\u0644\u0628\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": -5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N07",
+    "name": "Zero duration (0)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Zero Duration Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u062f\u0629 \u0635\u0641\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N08",
+    "name": "Decimal duration (15.5)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Decimal Duration Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u062f\u0629 \u0639\u0634\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.breaks[0].durationMinutes": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].durationMinutes | LineNumber: 0 | BytePositionInLine: 292."
+        ]
+      },
+      "traceId": "00-976afb289d7107f48052776666e10200-29704fb4ca3e4366-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N09",
+    "name": "Empty break name",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Empty Break Name Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0627\u0633\u0645 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0641\u0627\u0631\u063a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Empty Break Name Update",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0627\u0633\u0645 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0641\u0627\u0631\u063a"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:54:03.2922465Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test BRK-PATCH-N09 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "BRK-PATCH-N10",
+    "name": "Null break item",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Null Break Item Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0639\u0646\u0635\u0631 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0641\u0627\u0631\u063a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        null
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 500,
+    "actual_body": {
+      "error": {
+        "code": "NullReferenceException",
+        "message": "Object reference not set to an instance of an object.",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "SERVER CRASH: Unhandled HTTP 500 on BRK-PATCH-N10!"
+  },
+  {
+    "tc_id": "BRK-PATCH-N11",
+    "name": "String duration ('15')",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "String Duration Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u062f\u0629 \u0646\u0635\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": "15"
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N12",
+    "name": "String break type ('1')",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "String Break Type Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0646\u0648\u0639 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0646\u0635\u064a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": "1",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d5abd499-041c-4f92-ad77-143516c01660",
+          "duplicatePolicyName": {
+            "en": "Single Break Policy P02",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629 \u0648\u0627\u062d\u062f\u0629 2"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N13",
+    "name": "Wrong data type for breaks (string)",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Wrong Breaks Data Type",
+        "ar": "\u0646\u0648\u0639 \u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u063a\u064a\u0631 \u0635\u062d\u064a\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": "Tea Break"
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.breaks": [
+          "The JSON value could not be converted to System.Collections.Generic.List`1[Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem]. Path: $.breaks | LineNumber: 0 | BytePositionInLine: 325."
+        ]
+      },
+      "traceId": "00-dc041519d58ab5e12388a3101c506cf7-bcdf4cd8a3d4c08b-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N14",
+    "name": "Mismatched company policy ID",
+    "method": "PATCH",
+    "endpoint": "/break/d533d491-02b1-4096-a072-170ac5d027f9",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Company Mismatch Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0634\u0631\u0643\u0629 \u0645\u062e\u062a\u0644\u0641\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "d533d491-02b1-4096-a072-170ac5d027f9"
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N15",
+    "name": "Non-existing policy ID",
+    "method": "PATCH",
+    "endpoint": "/break/11111111-2222-3333-4444-555555555555",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Non Existing Policy Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0633\u064a\u0627\u0633\u0629 \u063a\u064a\u0631 \u0645\u0648\u062c\u0648\u062f\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "11111111-2222-3333-4444-555555555555"
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N16",
+    "name": "Invalid policy ID format",
+    "method": "PATCH",
+    "endpoint": "/break/invalid-policy-id",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Invalid ID Format Update"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "actual_body": "",
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-PATCH-N17",
+    "name": "Duplicate break entries in PATCH",
+    "method": "PATCH",
+    "endpoint": "/break/46675ad6-978d-4c02-b676-73193e48c32b",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "Duplicate Break Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u0643\u0631\u0631\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        },
+        {
+          "name": "Tea Break",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "46675ad6-978d-4c02-b676-73193e48c32b",
+        "name": {
+          "en": "Duplicate Break Update",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0627\u0633\u062a\u0631\u0627\u062d\u0627\u062a \u0645\u0643\u0631\u0631\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:53:09.168Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:54:12.2492181Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "46675ad6-978d-4c02-b676-73193e48c32b"
+    },
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test BRK-PATCH-N17 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "BRK-BVA-01",
+    "name": "Duration -1",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration -1 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break -1m",
+          "type": 1,
+          "durationMinutes": -1
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-02",
+    "name": "Duration 0",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 0 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 0m",
+          "type": 1,
+          "durationMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-03",
+    "name": "Duration 1",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 1 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 1m",
+          "type": 1,
+          "durationMinutes": 1
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-04",
+    "name": "Duration 2",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 2 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 2m",
+          "type": 1,
+          "durationMinutes": 2
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-05",
+    "name": "Duration 14",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 14 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 14m",
+          "type": 1,
+          "durationMinutes": 14
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-06",
+    "name": "Duration 15",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 15 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 15m",
+          "type": 1,
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-07",
+    "name": "Duration 16",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 16 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 16m",
+          "type": 1,
+          "durationMinutes": 16
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-08",
+    "name": "Duration 59",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 59 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 59m",
+          "type": 1,
+          "durationMinutes": 59
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-09",
+    "name": "Duration 60",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 60 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 60m",
+          "type": 1,
+          "durationMinutes": 60
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-10",
+    "name": "Duration 120",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 120 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 120m",
+          "type": 1,
+          "durationMinutes": 120
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-11",
+    "name": "Duration 480",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 480 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 480m",
+          "type": 1,
+          "durationMinutes": 480
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-12",
+    "name": "Duration 1440",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 1440 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 1440m",
+          "type": 1,
+          "durationMinutes": 1440
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-13",
+    "name": "Duration 2147483647 (Int32 max)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 2147483647 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 2147483647m",
+          "type": 1,
+          "durationMinutes": 2147483647
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "BRK-BVA-14",
+    "name": "Duration 2147483648 (Overflow)",
+    "method": "POST",
+    "endpoint": "/break",
+    "payload": {
+      "type": "Break",
+      "name": {
+        "en": "BVA Duration 2147483648 Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "breaks": [
+        {
+          "name": "Break 2147483648m",
+          "type": 1,
+          "durationMinutes": 2147483648
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.breaks[0].durationMinutes": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].durationMinutes | LineNumber: 0 | BytePositionInLine: 203."
+        ]
+      },
+      "traceId": "00-66ede82d08c64948b3683b5699b37eec-92d98a005a7ab6e8-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  }
+]

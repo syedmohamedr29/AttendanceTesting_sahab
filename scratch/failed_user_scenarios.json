@@ -1,0 +1,262 @@
+[
+  {
+    "row": 2,
+    "id": "USER-01",
+    "sec": "Cross-Service Integration - Company Checklist Sync",
+    "scen": "Verify CompanyChecklist.WorkSchedulesCreated in CompanyMaster collection updates to true upon creating Company Default Work Schedule",
+    "inp": "Preconditions: New or active company with CompanyChecklist.WorkSchedulesCreated == false. Body: POST /api/companies/{companyId}/worktemplates/fixed (valid Sun-Thu 09:00-17:00, no locationId)",
+    "exp": "1. Attendance DB: ERP.Attendance.WorkTemplates inserts CDWT (IsDefault=true, v1.0) and cascades N location templates.\n2. Attendance DB: ERP.Attendance.WorkPlans inserts N LOCWOPL default plans.\n3. Company Service DB: CompanyMaster.CompanyChecklist.WorkSchedulesCreated is updated from false to true.",
+    "pri": "P2",
+    "remark": "[Found: 26-Oct-2026] DEFECT: After default work schedule is created, WorkSchedulesCreated in CompaniesMaster (Company Service) remains false. Missing event/callback. | [Update 28-Oct]: De-escalated from Blocker to P2 per QA review; pending confirmation with Naushad on whether checklist step is non-blocking."
+  },
+  {
+    "row": 3,
+    "id": "USER-02",
+    "sec": "Master Data - Tenant Name Persistence",
+    "scen": "Verify TenantName in ERP.Attendance.WorkTemplates reflects actual tenant name instead of hardcoded placeholder",
+    "inp": "Create Company Default WT (POST /worktemplates/fixed). Inspect MongoDB document in Sahab > ERP.Attendance.WorkTemplates",
+    "exp": "TenantName should be populated with actual tenant name (e.g., {'en': 'Attendance', 'ar': 'شركة افتراضية'} or tenant name from token/Identity Svc).",
+    "pri": "P1",
+    "remark": "[Found 26-Oct, Re-confirmed 28-Oct via MongoDB Compass]: DEFECT PERSISTS (FAIL). Developer removed 'Placeholder Tenant', but TenantName now persists as Object (empty) '{}'. Requirement: TenantName must be automatically pre-populated/resolved from Identity/JWT context on the backend; it must NEVER be expected from client/user payload."
+  },
+  {
+    "row": 4,
+    "id": "USER-03",
+    "sec": "Audit Trail - CreatedBy Formatting & Consistency",
+    "scen": "Verify CreatedBy field across modules stores standard identity format (Email vs User GUID vs Object)",
+    "inp": "Create entities across WorkTemplates, WorkPlans, Policies, Assignments under authenticated JWT token",
+    "exp": "CreatedBy format should be consistent across all collections (document whether string email, GUID, or full user identity object is expected).",
+    "pri": "P2",
+    "remark": "[Live Verified DEFECT]: CreatedBy field persists raw string email 'syed.mohamed@comm-it.in' instead of composite identity object {userId, email, fullName}. Open pending Khalid architectural alignment."
+  },
+  {
+    "row": 5,
+    "id": "USER-04",
+    "sec": "API Design - Scoping Parameters Consistency",
+    "scen": "Verify scoping parameters (tenantId, companyId, locationId) follow uniform REST convention across all modules",
+    "inp": "Compare POST /worktemplates/fixed (body contains tenantId, companyId, locationId) vs WorkPlans/Assignments (query/route only)",
+    "exp": "All modules should follow unified convention: companyId in route, locationId in query, tenantId from JWT token. Body parameters should be deprecated.",
+    "pri": "P2",
+    "remark": "[Full Microservice Audit 28-Oct]: CRITICAL DEFECT PERSISTS (FAIL). Scanned entire Attendance 2 Swagger: EXACTLY 26 POST & PATCH APIs still expose 'tenantName' in their request body DTOs (WorkTemplates 10, WorkPlans 3, WorkAssignments 3, Roster 3, Policies 6, Holiday 1). Verified via Swagger UI screenshot and live schema audit. Requirement: TenantName must be pre-populated by default by backend from JWT context; it must be completely purged from all 26 request body DTOs and never sent by user."
+  },
+  {
+    "row": 23,
+    "id": "USER-22",
+    "sec": "Fixed Work Template - PATCH Guard (Empty Payload)",
+    "scen": "Reject PATCH request with empty body or no updatable fields",
+    "inp": "PATCH /worktemplates/fixed/{id}. Request body is empty JSON object {}.",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'At least one field must be provided to update.'",
+    "pri": "P2",
+    "remark": "[Verified on Attendance 4]: FAIL (HTTP 500 CRASH). Empty body {} causes unhandled ValidationException crash."
+  },
+  {
+    "row": 34,
+    "id": "USER-33",
+    "sec": "Flexi Work Template - Daily Limit Negative (> 24 Hours / 25 Hours)",
+    "scen": "Reject daily work duration exceeding 24 hours (e.g. 25 hours / 1500 mins per day)",
+    "inp": "POST or PATCH /worktemplates/flexi. Monday configured with isWorkingDay:true, workDurationInMinutes:1500 (25 hours).",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'Daily work duration cannot exceed 24 hours (1440 minutes).' Physical impossibility guard strictly enforced.",
+    "pri": "P1",
+    "remark": "HTTP 200 |  | Latency: 1890ms"
+  },
+  {
+    "row": 38,
+    "id": "USER-37",
+    "sec": "Enum Validation - FlexibleType (Daily vs Weekly vs Invalid)",
+    "scen": "Validate FlexibleType enum accepted values ('Daily'=1, 'Weekly'=2) and reject invalid enum values",
+    "inp": "1. flexibleType:'Daily' (or 1) -> 200. 2. flexibleType:'Weekly' (or 2) -> 200. 3. flexibleType:'Monthly' (or 3, -1, 'Invalid') -> 400.",
+    "exp": "1 & 2: HTTP 200 OK. Persisted in MongoDB as FlexibleType:1 and FlexibleType:2. 3: HTTP 400 Bad Request 'The value 'Monthly' is not a valid FlexibleType. Allowed values are: Daily, Weekly.'",
+    "pri": "P1",
+    "remark": "[Verified on Attendance 4]: FAIL (HTTP 500 CRASH). Invalid dayEnum 8 causes unhandled ValidationException crash."
+  },
+  {
+    "row": 61,
+    "id": "USER-60",
+    "sec": "Split Negative - Zero Gap Between Intervals (Contiguous Slots)",
+    "scen": "Reject Split shift configuration where Interval 2 immediately follows Interval 1 with 0 gap (continuous shift configured as split)",
+    "inp": "POST or PATCH /worktemplates/split. Monday configured with: Interval 1: 08:00:00 to 12:00:00; Interval 2: 12:00:00 to 16:00:00 [Gap = 0 minutes].",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'Split shift requires a minimum break duration between intervals (must be greater than 0 minutes). For continuous hours, please use Fixed shift.'",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Status 500. 7-day calendar invariant failure crashes server with HTTP 500 instead of returning HTTP 400."
+  },
+  {
+    "row": 62,
+    "id": "USER-61",
+    "sec": "Split Negative - Inverted Start/End Timings in an Interval",
+    "scen": "Reject Split interval where EndTime is earlier than or equal to StartTime within an interval",
+    "inp": "POST or PATCH /worktemplates/split. Monday Interval 1: startTime: '12:00:00', endTime: '08:00:00' (or startTime == endTime: '08:00:00' to '08:00:00').",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'EndTime must be strictly greater than StartTime for each time slot.'",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Server accepted 1500m (25h/day) with HTTP 200 OK into MongoDB ERP.Attendance.WorkTemplates."
+  },
+  {
+    "row": 64,
+    "id": "USER-63",
+    "sec": "Split Negative - Active Time Slots Configured on Day Off",
+    "scen": "Reject Split shift payload where Friday is marked isWorkingDay:false but contains active time slots or non-zero duration",
+    "inp": "POST or PATCH /worktemplates/split. Friday isWorkingDay: false, but timeSlots contains [{startTime: '08:00:00', endTime: '12:00:00'}].",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'Non-working days (Weekly Off) cannot contain time intervals. Expected noOfInterval: NotApplicable and empty timeSlots.'",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Zero break gap or overlapping intervals throw unhandled HTTP 500 ValidationException crash."
+  },
+  {
+    "row": 76,
+    "id": "USER-75",
+    "sec": "Split Shift Boundary - Minimum Break Duration (Gap > 0)",
+    "scen": "Validate break duration between intervals in Split shift (Gap >= 15 mins passes; Gap = 0 mins or negative rejected)",
+    "inp": "Monday Split: Interval 1: 08:00 to 12:00. Case A: Interval 2: 12:15 to 16:15 (15 min break). Case B: Interval 2: 12:00 to 16:00 (0 min break). Case C: Interval 2: 11:30 to 15:30 (-30 min overlap).",
+    "exp": "Case A: HTTP 200/201 Success. Case B & C: HTTP 400 Bad Request: 'Split shift requires a distinct break between intervals.'",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Zero break gap or overlapping intervals trigger unhandled HTTP 500 ValidationException crash instead of HTTP 400 Bad Request."
+  },
+  {
+    "row": 86,
+    "id": "USER-85",
+    "sec": "PATCH Combination - Flexible to Fixed Shift Reversion",
+    "scen": "Verify PATCH converting Flexible schedule back to Fixed schedule updates polymorphic _t to FixedWorkTemplate and captures shift change in ChangeLog",
+    "inp": "CDWT exists as Flexible. Request: PATCH /api/companies/{companyId}/worktemplates/fixed/{id}. Payload: Valid Fixed schedule with fixedTimeSlots.",
+    "exp": "HTTP 200 OK. New document created with _t: ['WorkTemplate','FixedWorkTemplate'], TemplateType: 1. FlexibleType field removed or set to null. ChangeLog records 'Work Type: Flexible -> Fixed'.",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Overlapping intervals trigger unhandled HTTP 500 ValidationException crash."
+  },
+  {
+    "row": 88,
+    "id": "USER-87",
+    "sec": "PATCH Combination - Split to Fixed Shift Conversion",
+    "scen": "Verify PATCH converting Split Shift (Type 3) to Fixed Schedule (Type 1) collapses two intervals into single continuous interval",
+    "inp": "CDWT exists as Split (v4.0). Request: PATCH /api/companies/{companyId}/worktemplates/fixed/{id}. Payload: Valid Fixed schedule (08:00 to 16:00, 8h continuous).",
+    "exp": "HTTP 200 OK. New document created with _t: ['WorkTemplate','FixedWorkTemplate'], TemplateType: 1. SplitTimeSlots replaced by FixedTimeSlots. ChangeLog records 'Work Type: Split -> Fixed'.",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Calendar math invariant violation triggers unhandled HTTP 500 crash."
+  },
+  {
+    "row": 91,
+    "id": "USER-90",
+    "sec": "PATCH Negative - Empty Request Body (Nothing to Update)",
+    "scen": "Reject PATCH request with empty JSON body {} or containing no updatable schedule fields",
+    "inp": "Call PATCH /api/companies/{companyId}/worktemplates/fixed/{id} with body: {}.",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'At least one field must be provided to update.' No database mutation occurs.",
+    "pri": "P1",
+    "remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- FixedTimeSlots: All 7 days of the week must be defined, each day once. Severity: Error | Latency: 1298ms"
+  },
+  {
+    "row": 97,
+    "id": "USER-96",
+    "sec": "PATCH Negative - Overlapping Intervals during Split PATCH",
+    "scen": "Reject Split Shift PATCH when Interval 1 and Interval 2 in the same working day overlap in time",
+    "inp": "In PATCH /split/{id}, submit Monday with Interval 1: 08:00-13:00 and Interval 2: 12:00-17:00 (overlapping 12:00 to 13:00).",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'Split shift intervals within the same working day cannot overlap.'",
+    "pri": "P0",
+    "remark": "[Live Verified DEFECT]: Split Shift PATCH with overlapping intervals triggers unhandled HTTP 500 ValidationException crash."
+  },
+  {
+    "row": 99,
+    "id": "USER-98",
+    "sec": "PATCH Negative - Calendar Math Invariant Violation during PATCH",
+    "scen": "Reject PATCH payload where totalWorkingDays + totalDaysOff does not equal exactly 7",
+    "inp": "In PATCH, submit totalWorkingDays: 4 and totalDaysOff: 2 (sum = 6 != 7).",
+    "exp": "HTTP 400 Bad Request. Sbp:Validation 'Total working days and total days off must sum to exactly 7 days.'",
+    "pri": "P0",
+    "remark": "[Live Verified DEFECT]: Calendar math invariant violation during PATCH triggers unhandled HTTP 500 ValidationException crash."
+  },
+  {
+    "row": 107,
+    "id": "USER-106",
+    "sec": "GET by ID Negative - Non-Existent Template ID Lookup",
+    "scen": "Reject GET /worktemplates/{id} when {id} is a random non-existent GUID or zero GUID",
+    "inp": "Call GET /api/companies/{companyId}/worktemplates/00000000-0000-0000-0000-000000000000 (or random GUID).",
+    "exp": "HTTP 400 Bad Request (or 404 Not Found). Cit.Attendance:1101 'Work template not found.'",
+    "pri": "P0",
+    "remark": "[Live Verified]: Status 500. Non-existent template ID returns 400/404."
+  },
+  {
+    "row": 123,
+    "id": "USER-122",
+    "sec": "PATCH Immutability - TenantId & TenantName Reassignment Lockout",
+    "scen": "Reject or ignore PATCH payload attempting to modify tenantId or tenantName (tenant scoping is immutable and derived from JWT)",
+    "inp": "Call PATCH /worktemplates/fixed/{id} passing tenantId: 'different-tenant-guid' or tenantName: {'en': 'Attacking Tenant'} in request body.",
+    "exp": "HTTP 400 Bad Request (or body tenant parameters discarded). MongoDB document retains original TenantId: 3a24741e-2667-1223-f12e-62a69fab3838 from JWT claim. Cross-tenant modification strictly blocked.",
+    "pri": "P1",
+    "remark": "[Live Verified DEFECT]: Status 500. Server accepts client-spoofed tenantName into MongoDB document."
+  },
+  {
+    "row": 129,
+    "id": "USER-128",
+    "sec": "Part 1 Defect Re-Verification (Attendance 3)",
+    "scen": "Re-verify DEFECT-20261026-01: CompanyChecklist.WorkSchedulesCreated sync to SP.CompanySvc upon CDWT creation for Attendance 3",
+    "inp": "Target Company: Attendance 3 (3a247435-e31d-ef15-8cc9-62c587f4eb3f). Precondition: WorkSchedulesCreated == false. Call POST /worktemplates/fixed creating CDWT (ID: cf2e401b-d639-40a1-ba97-97e3ef73467d). Query GET /api/company/companies/{companyId}/getChecklist.",
+    "exp": "CompanyChecklist.WorkSchedulesCreated in SP.CompanySvc updates from false to true via integration event.",
+    "pri": "P2",
+    "remark": "[Re-verified 28-Oct-2026 on Attendance 3] DEFECT STILL OPEN: CDWT created (ID: cf2e401b-d639-40a1-ba97-97e3ef73467d), but Company Service getChecklist still returns workSchedulesCreated=False. Integration event not published/consumed. | [Update 28-Oct]: Non-Blocker (P2); pending confirmation with Naushad."
+  },
+  {
+    "row": 130,
+    "id": "USER-129",
+    "sec": "Part 1 Defect Re-Verification (Attendance 3)",
+    "scen": "Re-verify DEFECT-20261026-02: TenantName persistence in ERP.Attendance.WorkTemplates reflects actual tenant instead of hardcoded placeholder for Attendance 3",
+    "inp": "Target Company: Attendance 3 (3a247435-e31d-ef15-8cc9-62c587f4eb3f). Inspect created template cf2e401b-d639-40a1-ba97-97e3ef73467d in SP.AttendanceSvc and MongoDB ERP.Attendance.WorkTemplates.",
+    "exp": "TenantName dynamically populated with real tenant name {'en': 'Attendance'} from JWT token claim.",
+    "pri": "P1",
+    "remark": "[Re-verified 28-Oct-2026 on Attendance 3 & Confirmed via MongoDB Compass]: FAIL. Document 99a56911-0d30-40e6-8fa4-ca64da88930c persists 'TenantName: Object (empty)'. TenantName is a mandatory system field that must be dynamically pre-populated by backend handler from current tenant context, not user-sent."
+  },
+  {
+    "row": 131,
+    "id": "USER-130",
+    "sec": "Part 1 Defect Re-Verification (Attendance 3)",
+    "scen": "Re-verify DEFECT-20261026-03: CreatedBy audit field formatting consistency on Attendance 3 CDWT",
+    "inp": "Target Company: Attendance 3 (3a247435-e31d-ef15-8cc9-62c587f4eb3f). Query created template cf2e401b-d639-40a1-ba97-97e3ef73467d. Inspect createdBy format.",
+    "exp": "CreatedBy populated with ERP standard composite identity object { userId, email, fullName }.",
+    "pri": "P2",
+    "remark": "[Re-verified 28-Oct-2026 on Attendance 3] UNCHANGED / OPEN: CreatedBy still persists plain email string 'syed.mohamed@comm-it.in'. Architectural alignment with Khalid pending."
+  },
+  {
+    "row": 132,
+    "id": "USER-131",
+    "sec": "Part 1 Defect Re-Verification (Attendance 3)",
+    "scen": "Re-verify DEFECT-20261026-04: Request body scoping parameters (tenantId, companyId, locationId) redundancy on Attendance 3 CDWT",
+    "inp": "Target Company: Attendance 3 (3a247435-e31d-ef15-8cc9-62c587f4eb3f). Send POST /worktemplates/fixed with clean body DTO omitting tenantId, tenantName, companyId, locationId.",
+    "exp": "Backend accepts clean body DTO with HTTP 200 OK; populates tenantId from Bearer token, companyId from route, locationId as Guid.Empty.",
+    "pri": "P2",
+    "remark": "[Re-verification on Attendance 3 & Full API Scan]: FAIL. Swagger UI still displays 'tenantName' in request body contracts across 26 POST/PATCH endpoints. Client spoofing verified with HTTP 200 OK. Complete purge required across all 26 command DTOs."
+  },
+  {
+    "row": 135,
+    "id": "USER-134",
+    "sec": "Part 2 Defect Re-Verification (27-Oct)",
+    "scen": "Re-verify DEFECT-20261027-03: Boundary check on Grace Period minutes rejects negative value (-15)",
+    "inp": "Send POST /api/companies/{companyId}/attpolicies/graceperiod with lateCheckInGraceMinutes: -15, earlyCheckOutGraceMinutes: -10.",
+    "exp": "HTTP 400 Bad Request rejecting negative grace period values.",
+    "pri": "P2",
+    "remark": "[Re-verified 28-Oct-2026]: CRITICAL FAIL. Server returned HTTP 200 OK and created policy 76365336-6786-4364-a625-ba382f393643 in MongoDB with negative grace values (-15m/-10m). RuleFor(x => x.LateCheckInGraceMinutes).GreaterThanOrEqualTo(0) is missing."
+  },
+  {
+    "row": 136,
+    "id": "USER-135",
+    "sec": "Part 2 Defect Re-Verification (27-Oct)",
+    "scen": "Re-verify DEFECT-20261027-04: Boundary check on Break Policy rejects negative duration (-60)",
+    "inp": "Send POST /api/companies/{companyId}/attpolicies/break with break item durationMinutes: -60.",
+    "exp": "HTTP 400 Bad Request rejecting non-positive break duration.",
+    "pri": "P2",
+    "remark": "[Re-verified 28-Oct-2026]: CRITICAL FAIL. Server returned HTTP 200 OK and created policy 8f02d11f-f242-41ca-a355-264e87a94c32 in MongoDB with durationMinutes: -60. RuleFor(x => x.DurationInMinutes).GreaterThan(0) is missing."
+  },
+  {
+    "row": 138,
+    "id": "USER-137",
+    "sec": "Part 2 Defect Re-Verification (27-Oct)",
+    "scen": "Re-verify DEFECT-20261027-06: Split shift overlapping intervals rejected with HTTP 400 Bad Request",
+    "inp": "Send POST /worktemplates/split with Day 1 intervals 08:00-12:00 and 11:00-15:00 (1 hour overlap).",
+    "exp": "HTTP 400 Bad Request with message 'Split intervals on a working day must not overlap and must have a break gap.'",
+    "pri": "P0",
+    "remark": "[Re-verified 28-Oct-2026]: FAIL (HTTP 500 CRASH). FluentValidation rule was added in domain layer, but unhandled ValidationException causes ASP.NET Core to return HTTP 500 Internal Server Error instead of HTTP 400 Bad Request due to missing exception middleware mapping."
+  },
+  {
+    "row": 139,
+    "id": "USER-138",
+    "sec": "Part 2 Defect Re-Verification (27-Oct)",
+    "scen": "Re-verify DEFECT-20261027-07: Calendar invariant totalWorkingDays + totalDaysOff != 7 rejected with HTTP 400 Bad Request",
+    "inp": "Send POST /worktemplates/fixed with totalWorkingDays: 6 and totalDaysOff: 2 (Sum = 8 days).",
+    "exp": "HTTP 400 Bad Request with message 'Total working days and total days off must add up to 7.'",
+    "pri": "P0",
+    "remark": "[Re-verified 28-Oct-2026]: FAIL (HTTP 500 CRASH). Invariant rule was added in domain layer, but unhandled ValidationException causes ASP.NET Core to return HTTP 500 Internal Server Error instead of HTTP 400 Bad Request."
+  }
+]

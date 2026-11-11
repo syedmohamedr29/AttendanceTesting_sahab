@@ -1,0 +1,1862 @@
+{
+  "HC-DTO-01": {
+    "status": "Fail",
+    "actual_status": 404,
+    "latency": 1109,
+    "remarks": "HTTP 404 (1109ms)"
+  },
+  "HC-DTO-02": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1283,
+    "remarks": "HTTP 400 (1283ms) | Query locationId malformed returns HTTP 400"
+  },
+  "HC-DTO-03": {
+    "status": "Pass",
+    "actual_status": 401,
+    "latency": 1343,
+    "remarks": "HTTP 401 (1343ms) | Missing auth returns HTTP 401"
+  },
+  "HC-DTO-04": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1362,
+    "remarks": "HTTP 500 (1362ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-05": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1270,
+    "remarks": "HTTP 500 (1270ms) | DEFECT-20261028-02: HTTP 500 ValidationException"
+  },
+  "HC-DTO-06": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1333,
+    "remarks": "HTTP 500 (1333ms) | DEFECT: HTTP 500"
+  },
+  "HC-DTO-07": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1287,
+    "remarks": "HTTP 400 (1287ms) | shortCode null rejected with 400"
+  },
+  "HC-DTO-08": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1303,
+    "remarks": "HTTP 500 (1303ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-09": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1305,
+    "remarks": "HTTP 500 (1305ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-10": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1294,
+    "remarks": "HTTP 500 (1294ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-11": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1300,
+    "remarks": "HTTP 500 (1300ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-12": {
+    "status": "Fail",
+    "actual_status": 200,
+    "latency": 1305,
+    "remarks": "HTTP 200 (1305ms) | {\"message\":\"Holiday calendar created\",\"calendars\":[{\"id\":\"29"
+  },
+  "HC-DTO-13": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1318,
+    "remarks": "HTTP 400 (1318ms) | Name mandatory validation enforced"
+  },
+  "HC-DTO-14": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1363,
+    "remarks": "HTTP 200 (1363ms) | name.ar optional handled cleanly"
+  },
+  "HC-DTO-15": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1323,
+    "remarks": "HTTP 400 (1323ms) | name.ar optional handled cleanly"
+  },
+  "HC-DTO-16": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1317,
+    "remarks": "HTTP 500 (1317ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-17": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1271,
+    "remarks": "HTTP 500 (1271ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-18": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1287,
+    "remarks": "HTTP 500 (1287ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-19": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1294,
+    "remarks": "HTTP 400 (1294ms) | Shell calendar with empty list handled"
+  },
+  "HC-DTO-20": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1291,
+    "remarks": "HTTP 400 (1291ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-21": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1287,
+    "remarks": "HTTP 400 (1287ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-22": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | holidayName.ar optional in holiday item verified"
+  },
+  "HC-DTO-23": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1280,
+    "remarks": "HTTP 400 (1280ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-24": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1285,
+    "remarks": "HTTP 400 (1285ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-25": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1258,
+    "remarks": "HTTP 400 (1258ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-26": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1258,
+    "remarks": "HTTP 400 (1258ms) | Item validation rule enforced with 400"
+  },
+  "HC-DTO-27": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | totalDays server auto-calculation verified"
+  },
+  "HC-DTO-28": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1276,
+    "remarks": "HTTP 400 (1276ms) | ShortCode min length 2 enforced"
+  },
+  "HC-DTO-29": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | ShortCode exactly 2 characters accepted"
+  },
+  "HC-DTO-30": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | ShortCode alphanumeric uppercase format verified"
+  },
+  "HC-DTO-31": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | ShortCode 30 characters maximum boundary accepted"
+  },
+  "HC-DTO-32": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1290,
+    "remarks": "HTTP 400 (1290ms) | ShortCode > 30 chars rejected with 400"
+  },
+  "HC-DTO-33": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1273,
+    "remarks": "HTTP 400 (1273ms) | ShortCode special characters rejected with 400"
+  },
+  "HC-DTO-34": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | ShortCode trimming and casing normalization verified"
+  },
+  "HC-DTO-35": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | ShortCode trimming and casing normalization verified"
+  },
+  "HC-DTO-36": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Name length boundary (2..100 chars, UTF-8) verified"
+  },
+  "HC-DTO-37": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Name length boundary (2..100 chars, UTF-8) verified"
+  },
+  "HC-DTO-38": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Name length boundary (2..100 chars, UTF-8) verified"
+  },
+  "HC-DTO-39": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1273,
+    "remarks": "HTTP 400 (1273ms) | Name > 100 characters rejected with 400"
+  },
+  "HC-DTO-40": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Name length boundary (2..100 chars, UTF-8) verified"
+  },
+  "HC-DTO-41": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Name length boundary (2..100 chars, UTF-8) verified"
+  },
+  "HC-DTO-42": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1293,
+    "remarks": "HTTP 400 (1293ms) | Name > 100 characters rejected with 400"
+  },
+  "HC-DTO-43": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 155,
+    "remarks": "HTTP 200 (155ms) | Holiday item name boundaries (2..100 chars) verified"
+  },
+  "HC-DTO-44": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 155,
+    "remarks": "HTTP 200 (155ms) | Holiday item name boundaries (2..100 chars) verified"
+  },
+  "HC-DTO-45": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 155,
+    "remarks": "HTTP 200 (155ms) | Holiday item name boundaries (2..100 chars) verified"
+  },
+  "HC-DTO-46": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1278,
+    "remarks": "HTTP 400 (1278ms) | Holiday item name > 100 chars rejected with 400"
+  },
+  "HC-DTO-47": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 155,
+    "remarks": "HTTP 200 (155ms) | Holiday item name boundaries (2..100 chars) verified"
+  },
+  "HC-DTO-48": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Year boundary accepted (yearlyCalendar.year - Current Year (Y, e.g. 2026))"
+  },
+  "HC-DTO-49": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Year boundary accepted (yearlyCalendar.year - Next Year (Y+1, e.g. 2027))"
+  },
+  "HC-DTO-50": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1292,
+    "remarks": "HTTP 400 (1292ms) | Out of range year 2025 rejected with HTTP 400"
+  },
+  "HC-DTO-51": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1290,
+    "remarks": "HTTP 400 (1290ms) | Out of range year 2028 rejected with HTTP 400"
+  },
+  "HC-DTO-52": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1273,
+    "remarks": "HTTP 500 (1273ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-53": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1293,
+    "remarks": "HTTP 400 (1293ms) | Non-integer year rejected with 400"
+  },
+  "HC-DTO-54": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1294,
+    "remarks": "HTTP 400 (1294ms) | Invalid calendar date 2027-04-31 rejected with 400"
+  },
+  "HC-DTO-55": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1308,
+    "remarks": "HTTP 400 (1308ms) | Invalid calendar date 2027-13-01 rejected with 400"
+  },
+  "HC-DTO-56": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Valid calendar date boundaries accepted (startDate.month - boundary valid months (January = 1, December = 12))"
+  },
+  "HC-DTO-57": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1292,
+    "remarks": "HTTP 400 (1292ms) | Invalid calendar date 2027-04-31 rejected with 400"
+  },
+  "HC-DTO-58": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1274,
+    "remarks": "HTTP 400 (1274ms) | Invalid calendar date 2027-01-32 rejected with 400"
+  },
+  "HC-DTO-59": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Valid calendar date boundaries accepted (startDate.day - boundary valid days (day: 1 and day: 31 for 31-day month))"
+  },
+  "HC-DTO-60": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1273,
+    "remarks": "HTTP 400 (1273ms) | Invalid calendar date 2027-02-29 rejected with 400"
+  },
+  "HC-DTO-61": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Valid calendar date boundaries accepted (Valid calendar date - February 29 on leap year (e.g. 2028-02-29))"
+  },
+  "HC-DTO-62": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1275,
+    "remarks": "HTTP 400 (1275ms) | Invalid calendar date 2027-04-31 rejected with 400"
+  },
+  "HC-DTO-63": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1273,
+    "remarks": "HTTP 400 (1273ms) | Invalid calendar date 2027-04-31 rejected with 400"
+  },
+  "HC-DTO-64": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Valid calendar date boundaries accepted (Single-day holiday: startDate == endDate)"
+  },
+  "HC-DTO-65": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Valid calendar date boundaries accepted (Multi-day holiday: endDate > startDate)"
+  },
+  "HC-DTO-66": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1305,
+    "remarks": "HTTP 400 (1305ms) | Chronological inversion rejected with 400"
+  },
+  "HC-DTO-67": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1277,
+    "remarks": "HTTP 400 (1277ms) | Year mismatch rejected with 400"
+  },
+  "HC-DTO-68": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 160,
+    "remarks": "HTTP 400 (160ms) | Current year past holiday validation rule verified"
+  },
+  "HC-DTO-69": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1300,
+    "remarks": "HTTP 400 (1300ms) | Duplicate/overlapping holidays rejected with 400"
+  },
+  "HC-DTO-70": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1286,
+    "remarks": "HTTP 400 (1286ms) | Duplicate/overlapping holidays rejected with 400"
+  },
+  "HC-DTO-71": {
+    "status": "Pass",
+    "actual_status": 404,
+    "latency": 1293,
+    "remarks": "HTTP 404 (1293ms) | Malformed/empty GUID route rejected with 404"
+  },
+  "HC-DTO-72": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1336,
+    "remarks": "HTTP 500 (1336ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-73": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1322,
+    "remarks": "HTTP 400 (1322ms) | Unknown calendar ID rejected with 400/404"
+  },
+  "HC-DTO-74": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1283,
+    "remarks": "HTTP 500 (1283ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-75": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1272,
+    "remarks": "HTTP 500 (1272ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-76": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1278,
+    "remarks": "HTTP 500 (1278ms) | {\"error\":{\"code\":\"ValidationException\",\"message\":\"Validation"
+  },
+  "HC-DTO-77": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | LocationId scoping and format validation verified"
+  },
+  "HC-DTO-78": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | LocationId scoping and format validation verified"
+  },
+  "HC-DTO-79": {
+    "status": "Fail",
+    "actual_status": 500,
+    "latency": 1296,
+    "remarks": "HTTP 500 (1296ms) | DEFECT-20261028-02: HTTP 500 ValidationException on empty PATCH body"
+  },
+  "HC-DTO-80": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 1262,
+    "remarks": "HTTP 400 (1262ms) | Empty holidayLists PATCH handled"
+  },
+  "HC-DTO-81": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH missing holidayNam"
+  },
+  "HC-DTO-82": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH with holidayName.e"
+  },
+  "HC-DTO-83": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH with holidayName.a"
+  },
+  "HC-DTO-84": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH with holidayName.a"
+  },
+  "HC-DTO-85": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH missing holidayTyp"
+  },
+  "HC-DTO-86": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH with unknown holid"
+  },
+  "HC-DTO-87": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH missing startDate"
+  },
+  "HC-DTO-88": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH missing endDate"
+  },
+  "HC-DTO-89": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Holiday item in PATCH omitting totalDays"
+  },
+  "HC-DTO-90": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Holiday item in PATCH with id omitted (A"
+  },
+  "HC-DTO-91": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Holiday item in PATCH with id: Guid.Empt"
+  },
+  "HC-DTO-92": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holidayName.en - 2 characters (min"
+  },
+  "HC-DTO-93": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holidayName.en - standard descript"
+  },
+  "HC-DTO-94": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holidayName.en - exactly 100 chara"
+  },
+  "HC-DTO-95": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holidayName.en - 101 characters (e"
+  },
+  "HC-DTO-96": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: PATCH holidayName.ar - valid Arabic text"
+  },
+  "HC-DTO-97": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holidayName.ar - 101 characters (e"
+  },
+  "HC-DTO-98": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH startDate.month - underflow month "
+  },
+  "HC-DTO-99": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH startDate.month - overflow month 1"
+  },
+  "HC-DTO-100": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH startDate.day - underflow day 0 or"
+  },
+  "HC-DTO-101": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH startDate.day - overflow day 32"
+  },
+  "HC-DTO-102": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: PATCH invalid date - February 29 on non-"
+  },
+  "HC-DTO-103": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH leap year date - February 29 on le"
+  },
+  "HC-DTO-104": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: PATCH invalid date - February 30 (2027-0"
+  },
+  "HC-DTO-105": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: PATCH invalid date - June 31 (2027-06-31"
+  },
+  "HC-DTO-106": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH single-day holiday: startDate == e"
+  },
+  "HC-DTO-107": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH multi-day holiday: endDate > start"
+  },
+  "HC-DTO-108": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH chronological inversion: endDate <"
+  },
+  "HC-DTO-109": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH holiday date year mismatch with ca"
+  },
+  "HC-DTO-110": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH current year past holiday (startDa"
+  },
+  "HC-DTO-111": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: PATCH current year future holiday (start"
+  },
+  "HC-DTO-112": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Adding new holiday with duplicate startD"
+  },
+  "HC-DTO-113": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Adding new holiday overlapping existing "
+  },
+  "HC-DTO-114": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Two new holidays in same PATCH payload w"
+  },
+  "HC-DTO-115": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Updating existing holiday name/type with"
+  },
+  "HC-DTO-116": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Adjacent holiday ranges without overlap "
+  },
+  "HC-DTO-117": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Upsert - update existing holiday by vali"
+  },
+  "HC-DTO-118": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Upsert - holiday id provided but not fou"
+  },
+  "HC-DTO-119": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Upsert - holiday id has malformed GUID f"
+  },
+  "HC-DTO-120": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | PATCH contract rule verified: Remove holiday - valid future holiday ID"
+  },
+  "HC-DTO-121": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Remove holiday - past holiday on current"
+  },
+  "HC-DTO-122": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Remove holiday - unknown holidayId not o"
+  },
+  "HC-DTO-123": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Remove holiday - malformed holidayId GUI"
+  },
+  "HC-DTO-124": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Edit holiday on Inherited Location Calen"
+  },
+  "HC-DTO-125": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | PATCH contract rule verified: Remove holiday on Inherited Location Cal"
+  },
+  "HC-DTO-126": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | Valid companyId GUID verified"
+  },
+  "HC-DTO-127": {
+    "status": "Fail",
+    "actual_status": 404,
+    "latency": 1228,
+    "remarks": "HTTP 404 (1228ms)"
+  },
+  "HC-DTO-128": {
+    "status": "Fail",
+    "actual_status": 404,
+    "latency": 1275,
+    "remarks": "HTTP 404 (1275ms)"
+  },
+  "HC-DTO-129": {
+    "status": "Fail",
+    "actual_status": 404,
+    "latency": 1102,
+    "remarks": "HTTP 404 (1102ms)"
+  },
+  "HC-DTO-130": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Empty GUID companyId in Route (Guid.Empt"
+  },
+  "HC-DTO-131": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: companyId passed as Query parameter inst"
+  },
+  "HC-DTO-132": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: companyId passed in Query parameter conf"
+  },
+  "HC-DTO-133": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: companyId passed via header X-Company-Id"
+  },
+  "HC-DTO-134": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Non-existent companyId GUID (syntactical"
+  },
+  "HC-DTO-135": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Cross-tenant companyId GUID (Company bel"
+  },
+  "HC-DTO-136": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Valid holidayId GUID in Route for holida"
+  },
+  "HC-DTO-137": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Malformed holidayId GUID in Route - non-"
+  },
+  "HC-DTO-138": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Malformed holidayId GUID in Route - trun"
+  },
+  "HC-DTO-139": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Empty GUID holidayId in Route (Guid.Empt"
+  },
+  "HC-DTO-140": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: holidayId passed as Query parameter inst"
+  },
+  "HC-DTO-141": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Unknown / Non-existent holidayId GUID on"
+  },
+  "HC-DTO-142": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Cross-calendar holidayId GUID (Holiday I"
+  },
+  "HC-DTO-143": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Valid holidayId GUID in PATCH body (holi"
+  },
+  "HC-DTO-144": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Empty GUID id in PATCH body (00000000-00"
+  },
+  "HC-DTO-145": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Malformed holiday id string in PATCH bod"
+  },
+  "HC-DTO-146": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Malformed holidayType._id GUID in payloa"
+  },
+  "HC-DTO-147": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Empty GUID holidayType._id in payload bo"
+  },
+  "HC-DTO-148": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Non-existent holidayType._id GUID (Valid"
+  },
+  "HC-DTO-149": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Valid locationId GUID in Query parameter"
+  },
+  "HC-DTO-150": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Malformed locationId GUID in Query param"
+  },
+  "HC-DTO-151": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Empty GUID locationId in Query parameter"
+  },
+  "HC-DTO-152": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Foreign locationId GUID (Location belong"
+  },
+  "HC-DTO-153": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Bearer Token Header - Malformed tenantId"
+  },
+  "HC-DTO-154": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Bearer Token Header - Empty tenantId cla"
+  },
+  "HC-DTO-155": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 140,
+    "remarks": "HTTP 200 (140ms) | GUID contract guard verified: Custom Header - X-Correlation-Id with va"
+  },
+  "HC-DTO-156": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 140,
+    "remarks": "HTTP 400 (140ms) | GUID contract guard verified: Custom Header - X-Correlation-Id with ma"
+  },
+  "HC-BUS-01": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Public Holiday single-day creation verified on Attendance 2"
+  },
+  "HC-BUS-02": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Religious Holiday multi-day creation verified on Attendance 2"
+  },
+  "HC-BUS-03": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | National Holiday creation verified"
+  },
+  "HC-BUS-04": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | Bank Holiday creation verified"
+  },
+  "HC-BUS-05": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Gazette Holiday creation verified"
+  },
+  "HC-BUS-06": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Create holiday calendar with all 5 Holid"
+  },
+  "HC-BUS-07": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual Public Holiday - From Date onl"
+  },
+  "HC-BUS-08": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual Religious Holiday - From Date "
+  },
+  "HC-BUS-09": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual National Holiday - From Date o"
+  },
+  "HC-BUS-10": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual Bank Holiday - From Date only "
+  },
+  "HC-BUS-11": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual Gazette Holiday - From Date on"
+  },
+  "HC-BUS-12": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | Business rule verified: Bilingual Multi-Day Holiday - Explicit F"
+  },
+  "HC-BUS-13": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date is chronologically before Start"
+  },
+  "HC-BUS-14": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date provided while Start Date is nu"
+  },
+  "HC-BUS-15": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date crosses calendar year boundary "
+  },
+  "HC-BUS-16": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date causes range collision with an "
+  },
+  "HC-BUS-17": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date is non-existent calendar date ("
+  },
+  "HC-BUS-18": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: End Date is February 29 on a non-leap ye"
+  },
+  "HC-BUS-19": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Negative date rule verified: Current Year: End Date in the past (hist"
+  },
+  "HC-BUS-20": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Modify Eng"
+  },
+  "HC-BUS-21": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Change Typ"
+  },
+  "HC-BUS-22": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Change Typ"
+  },
+  "HC-BUS-23": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Change Typ"
+  },
+  "HC-BUS-24": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Change Typ"
+  },
+  "HC-BUS-25": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Extend End"
+  },
+  "HC-BUS-26": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH edit existing holiday - Shorten En"
+  },
+  "HC-BUS-27": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH add new holiday via upsert (omitti"
+  },
+  "HC-BUS-28": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH add new holiday via upsert (omitti"
+  },
+  "HC-BUS-29": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH add new holiday via upsert (id: Gu"
+  },
+  "HC-BUS-30": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH negative: Update existing holiday "
+  },
+  "HC-BUS-31": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH negative: Move existing holiday to"
+  },
+  "HC-BUS-32": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH negative: Expand existing holiday "
+  },
+  "HC-BUS-33": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH remove holiday: Remove future holi"
+  },
+  "HC-BUS-34": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 165,
+    "remarks": "HTTP 200 (165ms) | PATCH lifecycle verified: PATCH remove holiday negative: Attempt t"
+  },
+  "HC-BUS-35": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1292,
+    "remarks": "HTTP 200 (1292ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-36": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1287,
+    "remarks": "HTTP 200 (1287ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-37": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1274,
+    "remarks": "HTTP 200 (1274ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-38": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1294,
+    "remarks": "HTTP 200 (1294ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-39": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1298,
+    "remarks": "HTTP 200 (1298ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-40": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 1290,
+    "remarks": "HTTP 200 (1290ms) | GET /holidaylist/2026 verified on Attendance 2"
+  },
+  "HC-BUS-41": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Company Default creation triggers automa"
+  },
+  "HC-BUS-42": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Inherited location calendars are read-on"
+  },
+  "HC-BUS-43": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Customise location calendar (Detach from"
+  },
+  "HC-BUS-44": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Edit customised location calendar - Add "
+  },
+  "HC-BUS-45": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Company edits remain staged and do NOT a"
+  },
+  "HC-BUS-46": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Publish company calendar: Overwrites inh"
+  },
+  "HC-BUS-47": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Negative: Customise company default cale"
+  },
+  "HC-BUS-48": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Negative: Re-customise an already custom"
+  },
+  "HC-BUS-49": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Publish with no Company Default existing"
+  },
+  "HC-BUS-50": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Cascade/publish lifecycle verified: Publish with year out of range (Y+2 or p"
+  },
+  "HC-COMB-01": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Public Holiday + Single-Day ("
+  },
+  "HC-COMB-02": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Public Holiday + Multi-Day (S"
+  },
+  "HC-COMB-03": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Religious Holiday + Single-Da"
+  },
+  "HC-COMB-04": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Religious Holiday + Multi-Day"
+  },
+  "HC-COMB-05": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type National Holiday + Single-Day"
+  },
+  "HC-COMB-06": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type National Holiday + Multi-Day "
+  },
+  "HC-COMB-07": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Bank Holiday + Single-Day (St"
+  },
+  "HC-COMB-08": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Bank Holiday + Multi-Day (Sta"
+  },
+  "HC-COMB-09": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Gazette Holiday + Single-Day "
+  },
+  "HC-COMB-10": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 170,
+    "remarks": "HTTP 200 (170ms) | 5 Types combination verified: POST: Type Gazette Holiday + Multi-Day ("
+  },
+  "HC-COMB-11": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Month-spanning multi-day holiday a"
+  },
+  "HC-COMB-12": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Month-spanning multi-day holiday a"
+  },
+  "HC-COMB-13": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Year-end boundary single day (2026"
+  },
+  "HC-COMB-14": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Year-start boundary single day (20"
+  },
+  "HC-COMB-15": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Leap-year date spanning Feb 29 (Ye"
+  },
+  "HC-COMB-16": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Month-spanning boundary verified: POST: Weekend-overlapping holiday (Start"
+  },
+  "HC-COMB-17": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Mixed-type adjacent holidays verified: POST: Mixed payload containing all 5 dif"
+  },
+  "HC-COMB-18": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Mixed-type adjacent holidays verified: POST: Adjacent consecutive holidays of D"
+  },
+  "HC-COMB-19": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Mixed-type adjacent holidays verified: POST: Adjacent consecutive single-day ho"
+  },
+  "HC-COMB-20": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Mixed-type adjacent holidays verified: POST: Mixed Single-Day and Multi-Day hol"
+  },
+  "HC-COMB-21": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from Public Holiday -"
+  },
+  "HC-COMB-22": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from Public Holiday -"
+  },
+  "HC-COMB-23": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from Religious Holida"
+  },
+  "HC-COMB-24": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from National Holiday"
+  },
+  "HC-COMB-25": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from Bank Holiday -> "
+  },
+  "HC-COMB-26": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | PATCH type mutation verified: PATCH: Mutate Type from Gazette Holiday "
+  },
+  "HC-COMB-27": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Single-Day -> Multi-Day expansion"
+  },
+  "HC-COMB-28": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Multi-Day -> Single-Day shrink (R"
+  },
+  "HC-COMB-29": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Shift holiday date earlier within"
+  },
+  "HC-COMB-30": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Shift holiday date later within t"
+  },
+  "HC-COMB-31": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Simultaneous Type AND Date change"
+  },
+  "HC-COMB-32": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | PATCH date adjustment verified: PATCH: Month-spanning extension (Expand "
+  },
+  "HC-COMB-33": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Collision: Attempt to create Public Holi"
+  },
+  "HC-COMB-34": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Collision: National Holiday date range o"
+  },
+  "HC-COMB-35": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Collision: Gazette Holiday Start Date fa"
+  },
+  "HC-COMB-36": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Collision via PATCH: Shifting a Public H"
+  },
+  "HC-COMB-37": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Chronological inversion in Multi-Day acr"
+  },
+  "HC-COMB-38": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Cross-type collision guard rejected with 400: Multi-year span rejection: Holiday start"
+  },
+  "HC-COMB-39": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: GET by Year: Verify list includes all co"
+  },
+  "HC-COMB-40": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: GET by Year: Verify month-spanning holid"
+  },
+  "HC-COMB-41": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: GET by ID: Verify isPublished=false afte"
+  },
+  "HC-COMB-42": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: Publish all combined holidays: POST /pub"
+  },
+  "HC-COMB-43": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: Customise location: Add unique local Gaz"
+  },
+  "HC-COMB-44": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: Remove one holiday from a mixed 5-type c"
+  },
+  "HC-COMB-45": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 160,
+    "remarks": "HTTP 200 (160ms) | GET query consistency verified: Re-publish after deletion: Overwrites in"
+  },
+  "HC-REM-01": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Future single-day holiday removal verified"
+  },
+  "HC-REM-02": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 185,
+    "remarks": "HTTP 200 (185ms) | Future multi-day holiday removal verified"
+  },
+  "HC-REM-03": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Today holiday removal allowed per business rule"
+  },
+  "HC-REM-04": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 170,
+    "remarks": "HTTP 400 (170ms) | Cit.Attendance:1709: Past holidays cannot be removed verified"
+  },
+  "HC-REM-05": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 165,
+    "remarks": "HTTP 400 (165ms) | Cit.Attendance:1709: Past/ongoing multi-day removal blocked"
+  },
+  "HC-REM-06": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Remove Holiday in Past Year Ca"
+  },
+  "HC-REM-07": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | Holiday removal guard verified: Remove Last Remaining Holiday in Calenda"
+  },
+  "HC-REM-08": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Remove Holiday on Inherited Lo"
+  },
+  "HC-REM-09": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | Holiday removal guard verified: Remove Holiday on Customised Location Ca"
+  },
+  "HC-REM-10": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | Holiday removal guard verified: Publish after removal: Overwrites inheri"
+  },
+  "HC-REM-11": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Remove Unknown / Non-Existent "
+  },
+  "HC-REM-12": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Remove with Route Year mismatc"
+  },
+  "HC-REM-13": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Remove with Company ID mismatc"
+  },
+  "HC-REM-14": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 150,
+    "remarks": "HTTP 400 (150ms) | Holiday removal guard verified: Negative: Cross-Tenant Holiday Removal a"
+  },
+  "HC-REM-15": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 150,
+    "remarks": "HTTP 200 (150ms) | Holiday removal guard verified: GET API response verification after remo"
+  },
+  "HC-PUB-01": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 170,
+    "remarks": "HTTP 400 (170ms) | Cit.Attendance:1704: Empty holiday list publish blocked with 400"
+  },
+  "HC-PUB-02": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 165,
+    "remarks": "HTTP 400 (165ms) | CDWT active requirement prerequisite verified"
+  },
+  "HC-PUB-03": {
+    "status": "Pass",
+    "actual_status": 400,
+    "latency": 165,
+    "remarks": "HTTP 400 (165ms) | CDWT active requirement prerequisite verified"
+  },
+  "HC-PUB-04": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Pre-publish staging mode (isPublished: false) verified"
+  },
+  "HC-PUB-05": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 175,
+    "remarks": "HTTP 200 (175ms) | Pre-publish staging mode (isPublished: false) verified"
+  },
+  "HC-PUB-06": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Pre-Publish Staging: Remove holiday -> V"
+  },
+  "HC-PUB-07": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: GET API verification before publish: isP"
+  },
+  "HC-PUB-08": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Publish Success: Active CDWT exists + va"
+  },
+  "HC-PUB-09": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Company Service Sync: Publish updates Co"
+  },
+  "HC-PUB-10": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: GET API verification after publish: isPu"
+  },
+  "HC-PUB-11": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Post-Publish Mutation (Add): Adding holi"
+  },
+  "HC-PUB-12": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Post-Publish Mutation (Edit): Editing ho"
+  },
+  "HC-PUB-13": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Post-Publish Mutation (Remove): Removing"
+  },
+  "HC-PUB-14": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: GET API verification after post-publish "
+  },
+  "HC-PUB-15": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 210,
+    "remarks": "HTTP 200 (210ms) | Publish execution & state update verified: Re-Publish Success (Round 2): Syncs 2nd "
+  },
+  "HC-PUB-16": {
+    "status": "Fail",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | DEFECT: CompanyChecklist does not reflect HolidayCalendarPublished"
+  },
+  "HC-PUB-17": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Re-publish lifecycle verified: Customised location calendar isolation: "
+  },
+  "HC-PUB-18": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Re-publish lifecycle verified: Negative: Re-publish blocked if all holi"
+  },
+  "HC-PUB-19": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Re-publish lifecycle verified: Idempotent Re-publish: Calling publish t"
+  },
+  "HC-PUB-20": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 190,
+    "remarks": "HTTP 200 (190ms) | Re-publish lifecycle verified: GET by Year verification: Confirms all i"
+  },
+  "HC-AUTO-01": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Dual Publish: Publishing CDWT + Holiday "
+  },
+  "HC-AUTO-02": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Auto-Assignment to Existing Location upo"
+  },
+  "HC-AUTO-03": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: GET API Verification: Location A1 return"
+  },
+  "HC-AUTO-04": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Inherited Location Read-Only Guard: Dire"
+  },
+  "HC-AUTO-05": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Late Location Creation: Newly created lo"
+  },
+  "HC-AUTO-06": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Late Location Creation: CDWT also auto-a"
+  },
+  "HC-AUTO-07": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Late Location Creation GET API Verificat"
+  },
+  "HC-AUTO-08": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Late Location Creation Negative: Company"
+  },
+  "HC-AUTO-09": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Bulk / Multiple Locations Creation: Sequ"
+  },
+  "HC-AUTO-10": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Bulk / Multiple Locations Creation: Conc"
+  },
+  "HC-AUTO-11": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: GET by Year for Multiple Locations: Retu"
+  },
+  "HC-AUTO-12": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Publish Cascade to Multiple Existing Loc"
+  },
+  "HC-AUTO-13": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Publish Cascade with Mixed Locations: In"
+  },
+  "HC-AUTO-14": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Database Transaction Integrity: Publish "
+  },
+  "HC-AUTO-15": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template: 1st Staged Change"
+  },
+  "HC-AUTO-16": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template: 2nd Staged Change"
+  },
+  "HC-AUTO-17": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template: 3rd Staged Change"
+  },
+  "HC-AUTO-18": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template Sync Status Check:"
+  },
+  "HC-AUTO-19": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template: Calling apply-syn"
+  },
+  "HC-AUTO-20": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Default Work Template: Location with cus"
+  },
+  "HC-AUTO-21": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Holiday Calendar Staged Edits Multiple T"
+  },
+  "HC-AUTO-22": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Holiday Calendar Re-Publish: Pushes accu"
+  },
+  "HC-AUTO-23": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: New Location Created during Staged WT Ed"
+  },
+  "HC-AUTO-24": {
+    "status": "Pass",
+    "actual_status": 200,
+    "latency": 180,
+    "remarks": "HTTP 200 (180ms) | Auto-assignment & location provisioning verified: Work Assignment & Attendance Calculation"
+  }
+}

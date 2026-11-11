@@ -1,0 +1,2560 @@
+[
+  {
+    "type": "Split",
+    "splitTimeSlots": [
+      {
+        "noOfInterval": "OneInterval",
+        "timeSlots": [
+          {
+            "startTime": "08:00:00",
+            "endTime": "11:59:00",
+            "workDurationInMinutes": 239
+          },
+          {
+            "startTime": "13:00:00",
+            "endTime": "18:00:00",
+            "workDurationInMinutes": 300
+          }
+        ],
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 539
+      },
+      {
+        "noOfInterval": "OneInterval",
+        "timeSlots": [
+          {
+            "startTime": "08:00:00",
+            "endTime": "11:59:00",
+            "workDurationInMinutes": 239
+          },
+          {
+            "startTime": "13:00:00",
+            "endTime": "18:00:00",
+            "workDurationInMinutes": 300
+          }
+        ],
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 539
+      },
+      {
+        "noOfInterval": "OneInterval",
+        "timeSlots": [
+          {
+            "startTime": "08:00:00",
+            "endTime": "11:59:00",
+            "workDurationInMinutes": 239
+          },
+          {
+            "startTime": "13:00:00",
+            "endTime": "18:00:00",
+            "workDurationInMinutes": 300
+          }
+        ],
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 539
+      },
+      {
+        "noOfInterval": "OneInterval",
+        "timeSlots": [
+          {
+            "startTime": "08:00:00",
+            "endTime": "11:59:00",
+            "workDurationInMinutes": 239
+          },
+          {
+            "startTime": "13:00:00",
+            "endTime": "18:00:00",
+            "workDurationInMinutes": 300
+          }
+        ],
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 539
+      },
+      {
+        "noOfInterval": "OneInterval",
+        "timeSlots": [
+          {
+            "startTime": "08:00:00",
+            "endTime": "11:59:00",
+            "workDurationInMinutes": 239
+          },
+          {
+            "startTime": "13:00:00",
+            "endTime": "18:00:00",
+            "workDurationInMinutes": 300
+          }
+        ],
+        "dayEnum": "Fri",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 539
+      },
+      {
+        "noOfInterval": "NotApplicable",
+        "timeSlots": [],
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "noOfInterval": "NotApplicable",
+        "timeSlots": [],
+        "dayEnum": "Sun",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "0ba519c8-c2e2-4bce-8a70-23b1616ed5f7",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {
+      "en": "Attendance",
+      "ar": "Attendance"
+    },
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Location Default",
+      "ar": ""
+    },
+    "shortCode": "LOC0001",
+    "templateType": "Split",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": true,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2695,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "0001-01-01T00:00:00Z",
+    "createdBy": null,
+    "modifiedAt": "2026-11-10T06:55:26.818Z",
+    "modifiedBy": "syed.mohamed@comm-it.in"
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      }
+    ],
+    "id": "79a3c902-9ca3-4271-a972-67e941e0468f",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Genral shiftaa",
+      "ar": "التحول العامaa"
+    },
+    "shortCode": "GDEGSDF",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:34:45.664Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "c9e00652-eae5-429a-bef0-4d4ddf9e0a0f",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXL0101",
+      "ar": "وردية العمل الثابتة FXL0101"
+    },
+    "shortCode": "FXL0101",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:38:45.346Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": "2026-11-10T07:56:56.855Z",
+    "modifiedBy": "syed.mohamed@comm-it.in"
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "d5c7277e-480b-434a-b762-cd2e0a3c3117",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA05",
+      "ar": "قالب العمل الثابت القياسي BVBVA05"
+    },
+    "shortCode": "BVBVA05",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:52:56.054Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "19d4fbb9-b5bd-487e-a5a7-b9b12f15f503",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA10",
+      "ar": "قالب العمل الثابت القياسي BVBVA10"
+    },
+    "shortCode": "BVBVA10",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:02.483Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "86667e88-1e6f-42a2-8120-94a53208454e",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA13",
+      "ar": "قالب العمل الثابت القياسي BVBVA13"
+    },
+    "shortCode": "BVBVA13",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:06.39Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "0351e79b-0efb-4706-a970-6153bcd7deb5",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA14",
+      "ar": "قالب العمل الثابت القياسي BVBVA14"
+    },
+    "shortCode": "BVBVA14",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:07.669Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "1a80d87c-e37b-4d3d-bfc3-74ebed0dfbbb",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA15",
+      "ar": "قالب العمل الثابت القياسي BVBVA15"
+    },
+    "shortCode": "BVBVA15",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:09.018Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "NotApplicable"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "9605711d-dc54-405c-a73b-e45a79cc22c9",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA16",
+      "ar": "قالب العمل الثابت القياسي BVBVA16"
+    },
+    "shortCode": "BVBVA16",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:10.166Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          6
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "6382798d-ed99-461d-a7df-c5add6896170",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA17",
+      "ar": "قالب العمل الثابت القياسي BVBVA17"
+    },
+    "shortCode": "BVBVA17",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:11.493Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "7c031951-9f2a-4ff3-a51f-b7ba7aeb02d4",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA25",
+      "ar": "قالب العمل الثابت القياسي BVBVA25"
+    },
+    "shortCode": "BVBVA25",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:22.184Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "40ac02d3-85f8-4f3e-afb9-813d421c186e",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Work Template BVBVA26",
+      "ar": "قالب العمل الثابت القياسي BVBVA26"
+    },
+    "shortCode": "BVBVA26",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 10080,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:53:23.494Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "5c370f05-3fc7-4c0e-81ec-7b8f9eb94afa",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS01",
+      "ar": "وردية العمل الثابتة FXPOS01"
+    },
+    "shortCode": "FXPOS01",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:55:55.736Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "bcef3d52-3d2c-4e75-85a4-95c83bb5b936",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS02",
+      "ar": "وردية العمل الثابتة FXPOS02"
+    },
+    "shortCode": "FXPOS02",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 3240,
+    "totalWorkingDays": 6,
+    "totalDaysOff": 1,
+    "createdAt": "2026-11-10T07:55:56.814Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "375c8077-2852-46db-abfa-34bd49a07cf0",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS03",
+      "ar": "وردية العمل الثابتة FXPOS03"
+    },
+    "shortCode": "FXPOS03",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2160,
+    "totalWorkingDays": 4,
+    "totalDaysOff": 3,
+    "createdAt": "2026-11-10T07:55:58.065Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "16:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 480
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "16:30:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 510
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "16:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 480
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "b031ef4c-0e7f-4c9c-b7af-08347424bfc4",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS04",
+      "ar": "وردية العمل الثابتة FXPOS04"
+    },
+    "shortCode": "FXPOS04",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2550,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:55:59.361Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Third",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "f5e044b1-f033-41df-9cf7-983758ba9a8a",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS05",
+      "ar": "وردية العمل الثابتة FXPOS05"
+    },
+    "shortCode": "FXPOS05",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:56:00.655Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "17:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 540
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "d7211791-7a93-46de-842e-026a53fdc9e7",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS06",
+      "ar": "وردية العمل الثابتة FXPOS06"
+    },
+    "shortCode": "FXPOS06",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 2700,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:56:01.962Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "08:01:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 1
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "08:01:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 1
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "08:01:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 1
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "08:01:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 1
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "08:01:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 1
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "c93b0f66-a79f-4df8-b34a-ba614f2bd62c",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS07",
+      "ar": "وردية العمل الثابتة FXPOS07"
+    },
+    "shortCode": "FXPOS07",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 5,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:56:03.275Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  },
+  {
+    "type": "Fixed",
+    "fixedTimeSlots": [
+      {
+        "startTime": "08:00:00",
+        "endTime": "20:00:00",
+        "dayEnum": "Sun",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 720
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "20:00:00",
+        "dayEnum": "Mon",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 720
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "20:00:00",
+        "dayEnum": "Tue",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 720
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "20:00:00",
+        "dayEnum": "Wed",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 720
+      },
+      {
+        "startTime": "08:00:00",
+        "endTime": "20:00:00",
+        "dayEnum": "Thu",
+        "isWorkingDay": true,
+        "recurrenceOfMonth": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth",
+          "Fifth"
+        ],
+        "workDurationInMinutes": 720
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Fri",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      },
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:00:00",
+        "dayEnum": "Sat",
+        "isWorkingDay": false,
+        "recurrenceOfMonth": [],
+        "workDurationInMinutes": 0
+      }
+    ],
+    "id": "e23b7b66-d944-4918-9efd-d15f7ed5b99f",
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a249871-7a8d-dec5-2d72-47795dd2662d",
+    "companyName": {
+      "en": "Attendance 8",
+      "ar": "الحضور 8"
+    },
+    "locationId": "3a24d629-0d56-a428-baa1-98493a77e614",
+    "locationName": {
+      "en": "Location1",
+      "ar": "الموقع 1"
+    },
+    "workTemplateName": {
+      "en": "Standard Fixed Shift FXPOS08",
+      "ar": "وردية العمل الثابتة FXPOS08"
+    },
+    "shortCode": "FXPOS08",
+    "templateType": "Fixed",
+    "status": "Active",
+    "version": "1.0",
+    "isDefault": false,
+    "isEditable": true,
+    "isDeleted": false,
+    "isArchivable": false,
+    "timeZoneId": "Asia/Riyadh",
+    "isCompanyLinked": false,
+    "hasPendingLocSync": false,
+    "totalWorkDurationInMinutes": 3600,
+    "totalWorkingDays": 5,
+    "totalDaysOff": 2,
+    "createdAt": "2026-11-10T07:56:04.581Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": null,
+    "modifiedBy": null
+  }
+]

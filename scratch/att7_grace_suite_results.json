@@ -1,0 +1,3633 @@
+[
+  {
+    "tc_id": "GRC-POST-P01",
+    "name": "Create standard grace period policy",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Standard Grace Policy P01",
+        "ar": "فترة السماح القياسية 1"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+          "duplicatePolicyName": {
+            "en": "Grace period",
+            "ar": "Grace period"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.064,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P02",
+    "name": "Different late and early grace minutes (10, 15)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Different Grace Minutes P02",
+        "ar": "فترة سماح بمدد مختلفة 2"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 10,
+      "earlyCheckOutGraceMinutes": 15,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "da0c45a1-b215-4f45-91af-94c71b21b1e8",
+        "name": {
+          "en": "Different Grace Minutes P02",
+          "ar": "فترة سماح بمدد مختلفة 2"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:17.3686439Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "da0c45a1-b215-4f45-91af-94c71b21b1e8"
+    },
+    "elapsed_sec": 0.931,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P03",
+    "name": "Minimum positive grace-minute candidate (1, 1)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "One Minute Grace Policy P03",
+        "ar": "سياسة سماح دقيقة واحدة 3"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 1,
+      "earlyCheckOutGraceMinutes": 1,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 1
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "5fda8ae5-5182-4df9-b4d3-a11ae2aa12fe",
+        "name": {
+          "en": "One Minute Grace Policy P03",
+          "ar": "سياسة سماح دقيقة واحدة 3"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:18.4194131Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "5fda8ae5-5182-4df9-b4d3-a11ae2aa12fe"
+    },
+    "elapsed_sec": 1.051,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P04",
+    "name": "Zero grace minutes (0, 0)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Zero Grace Minutes Policy P04",
+        "ar": "سياسة بدون فترة سماح 4"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 0,
+      "earlyCheckOutGraceMinutes": 0,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 1
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "715672f5-5f93-481d-8a6e-1637669cb229",
+        "name": {
+          "en": "Zero Grace Minutes Policy P04",
+          "ar": "سياسة بدون فترة سماح 4"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:19.5007852Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "715672f5-5f93-481d-8a6e-1637669cb229"
+    },
+    "elapsed_sec": 1.031,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P05",
+    "name": "Higher grace-minute values (30, 30)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Extended Grace Period P05",
+        "ar": "فترة سماح ممتدة 5"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 30,
+      "earlyCheckOutGraceMinutes": 30,
+      "deviationThreshold": 5,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "04c75b47-33b6-4751-ab1e-295405a9ec40",
+        "name": {
+          "en": "Extended Grace Period P05",
+          "ar": "فترة سماح ممتدة 5"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:20.5061349Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "04c75b47-33b6-4751-ab1e-295405a9ec40"
+    },
+    "elapsed_sec": 1.056,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P06",
+    "name": "Higher deviation threshold (5)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Higher Deviation Threshold P06",
+        "ar": "حد انحراف أعلى 6"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 5,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "567f3261-1157-4f24-aeda-cf78d5f3fbe2",
+        "name": {
+          "en": "Higher Deviation Threshold P06",
+          "ar": "حد انحراف أعلى 6"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:21.5639855Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "567f3261-1157-4f24-aeda-cf78d5f3fbe2"
+    },
+    "elapsed_sec": 1.049,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P07",
+    "name": "BiWeekly deviation period (2)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Biweekly Grace Policy P07",
+        "ar": "سياسة فترة سماح نصف شهرية 7"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 2,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "6f1d0d57-9da1-4c68-8795-af435d82c190",
+        "name": {
+          "en": "Biweekly Grace Policy P07",
+          "ar": "سياسة فترة سماح نصف شهرية 7"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:22.6296159Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "6f1d0d57-9da1-4c68-8795-af435d82c190"
+    },
+    "elapsed_sec": 1.076,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P08",
+    "name": "Monthly deviation period (3)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Monthly Grace Policy P08",
+        "ar": "سياسة فترة سماح شهرية 8"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 3,
+      "deviationPeriod": 3,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "7a84b49a-5460-4681-a800-7298c4569175",
+        "name": {
+          "en": "Monthly Grace Policy P08",
+          "ar": "سياسة فترة سماح شهرية 8"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:23.6796997Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "7a84b49a-5460-4681-a800-7298c4569175"
+    },
+    "elapsed_sec": 1.051,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P09",
+    "name": "Deduct from CasualLeave (2)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Casual Leave Grace P09",
+        "ar": "خصم إجازة عارضة 9"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 2,
+      "deductionDays": 1
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "27f64910-11a9-4fa3-8be7-ffb6efaefbf2",
+        "name": {
+          "en": "Casual Leave Grace P09",
+          "ar": "خصم إجازة عارضة 9"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:24.7393202Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "27f64910-11a9-4fa3-8be7-ffb6efaefbf2"
+    },
+    "elapsed_sec": 1.057,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P10",
+    "name": "Deduct from SickLeave (3)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Sick Leave Grace P10",
+        "ar": "خصم إجازة مرضية 10"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 3,
+      "deductionDays": 1
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "a08a4088-61d0-4cdb-9d45-4e58c9181a8e",
+        "name": {
+          "en": "Sick Leave Grace P10",
+          "ar": "خصم إجازة مرضية 10"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:25.7926363Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "a08a4088-61d0-4cdb-9d45-4e58c9181a8e"
+    },
+    "elapsed_sec": 1.002,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P11",
+    "name": "Fractional deduction days (1.5)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Fractional Deduction Days P11",
+        "ar": "أيام خصم كسرية 11"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 1.5
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "bfa1dced-803c-4cc7-b7fd-e4f34a35d56e",
+        "name": {
+          "en": "Fractional Deduction Days P11",
+          "ar": "أيام خصم كسرية 11"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T10:20:26.7955748Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "bfa1dced-803c-4cc7-b7fd-e4f34a35d56e"
+    },
+    "elapsed_sec": 1.056,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P12",
+    "name": "Inactive policy (isActive: false)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Inactive Grace Policy P12",
+        "ar": "سياسة فترة سماح غير نشطة 12"
+      },
+      "isActive": false,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.284,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P13",
+    "name": "English-only policy name",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "English Only Grace P13"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.004,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P14",
+    "name": "Arabic-only policy name",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "ar": "سياسة فترة السماح العربية 14"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.05,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-P15",
+    "name": "Clean payload omitting id and tenantName",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Clean Structure Grace P15",
+        "ar": "سياسة هيكل نظيف 15"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.061,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N01",
+    "name": "Empty request body",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {},
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Name is required for the policy.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Name is required for the policy.",
+            "members": [
+              "Name"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.052,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N02",
+    "name": "Invalid policy type",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "InvalidGrace",
+      "name": {
+        "en": "Invalid Type"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 0.993,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N03",
+    "name": "Null policy name",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": null,
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-66eae35b96a0f5bf6863b2fc52ee210a-c2870adce6e6cdfe-00"
+    },
+    "elapsed_sec": 1.278,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N04",
+    "name": "Empty English policy name",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "",
+        "ar": "اسم"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.073,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N05",
+    "name": "Missing late check-in grace minutes",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Missing Late Grace"
+      },
+      "isActive": true,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.055,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N06",
+    "name": "Missing early check-out grace minutes",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Missing Early Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.056,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N07",
+    "name": "Negative late check-in minutes (-1)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Late Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": -1,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Late check-in grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Late check-in grace minutes cannot be negative.",
+            "members": [
+              "LateCheckInGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.044,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N08",
+    "name": "Negative early check-out minutes (-1)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Early Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": -1,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Early check-out grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Early check-out grace minutes cannot be negative.",
+            "members": [
+              "EarlyCheckOutGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.056,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N09",
+    "name": "Negative deviation threshold (-1)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Threshold"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": -1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Deviation threshold cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Deviation threshold cannot be negative.",
+            "members": [
+              "DeviationThreshold"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.043,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N10",
+    "name": "Zero deviation threshold (0)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Zero Threshold"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 0,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.055,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N11",
+    "name": "Invalid deviation period enum (999)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid Deviation Period"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 999,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.053,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N12",
+    "name": "Invalid deviation period enum 0 (NotApplicable)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "NotApplicable Period"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 0,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.051,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N13",
+    "name": "Invalid deduction source enum (999)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid Deduction Source"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 999,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.046,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N14",
+    "name": "Invalid deduction source enum 0 (NotApplicable)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "NotApplicable Deduct"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 0,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.053,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N15",
+    "name": "Negative deduction days (-1)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Deduction Days"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": -1
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "DeductionDays must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "DeductionDays must be >= 0",
+            "members": [
+              "DeductionDays"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.069,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N16",
+    "name": "String late check-in minutes ('5')",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "String Late Minutes"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": "5",
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 0.994,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N17",
+    "name": "Decimal late check-in minutes (5.5)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Decimal Late Minutes"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5.5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.lateCheckInGraceMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.lateCheckInGraceMinutes | LineNumber: 0 | BytePositionInLine: 112."
+        ]
+      },
+      "traceId": "00-fe9fe76e085a255bd3d38c32d3a35df0-6f002fb271471044-00"
+    },
+    "elapsed_sec": 1.055,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N18",
+    "name": "String deviation threshold ('1')",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "String Threshold"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": "1",
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.3,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N19",
+    "name": "Null deviation period",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Null Period"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": null,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.deviationPeriod": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.Enums.Policies.GracePeriodDeviationPeriod. Path: $.deviationPeriod | LineNumber: 0 | BytePositionInLine: 183."
+        ]
+      },
+      "traceId": "00-3eef5dc0da79346d613f4213f351514f-1642ae87736334ae-00"
+    },
+    "elapsed_sec": 1.043,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N20",
+    "name": "Wrong isActive data type ('true')",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "String Active Status"
+      },
+      "isActive": "true",
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.isActive": [
+          "The JSON value could not be converted to System.Boolean. Path: $.isActive | LineNumber: 0 | BytePositionInLine: 82."
+        ]
+      },
+      "traceId": "00-21a582536db7f0c971c97bbc535dca9f-1024b7c4296af7ea-00"
+    },
+    "elapsed_sec": 1.072,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-POST-N21",
+    "name": "Client-dictated ID in body",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "id": "11111111-2222-3333-4444-555555555555",
+      "type": "GracePeriod",
+      "name": {
+        "en": "Client Dictated ID Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.071,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-01",
+    "name": "Late Grace -1",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late -1"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": -1,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Late check-in grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Late check-in grace minutes cannot be negative.",
+            "members": [
+              "LateCheckInGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.021,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-02",
+    "name": "Late Grace 0",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late 0"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 0,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.046,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-03",
+    "name": "Late Grace 1",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late 1"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 1,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.043,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-04",
+    "name": "Late Grace 1440 (24h)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late 1440"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 1440,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.053,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-05",
+    "name": "Late Grace 1441 (exceeds 24h)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late 1441"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 1441,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 0.997,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-06",
+    "name": "Late Grace 2147483647 (Int32 max)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late Int32 Max"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 2147483647,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.052,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-07",
+    "name": "Late Grace 2147483648 (Int32 overflow)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Late Overflow"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 2147483648,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.lateCheckInGraceMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.lateCheckInGraceMinutes | LineNumber: 0 | BytePositionInLine: 116."
+        ]
+      },
+      "traceId": "00-92daf858dd548ee3dc37e3dd1e0c0785-bf6f376e1d71fac1-00"
+    },
+    "elapsed_sec": 1.069,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-08",
+    "name": "Threshold -1",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Threshold -1"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": -1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Deviation threshold cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Deviation threshold cannot be negative.",
+            "members": [
+              "DeviationThreshold"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.044,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-09",
+    "name": "Threshold 0",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Threshold 0"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 0,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.05,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-10",
+    "name": "Threshold 1",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Threshold 1"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.053,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-11",
+    "name": "Threshold 100",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Threshold 100"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 100,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.053,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-12",
+    "name": "DeductionDays -1",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Deduct -1"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": -1
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "DeductionDays must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "DeductionDays must be >= 0",
+            "members": [
+              "DeductionDays"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.057,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-13",
+    "name": "DeductionDays 0",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Deduct 0"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 0
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.056,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-14",
+    "name": "DeductionDays 0.25 (Quarter day)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Deduct 0.25"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 0.25
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.085,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-15",
+    "name": "DeductionDays 365 (One year)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Deduct 365"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 365
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.295,
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-BVA-16",
+    "name": "DeductionDays 366 (Exceeds year)",
+    "method": "POST",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "BVA Deduct 366"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 366
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1504",
+        "message": "Policy maximum limit reached.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "maxPolicyCount": 30,
+          "currentPolicyCount": 30
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.072,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P01",
+    "name": "Update policy name",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Grace Period",
+        "ar": "فترة السماح المحدثة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Grace Period",
+          "ar": "فترة السماح المحدثة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:11.8405609Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.06,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P02",
+    "name": "Update late check-in grace minutes (10)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Late Check-in Policy",
+        "ar": "سياسة تأخير محدثة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 10,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Late Check-in Policy",
+          "ar": "سياسة تأخير محدثة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:12.9024773Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.062,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P03",
+    "name": "Update early check-out grace minutes (15)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Early Check-out Policy",
+        "ar": "سياسة خروج مبكر محدثة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 15,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Early Check-out Policy",
+          "ar": "سياسة خروج مبكر محدثة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:13.951638Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.045,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P04",
+    "name": "Update both grace minutes (15, 20)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Both Grace Minutes",
+        "ar": "تحديث فترتي السماح"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 15,
+      "earlyCheckOutGraceMinutes": 20,
+      "deviationThreshold": 2,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Both Grace Minutes",
+          "ar": "تحديث فترتي السماح"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:15.0081121Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.06,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P05",
+    "name": "Update deviation threshold (3)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Deviation Threshold",
+        "ar": "حد انحراف محدث"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 3,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Deviation Threshold",
+          "ar": "حد انحراف محدث"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:16.0607095Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.048,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P06",
+    "name": "Update deviation period to BiWeekly (2)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Deviation Period BiWeekly",
+        "ar": "فترة انحراف محدثة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 2,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "6f1d0d57-9da1-4c68-8795-af435d82c190",
+          "duplicatePolicyName": {
+            "en": "Biweekly Grace Policy P07",
+            "ar": "سياسة فترة سماح نصف شهرية 7"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.099,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P07",
+    "name": "Update deviation period to Monthly (3)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Deviation Period Monthly",
+        "ar": "فترة انحراف شهرية"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 2,
+      "deviationPeriod": 3,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Deviation Period Monthly",
+          "ar": "فترة انحراف شهرية"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:18.241031Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.073,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P08",
+    "name": "Update deduction source to CasualLeave (2)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Deduction Source CasualLeave",
+        "ar": "مصدر خصم محدث"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 2,
+      "deductionDays": 5
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Deduction Source CasualLeave",
+          "ar": "مصدر خصم محدث"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:19.2655521Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 0.825,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P09",
+    "name": "Update deduction source to SickLeave (3)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Deduction Source SickLeave",
+        "ar": "مصدر خصم إجازة مرضية"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 3,
+      "deductionDays": 5
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Deduction Source SickLeave",
+          "ar": "مصدر خصم إجازة مرضية"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:20.1165963Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.063,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P10",
+    "name": "Update deduction days to fractional (2.5)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Updated Fractional Deduction Days",
+        "ar": "أيام خصم كسرية محدثة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 2.5
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Updated Fractional Deduction Days",
+          "ar": "أيام خصم كسرية محدثة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:21.17625Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.051,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P11",
+    "name": "Deactivate policy (isActive: false)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Deactivated Grace Policy",
+        "ar": "سياسة فترة سماح غير نشطة"
+      },
+      "isActive": false,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Deactivated Grace Policy",
+          "ar": "سياسة فترة سماح غير نشطة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:22.2254781Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.055,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P12",
+    "name": "Activate policy (isActive: true)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Activated Grace Policy",
+        "ar": "سياسة فترة سماح نشطة"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Activated Grace Policy",
+          "ar": "سياسة فترة سماح نشطة"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:23.3008029Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.072,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-P13",
+    "name": "Update all fields together",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Fully Updated Grace Policy",
+        "ar": "سياسة فترة سماح محدثة بالكامل"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 10,
+      "earlyCheckOutGraceMinutes": 15,
+      "deviationThreshold": 3,
+      "deviationPeriod": 2,
+      "deductLeaveFrom": 1,
+      "deductionDays": 5
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Fully Updated Grace Policy",
+          "ar": "سياسة فترة سماح محدثة بالكامل"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:24.3528851Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.06,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N01",
+    "name": "Null policy name",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": null,
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-7575d7aec2b9d4f56b45a13aec9af5ea-ee86f39f37ff4fe2-00"
+    },
+    "elapsed_sec": 1.074,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N02",
+    "name": "Invalid policy type",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "InvalidGrace",
+      "name": {
+        "en": "Invalid Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Invalid Grace"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:26.4865603Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.041,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N02 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N03",
+    "name": "Negative late grace minutes (-1)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Late Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": -1,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Late check-in grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Late check-in grace minutes cannot be negative.",
+            "members": [
+              "LateCheckInGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.071,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N04",
+    "name": "Negative early grace minutes (-1)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Early Grace"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": -1,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Early check-out grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Early check-out grace minutes cannot be negative.",
+            "members": [
+              "EarlyCheckOutGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.079,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N05",
+    "name": "Negative deviation threshold (-1)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Threshold"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": -1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Deviation threshold cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Deviation threshold cannot be negative.",
+            "members": [
+              "DeviationThreshold"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.192,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N06",
+    "name": "Zero deviation threshold (0)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Zero Threshold"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 0,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Zero Threshold"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:30.8721122Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.043,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N06 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N07",
+    "name": "Arbitrary deviation threshold (999)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid Threshold Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 999,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Invalid Threshold Update"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:31.9168936Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.042,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N07 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N08",
+    "name": "Arbitrary deviation period (999)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid Period Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 999,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Invalid Period Update"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:32.9676274Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.059,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N08 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N09",
+    "name": "Invalid deviation period 0 (NotApplicable)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "NotApplicable Period"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 0,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "NotApplicable Period"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:34.0176932Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.039,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N09 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N10",
+    "name": "Arbitrary deduction source (999)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid Deduction Source Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 999,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "Invalid Deduction Source Update"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:35.0637615Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.048,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N10 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N11",
+    "name": "Invalid deduction source 0 (NotApplicable)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "NotApplicable Deduct"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 0,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "NotApplicable Deduct"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:36.1130978Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.056,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N11 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N12",
+    "name": "Negative deduction days (-1)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Negative Deduction Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": -1
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "DeductionDays must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "DeductionDays must be >= 0",
+            "members": [
+              "DeductionDays"
+            ]
+          }
+        ]
+      }
+    },
+    "elapsed_sec": 1.07,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N13",
+    "name": "String late grace minutes ('5')",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "String Grace Minutes Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": "5",
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Grace period policy updated",
+      "policy": {
+        "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+        "name": {
+          "en": "String Grace Minutes Update"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "الحضور 7"
+        },
+        "createdAt": "2026-11-06T09:49:57.669Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T10:21:38.4913007Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "d9c1e312-bba0-4a93-ab9d-e8845aa13180"
+    },
+    "elapsed_sec": 1.306,
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "CRITICAL GAP: Negative test GRC-PATCH-N13 accepted with HTTP 200 OK!"
+  },
+  {
+    "tc_id": "GRC-PATCH-N14",
+    "name": "Decimal late grace minutes (5.5)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Decimal Late Minutes Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5.5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.lateCheckInGraceMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.lateCheckInGraceMinutes | LineNumber: 0 | BytePositionInLine: 119."
+        ]
+      },
+      "traceId": "00-22ae31f55d5adafd602f8cbdb61f9e84-30bcf7876540066e-00"
+    },
+    "elapsed_sec": 1.075,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N15",
+    "name": "Null numeric fields (NullReferenceException probe)",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Null Fields Update"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": null,
+      "earlyCheckOutGraceMinutes": null,
+      "deviationThreshold": null,
+      "deviationPeriod": null,
+      "deductLeaveFrom": null,
+      "deductionDays": null
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.lateCheckInGraceMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.lateCheckInGraceMinutes | LineNumber: 0 | BytePositionInLine: 111."
+        ]
+      },
+      "traceId": "00-f163806f7789def04d8257e2ac494c2e-739ae54db299be23-00"
+    },
+    "elapsed_sec": 1.055,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N16",
+    "name": "Non-existing policy ID in route",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/00000000-0000-0000-0000-999999999999",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Non-existent Test"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "00000000-0000-0000-0000-999999999999"
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.064,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N17",
+    "name": "Invalid policy ID format in route",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/invalid-guid-format",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Invalid GUID Test"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 404,
+    "actual_status": 404,
+    "actual_body": "",
+    "elapsed_sec": 1.067,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "GRC-PATCH-N18",
+    "name": "Cross-company policy ID mismatch",
+    "method": "PATCH",
+    "endpoint": "/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/graceperiod/d9c1e312-bba0-4a93-ab9d-e8845aa13180",
+    "payload": {
+      "type": "GracePeriod",
+      "name": {
+        "en": "Cross Company Mismatch"
+      },
+      "isActive": true,
+      "lateCheckInGraceMinutes": 5,
+      "earlyCheckOutGraceMinutes": 5,
+      "deviationThreshold": 1,
+      "deviationPeriod": 1,
+      "deductLeaveFrom": 1,
+      "deductionDays": 10
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:9001",
+        "message": "The provided company does not match the entity company.",
+        "details": null,
+        "data": {
+          "entityCompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "requestCompanyId": "3a249870-184c-0373-f344-015d602678d7"
+        },
+        "validationErrors": null
+      }
+    },
+    "elapsed_sec": 1.07,
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  }
+]

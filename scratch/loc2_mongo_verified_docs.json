@@ -1,0 +1,268 @@
+[
+  {
+    "_id": "35acea53-2267-4f80-b4d7-108f8878430f",
+    "ShortCode": "LOC0002",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Location Default",
+      "ar": ""
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": true,
+    "TotalWorkDurationInMinutes": 2695.0,
+    "CreatedAt": "0001-01-01 00:00:00",
+    "ModifiedAt": "2026-11-10 06:55:26.832000"
+  },
+  {
+    "_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "ShortCode": "FXD0001",
+    "TemplateType": 1,
+    "_t": [
+      "WorkTemplate",
+      "FixedWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Transited to Fixed Shift",
+      "ar": "محولة إلى وردية ثابتة"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2700.0,
+    "CreatedAt": "2026-11-10 08:41:56.718000",
+    "ModifiedAt": "2026-11-10 08:42:52.967000"
+  },
+  {
+    "_id": "99a81ce8-5f57-4fea-9652-07156040f051",
+    "ShortCode": "FXW0001",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift FXW0001",
+      "ar": "وردية مرنة FXW0001"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:41:57.762000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "68dab14c-9355-4f19-b553-118b5a70212b",
+    "ShortCode": "FXD0002",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Split Location Shift FXD0002",
+      "ar": "وردية مجزأة FXD0002"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:41:59.027000",
+    "ModifiedAt": "2026-11-10 08:42:54.301000"
+  },
+  {
+    "_id": "7562cf81-8eae-4c28-b59c-8ba893739848",
+    "ShortCode": "FXD0003",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift FXD0003",
+      "ar": "وردية مرنة FXD0003"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 1920.0,
+    "CreatedAt": "2026-11-10 08:42:00.318000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "0ae8a4ce-d405-4615-8ff1-9a2b9c2729bf",
+    "ShortCode": "FXD0004",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift FXD0004",
+      "ar": "وردية مرنة FXD0004"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:42:01.668000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "0ee23f7d-aa83-493b-af79-93c99c2f7c9d",
+    "ShortCode": "FXDNEG9",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift FXDNEG9",
+      "ar": "وردية مرنة FXDNEG9"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:42:13.446000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "96a20f25-47fb-496a-b595-0259aedba8c5",
+    "ShortCode": "FXDNE10",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift FXDNE10",
+      "ar": "وردية مرنة FXDNE10"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 3000.0,
+    "CreatedAt": "2026-11-10 08:42:14.713000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "ShortCode": "SPD0001",
+    "TemplateType": 1,
+    "_t": [
+      "WorkTemplate",
+      "FixedWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Transited to Fixed Shift",
+      "ar": "محولة إلى وردية ثابتة"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2700.0,
+    "CreatedAt": "2026-11-10 08:42:24.820000",
+    "ModifiedAt": "2026-11-10 08:42:55.634000"
+  },
+  {
+    "_id": "5766c9f3-8632-4359-b9a6-3796b14d355c",
+    "ShortCode": "SPD0002",
+    "TemplateType": 2,
+    "_t": [
+      "WorkTemplate",
+      "FlexiWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Flexible Location Shift SPD0002",
+      "ar": "وردية مرنة SPD0002"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:42:26.106000",
+    "ModifiedAt": "2026-11-10 08:42:56.889000"
+  },
+  {
+    "_id": "0dc290bd-f874-41b7-89a2-4ab0de190b9d",
+    "ShortCode": "SPD0003",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Split Location Shift SPD0003",
+      "ar": "وردية مجزأة SPD0003"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2880.0,
+    "CreatedAt": "2026-11-10 08:42:27.417000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "4565d924-fd11-42ae-a1ef-3fedaaafd722",
+    "ShortCode": "SPD0004",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Split Location Shift SPD0004",
+      "ar": "وردية مجزأة SPD0004"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 1920.0,
+    "CreatedAt": "2026-11-10 08:42:28.767000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "e180b571-b783-4f00-a37f-c0a7b1c23d4c",
+    "ShortCode": "SPD0005",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Split Location Shift SPD0005",
+      "ar": "وردية مجزأة SPD0005"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 2400.0,
+    "CreatedAt": "2026-11-10 08:42:30.061000",
+    "ModifiedAt": "None"
+  },
+  {
+    "_id": "bdedeb03-6630-444b-8102-a04c6c59559e",
+    "ShortCode": "SPDNE10",
+    "TemplateType": 3,
+    "_t": [
+      "WorkTemplate",
+      "SplitWorkTemplate"
+    ],
+    "WorkTemplateName": {
+      "en": "Split Location Shift SPDNE10",
+      "ar": "وردية مجزأة SPDNE10"
+    },
+    "Version": "1.0",
+    "IsDefault": false,
+    "IsCompanyLinked": false,
+    "TotalWorkDurationInMinutes": 3000.0,
+    "CreatedAt": "2026-11-10 08:42:43.007000",
+    "ModifiedAt": "None"
+  }
+]

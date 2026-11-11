@@ -1,0 +1,1042 @@
+{
+  "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+  "companyName": "Attendance 7",
+  "createdPolicies": {
+    "break": "12b68f6d-9a31-4de9-8184-f812c42de412",
+    "grace": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7"
+  },
+  "testLog": [
+    {
+      "tc_id": "TC-ATT7-POST-BRK-01",
+      "phase": "PHASE 1 - POST",
+      "title": "Create Attendance 7 Standard Multi-Break Policy",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Standard Break Policy",
+          "ar": "سياسة الاستراحة القياسية للحضور 7"
+        },
+        "isActive": true,
+        "breaks": [
+          {
+            "name": "Morning Coffee",
+            "type": "Paid",
+            "durationMinutes": 15
+          },
+          {
+            "name": "Lunch Break",
+            "type": "Unpaid",
+            "durationMinutes": 45
+          },
+          {
+            "name": "Prayer & Tea",
+            "type": "Paid",
+            "durationMinutes": 15
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Break policy created",
+        "policy": {
+          "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+          "name": {
+            "en": "Attendance 7 Standard Break Policy",
+            "ar": "سياسة الاستراحة القياسية للحضور 7"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:26.6202028Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "12b68f6d-9a31-4de9-8184-f812c42de412"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-POST-GRC-01",
+      "phase": "PHASE 1 - POST",
+      "title": "Create Attendance 7 Grace Period Policy",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Standard Grace Period Policy",
+          "ar": "سياسة فترة السماح القياسية للحضور 7"
+        },
+        "isActive": true,
+        "lateCheckInGraceMinutes": 15,
+        "earlyCheckOutGraceMinutes": 10,
+        "deviationThreshold": 3,
+        "deviationPeriod": "Monthly",
+        "deductLeaveFrom": "AnnualLeave",
+        "deductionDays": 0.5
+      },
+      "status": 200,
+      "response": {
+        "message": "Grace period policy created",
+        "policy": {
+          "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+          "name": {
+            "en": "Attendance 7 Standard Grace Period Policy",
+            "ar": "سياسة فترة السماح القياسية للحضور 7"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:27.8532957Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-POST-OVT-01",
+      "phase": "PHASE 1 - POST",
+      "title": "Create Attendance 7 Multi-Rate Overtime Policy",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/overtime",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Standard Overtime Policy",
+          "ar": "سياسة العمل الإضافي القياسية للحضور 7"
+        },
+        "isActive": true,
+        "overtimeRule": "Daily",
+        "hasBufferBeforeOvertime": true,
+        "bufferMinutes": 30,
+        "rates": [
+          {
+            "dayRate": "WorkingDay",
+            "rateFormula": 1.5
+          },
+          {
+            "dayRate": "Weekend",
+            "rateFormula": 2.0
+          },
+          {
+            "dayRate": "PublicHoliday",
+            "rateFormula": 2.5
+          }
+        ]
+      },
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "request": [
+            "The request field is required."
+          ],
+          "$.overtimeRule": [
+            "The JSON value could not be converted to Sahab.Attendance.HttpAPI.Enums.Policies.OvertimeRule. Path: $.overtimeRule | LineNumber: 0 | BytePositionInLine: 301."
+          ]
+        },
+        "traceId": "00-977acfbd0b9312f29ca94422b212edf2-50dc727533b247a8-00"
+      },
+      "verdict": "FAIL / DEFECT (Got 400, expected [200, 201])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-GET-LIST-01",
+      "phase": "PHASE 2 - GET",
+      "title": "List All Policies for Attendance 7",
+      "method": "get",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "policies": [
+          {
+            "type": "Break",
+            "breaks": [
+              {
+                "name": "Morning Coffee",
+                "type": "Paid",
+                "durationMinutes": 15
+              },
+              {
+                "name": "Lunch Break",
+                "type": "Unpaid",
+                "durationMinutes": 45
+              },
+              {
+                "name": "Prayer & Tea",
+                "type": "Paid",
+                "durationMinutes": 15
+              }
+            ],
+            "totalBreakDurationInMinutes": 75,
+            "totalPaidBreakDurationInMinutes": 30,
+            "totalUnpaidBreakDurationInMinutes": 45,
+            "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+            "name": {
+              "en": "Attendance 7 Standard Break Policy",
+              "ar": "سياسة الاستراحة القياسية للحضور 7"
+            },
+            "isActive": true,
+            "tenantName": {}
+          },
+          {
+            "type": "GracePeriod",
+            "lateCheckInGraceMinutes": 15,
+            "earlyCheckOutGraceMinutes": 10,
+            "deviationThreshold": 3,
+            "deviationPeriod": "Monthly",
+            "deductLeaveFrom": "AnnualLeave",
+            "deductionDays": 0.5,
+            "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+            "name": {
+              "en": "Attendance 7 Standard Grace Period Policy",
+              "ar": "سياسة فترة السماح القياسية للحضور 7"
+            },
+            "isActive": true,
+            "tenantName": {}
+          }
+        ]
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-GET-BRK-01",
+      "phase": "PHASE 2 - GET",
+      "title": "Get Break Policy Detail by ID",
+      "method": "get",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/12b68f6d-9a31-4de9-8184-f812c42de412",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "policy": {
+          "type": "Break",
+          "breaks": [
+            {
+              "name": "Morning Coffee",
+              "type": "Paid",
+              "durationMinutes": 15
+            },
+            {
+              "name": "Lunch Break",
+              "type": "Unpaid",
+              "durationMinutes": 45
+            },
+            {
+              "name": "Prayer & Tea",
+              "type": "Paid",
+              "durationMinutes": 15
+            }
+          ],
+          "totalBreakDurationInMinutes": 75,
+          "totalPaidBreakDurationInMinutes": 30,
+          "totalUnpaidBreakDurationInMinutes": 45,
+          "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+          "name": {
+            "en": "Attendance 7 Standard Break Policy",
+            "ar": "سياسة الاستراحة القياسية للحضور 7"
+          },
+          "isActive": true,
+          "tenantName": {}
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-GET-GRC-01",
+      "phase": "PHASE 2 - GET",
+      "title": "Get Grace Period Policy Detail by ID",
+      "method": "get",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "policy": {
+          "type": "GracePeriod",
+          "lateCheckInGraceMinutes": 15,
+          "earlyCheckOutGraceMinutes": 10,
+          "deviationThreshold": 3,
+          "deviationPeriod": "Monthly",
+          "deductLeaveFrom": "AnnualLeave",
+          "deductionDays": 0.5,
+          "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+          "name": {
+            "en": "Attendance 7 Standard Grace Period Policy",
+            "ar": "سياسة فترة السماح القياسية للحضور 7"
+          },
+          "isActive": true,
+          "tenantName": {}
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-GET-NEG-01",
+      "phase": "PHASE 2 - GET",
+      "title": "GET Non-Existing Policy ID (Verify 404 vs 400)",
+      "method": "get",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/00000000-0000-0000-0000-999999999999",
+      "payload": null,
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "Cit.Attendance:1501",
+          "message": "Policy not found.",
+          "details": null,
+          "data": {
+            "policyId": "00000000-0000-0000-0000-999999999999"
+          },
+          "validationErrors": null
+        }
+      },
+      "verdict": "FAIL / DEFECT (Got 400, expected [404])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-PATCH-BRK-01",
+      "phase": "PHASE 3 - PATCH",
+      "title": "Update Break Policy Name and Break Durations",
+      "method": "patch",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break/12b68f6d-9a31-4de9-8184-f812c42de412",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Executive Break Policy",
+          "ar": "سياسة الاستراحة التنفيذية للحضور 7"
+        },
+        "breaks": [
+          {
+            "name": "Executive Coffee",
+            "type": "Paid",
+            "durationMinutes": 20
+          },
+          {
+            "name": "Catering Lunch",
+            "type": "Unpaid",
+            "durationMinutes": 60
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Break policy updated",
+        "policy": {
+          "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+          "name": {
+            "en": "Attendance 7 Executive Break Policy",
+            "ar": "سياسة الاستراحة التنفيذية للحضور 7"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:26.62Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": "2026-11-06T05:51:36.538445Z",
+          "modifiedBy": "syed.mohamed@comm-it.in"
+        },
+        "id": "12b68f6d-9a31-4de9-8184-f812c42de412"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-PATCH-GRC-01",
+      "phase": "PHASE 3 - PATCH",
+      "title": "Update Grace Period Policy Thresholds and DeductionDays",
+      "method": "patch",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod/eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Revised Grace Period Policy",
+          "ar": "سياسة فترة السماح المعدلة للحضور 7"
+        },
+        "lateCheckInGraceMinutes": 20,
+        "earlyCheckOutGraceMinutes": 15,
+        "deviationThreshold": 5,
+        "deviationPeriod": "Monthly",
+        "deductLeaveFrom": "AnnualLeave",
+        "deductionDays": 1.0
+      },
+      "status": 200,
+      "response": {
+        "message": "Grace period policy updated",
+        "policy": {
+          "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+          "name": {
+            "en": "Attendance 7 Revised Grace Period Policy",
+            "ar": "سياسة فترة السماح المعدلة للحضور 7"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:27.853Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": "2026-11-06T05:51:37.7688197Z",
+          "modifiedBy": "syed.mohamed@comm-it.in"
+        },
+        "id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-PATCH-MISMATCH-01",
+      "phase": "PHASE 3 - PATCH",
+      "title": "PATCH with URL policyId vs Body id mismatch",
+      "method": "patch",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break/12b68f6d-9a31-4de9-8184-f812c42de412",
+      "payload": {
+        "id": "a5bb4493-d7bd-49ba-a41f-701b93c5f2b4",
+        "name": {
+          "en": "Executive Break Mismatch In Body"
+        },
+        "breaks": [
+          {
+            "name": "Coffee",
+            "type": "Paid",
+            "durationMinutes": 15
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Break policy updated",
+        "policy": {
+          "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+          "name": {
+            "en": "Executive Break Mismatch In Body"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:26.62Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": "2026-11-06T05:51:39.3000493Z",
+          "modifiedBy": "syed.mohamed@comm-it.in"
+        },
+        "id": "12b68f6d-9a31-4de9-8184-f812c42de412"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-BRK-NEG-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Break Policy - Negative DurationMinutes (-15)",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "name": {
+          "en": "Negative Duration"
+        },
+        "breaks": [
+          {
+            "name": "Coffee",
+            "type": "Paid",
+            "durationMinutes": -15
+          }
+        ]
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "Cit.Attendance:Validation",
+          "message": "Break duration must be greater than 0 minutes.",
+          "details": null,
+          "data": null,
+          "validationErrors": [
+            {
+              "message": "Break duration must be greater than 0 minutes.",
+              "members": [
+                "Breaks[0].DurationMinutes"
+              ]
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-BRK-ENUM-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Break Policy - Invalid BreakType Enum ('UltraPaid')",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "name": {
+          "en": "Invalid Break Type"
+        },
+        "breaks": [
+          {
+            "name": "Coffee",
+            "type": "UltraPaid",
+            "durationMinutes": 15
+          }
+        ]
+      },
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "request": [
+            "The request field is required."
+          ],
+          "$.breaks[0].type": [
+            "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].type | LineNumber: 0 | BytePositionInLine: 88."
+          ]
+        },
+        "traceId": "00-6a92048f792cd5e8f5ae9263a1770986-6e53c496388a5f9f-00"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-GRC-NEG-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Grace Period - Negative LateCheckInGraceMinutes (-10)",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+      "payload": {
+        "name": {
+          "en": "Negative Grace"
+        },
+        "lateCheckInGraceMinutes": -10
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "Cit.Attendance:Validation",
+          "message": "Late check-in grace minutes cannot be negative.",
+          "details": null,
+          "data": null,
+          "validationErrors": [
+            {
+              "message": "Late check-in grace minutes cannot be negative.",
+              "members": [
+                "LateCheckInGraceMinutes"
+              ]
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-GRC-ENUM-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Grace Period - Invalid DeviationPeriod Enum ('BiWeekly')",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+      "payload": {
+        "name": {
+          "en": "Invalid Deviation Period"
+        },
+        "deviationPeriod": "BiWeekly"
+      },
+      "status": 200,
+      "response": {
+        "message": "Grace period policy created",
+        "policy": {
+          "id": "3f0d9661-84ee-48ec-bd28-6a620878e252",
+          "name": {
+            "en": "Invalid Deviation Period"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:44.7356936Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "3f0d9661-84ee-48ec-bd28-6a620878e252"
+      },
+      "verdict": "FAIL / DEFECT (Got 200, expected [400])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-GRC-NEG-02",
+      "phase": "PHASE 4 - DTO",
+      "title": "Grace Period - Negative DeductionDays (-2.0)",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/graceperiod",
+      "payload": {
+        "name": {
+          "en": "Negative Deduction"
+        },
+        "deductionDays": -2.0
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "Cit.Attendance:Validation",
+          "message": "DeductionDays must be >= 0",
+          "details": null,
+          "data": null,
+          "validationErrors": [
+            {
+              "message": "DeductionDays must be >= 0",
+              "members": [
+                "DeductionDays"
+              ]
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-OVT-NEG-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Overtime - Negative BufferMinutes (-30)",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/overtime",
+      "payload": {
+        "name": {
+          "en": "Negative Buffer"
+        },
+        "bufferMinutes": -30
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "Cit.Attendance:Validation",
+          "message": "BufferMinutes must be >= 0",
+          "details": null,
+          "data": null,
+          "validationErrors": [
+            {
+              "message": "BufferMinutes must be >= 0",
+              "members": [
+                "BufferMinutes"
+              ]
+            }
+          ]
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DEFECT-OVT-NEG-RATE",
+      "phase": "PHASE 4 - DTO",
+      "title": "CRITICAL RE-VERIFICATION: Overtime Negative Rate Multiplier (-1.5) [DEFECT-20261105-03]",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/overtime",
+      "payload": {
+        "name": {
+          "en": "Negative Overtime Multiplier Test"
+        },
+        "rates": [
+          {
+            "dayRate": "WorkingDay",
+            "rateFormula": -1.5
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Overtime policy created",
+        "policy": {
+          "id": "59a1ed42-4425-493f-9db9-4fca6d91d411",
+          "name": {
+            "en": "Negative Overtime Multiplier Test"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:49.2431692Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "59a1ed42-4425-493f-9db9-4fca6d91d411"
+      },
+      "verdict": "FAIL / DEFECT (Got 200, expected [400])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-DTO-OVT-ENUM-01",
+      "phase": "PHASE 4 - DTO",
+      "title": "Overtime - Invalid DayRate Enum ('RestDay')",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/overtime",
+      "payload": {
+        "name": {
+          "en": "Invalid Day Rate"
+        },
+        "rates": [
+          {
+            "dayRate": "RestDay",
+            "rateFormula": 1.5
+          }
+        ]
+      },
+      "status": 400,
+      "response": {
+        "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+        "title": "One or more validation errors occurred.",
+        "status": 400,
+        "errors": {
+          "request": [
+            "The request field is required."
+          ],
+          "$.rates[0].dayRate": [
+            "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.OvertimeRate. Path: $.rates[0].dayRate | LineNumber: 0 | BytePositionInLine: 68."
+          ]
+        },
+        "traceId": "00-13785ac16fbaf48e54c0533e1d380d90-78e0dad464031409-00"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-BUS-DUP-CONFIG",
+      "phase": "PHASE 4 - BUSINESS",
+      "title": "Duplicate Break Policy Configuration Detection",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Standard Break Policy",
+          "ar": "سياسة الاستراحة القياسية للحضور 7"
+        },
+        "isActive": true,
+        "breaks": [
+          {
+            "name": "Morning Coffee",
+            "type": "Paid",
+            "durationMinutes": 15
+          },
+          {
+            "name": "Lunch Break",
+            "type": "Unpaid",
+            "durationMinutes": 45
+          },
+          {
+            "name": "Prayer & Tea",
+            "type": "Paid",
+            "durationMinutes": 15
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Break policy created",
+        "policy": {
+          "id": "9706b662-1c4b-4e91-a4b2-2c9673b7a42b",
+          "name": {
+            "en": "Attendance 7 Standard Break Policy",
+            "ar": "سياسة الاستراحة القياسية للحضور 7"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:52.1220503Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "9706b662-1c4b-4e91-a4b2-2c9673b7a42b"
+      },
+      "verdict": "FAIL / DEFECT (Got 200, expected [400])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-DEFECT-DUP-ID-CRASH",
+      "phase": "PHASE 4 - INTEGRITY",
+      "title": "CRITICAL RE-VERIFICATION: Duplicate Client Dictated ID Causes HTTP 500 Crash [DEFECT-20261106-01]",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+        "name": {
+          "en": "Duplicate Key Attempt on Att 7"
+        },
+        "breaks": [
+          {
+            "name": "Unique-Tea",
+            "type": "Paid",
+            "durationMinutes": 11
+          }
+        ]
+      },
+      "status": 500,
+      "response": {
+        "error": {
+          "code": "MongoWriteException",
+          "message": "A write operation resulted in an error. WriteError: { Category : \"DuplicateKey\", Code : 11000, Message : \"E11000 duplicate key error collection: Sahab.ERP.Attendance.Policies index: _id_ dup key: { _id: UUID(\"12b68f6d-9a31-4de9-8184-f812c42de412\") }\" }.",
+          "details": null,
+          "data": null,
+          "validationErrors": null
+        }
+      },
+      "verdict": "FAIL / DEFECT (Got 500, expected [400, 409])",
+      "passed": false
+    },
+    {
+      "tc_id": "TC-ATT7-POST-TEMP-DEL",
+      "phase": "PHASE 5 - SOFT DELETE",
+      "title": "Create Temporary Policy for Deletion",
+      "method": "post",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/break",
+      "payload": {
+        "name": {
+          "en": "Attendance 7 Temporary Policy to Soft Delete"
+        },
+        "breaks": [
+          {
+            "name": "Quick Pause",
+            "type": "Paid",
+            "durationMinutes": 5
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "message": "Break policy created",
+        "policy": {
+          "id": "f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43",
+          "name": {
+            "en": "Attendance 7 Temporary Policy to Soft Delete"
+          },
+          "isActive": true,
+          "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+          "tenantName": {},
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "companyName": {
+            "en": "Attendance 7",
+            "ar": "الحضور 7"
+          },
+          "createdAt": "2026-11-06T05:51:55.0766062Z",
+          "createdBy": "syed.mohamed@comm-it.in",
+          "modifiedAt": null,
+          "modifiedBy": null
+        },
+        "id": "f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43"
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DEL-01",
+      "phase": "PHASE 5 - SOFT DELETE",
+      "title": "Soft Delete Break Policy via PATCH /delete",
+      "method": "patch",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43/delete",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "message": "Policy deleted",
+        "id": "f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43",
+        "isActive": false
+      },
+      "verdict": "PASS",
+      "passed": true
+    },
+    {
+      "tc_id": "TC-ATT7-DEL-02",
+      "phase": "PHASE 5 - SOFT DELETE",
+      "title": "GET Soft Deleted Policy (Verify isActive: false)",
+      "method": "get",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-c8ae-b3dc-1b8d-c44efad14f89/attpolicies/f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "policy": {
+          "type": "Break",
+          "breaks": [
+            {
+              "name": "Quick Pause",
+              "type": "Paid",
+              "durationMinutes": 5
+            }
+          ],
+          "totalBreakDurationInMinutes": 5,
+          "totalPaidBreakDurationInMinutes": 5,
+          "totalUnpaidBreakDurationInMinutes": 0,
+          "id": "f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43",
+          "name": {
+            "en": "Attendance 7 Temporary Policy to Soft Delete"
+          },
+          "isActive": false,
+          "tenantName": {}
+        }
+      },
+      "verdict": "PASS",
+      "passed": true
+    }
+  ],
+  "mongoDocuments": [
+    {
+      "_id": "12b68f6d-9a31-4de9-8184-f812c42de412",
+      "Type": 1,
+      "Name": {
+        "en": "Executive Break Mismatch In Body"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": true,
+      "CreatedAt": "2026-11-06 05:51:26.620000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "2026-11-06 05:51:39.300000",
+      "ModifiedBy": "syed.mohamed@comm-it.in"
+    },
+    {
+      "_id": "eb1c0ed1-eb32-497b-8f8d-326f02dd68f7",
+      "Type": 3,
+      "Name": {
+        "en": "Attendance 7 Revised Grace Period Policy",
+        "ar": "سياسة فترة السماح المعدلة للحضور 7"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": true,
+      "CreatedAt": "2026-11-06 05:51:27.853000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "2026-11-06 05:51:37.768000",
+      "ModifiedBy": "syed.mohamed@comm-it.in"
+    },
+    {
+      "_id": "3f0d9661-84ee-48ec-bd28-6a620878e252",
+      "Type": 3,
+      "Name": {
+        "en": "Invalid Deviation Period"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": true,
+      "CreatedAt": "2026-11-06 05:51:44.735000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "None",
+      "ModifiedBy": null
+    },
+    {
+      "_id": "59a1ed42-4425-493f-9db9-4fca6d91d411",
+      "Type": 2,
+      "Name": {
+        "en": "Negative Overtime Multiplier Test"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": true,
+      "CreatedAt": "2026-11-06 05:51:49.243000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "None",
+      "ModifiedBy": null
+    },
+    {
+      "_id": "9706b662-1c4b-4e91-a4b2-2c9673b7a42b",
+      "Type": 1,
+      "Name": {
+        "en": "Attendance 7 Standard Break Policy",
+        "ar": "سياسة الاستراحة القياسية للحضور 7"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": true,
+      "CreatedAt": "2026-11-06 05:51:52.122000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "None",
+      "ModifiedBy": null
+    },
+    {
+      "_id": "f1ec05bf-1ddb-4b4c-8ee0-5a1ec5cd5c43",
+      "Type": 1,
+      "Name": {
+        "en": "Attendance 7 Temporary Policy to Soft Delete"
+      },
+      "CompanyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+      "CompanyName": {
+        "en": "Attendance 7",
+        "ar": "الحضور 7"
+      },
+      "TenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+      "TenantName": {},
+      "IsActive": false,
+      "CreatedAt": "2026-11-06 05:51:55.076000",
+      "CreatedBy": "syed.mohamed@comm-it.in",
+      "ModifiedAt": "2026-11-06 05:51:56.426000",
+      "ModifiedBy": "syed.mohamed@comm-it.in"
+    }
+  ]
+}

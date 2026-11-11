@@ -1,0 +1,50 @@
+{
+  "USER-08": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits. A working day's start and end time cannot be the same. A working day's work duration must equal the time between its start and end.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"members\":[\"ShortCode\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"FixedTimeSlots[0]\"]},{\"message\":\"A working day's work duration must equal the time between its start and end.\",\"members\":[\"FixedTimeSlots[0]\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"FixedTimeSlots[1]\"]},{\"message\":\"A working day's work duration must equal the time between its start and end.\",\"members\":[\"FixedTimeSlots[1]\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"FixedTimeSlots[2]\"]},{\"message\":\"A working day's work duration must equal the time between its start and end.\",\"members\":[\"FixedTimeSlots[2]\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"FixedTimeSlots[3]\"]},{\"message\":\"A working day's work duration must equal the time between its start and end.\",\"members\":[\"FixedTimeSlots[3]\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"FixedTimeSlots[4]\"]},{\"message\":\"A working day's work duration must equal the time between its start and end.\",\"members\":[\"FixedTimeSlots[4]\"]}]}}"
+  },
+  "USER-21": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"53470658-5f9b-47b4-b254-f96b9501401c\",\"shortCode\":\"ATT4FLX\",\"requestedShortCode\":\"HACKCODE\"},\"validationErrors\":null}}"
+  },
+  "USER-22": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"An English template name is required. All 7 days of the week must be defined, each day once.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"An English template name is required.\",\"members\":[\"TemplateName\"]},{\"message\":\"All 7 days of the week must be defined, each day once.\",\"members\":[\"FlexiTimeSlots\"]}]}}"
+  },
+  "USER-37": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"All 7 days of the week must be defined, each day once. Total working days and total days off must match the number of working and off days in the week.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"All 7 days of the week must be defined, each day once.\",\"members\":[\"FlexiTimeSlots\"]},{\"message\":\"Total working days and total days off must match the number of working and off days in the week.\",\"members\":[\"\"]}]}}"
+  },
+  "USER-81": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"a31a2f5e-bc53-4221-b2d2-ff8c5ed54dbb\",\"shortCode\":\"ATT4FLX\",\"requestedShortCode\":\"HACKCODE\"},\"validationErrors\":null}}"
+  },
+  "USER-82": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:1101\",\"message\":\"Work template not found.\",\"details\":null,\"data\":{\"workTemplateId\":\"00000000-0000-0000-0000-000000000001\"},\"validationErrors\":null}}"
+  },
+  "USER-83": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:9001\",\"message\":\"The provided company does not match the entity company.\",\"details\":null,\"data\":{\"entityCompanyId\":\"3a247435-3cea-83ae-6a9f-6dda99f386a3\",\"requestCompanyId\":\"3a247436-8669-844a-7d2f-1a209af02d8e\"},\"validationErrors\":null}}"
+  },
+  "USER-102": {
+    "status_code": 200,
+    "response": "{\"template\":{\"type\":\"Flexi\",\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":0}],\"id\":\"53470658-5f9b-47b4-b254-f96b9501401c\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{\"en\":\"Spoofed Tenant In Flexi PATCH\"},\"companyId\":\"3a247436-8669-844a-7d2f-1a209af02d8e\",\"companyName\":{\"en\":\"Attendance 4\"},\"locationId\":\"00000000-0000-0000-0000-000000000000\",\"locationName\":{},\"workTemplateName\":{\"en\":\"Attendance 4 Flexi v2.0\"},\"shortCode\":\"ATT4FLX\",\"templateType\":\"Flexi\",\"status\":\"Active\",\"version\":\"2.0\",\"isDefault\":true,\"isEditable\":false,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":480,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-10-28T06:45:15.285Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":\"2026-10-28T10:55:05.247Z\",\"modifiedBy\":\"syed.mohamed@comm-it.in\"}}"
+  },
+  "USER-117": {
+    "status_code": 200,
+    "response": "{\"versions\":[{\"id\":\"53470658-5f9b-47b4-b254-f96b9501401c\",\"version\":\"2.0\",\"editedOn\":\"2026-10-28T06:45:15.285Z\",\"isCurrent\":true,\"status\":\"Active\",\"templateType\":\"Flexi\",\"changeSummary\":[{\"changeType\":\"Name\",\"message\":\"Renamed: Attendance 4 Flexi Default \u2192 Attendance 4 Flexi v2.0\",\"oldValue\":\"Attendance 4 Flexi Default\",\"newValue\":\"Attendance 4 Flexi v2.0\"}]},{\"id\":\"a31a2f5e-bc53-4221-b2d2-ff8c5ed54dbb\",\"version\":\"1.0\",\"editedOn\":\"2026-10-28T06:45:12.023Z\",\"isCurrent\":false,\"status\":\"Archived\",\"templateType\":\"Flexi\",\"changeSummary\":[{\"changeType\":\"Created\",\"message\":\"Work template created\",\"oldValue\":null,\"newValue\":null}]}]}"
+  },
+  "USER-118": {
+    "status_code": 200,
+    "response": "{\"companyDefaultSyncState\":{\"hasCompanyDefault\":true,\"hasPendingChanges\":false,\"companyDefaultTemplateId\":\"53470658-5f9b-47b4-b254-f96b9501401c\",\"currentVersion\":\"2.0\",\"changeLog\":[{\"changeType\":\"Name\",\"message\":\"Renamed: Attendance 4 Flexi Default \u2192 Attendance 4 Flexi v2.0\",\"oldValue\":\"Attendance 4 Flexi Default\",\"newValue\":\"Attendance 4 Flexi v2.0\"}]}}"
+  },
+  "USER-119": {
+    "taken": "{\"availability\":{\"code\":\"\",\"isValidFormat\":false,\"isAvailable\":false,\"reason\":\"InvalidFormat\"}}",
+    "avail": "{\"availability\":{\"code\":\"\",\"isValidFormat\":false,\"isAvailable\":false,\"reason\":\"InvalidFormat\"}}"
+  },
+  "USER-120": {
+    "status_code": 200,
+    "response": "{\"codes\":[]}"
+  }
+}

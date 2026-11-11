@@ -1,0 +1,488 @@
+[
+  {
+    "test_id": "TC-CMP-01",
+    "category": "Company ID",
+    "title": "Malformed companyId in GET route parameter",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/invalid-guid-xyz/attpolicies",
+    "payload": null,
+    "expected": "404 (Route not matched)",
+    "status": 404,
+    "response": ""
+  },
+  {
+    "test_id": "TC-CMP-02",
+    "category": "Company ID",
+    "title": "All-zeros Guid.Empty companyId in GET route parameter",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/00000000-0000-0000-0000-000000000000/attpolicies",
+    "payload": null,
+    "expected": "200 OK (Empty list: No Policies are found)",
+    "status": 200,
+    "response": {
+      "message": "No Policies are found",
+      "policies": []
+    }
+  },
+  {
+    "test_id": "TC-CMP-03",
+    "category": "Company ID",
+    "title": "Non-existing companyId in GET route parameter",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/99999999-9999-9999-9999-999999999999/attpolicies",
+    "payload": null,
+    "expected": "200 OK (Empty list: No Policies are found)",
+    "status": 200,
+    "response": {
+      "message": "No Policies are found",
+      "policies": []
+    }
+  },
+  {
+    "test_id": "TC-CMP-04",
+    "category": "Company ID",
+    "title": "Non-existing companyId in POST Break route",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/99999999-9999-9999-9999-999999999999/attpolicies/break",
+    "payload": {
+      "name": {
+        "en": "Ghost Company Policy"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected": "400 / 404 / 500 (Company Svc 404/500 lookup failure)",
+    "status": 500,
+    "response": {
+      "error": {
+        "code": "HttpRequestException",
+        "message": "Company service company base info call failed: 500",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    }
+  },
+  {
+    "test_id": "TC-CMP-05",
+    "category": "Company ID",
+    "title": "Client supplies foreign companyId in POST body (Anti-Spoofing)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "companyId": "11111111-2222-3333-4444-555555555555",
+      "name": {
+        "en": "Spoof Company In Body"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected": "200 / 201 (Server enforces route companyId, ignores body companyId)",
+    "status": 200,
+    "response": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "7006b6ab-c0cc-4da4-9b79-424fda8a9908",
+        "name": {
+          "en": "Spoof Company In Body"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-06T05:41:58.4814664Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "7006b6ab-c0cc-4da4-9b79-424fda8a9908"
+    }
+  },
+  {
+    "test_id": "TC-DOC-01",
+    "category": "Doc ID",
+    "title": "POST with doc id completely omitted (Server Auto-Generation)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "name": {
+        "en": "Break Auto ID Omitted"
+      },
+      "breaks": [
+        {
+          "name": "Snack",
+          "type": "Paid",
+          "durationMinutes": 10
+        }
+      ]
+    },
+    "expected": "200 OK / 201 Created (Server generates unique GUID)",
+    "status": 200,
+    "response": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "bbb03644-6fc1-4ae9-9159-631dcbc00e0b",
+        "name": {
+          "en": "Break Auto ID Omitted"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-06T05:41:59.7506958Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "bbb03644-6fc1-4ae9-9159-631dcbc00e0b"
+    }
+  },
+  {
+    "test_id": "TC-DOC-02",
+    "category": "Doc ID",
+    "title": "POST with explicit id: null in request body",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "id": null,
+      "name": {
+        "en": "Break ID Null"
+      },
+      "breaks": [
+        {
+          "name": "Coffee",
+          "type": "Paid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected": "400 Bad Request (Cannot convert null to System.Guid)",
+    "status": 400,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.id": [
+          "The JSON value could not be converted to System.Guid. Path: $.id | LineNumber: 0 | BytePositionInLine: 11."
+        ]
+      },
+      "traceId": "00-0778dcd36aea726aac113264e157ad26-9fed704d6aedce07-00"
+    }
+  },
+  {
+    "test_id": "TC-DOC-03",
+    "category": "Doc ID",
+    "title": "POST with Guid.Empty (all-zeros) id in request body",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": {
+        "en": "Break ID Guid.Empty"
+      },
+      "breaks": [
+        {
+          "name": "Coffee",
+          "type": "Paid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected": "200 OK (Server overwrites Guid.Empty with real GUID)",
+    "status": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-184c-0373-f344-015d602678d7",
+          "duplicatePolicyId": "47102040-e4fa-4bbc-895c-f95f4934e50b",
+          "duplicatePolicyName": {
+            "en": "Test Break Doc ID"
+          }
+        },
+        "validationErrors": null
+      }
+    }
+  },
+  {
+    "test_id": "TC-DOC-04",
+    "category": "Doc ID",
+    "title": "POST with client-dictated custom GUID in request body",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "id": "40321957-cf6e-456f-a548-4e3f20e5acae",
+      "name": {
+        "en": "Break ID Client Dictated"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": 20
+        }
+      ]
+    },
+    "expected": "200 OK (Check whether server uses custom_uuid or generates new UUID)",
+    "status": 200,
+    "response": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "40321957-cf6e-456f-a548-4e3f20e5acae",
+        "name": {
+          "en": "Break ID Client Dictated"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-06T05:42:03.5840817Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "40321957-cf6e-456f-a548-4e3f20e5acae"
+    }
+  },
+  {
+    "test_id": "TC-DOC-05",
+    "category": "Doc ID",
+    "title": "POST with malformed non-GUID string in id property",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "id": "INVALID-POLICY-ID-STRING",
+      "name": {
+        "en": "Doc ID Malformed"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "expected": "400 Bad Request (JSON conversion error System.Guid)",
+    "status": 400,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.id": [
+          "The JSON value could not be converted to System.Guid. Path: $.id | LineNumber: 0 | BytePositionInLine: 33."
+        ]
+      },
+      "traceId": "00-6260a64893dcdeacdd633a08624af0af-b95796900429944e-00"
+    }
+  },
+  {
+    "test_id": "TC-DOC-06",
+    "category": "Doc ID",
+    "title": "GET policy by malformed non-GUID policyId in URL",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/invalid-uuid-in-url",
+    "payload": null,
+    "expected": "404 Not Found (Route not matched)",
+    "status": 404,
+    "response": ""
+  },
+  {
+    "test_id": "TC-DOC-07",
+    "category": "Doc ID",
+    "title": "GET policy by non-existing policyId GUID in URL",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/00000000-0000-0000-0000-999999999999",
+    "payload": null,
+    "expected": "400 Bad Request / 404 (Cit.Attendance:1501 Policy not found)",
+    "status": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "00000000-0000-0000-0000-999999999999"
+        },
+        "validationErrors": null
+      }
+    }
+  },
+  {
+    "test_id": "TC-DOC-08",
+    "category": "Doc ID",
+    "title": "PATCH policy with URL policyId vs Body id mismatch",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break/bbb03644-6fc1-4ae9-9159-631dcbc00e0b",
+    "payload": {
+      "id": "186fd600-ce58-45b0-b77f-7727b92c665d",
+      "name": {
+        "en": "Updated Break - Mismatch ID"
+      },
+      "breaks": [
+        {
+          "name": "Snack",
+          "type": "Paid",
+          "durationMinutes": 12
+        }
+      ]
+    },
+    "expected": "200 OK (URL ID enforced, body ID ignored) or 400 Bad Request",
+    "status": 200,
+    "response": {
+      "message": "Break policy updated",
+      "policy": {
+        "id": "bbb03644-6fc1-4ae9-9159-631dcbc00e0b",
+        "name": {
+          "en": "Updated Break - Mismatch ID"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-06T05:41:59.75Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T05:42:08.7802011Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "bbb03644-6fc1-4ae9-9159-631dcbc00e0b"
+    }
+  },
+  {
+    "test_id": "TC-DOC-09",
+    "category": "Doc ID",
+    "title": "PATCH policy with malformed policyId in URL",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break/invalid-uuid-in-url",
+    "payload": {
+      "name": {
+        "en": "Malformed URL ID"
+      },
+      "breaks": [
+        {
+          "name": "Snack",
+          "type": "Paid",
+          "durationMinutes": 12
+        }
+      ]
+    },
+    "expected": "404 Not Found (Route not matched)",
+    "status": 404,
+    "response": ""
+  },
+  {
+    "test_id": "TC-DOC-10",
+    "category": "Doc ID",
+    "title": "PATCH policy with non-existing policyId in URL",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break/00000000-0000-0000-0000-999999999999",
+    "payload": {
+      "name": {
+        "en": "Non-Existing URL ID"
+      },
+      "breaks": [
+        {
+          "name": "Snack",
+          "type": "Paid",
+          "durationMinutes": 12
+        }
+      ]
+    },
+    "expected": "400 Bad Request (Cit.Attendance:1501 Policy not found)",
+    "status": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "00000000-0000-0000-0000-999999999999"
+        },
+        "validationErrors": null
+      }
+    }
+  },
+  {
+    "test_id": "TC-DOC-11",
+    "category": "Doc ID",
+    "title": "Soft-delete policy preserves _id in database",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/bbb03644-6fc1-4ae9-9159-631dcbc00e0b/delete",
+    "payload": null,
+    "expected": "200 OK / 204 No Content",
+    "status": 200,
+    "response": {
+      "message": "Policy deleted",
+      "id": "bbb03644-6fc1-4ae9-9159-631dcbc00e0b",
+      "isActive": false
+    }
+  },
+  {
+    "test_id": "TC-DOC-12",
+    "category": "Doc ID",
+    "title": "Soft-delete with malformed policyId in URL",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/invalid-guid/delete",
+    "payload": null,
+    "expected": "404 Not Found",
+    "status": 404,
+    "response": ""
+  },
+  {
+    "test_id": "TC-DOC-13",
+    "category": "Doc ID",
+    "title": "Soft-delete with non-existing policyId in URL",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/00000000-0000-0000-0000-999999999999/delete",
+    "payload": null,
+    "expected": "400 Bad Request (Cit.Attendance:1501 Policy not found)",
+    "status": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "00000000-0000-0000-0000-999999999999"
+        },
+        "validationErrors": null
+      }
+    }
+  }
+]

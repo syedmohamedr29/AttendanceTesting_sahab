@@ -1,0 +1,103 @@
+# 🛡️ Attendance 2 — Master Consolidated Defect Log
+
+> **Service:** `SP.AttendanceSvc` (.NET 9 Microservice) | **Environment:** Sahab DEV (`sp.dev.zoolwork.com`)
+> **Database:** MongoDB (`Sahab` @ `10.1.0.4:27018`) | **Author:** QA Engineering & Microservice Architecture Team
+> **Status:** **Active Master Defect Register** | **Date:** 04 November 2026
+
+---
+
+## 📑 Table of Contents
+- [1. Executive Summary & Defect Metrics Dashboard](#1-executive-summary--defect-metrics-dashboard)
+- [2. Master Defect Quick-Reference Matrix (All 54 Defects)](#2-master-defect-quick-reference-matrix)
+- [3. Module 1: Holiday Calendar Module (`ERP.Attendance.HolidayCalendars`)](#3-module-1-holiday-calendar-module)
+- [4. Module 2: Work Template & Location Cascade Module (`ERP.Attendance.WorkTemplates`)](#4-module-2-work-template--location-cascade-module)
+- [5. Module 3: Work Plans, Shift Rosters & Attendance Policies](#5-module-3-work-plans-shift-rosters--attendance-policies)
+- [6. Module 4: Security, Authentication & Multi-Tenancy Architecture](#6-module-4-security-authentication--multi-tenancy-architecture)
+- [7. Verified Business Scenarios Confirmed as 'Not a Bug' (By Design)](#7-verified-business-scenarios-confirmed-as-not-a-bug)
+- [8. Developer Remediation Action Checklist](#8-developer-remediation-action-checklist)
+
+---
+
+## 1. Executive Summary & Defect Metrics Dashboard
+
+During rigorous manual, Swagger, Web UI (`sp.dev.zoolwork.com`), and MongoDB Compass testing of the Attendance 2 microservice, a total of **54 defects and architecture gaps** were identified and verified with photographic proof.
+
+### Defect Severity Breakdown
+
+| Severity Level | Count | Impact Summary |
+| :--- | :---: | :--- |
+| 🔴 **P0 (Blocker)** | **7** | **System Blockers:** Blocks operations entirely. Expired JWT bypass, inverted shifts, PATCH deadlock (`1706`), publishing empty calendar, missing holiday names/types. |
+| 🟠 **P1 (Critical)** | **43** | **Critical Domain / Data Integrity:** Unassigned location templates (Delhi gap), HTTP 500 server crashes, negative durations, broken math invariants, empty tenant persistence. |
+| 🟡 **P2 (Major)** | **4** | **Audit / DX / Contracts:** Audit fields stored as plain emails instead of composite user objects, redundant DTO fields, missing Swagger OAuth2 login flow. |
+| **TOTAL** | **54** | **100% Verified with live screenshots & MongoDB Compass records.** |
+
+### Defect Distribution by Functional Module
+
+| Module | Target Collection / Component | Total | P0 Blocker | P1 Critical | P2 Major |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Module 1: Holiday Calendars** | `ERP.Attendance.HolidayCalendars` | **15** | 5 | 9 | 1 |
+| **Module 2: Work Templates & Location Cascade** | `ERP.Attendance.WorkTemplates` | **26** | 1 | 24 | 1 |
+| **Module 3: Work Plans, Rosters & Policies** | `ERP.Attendance.WorkPlans`, `Policies` | **7** | 0 | 6 | 1 |
+| **Module 4: Security, Auth & Multi-Tenancy** | Kestrel JWT Middleware, Multi-Tenancy | **6** | 1 | 4 | 1 |
+| **TOTAL** | **All 4 Modules Combined** | **54** | **7** | **43** | **4** |
+
+---
+
+## 2. Master Defect Quick-Reference Matrix
+
+| Defect ID | Severity | Module | Short Summary | Affected Route / Target | Evidence Link |
+| :--- | :---: | :--- | :--- | :--- | :---: |
+| [`DEFECT-20261103-01`](#defect-20261103-01) | 🟡 P2 | Holiday Calendar | Audit field `CreatedBy` stores plain email string instead of composite user identity | `MongoDB `HolidayCalendars`` | [Evidence 18](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg) |
+| [`DEFECT-20261103-02`](#defect-20261103-02) | 🟠 P1 | Holiday Calendar | `TenantName` persists as `Object (empty)` `{}` on creation & update | ``POST` / `PATCH /holidaylist`` | [Evidence 19](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) |
+| [`DEFECT-20261103-03`](#defect-20261103-03) | 🟠 P1 | Holiday Calendar | `isActive: false` in request payload ignored by backend and saved as `true` in DB | ``POST /holidaylist`` | [Evidence 20](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg) |
+| [`DEFECT-20261103-04`](#defect-20261103-04) | 🟠 P1 | Holiday Calendar | Non-existing holiday type ID (`holidayTypeId`) accepted without catalog verification | ``POST /holidaylist`` | [Evidence 21 & 22](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) |
+| [`DEFECT-20261103-05`](#defect-20261103-05) | 🟠 P1 | Holiday Calendar | Missing mandatory English calendar name (`name.en` & `holidayName.en`) validation | ``POST` / `PATCH /holidaylist`` | [Evidence 23](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_23_holiday_calendar_arabic_only_name_accepted.jpg) |
+| [`DEFECT-20261103-06`](#defect-20261103-06) | 🟠 P1 | Holiday Calendar | Empty `holidayLists: []` array accepted with HTTP 200 OK on calendar creation | ``POST /holidaylist`` | [Evidence 24](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) |
+| [`DEFECT-20261103-07`](#defect-20261103-07) | 🟠 P1 | Holiday Calendar | Duplicate `shortCode` allowed within same company (missing unique index in DB) | ``POST /holidaylist`` | [Evidence 25](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg) |
+| [`DEFECT-20261103-08`](#defect-20261103-08) | 🟠 P1 | Holiday Calendar | Invalid `calendarType` (`999`, `0`) silently accepted and overwritten to default `1` | ``POST /holidaylist`` | [Evidence 26](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png) |
+| [`DEFECT-20261103-09`](#defect-20261103-09) | 🟠 P1 | Holiday Calendar | Outer `year` (2026) vs inner `yearlyCalendar.year` (2027) mismatch accepted | ``POST /holidaylist`` | [Evidence 27](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_27_holiday_calendar_outer_year_yearlycalendar_year_mismatch.png) |
+| [`DEFECT-20261103-10`](#defect-20261103-10) | 🔴 P0 | Holiday Calendar | Child holiday empty English name (`holidayName.en: ""`) accepted and stored in DB | ``POST /holidaylist`` | [Evidence 28](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_28_holiday_calendar_child_holiday_empty_english_name.jpg) |
+| [`DEFECT-20261103-11`](#defect-20261103-11) | 🔴 P0 | Holiday Calendar | Chronological inversion allowed: `endDate` earlier than `startDate` (negative duration) | ``POST /holidaylist`` | [Evidence 29](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png) |
+| [`DEFECT-20261103-12`](#defect-20261103-12) | 🟠 P1 | Holiday Calendar | Holiday dates outside calendar year allowed (2027 holiday persisted in 2026 calendar) | ``POST /holidaylist`` | [Evidence 30](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg) |
+| [`DEFECT-20261103-13`](#defect-20261103-13) | 🔴 P0 | Holiday Calendar | Missing `holidayTypeId` allowed on child holidays; stored as empty GUID (`00000000...`) | ``POST /holidaylist`` | [Evidence 31](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_31_holiday_calendar_missing_holidaytypeid_stored_empty_guid.jpg) |
+| [`DEFECT-20261103-14`](#defect-20261103-14) | 🔴 P0 | Holiday Calendar | **BLOCKER:** `PATCH /holidaylist/{id}/{year}` and Web UI deadlocked by `Cit.Attendance:1706` | ``PATCH /holidaylist` & UI` | [Evidence 32 & 33](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_33_holiday_patch_1706_ui_blocked_dev_zoolwork.jpg) |
+| [`DEFECT-20261103-15`](#defect-20261103-15) | 🔴 P0 | Holiday Calendar | **BLOCKER:** Publish API allows publishing empty calendar with 0 holidays (`IsPublished: true`) | ``POST /holidaylist/publish`` | [Evidence 34 & 35](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_34_holiday_publish_empty_calendar_compass_proof.jpg) |
+| [`DEFECT-20261103-16`](#defect-20261103-16) | 🟠 P1 | Work Template / Sync | **MAJOR GAP:** Newly created location (Delhi) NOT auto-assigned Company Default Work Template | ``CompanySvc` & `AttendanceSvc`` | [Evidence 37 & 38](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_37_cdwt_compass_only_4_templates_missing_delhi.jpg) |
+| [`DEFECT-20261102-01`](#defect-20261102-01) | 🟠 P1 | Work Template | Missing mandatory English template name (`templateName.en`); Arabic-only accepted | ``POST /worktemplates/fixed`` | [Evidence 01](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_01_worktemplates_created_with_placeholder.png) |
+| [`DEFECT-20261102-02`](#defect-20261102-02) | 🟠 P1 | Work Template | Ambiguous `shortCode` contract: system silently generates random code if omitted or empty | ``POST /worktemplates`` | Schema & MongoDB |
+| [`DEFECT-20261102-03`](#defect-20261102-03) | 🟠 P1 | Work Template | `shortCode` minimum length boundary (>= 2 chars) not enforced; single char (`"A"`) accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-04`](#defect-20261102-04) | 🟠 P1 | Work Template | `shortCode` maximum length (<= 7) and regex bypassed: 9 chars & special chars (`CDW@#99`) accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-05`](#defect-20261102-05) | 🟠 P1 | Work Template | Loose `templateType` enum deserialization accepts string & int without strict range validation | ``POST /worktemplates`` | DTO Binding |
+| [`DEFECT-20261102-06`](#defect-20261102-06) | 🟠 P1 | Work Template | `totalWorkDurationInMinutes` missing validation: zero (`0`), negative, or omitted field accepted | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-07`](#defect-20261102-07) | 🟠 P1 | Work Template | Omitting `totalWorkingDays` or `totalDaysOff` throws unhandled HTTP 500 crash instead of HTTP 400 | ``POST /worktemplates`` | Unhandled Exception |
+| [`DEFECT-20261102-08`](#defect-20261102-08) | 🟠 P1 | Work Template | Daily `workDurationInMinutes` accepts zero or negative minutes on active working days | ``POST /worktemplates`` | Validation Rule |
+| [`DEFECT-20261102-09`](#defect-20261102-09) | 🟠 P1 | Work Template | Unhandled HTTP 500 `ValidationException` crash on day abbreviation string `"Mon"` | ``POST /worktemplates/fixed`` | Invariant Rule |
+| [`DEFECT-20261102-10`](#defect-20261102-10) | 🔴 P0 | Work Template | **CRITICAL:** Inverted shift timings (`endTime < startTime`, e.g. 10:00 to 09:00) accepted | ``POST /worktemplates/fixed`` | Temporal Invariant |
+| [`DEFECT-20261102-11`](#defect-20261102-11) | 🟠 P1 | Work Template | Slot duration math invariant violation: `workDurationInMinutes` (120m) != `(end - start = 480m)` | ``POST /worktemplates`` | Math Invariant |
+| [`DEFECT-20261102-12`](#defect-20261102-12) | 🟠 P1 | Work Template | Contradictory off-day configuration: `isWorkingDay: false` allowed with active working shift timings | ``POST /worktemplates`` | Calendar Invariant |
+| [`DEFECT-20261102-13`](#defect-20261102-13) | 🟠 P1 | Work Template | Template type mutability via PATCH across incompatible categories (Fixed -> Split) corrupts schema | ``PATCH /worktemplates/{id}`` | Domain Guard |
+| [`DEFECT-20261102-14`](#defect-20261102-14) | 🟠 P1 | Work Template | TemplateType vs FlexibleType inconsistency: `templateType: "Fixed"` with `flexibleType: 1` accepted | ``POST /worktemplates`` | Contract Invariant |
+| [`DEFECT-20261102-15`](#defect-20261102-15) | 🟠 P1 | Work Template | Out-of-range `dayEnum` (value `8`) accepted in `flexiTimeSlots` without validation | ``POST /worktemplates/flexi`` | Enum Boundary |
+| [`DEFECT-20261102-16`](#defect-20261102-16) | 🟠 P1 | Work Template | Invalid recurrence `recurrenceOfMonth: ["NotApplicable"]` or `0` accepted on Flexi templates | ``POST /worktemplates/flexi`` | Recurrence Invariant |
+| [`DEFECT-20261102-17`](#defect-20261102-17) | 🟠 P1 | Work Template | Negative duration and data type mismatch: `flexiTimeSlots` accepts negative duration (`-60`) | ``POST /worktemplates/flexi`` | DTO Validation |
+| [`DEFECT-20261102-18`](#defect-20261102-18) | 🟠 P1 | Work Template | Split shift empty interval crash: sending `timeSlots: []` throws unhandled HTTP 500 crash | ``POST /worktemplates/split`` | [Evidence 09](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_09_split_overlap_500_validation_exception.png) |
+| [`DEFECT-20261028-01`](#defect-20261028-01) | 🟠 P1 | Work Template | Flexi daily work duration exceeding 24 hours (`1441` minutes) accepted with HTTP 200 OK | ``POST /worktemplates/flexi`` | Boundary Invariant |
+| [`DEFECT-20261028-02`](#defect-20261028-02) | 🟠 P1 | Work Template | FluentValidation `ValidationException` throws unhandled HTTP 500 crash across 13 user scenarios | `ASP.NET Core Middleware` | Exception Filter |
+| [`DEFECT-20261028-03`](#defect-20261028-03) | 🟠 P1 | Work Template | Active Company Default template can be archived or deleted without guard while work plans use it | ``PATCH /worktemplates/{id}/archive`` | Lifecycle Guard |
+| [`DEFECT-20261027-05`](#defect-20261027-05) | 🟠 P1 | Work Template | Header `Location` model binding trap during CDWT setup causes ASP.NET Core binding collision | ``POST /worktemplates`` | Controller Binding |
+| [`DEFECT-20261027-01`](#defect-20261027-01) | 🟠 P1 | Work Plans | Missing `locationId` in `POST /workplans` throws unhandled HTTP 500 crash instead of clean 400 | ``POST /workplans`` | [Evidence 11](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_11_workplan_missing_locationid_400.png) |
+| [`DEFECT-20261027-02`](#defect-20261027-02) | 🟡 P2 | Work Plans | Redundant DTO validation on audit field `CreatedBy` forces client to submit user identity in body | ``POST /workplans`` | Audit DTO Contract |
+| [`DEFECT-20261027-03`](#defect-20261027-03) | 🟠 P1 | Attendance Policies | Missing boundary check on grace period minutes: negative grace period (`-15`m) accepted with 200 OK | ``POST /policies`` | [Evidence 08](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_08_negative_grace_accepted_200.png) |
+| [`DEFECT-20261027-04`](#defect-20261027-04) | 🟠 P1 | Attendance Policies | Missing boundary check on break policy duration: negative break (`-30`m) accepted with 200 OK | ``POST /policies`` | [Evidence 10](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_10_negative_break_accepted_200.png) |
+| [`DEFECT-20261027-06`](#defect-20261027-06) | 🟠 P1 | Work Plans / Split | Split shift overlapping intervals & zero break gap: second slot starts before first ends, accepted | ``POST /workplans`` | [Evidence 09](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_09_split_overlap_500_validation_exception.png) |
+| [`DEFECT-20261027-07`](#defect-20261027-07) | 🟠 P1 | Work Plans | Missing 7-day calendar invariant validation: schedule with 6 or 8 days throws unhandled 500 crash | ``POST /workplans`` | [Evidence 12](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_12_calendar_sum_not_7_500_validation_exception.png) |
+| [`DEFECT-20261028-07`](#defect-20261028-07) | 🟠 P1 | Attendance Policies | Negative grace and break durations accepted across Attendance Policies endpoints | ``POST /policies`` | Policy Invariants |
+| [`DEFECT-20261029-01`](#defect-20261029-01) | 🔴 P0 | Security / Auth | **CRITICAL SECURITY:** JWT lifetime & signature validation disabled; accepts expired & forged tokens | `Kestrel JWT Middleware` | Security Bypass |
+| [`DEFECT-20261029-02`](#defect-20261029-02) | 🟡 P2 | Swagger / OpenAPI | Attendance Swagger missing interactive OAuth2 (`authorizationCode`) flow unlike Company Service | `Swagger UI Config` | [Evidence 16 & 17](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_16_attendance_swagger_missing_oauth2.png) |
+| [`DEFECT-20261026-01`](#defect-20261026-01) | 🟠 P1 | Cross-Service Sync | Cross-service sync failure: Company Service `Checklist: false` not reflected in Attendance Service | ``CompanySvc` Sync` | [Evidence 02](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_02_companiesmaster_checklist_false.png) |
+| [`DEFECT-20261026-02`](#defect-20261026-02) | 🟠 P1 | Multi-Tenancy | `TenantName` persisted as empty object `{}` across MongoDB documents (`WorkTemplates`, `HolidayCalendars`) | `MongoDB `TenantName`` | [Evidence 06](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_06_tenantname_empty_object_compass.png) |
+| [`DEFECT-20261026-03`](#defect-20261026-03) | 🟡 P2 | Audit Infrastructure | `CreatedBy` audit field stores plain email string instead of composite user identity object | `MongoDB Audit Fields` | [Evidence 04 & 05](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_05_createdby_plain_email_highlighted.png) |
+| [`DEFECT-20261026-04`](#defect-20261026-04) | 🟠 P1 | API Contracts | `tenantName` still exposed in request body DTOs across 26 POST & PATCH APIs instead of auto-injected | `26 Controller Endpoints` | [Evidence 07](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_07_swagger_tenantname_still_present.png) |
+| [`DEFECT-20261028-04`](#defect-20261028-04) | 🟠 P1 | Multi-Tenancy Scoping | Cross-company scoping fallback: requesting another company's resource returns HTTP 200 instead of 404 | `Company Scoping Guard` | Authorization Boundary |
+
+---

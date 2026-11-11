@@ -1,0 +1,394 @@
+[
+  {
+    "tc_id": "POL-DTO-01",
+    "title": "Break Policy - Empty Name Object",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "name": {},
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Name is required for the policy.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Name is required for the policy.",
+            "members": [
+              "Name"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-15",
+    "title": "Break Policy - Negative DurationMinutes (-15)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "name": {
+        "en": "Negative Break"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "Paid",
+          "durationMinutes": -15
+        }
+      ]
+    },
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Break duration must be greater than 0 minutes.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Break duration must be greater than 0 minutes.",
+            "members": [
+              "Breaks[0].DurationMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-17",
+    "title": "Break Policy - Invalid BreakType Enum ('SuperPaid')",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "name": {
+        "en": "Invalid Enum"
+      },
+      "breaks": [
+        {
+          "name": "Tea",
+          "type": "SuperPaid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "code": 400,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.breaks[0].type": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].type | LineNumber: 0 | BytePositionInLine: 79."
+        ]
+      },
+      "traceId": "00-3c2d613906435f0f7e13a2fe759b1a58-8ade1a26f6d822b8-00"
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-24",
+    "title": "Grace Period - Negative LateCheckInGraceMinutes (-10)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/graceperiod",
+    "payload": {
+      "name": {
+        "en": "Negative Grace"
+      },
+      "lateCheckInGraceMinutes": -10,
+      "earlyCheckOutGraceMinutes": 10
+    },
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Late check-in grace minutes cannot be negative.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Late check-in grace minutes cannot be negative.",
+            "members": [
+              "LateCheckInGraceMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-31",
+    "title": "Grace Period - Invalid DeviationPeriod Enum ('Yearly')",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/graceperiod",
+    "payload": {
+      "name": {
+        "en": "Invalid Period"
+      },
+      "deviationPeriod": "Yearly"
+    },
+    "code": 400,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.deviationPeriod": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.Enums.Policies.GracePeriodDeviationPeriod. Path: $.deviationPeriod | LineNumber: 0 | BytePositionInLine: 62."
+        ]
+      },
+      "traceId": "00-54eb7ebd4060f40da6af422d1db1df8e-8ca0d982e5d5330a-00"
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-36",
+    "title": "Grace Period - Negative DeductionDays (-1.5)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/graceperiod",
+    "payload": {
+      "name": {
+        "en": "Negative Days"
+      },
+      "deductionDays": -1.5
+    },
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "DeductionDays must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "DeductionDays must be >= 0",
+            "members": [
+              "DeductionDays"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-46",
+    "title": "Overtime Policy - Negative BufferMinutes (-15)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/overtime",
+    "payload": {
+      "name": {
+        "en": "Negative Buffer"
+      },
+      "bufferMinutes": -15
+    },
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "BufferMinutes must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "BufferMinutes must be >= 0",
+            "members": [
+              "BufferMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-58",
+    "title": "Overtime Policy - Negative RateFormula Multiplier (-1.5)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/overtime",
+    "payload": {
+      "name": {
+        "en": "Negative Multiplier"
+      },
+      "rates": [
+        {
+          "dayRate": "WorkingDay",
+          "rateFormula": -1.5
+        }
+      ]
+    },
+    "code": 500,
+    "response": {
+      "error": {
+        "code": "HttpRequestException",
+        "message": "Company service company base info call failed: 500",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "POL-DTO-55",
+    "title": "Overtime Policy - Invalid OvertimeDayRate Enum ('WeekendDay')",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/overtime",
+    "payload": {
+      "name": {
+        "en": "Invalid Rate Enum"
+      },
+      "rates": [
+        {
+          "dayRate": "WeekendDay",
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "code": 400,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.rates[0].dayRate": [
+          "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.OvertimeRate. Path: $.rates[0].dayRate | LineNumber: 0 | BytePositionInLine: 72."
+        ]
+      },
+      "traceId": "00-7af1ea2c4e0cb74cbe07869c690d9d13-708d467fe1c79722-00"
+    },
+    "passed": true,
+    "expected": [
+      400
+    ]
+  },
+  {
+    "tc_id": "TC-POL-GET-02",
+    "title": "GET Non-Existing Policy ID",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/00000000-0000-0000-0000-000000009999",
+    "payload": null,
+    "code": 400,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "00000000-0000-0000-0000-000000009999"
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "expected": [
+      404
+    ]
+  },
+  {
+    "tc_id": "TC-POL-DEL-01",
+    "title": "Soft-Delete Break Policy via PATCH /delete",
+    "method": "patch",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/88a26cf7-54bc-42a1-9624-5fba47cc3587/delete",
+    "payload": null,
+    "code": 200,
+    "response": {
+      "message": "Policy deleted",
+      "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587",
+      "isActive": false
+    },
+    "passed": true,
+    "expected": [
+      200,
+      204
+    ]
+  },
+  {
+    "tc_id": "TC-POL-DEL-05",
+    "title": "GET Soft-Deleted Break Policy",
+    "method": "get",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/88a26cf7-54bc-42a1-9624-5fba47cc3587",
+    "payload": null,
+    "code": 200,
+    "response": {
+      "policy": {
+        "type": "Break",
+        "breaks": [
+          {
+            "name": "Morning Coffee",
+            "type": "Paid",
+            "durationMinutes": 20
+          },
+          {
+            "name": "Lunch Break",
+            "type": "Unpaid",
+            "durationMinutes": 60
+          }
+        ],
+        "totalBreakDurationInMinutes": 80,
+        "totalPaidBreakDurationInMinutes": 20,
+        "totalUnpaidBreakDurationInMinutes": 60,
+        "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587",
+        "name": {
+          "en": "Attendance 6 Updated Break Policy",
+          "ar": "سياسة الاستراحة المحدثة للحضور 6"
+        },
+        "isActive": false,
+        "tenantName": {}
+      }
+    },
+    "passed": true,
+    "expected": [
+      200,
+      404
+    ]
+  }
+]

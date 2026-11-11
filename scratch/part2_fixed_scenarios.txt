@@ -1,0 +1,1137 @@
+## 1. Common baseline values
+
+| Field                        | Baseline                 |
+| ---------------------------- | ------------------------ |
+| `templateType`               | `1` (Fixed)              |
+| `totalWorkingDays`           | `5`                      |
+| `totalDaysOff`               | `2`                      |
+| `totalWorkDurationInMinutes` | `2700`                   |
+| `timeZoneId`                 | `Asia/Riyadh`            |
+| Working day                  | 540 minutes, 08:00–17:00 |
+| Off day                      | 0 minutes, 00:00–00:00   |
+
+Day enum: Sunday `1`, Monday `2`, Tuesday `3`, Wednesday `4`, Thursday `5`, Friday `6`, Saturday `7`.
+
+Recurrence: First `1`, Second `2`, Third `3`, Fourth `4`, Fifth `5`.
+
+## 2. POST – Positive payloads
+
+Endpoint: `POST /api/companies/{companyId}/worktemplates/fixed`
+
+### P01 – Standard five-day template
+
+```
+{
+  "tenantName": {
+    "en": "Attendance",
+    "ar": "Attendance"
+  },
+  "templateName": {
+    "en": "Standard Fixed Template",
+    "ar": "قالب العمل الثابت القياسي"
+  },
+  "shortCode": "FIX001",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 2700,
+  "totalWorkingDays": 5,
+  "totalDaysOff": 2,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P02 – Six working days
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Six Day Fixed Template","ar":"قالب عمل لستة أيام"},
+  "shortCode": "FIX002",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 3240,
+  "totalWorkingDays": 6,
+  "totalDaysOff": 1,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":6,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P03 – Four working days
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Four Day Fixed Template","ar":"قالب عمل لأربعة أيام"},
+  "shortCode": "FIX003",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 2160,
+  "totalWorkingDays": 4,
+  "totalDaysOff": 3,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+P03 is a schedule-count test candidate: verify that the first slot's off-day duration is zero; the example above should be corrected to `workDurationInMinutes: 0` for that slot before execution.
+
+### P04 – Different working durations
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Different Duration Template","ar":"قالب بمدد عمل مختلفة"},
+  "shortCode": "FIX004",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 2700,
+  "totalWorkingDays": 5,
+  "totalDaysOff": 2,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":480,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"16:00:00"},
+    {"workDurationInMinutes":510,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"16:30:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":570,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:30:00"},
+    {"workDurationInMinutes":600,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+Expected total for P04 is 2700 minutes.
+
+### P05 – Selected monthly recurrences
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Selected Recurrence Template","ar":"قالب بتكرار محدد"},
+  "shortCode": "FIX005",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 1620,
+  "totalWorkingDays": 3,
+  "totalDaysOff": 4,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,3,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":4,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":5,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+Expected: Validate recurrence-specific total calculation; `totalWorkingDays` may not simply equal the number of slot objects when recurrence subsets are used.
+
+### P06 – India timezone
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"India Fixed Template","ar":"قالب العمل الهندي"},
+  "shortCode": "FIX006",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 2700,
+  "totalWorkingDays": 5,
+  "totalDaysOff": 2,
+  "timeZoneId": "Asia/Kolkata",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P07 – One-minute duration boundary
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"One Minute Fixed Template","ar":"قالب دقيقة واحدة"},
+  "shortCode": "FIX007",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 1,
+  "totalWorkingDays": 1,
+  "totalDaysOff": 6,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":1,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"08:01:00"},
+    {"workDurationInMinutes":0,"dayEnum":2,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":3,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":4,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":5,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P08 – Twelve-hour duration candidate
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Twelve Hour Fixed Template","ar":"قالب اثنتي عشرة ساعة"},
+  "shortCode": "FIX008",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 720,
+  "totalWorkingDays": 1,
+  "totalDaysOff": 6,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":720,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"06:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":2,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":3,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":4,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":5,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P09 – Inactive/default-independent schedule candidate
+
+The persisted schema does not establish a request `isActive` property for this endpoint, so I have not invented one. This scenario instead tests another schedule configuration: one working day and six off-days.
+
+```
+{
+  "tenantName": {"en":"Attendance","ar":"Attendance"},
+  "templateName": {"en":"Single Working Day Template","ar":"قالب يوم عمل واحد"},
+  "shortCode": "FIX009",
+  "templateType": 1,
+  "totalWorkDurationInMinutes": 540,
+  "totalWorkingDays": 1,
+  "totalDaysOff": 6,
+  "timeZoneId": "Asia/Riyadh",
+  "fixedTimeSlots": [
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":2,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":3,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":4,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":5,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+## 3. POST – Negative payloads
+
+Endpoint: `POST /api/companies/{companyId}/worktemplates/fixed`
+
+All negative payloads below include the complete baseline structure. Each changes the intended validation field.
+
+### N01 – Empty template name
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"","ar":"قالب العمل الثابت"},
+  "shortCode":"FIXN001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N02 – Null template name
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":null,
+  "shortCode":"FIXN002",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N03 – Empty short code
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Empty Short Code Test","ar":"اختبار رمز فارغ"},
+  "shortCode":"",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N04 – Duplicate short code
+
+Use an already existing short code, for example `GDEGSDD` from your saved document.
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Duplicate Short Code Test","ar":"اختبار رمز مكرر"},
+  "shortCode":"GDEGSDD",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N05 – Invalid template type
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Template Type","ar":"نوع قالب غير صالح"},
+  "shortCode":"FIXN005",
+  "templateType":999,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N06 – Invalid day enum
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Day Enum","ar":"يوم غير صالح"},
+  "shortCode":"FIXN006",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":8,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N07 – Invalid recurrence
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Recurrence","ar":"تكرار غير صالح"},
+  "shortCode":"FIXN007",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,6],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N08 – Negative duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Negative Duration","ar":"مدة سالبة"},
+  "shortCode":"FIXN008",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2159,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":-1,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N09 – Decimal duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Decimal Duration","ar":"مدة عشرية"},
+  "shortCode":"FIXN009",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540.5,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N10 – Invalid start time
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Start Time","ar":"وقت بداية غير صالح"},
+  "shortCode":"FIXN010",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"25:70:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N11 – End time earlier than start time
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"End Before Start","ar":"وقت النهاية قبل البداية"},
+  "shortCode":"FIXN011",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"17:00:00","endTime":"08:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N12 – Invalid timezone
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Timezone","ar":"منطقة زمنية غير صالحة"},
+  "shortCode":"FIXN012",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Invalid/Timezone",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N13 – Incorrect total duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Incorrect Total Duration","ar":"إجمالي مدة غير صحيح"},
+  "shortCode":"FIXN013",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2701,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N14 – Incorrect working-day count
+
+Use the complete P01 baseline payload but set `"totalWorkingDays": 6`. Expected: verify count validation against the five working slots.
+
+### N15 – Incorrect days-off count
+
+Use the complete P01 baseline payload but set `"totalDaysOff": 3`. Expected: verify count validation against the two off-day slots.
+
+### N16 – Working day with zero duration
+
+Use the complete P01 baseline payload but set the first slot's `workDurationInMinutes` to `0` while retaining `isWorkingDay: true` and its 08:00–17:00 time range.
+
+### N17 – Off-day with non-zero duration
+
+Use the complete P01 baseline payload but set the Saturday slot to `workDurationInMinutes: 540`, `startTime: "08:00:00"`, `endTime: "17:00:00"` while keeping `isWorkingDay: false`.
+
+### N18 – Duplicate overlapping day
+
+Use the complete P01 baseline payload but add a second Monday slot (`dayEnum: 2`) with recurrence `[3,4]` that overlaps the original Monday recurrence.
+
+### N19 – Wrong data type for `isWorkingDay`
+
+Use the complete P01 baseline payload but change Monday's `isWorkingDay` from `true` to `"true"`.
+
+### N20 – Wrong data type for duration
+
+Use the complete P01 baseline payload but change Monday's `workDurationInMinutes` from `540` to `"540"`.
+
+Expected for N14–N20: Verify validation and ensure the API does not silently save inconsistent totals or schedules. These are negative test candidates; some rules may be enforced by server-side recalculation rather than rejection.
+
+## 4. PATCH – Positive payloads
+
+Endpoint: `PATCH /api/companies/{companyId}/worktemplates/fixed/{id}`
+
+Use an existing Fixed template ID from a successful POST. The URL ID identifies the template; the body below follows the assumed request DTO and does not include a separate ID field.
+
+### P01 – Update template name
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Updated Fixed Template","ar":"قالب العمل الثابت المحدث"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P02 – Update working hours
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Updated Working Hours","ar":"ساعات عمل محدثة"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P03 – Update to six working days
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Six Days Updated Template","ar":"قالب محدث لستة أيام"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":3240,
+  "totalWorkingDays":6,
+  "totalDaysOff":1,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":6,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P04 – Update to four working days
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Four Days Updated Template","ar":"قالب محدث لأربعة أيام"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2160,
+  "totalWorkingDays":4,
+  "totalDaysOff":3,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":0,"dayEnum":1,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P05 – Update one working day's duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Monday Duration Updated","ar":"مدة يوم الاثنين محدثة"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2640,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":480,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"16:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P06 – Update timezone
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"India Timezone Updated Template","ar":"قالب محدث بتوقيت الهند"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Kolkata",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"09:00:00","endTime":"18:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P07 – Update recurrence
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Updated Recurrence Template","ar":"قالب تكرار محدث"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,3,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### P08 – Update all fields
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Fully Updated Fixed Template","ar":"قالب ثابت محدث بالكامل"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2640,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":480,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"16:00:00"},
+    {"workDurationInMinutes":510,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"16:30:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":570,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:30:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+## 5. PATCH – Negative payloads
+
+For these cases, use the same existing template ID in the URL. Each JSON body includes the complete request structure.
+
+### N01 – Null template name
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":null,
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N02 – Invalid template type
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Type Update","ar":"تحديث نوع غير صالح"},
+  "shortCode":"FIX001",
+  "templateType":999,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N03 – Invalid day enum
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Day Update","ar":"تحديث يوم غير صالح"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":0,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N04 – Negative duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Negative Duration Update","ar":"تحديث مدة سالبة"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2159,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":-1,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N05 – Decimal duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Decimal Duration Update","ar":"تحديث مدة عشرية"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540.5,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N06 – Invalid recurrence
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Recurrence Update","ar":"تحديث تكرار غير صالح"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,6],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N07 – Incorrect total duration
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Incorrect Total Duration Update","ar":"تحديث إجمالي مدة غير صحيح"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2701,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Asia/Riyadh",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N08 – Invalid timezone
+
+```
+{
+  "tenantName":{"en":"Attendance","ar":"Attendance"},
+  "templateName":{"en":"Invalid Timezone Update","ar":"تحديث منطقة زمنية غير صالحة"},
+  "shortCode":"FIX001",
+  "templateType":1,
+  "totalWorkDurationInMinutes":2700,
+  "totalWorkingDays":5,
+  "totalDaysOff":2,
+  "timeZoneId":"Invalid/Timezone",
+  "fixedTimeSlots":[
+    {"workDurationInMinutes":540,"dayEnum":1,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":2,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":3,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":4,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":540,"dayEnum":5,"isWorkingDay":true,"recurrenceOfMonth":[1,2,3,4,5],"startTime":"08:00:00","endTime":"17:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":6,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"},
+    {"workDurationInMinutes":0,"dayEnum":7,"isWorkingDay":false,"recurrenceOfMonth":[],"startTime":"00:00:00","endTime":"00:00:00"}
+  ]
+}
+```
+
+### N09 – Non-existing template ID
+
+Use a validly formatted but non-existing GUID in the URL:
+
+```
+PATCH /api/companies/{companyId}/worktemplates/fixed/00000000-0000-0000-0000-000000000001
+```
+
+Use P01's complete body.
+
+Expected: Not found; no new record should be created.
+
+### N10 – Invalid template ID format
+
+```
+PATCH /api/companies/{companyId}/worktemplates/fixed/invalid-id
+```
+
+Use P01's complete body.
+
+Expected: Route/ID validation error.
+
+### N11 – Company mismatch
+
+Use a valid Fixed template ID from Company B but pass Company A's ID in the URL.
+
+Use P01's complete body.
+
+Expected: The API must not update another company's template.
+
+### N12 – Flexible template ID passed to Fixed endpoint
+
+Use an existing Flexible template ID in the Fixed PATCH URL.
+
+Use P01's complete body.
+
+Expected: The API must reject the cross-template-type update or otherwise prevent modification of the Flexible template.
+
+## 6. Boundary payload values
+
+Use these values individually in the complete P01 request body. Keep all other fields and all seven slots unchanged.
+
+| Test ID | Field                        | Value         |
+| ------- | ---------------------------- | ------------- |
+| BVA01   | `workDurationInMinutes`      | -1            |
+| BVA02   | `workDurationInMinutes`      | 0             |
+| BVA03   | `workDurationInMinutes`      | 1             |
+| BVA04   | `workDurationInMinutes`      | 480           |
+| BVA05   | `workDurationInMinutes`      | 540           |
+| BVA06   | `workDurationInMinutes`      | 1440          |
+| BVA07   | `workDurationInMinutes`      | 2147483647    |
+| BVA08   | `workDurationInMinutes`      | 2147483648    |
+| BVA09   | `dayEnum`                    | 0             |
+| BVA10   | `dayEnum`                    | 1             |
+| BVA11   | `dayEnum`                    | 7             |
+| BVA12   | `dayEnum`                    | 8             |
+| BVA13   | `recurrenceOfMonth`          | `[]`          |
+| BVA14   | `recurrenceOfMonth`          | `[1]`         |
+| BVA15   | `recurrenceOfMonth`          | `[1,2,3,4,5]` |
+| BVA16   | `recurrenceOfMonth`          | `[0]`         |
+| BVA17   | `recurrenceOfMonth`          | `[6]`         |
+| BVA18   | `totalWorkingDays`           | 0             |
+| BVA19   | `totalWorkingDays`           | 7             |
+| BVA20   | `totalWorkingDays`           | 8             |
+| BVA21   | `totalDaysOff`               | 0             |
+| BVA22   | `totalDaysOff`               | 7             |
+| BVA23   | `totalDaysOff`               | 8             |
+| BVA24   | `totalWorkDurationInMinutes` | 0             |
+| BVA25   | `totalWorkDurationInMinutes` | 2700          |
+| BVA26   | `totalWorkDurationInMinutes` | 10080         |
+
+For every BVA test, change the matching field in the full JSON payload and retain the remaining values. These are test inputs, not confirmed API maximums.
+
+## 7. Important corrections before execution
+
+- P03 correction: For the Sunday off-day slot, use `workDurationInMinutes: 0`, not 540. The off-day must have zero duration.
+- P05 recurrence: The recurrence array `[1,3,5]` may affect how often the day is counted. Confirm how your backend calculates `totalWorkingDays` and `totalWorkDurationInMinutes` for recurrence-based schedules.
+- PATCH body: If Swagger requires an `id`, add the existing template ID to every PATCH body and ensure it matches the URL ID.
+- Tenant field: `tenantName` is present in your saved document. Confirm that it is writable in the API request rather than populated server-side.
+
+## 8. MongoDB verification after POST and PATCH
+
+```
+db.getCollection("ERP.Attendance.WorkTemplates").findOne({
+    _id: UUID("YOUR_TEMPLATE_ID"),
+    CompanyId: UUID("YOUR_COMPANY_ID")
+})
+```
+
+Verify:
+
+- `_t` contains `FixedWorkTemplate`.
+- `TemplateType` is `1`.
+- `FixedTimeSlots` matches the request.
+- `TotalWorkDurationInMinutes` matches the schedule.
+- `TotalWorkingDays` and `TotalDaysOff` are correct.
+- `TimeZoneId` is correct.
+- `Version`, `_id`, `LocationId`, and `LocationName` behave correctly after PATCH.
+
+The saved collection confirms that updates can create versioned/superseded documents, so check the old and new records rather than assuming the original document is overwritten.&#x20;
+
+Sahab.ERP.Attendance.WorkTemplates.json
+
+
+
+Final recommendation: Before running this entire suite, compare the assumed request names (`templateName`, `tenantName`, `templateType`) with the actual Swagger DTO. The database's `WorkTemplateName` and `TemplateType` names are confirmed storage fields, not proof of the exact API JSON property names.
+
+
+
+
+now testing shfit & raotion -> Regular shift (not a default work temapalte) with location assogned
+
+
+I will prove dthe DB information edit and updted , delenet only do valaidate collection details
+
+DB : 10.1.0.4:27018
+
+DEV
+
+
+Sahab
+
+ERP.Attendance.WorkTemplates
+
+{
+  CompanyId: UUID(
+    "3a249871-7a8d-dec5-2d72-47795dd2662d"
+  )
+}
+
+
+validte dthe request  post and patch api value ister db verify 
+
+note: donat edit , updte and delte db
+
+know bug : TenantName: Object (2)
+en: "Attendance"
+ar: "Attendance" detail si know dont consider
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-10T13:11:02+05:30.
+</ADDITIONAL_METADATA>

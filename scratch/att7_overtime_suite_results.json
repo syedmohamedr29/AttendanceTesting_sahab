@@ -1,0 +1,3083 @@
+[
+  {
+    "tc_id": "POST-P01",
+    "name": "Standard policy",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Standard Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P02",
+    "name": "Inactive policy",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Inactive Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u063a\u064a\u0631 \u0627\u0644\u0646\u0634\u0637\u0629"
+      },
+      "isActive": false,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P03",
+    "name": "Buffer disabled",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "No Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 0,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "No Buffer Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.3733887Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P04",
+    "name": "Minimum positive buffer",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Minimum Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u062d\u062f \u0627\u0644\u0623\u062f\u0646\u0649 \u0644\u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 1,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "9796b311-f9a2-4a5c-8719-1abe17d16e8d",
+        "name": {
+          "en": "Minimum Buffer Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u062d\u062f \u0627\u0644\u0623\u062f\u0646\u0649 \u0644\u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:21.4289186Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "9796b311-f9a2-4a5c-8719-1abe17d16e8d"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P05",
+    "name": "Maximum buffer candidate (1440m)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Maximum Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u062d\u062f \u0627\u0644\u0623\u0642\u0635\u0649 \u0644\u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 1440,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "f307f0f3-e2e7-478a-939b-caccdf7f6da7",
+        "name": {
+          "en": "Maximum Buffer Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u062d\u062f \u0627\u0644\u0623\u0642\u0635\u0649 \u0644\u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:22.510221Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "f307f0f3-e2e7-478a-939b-caccdf7f6da7"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P06",
+    "name": "Multiple rates (1.5, 2.0, 2.5)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Multiple Rates Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u0639\u062f\u0644\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "a3104a72-453d-4a26-9771-b8b470971859",
+        "name": {
+          "en": "Multiple Rates Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u0639\u062f\u0644\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:23.5772447Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "a3104a72-453d-4a26-9771-b8b470971859"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P07",
+    "name": "Before shift starts rule (2)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Before Shift Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0642\u0628\u0644 \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 2,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "7709e860-4424-4bd9-8129-6c26ff03ef72",
+        "name": {
+          "en": "Before Shift Overtime Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0642\u0628\u0644 \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:24.5987363Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "7709e860-4424-4bd9-8129-6c26ff03ef72"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P08",
+    "name": "After shift ends rule (3)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "After Shift Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0628\u0639\u062f \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 3,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "717f59ce-89f1-42e1-a5a5-3e6d06ce8aea",
+        "name": {
+          "en": "After Shift Overtime Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0628\u0639\u062f \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:25.6649223Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "717f59ce-89f1-42e1-a5a5-3e6d06ce8aea"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P09",
+    "name": "English-only policy name",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "English Only Overtime Policy"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P10",
+    "name": "Arabic-only policy name",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P11",
+    "name": "Zero rate formula (0)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Zero Rate Formula Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0635\u0641\u0631"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 0,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 0
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.0
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "c1f76cde-790f-48c0-9c36-627e3c14e8df",
+        "name": {
+          "en": "Zero Rate Formula Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0635\u0641\u0631"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:28.8074257Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "c1f76cde-790f-48c0-9c36-627e3c14e8df"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-P12",
+    "name": "NotApplicable enum values (0)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Not Applicable Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0639\u0645\u0644 \u0625\u0636\u0627\u0641\u064a \u063a\u064a\u0631 \u0642\u0627\u0628\u0644\u0629 \u0644\u0644\u062a\u0637\u0628\u064a\u0642"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 0,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 0,
+      "rates": [
+        {
+          "dayRate": 0,
+          "rateFormula": 0
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "2ed0150e-d9e5-458c-abba-0f394d2ed9d1",
+        "name": {
+          "en": "Not Applicable Overtime Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0639\u0645\u0644 \u0625\u0636\u0627\u0641\u064a \u063a\u064a\u0631 \u0642\u0627\u0628\u0644\u0629 \u0644\u0644\u062a\u0637\u0628\u064a\u0642"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:29.8249968Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "2ed0150e-d9e5-458c-abba-0f394d2ed9d1"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N01",
+    "name": "Empty body",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {},
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "Name is required for the policy.",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "Name is required for the policy.",
+            "members": [
+              "Name"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N02",
+    "name": "Invalid policy type",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "InvalidPolicy",
+      "name": {
+        "en": "Invalid Type Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0646\u0648\u0639 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N03",
+    "name": "Null policy name",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": null,
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-16b7add98f80f78441dbb8e666a791f0-154aacef6420c618-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N04",
+    "name": "Empty English name",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N05",
+    "name": "Null tenant name",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Null Tenant Name Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0627\u0633\u0645 \u0645\u0633\u062a\u0623\u062c\u0631 \u0641\u0627\u0631\u063a"
+      },
+      "isActive": true,
+      "tenantName": null,
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N06",
+    "name": "Invalid overtimeRule (999)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Rule Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0642\u0627\u0639\u062f\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 999,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "aac01ebb-1ca6-426b-8711-dd808aaf3b7b",
+        "name": {
+          "en": "Invalid Rule Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0642\u0627\u0639\u062f\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:36.21626Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "aac01ebb-1ca6-426b-8711-dd808aaf3b7b"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N07",
+    "name": "Negative buffer (-1)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Negative Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0633\u0627\u0644\u0628\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": -1,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:Validation",
+        "message": "BufferMinutes must be >= 0",
+        "details": null,
+        "data": null,
+        "validationErrors": [
+          {
+            "message": "BufferMinutes must be >= 0",
+            "members": [
+              "BufferMinutes"
+            ]
+          }
+        ]
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N08",
+    "name": "Buffer overflow (2147483648)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Excessive Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0643\u0628\u064a\u0631\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 2147483648,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.bufferMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.bufferMinutes | LineNumber: 0 | BytePositionInLine: 344."
+        ]
+      },
+      "traceId": "00-2c90da7e2bebbda26494fa2e34b58f92-9d0ff876cdd2f278-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N09",
+    "name": "Buffer disabled with nonzero minutes (30m)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Disabled Buffer Nonzero Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0645\u0639\u0637\u0644\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 30,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "45f7d0ee-fc27-4f93-898a-8d0d12d01348",
+        "name": {
+          "en": "Disabled Buffer Nonzero Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0645\u0639\u0637\u0644\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:39.4088838Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "45f7d0ee-fc27-4f93-898a-8d0d12d01348"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N10",
+    "name": "Null rates array",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Null Rates Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0641\u0627\u0631\u063a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": null
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Rates": [
+          "The Rates field is required."
+        ]
+      },
+      "traceId": "00-26fa6736dd385bc59f06e27ed771c9cb-bb5eccfcb7b597f8-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N11",
+    "name": "Empty rates array []",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Empty Rates Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0645\u0639\u062f\u0644\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": []
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "44641568-e535-47d8-b2f8-cee051360ec4",
+        "name": {
+          "en": "Empty Rates Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0645\u0639\u062f\u0644\u0627\u062a"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:41.4937606Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "44641568-e535-47d8-b2f8-cee051360ec4"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N12",
+    "name": "Invalid dayRate (999)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Day Rate Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 999,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "7f710344-3c75-4dd0-ad31-bb42c84acb43",
+        "name": {
+          "en": "Invalid Day Rate Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:42.5451926Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "7f710344-3c75-4dd0-ad31-bb42c84acb43"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N13",
+    "name": "Negative rate formula (-1)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Negative Rate Formula Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0633\u0627\u0644\u0628\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": -1
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "b76eb2f0-25bb-4a3d-9ce6-842654581083",
+        "name": {
+          "en": "Negative Rate Formula Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0633\u0627\u0644\u0628\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:43.5985113Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "b76eb2f0-25bb-4a3d-9ce6-842654581083"
+    },
+    "passed": false,
+    "is_defect": true,
+    "defect_ref": "DEFECT-20261105-03 (Negative rateFormula accepted)"
+  },
+  {
+    "tc_id": "POST-N14",
+    "name": "Duplicate dayRate (dayRate 1 twice)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Duplicate Day Rate Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0623\u064a\u0627\u0645 \u0645\u0643\u0631\u0631\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 1,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "c5dcdaa3-05d4-4c9a-ae21-13f586f55063",
+        "name": {
+          "en": "Duplicate Day Rate Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0623\u064a\u0627\u0645 \u0645\u0643\u0631\u0631\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:44.6414235Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "c5dcdaa3-05d4-4c9a-ae21-13f586f55063"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N15",
+    "name": "NotApplicable dayRate (0)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Not Applicable Day Rate Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0645\u062d\u062f\u062f"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 0,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "0e777163-1176-40fc-be4a-ef15e14a8b09",
+        "name": {
+          "en": "Not Applicable Day Rate Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0645\u062d\u062f\u062f"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:45.6463007Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "0e777163-1176-40fc-be4a-ef15e14a8b09"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N16",
+    "name": "Invalid Boolean type (string 'true')",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Boolean Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0642\u064a\u0645\u0629 \u0645\u0646\u0637\u0642\u064a\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+      },
+      "isActive": "true",
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.isActive": [
+          "The JSON value could not be converted to System.Boolean. Path: $.isActive | LineNumber: 0 | BytePositionInLine: 239."
+        ]
+      },
+      "traceId": "00-2a0ecbc20525df9fab5b2b18cb28f828-ac3f0f849cb9f5ed-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "POST-N17",
+    "name": "Decimal buffer minutes (1.5)",
+    "method": "POST",
+    "endpoint": "/overtime",
+    "payload": {
+      "type": "Overtime",
+      "name": {
+        "en": "Decimal Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0639\u0634\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 1.5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.bufferMinutes": [
+          "The JSON value could not be converted to System.Int32. Path: $.bufferMinutes | LineNumber: 0 | BytePositionInLine: 335."
+        ]
+      },
+      "traceId": "00-999a5e068f8fc76212cf1967b8c6d164-3cd80bcacdf4f774-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P01",
+    "name": "Update policy name",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Updated Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P02",
+    "name": "Deactivate policy (isActive: false)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Inactive Overtime Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u063a\u064a\u0631 \u0627\u0644\u0646\u0634\u0637\u0629"
+      },
+      "isActive": false,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P03",
+    "name": "Change overtime rule to BeforeShiftStarts (2)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Before Shift Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0642\u0628\u0644 \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 2,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "7709e860-4424-4bd9-8129-6c26ff03ef72",
+          "duplicatePolicyName": {
+            "en": "Before Shift Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0642\u0628\u0644 \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P04",
+    "name": "Change overtime rule to AfterShiftEnds (3)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "After Shift Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0639\u062f \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 3,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "717f59ce-89f1-42e1-a5a5-3e6d06ce8aea",
+          "duplicatePolicyName": {
+            "en": "After Shift Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0628\u0639\u062f \u0627\u0644\u0648\u0631\u062f\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P05",
+    "name": "Disable buffer (hasBuffer: false, bufferMinutes: 0)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "No Buffer Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u062f\u0648\u0646 \u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 0,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "No Buffer Updated Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u062f\u0648\u0646 \u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:53.030982Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P06",
+    "name": "Update buffer minutes (30m)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Updated Buffer Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d \u0627\u0644\u0645\u062d\u062f\u062b\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 30,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "Updated Buffer Policy",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0641\u062a\u0631\u0629 \u0627\u0644\u0633\u0645\u0627\u062d \u0627\u0644\u0645\u062d\u062f\u062b\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:54.1094772Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P07",
+    "name": "Update WorkingDay rate formula (1.75)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Updated Working Day Rate",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u0627\u0644\u0639\u0645\u0644"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.75
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "Updated Working Day Rate",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u0627\u0644\u0639\u0645\u0644"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:55.419193Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P08",
+    "name": "Update DayOff rate formula (2.0)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Updated Day Off Rate",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u0627\u0644\u0625\u062c\u0627\u0632\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "a3104a72-453d-4a26-9771-b8b470971859",
+          "duplicatePolicyName": {
+            "en": "Multiple Rates Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u0639\u062f\u0644\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P09",
+    "name": "Update Holiday rate formula (3.0)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Updated Holiday Rate",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0639\u062f\u0644 \u0627\u0644\u0639\u0637\u0644\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 3.0
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "Updated Holiday Rate",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0645\u0639\u062f\u0644 \u0627\u0644\u0639\u0637\u0644\u0627\u062a"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:57.5339689Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P10",
+    "name": "Update all three rate formulas (1.25, 1.75, 2.25)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "All Rates Updated",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u062c\u0645\u064a\u0639 \u0645\u0639\u062f\u0644\u0627\u062a \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 15,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.25
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.75
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.25
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "All Rates Updated",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u062c\u0645\u064a\u0639 \u0645\u0639\u062f\u0644\u0627\u062a \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:58.8496313Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P11",
+    "name": "Update policy with multiple rates",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Multiple Rates Updated",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 2,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 10,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "Multiple Rates Updated",
+          "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0645\u062a\u0639\u062f\u062f\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:29:59.831224Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-P12",
+    "name": "Update with zero buffer and zero formula",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Zero Boundary Updated Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u0645\u062d\u062f\u062b\u0629 \u0628\u062d\u062f\u0648\u062f \u0635\u0641\u0631\u064a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 0,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 0
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.0
+        }
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "c1f76cde-790f-48c0-9c36-627e3c14e8df",
+          "duplicatePolicyName": {
+            "en": "Zero Rate Formula Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0635\u0641\u0631"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N01",
+    "name": "Null policy name",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": null,
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Name": [
+          "The Name field is required."
+        ]
+      },
+      "traceId": "00-1c1e9fb59517c612953dd428d5b631e2-a8862c9ff68e52d0-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N02",
+    "name": "Invalid policy type",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "InvalidPolicy",
+      "name": {
+        "en": "Invalid Type Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0646\u0648\u0639 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N03",
+    "name": "Invalid overtime rule (999)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Rule Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0642\u0627\u0639\u062f\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 999,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "aac01ebb-1ca6-426b-8711-dd808aaf3b7b",
+          "duplicatePolicyName": {
+            "en": "Invalid Rule Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0642\u0627\u0639\u062f\u0629 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N04",
+    "name": "Negative buffer (-1)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Negative Buffer Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0633\u0627\u0644\u0628\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": -1,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "actual_body": {
+      "message": "Overtime policy updated",
+      "policy": {
+        "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+        "name": {
+          "en": "Negative Buffer Update",
+          "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0633\u0627\u0644\u0628\u0629"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {
+          "en": "Attendance",
+          "ar": "Attendance"
+        },
+        "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+        "companyName": {
+          "en": "Attendance 7",
+          "ar": "\u0627\u0644\u062d\u0636\u0648\u0631 7"
+        },
+        "createdAt": "2026-11-06T09:29:20.373Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": "2026-11-06T09:30:04.9816126Z",
+        "modifiedBy": "syed.mohamed@comm-it.in"
+      },
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4"
+    },
+    "passed": false,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N05",
+    "name": "Buffer disabled with nonzero minutes (30m)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Buffer Combination",
+        "ar": "\u062a\u0631\u0643\u064a\u0628\u0629 \u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u063a\u064a\u0631 \u0635\u0627\u0644\u062d\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": false,
+      "bufferMinutes": 30,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "45f7d0ee-fc27-4f93-898a-8d0d12d01348",
+          "duplicatePolicyName": {
+            "en": "Disabled Buffer Nonzero Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0641\u062a\u0631\u0629 \u0633\u0645\u0627\u062d \u0645\u0639\u0637\u0644\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N06",
+    "name": "Null rates array",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Null Rates Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0641\u0627\u0631\u063a\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": null
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "Rates": [
+          "The Rates field is required."
+        ]
+      },
+      "traceId": "00-1dc25a74936a7e924eadd125295be468-b6e7aac08715484c-00"
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N07",
+    "name": "Empty rates array []",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Empty Rates Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u062f\u0648\u0646 \u0645\u0639\u062f\u0644\u0627\u062a"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": []
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "44641568-e535-47d8-b2f8-cee051360ec4",
+          "duplicatePolicyName": {
+            "en": "Empty Rates Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u062f\u0648\u0646 \u0645\u0639\u062f\u0644\u0627\u062a"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N08",
+    "name": "Invalid dayRate (999)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Invalid Day Rate Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 999,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "7f710344-3c75-4dd0-ad31-bb42c84acb43",
+          "duplicatePolicyName": {
+            "en": "Invalid Day Rate Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644 \u064a\u0648\u0645 \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N09",
+    "name": "Negative rate formula (-1)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Negative Rate Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0645\u0639\u062f\u0644 \u0633\u0627\u0644\u0628"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": -1
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "b76eb2f0-25bb-4a3d-9ce6-842654581083",
+          "duplicatePolicyName": {
+            "en": "Negative Rate Formula Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u0627\u062f\u0644\u0629 \u0645\u0639\u062f\u0644 \u0633\u0627\u0644\u0628\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N10",
+    "name": "Duplicate dayRate (dayRate 1 twice)",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "42d55366-a5e6-42b4-86d1-3c141942d4b4",
+      "type": "Overtime",
+      "name": {
+        "en": "Duplicate Day Rate Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0623\u064a\u0627\u0645 \u0645\u0643\u0631\u0631\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 1,
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "c5dcdaa3-05d4-4c9a-ae21-13f586f55063",
+          "duplicatePolicyName": {
+            "en": "Duplicate Day Rate Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0628\u0645\u0639\u062f\u0644\u0627\u062a \u0623\u064a\u0627\u0645 \u0645\u0643\u0631\u0631\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N11",
+    "name": "Body ID differs from URL ID",
+    "method": "PATCH",
+    "endpoint": "/overtime/42d55366-a5e6-42b4-86d1-3c141942d4b4",
+    "payload": {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "type": "Overtime",
+      "name": {
+        "en": "Mismatched ID Update",
+        "ar": "\u062a\u062d\u062f\u064a\u062b \u0628\u0645\u0639\u0631\u0641 \u063a\u064a\u0631 \u0645\u062a\u0637\u0627\u0628\u0642"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1505",
+        "message": "Duplicate policy with same configuration detected.",
+        "details": null,
+        "data": {
+          "companyId": "3a249870-c8ae-b3dc-1b8d-c44efad14f89",
+          "duplicatePolicyId": "ac0d2212-34c2-4ff5-81a1-7d7de0c85627",
+          "duplicatePolicyName": {
+            "en": "Standard Overtime Policy",
+            "ar": "\u0633\u064a\u0627\u0633\u0629 \u0627\u0644\u0639\u0645\u0644 \u0627\u0644\u0625\u0636\u0627\u0641\u064a \u0627\u0644\u0642\u064a\u0627\u0633\u064a\u0629"
+          }
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  },
+  {
+    "tc_id": "PATCH-N12",
+    "name": "Non-existing policy ID in URL & body",
+    "method": "PATCH",
+    "endpoint": "/overtime/11111111-1111-1111-1111-111111111111",
+    "payload": {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "type": "Overtime",
+      "name": {
+        "en": "Non Existing Policy",
+        "ar": "\u0633\u064a\u0627\u0633\u0629 \u063a\u064a\u0631 \u0645\u0648\u062c\u0648\u062f\u0629"
+      },
+      "isActive": true,
+      "tenantName": {
+        "en": "Attendance",
+        "ar": "Attendance"
+      },
+      "overtimeRule": 1,
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 5,
+      "rates": [
+        {
+          "dayRate": 1,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 2,
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": 3,
+          "rateFormula": 1.5
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "actual_body": {
+      "error": {
+        "code": "Cit.Attendance:1501",
+        "message": "Policy not found.",
+        "details": null,
+        "data": {
+          "policyId": "11111111-1111-1111-1111-111111111111"
+        },
+        "validationErrors": null
+      }
+    },
+    "passed": true,
+    "is_defect": false,
+    "defect_ref": ""
+  }
+]

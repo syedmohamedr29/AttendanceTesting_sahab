@@ -1,0 +1,3125 @@
+[
+  {
+    "sheet": "WT - Company Default",
+    "row": 54,
+    "tc_id": "ROOT-A-01",
+    "desc": "Any required header field missing (Missing Authorization / __tenant)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Missing Auth Test"
+      },
+      "shortCode": "NOAUTH1",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 401,
+    "actual_status": 401,
+    "latency_ms": 1152,
+    "response": "",
+    "result_status": "Pass",
+    "qa_remark": "HTTP 401 |  | Latency: 1152ms"
+  },
+  {
+    "sheet": "WT - Company Default",
+    "row": 55,
+    "tc_id": "ROOT-A-02",
+    "desc": "ShortCode boundary — not exactly 7 chars (8 chars)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Invalid Short Code Length"
+      },
+      "shortCode": "TOOLONG1",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1111,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 1008."
+        ]
+      },
+      "traceId": "00-118fadcaf1d45429e7683cedbb6162fa-3eab37367ebebad0-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1111ms"
+  },
+  {
+    "sheet": "WT - Company Default",
+    "row": 56,
+    "tc_id": "ROOT-A-03",
+    "desc": "ShortCode non-alphanumeric (@#$%)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Special Char ShortCode"
+      },
+      "shortCode": "FX@#123",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1314,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 1004."
+        ]
+      },
+      "traceId": "00-768ba7fbc505dfce2472c05521580984-f3c39a85a2ac5aee-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1314ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 15,
+    "tc_id": "USER-14",
+    "desc": "Fixed WT - Reject Working Day payload contradiction (isWorkingDay=false with non-zero duration/times)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Contradiction Day Off"
+      },
+      "shortCode": "FXCON01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1290,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[6].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[6].startTime | LineNumber: 0 | BytePositionInLine: 1152."
+        ]
+      },
+      "traceId": "00-6d06d04cb84b161278b377c7d5de316d-e44c54a2ade11348-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1290ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 18,
+    "tc_id": "USER-17",
+    "desc": "Fixed WT - Reject invalid / out of range dayEnum (e.g. 0 or 8)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Invalid DayEnum Range"
+      },
+      "shortCode": "FXDAY01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 8,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1298,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 1003."
+        ]
+      },
+      "traceId": "00-db874fef465f94b6da0eeb27346043bf-cad39d63d737c41a-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1298ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 67,
+    "tc_id": "USER-66",
+    "desc": "Mandatory Validation - Template Name omitted / empty object {}",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {},
+      "shortCode": "FXNAM01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1283,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 974."
+        ]
+      },
+      "traceId": "00-f449c8dc9e90b97751f7135076bbfea0-a97fb88a3cd7c7a5-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1283ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 68,
+    "tc_id": "USER-67",
+    "desc": "Boundary Validation - Template Name Length > 100 characters",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      },
+      "shortCode": "FXNAM02",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1312,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 1087."
+        ]
+      },
+      "traceId": "00-60c7145c7e84452a0623344b1481e1e2-1d48812d81740a71-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1312ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 69,
+    "tc_id": "USER-68",
+    "desc": "Format & Length Validation - Short Code Under 7 Chars (5 chars)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Short Code 5 Chars"
+      },
+      "shortCode": "FXSH5",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1330,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 998."
+        ]
+      },
+      "traceId": "00-20486948f8c82c200f289abdb6880b49-c0aecf4c36147485-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1330ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 71,
+    "tc_id": "USER-70",
+    "desc": "Array Completeness - Incomplete 7-Day Slot Array (Only 5 Days)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "5 Days Slots Only"
+      },
+      "shortCode": "FXINC01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 500,
+    "latency_ms": 1308,
+    "response": {
+      "error": {
+        "code": "ValidationException",
+        "message": "Validation failed: \n -- FixedTimeSlots: All 7 days of the week must be defined, each day once. Severity: Error",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- FixedTimeSlots: All 7 days of the week must be defined, each day once. Severity: Error | Latency: 1308ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 72,
+    "tc_id": "USER-71",
+    "desc": "Array Integrity - Duplicate DayEnum in Time Slots Array (Two Sunday entries)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Duplicate DayEnum"
+      },
+      "shortCode": "FXDUP01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1334,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 999."
+        ]
+      },
+      "traceId": "00-b5c17e27975fc4700161333dba096e0d-d5091cde444fd205-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1334ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 73,
+    "tc_id": "USER-72",
+    "desc": "Fixed Shift Boundary - Inverted Shift Times (shiftEnd <= shiftStart)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed",
+    "payload": {
+      "templateName": {
+        "en": "Inverted Timings"
+      },
+      "shortCode": "FXINV01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "fixedTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "17:00",
+          "endTime": "09:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "09:00",
+          "endTime": "17:00",
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": null,
+          "endTime": null,
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1304,
+    "response": {
+      "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      "title": "One or more validation errors occurred.",
+      "status": 400,
+      "errors": {
+        "request": [
+          "The request field is required."
+        ],
+        "$.fixedTimeSlots[5].startTime": [
+          "The JSON value could not be converted to System.TimeOnly. Path: $.fixedTimeSlots[5].startTime | LineNumber: 0 | BytePositionInLine: 998."
+        ]
+      },
+      "traceId": "00-71a9f32fbaf1a17c50281d35d527479c-dab701bf20930dc1-00"
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | {'type': 'https://tools.ietf.org/html/rfc9110#section-15.5.1', 'title': 'One or more validation errors occurred.', 'stat | Latency: 1304ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 34,
+    "tc_id": "USER-33",
+    "desc": "Flexi WT - Reject daily work duration exceeding 24 hours (1500 mins / 25h)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/flexi",
+    "payload": {
+      "templateName": {
+        "en": "Flexi Daily Exceed 24h"
+      },
+      "shortCode": "FLX2401",
+      "totalWorkDurationInMinutes": 1500,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "flexibleType": 1,
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 1500
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "latency_ms": 1890,
+    "response": {
+      "message": "Flexi work template created",
+      "template": {
+        "flexibleType": "Daily",
+        "flexiTimeSlots": [
+          {
+            "dayEnum": "Sun",
+            "isWorkingDay": true,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 1500
+          },
+          {
+            "dayEnum": "Mon",
+            "isWorkingDay": true,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 480
+          },
+          {
+            "dayEnum": "Tue",
+            "isWorkingDay": true,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 480
+          },
+          {
+            "dayEnum": "Wed",
+            "isWorkingDay": true,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 480
+          },
+          {
+            "dayEnum": "Thu",
+            "isWorkingDay": true,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 480
+          },
+          {
+            "dayEnum": "Fri",
+            "isWorkingDay": false,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 0
+          },
+          {
+            "dayEnum": "Sat",
+            "isWorkingDay": false,
+            "recurrenceOfMonth": [
+              "First",
+              "Second",
+              "Third",
+              "Fourth",
+              "Fifth"
+            ],
+            "workDurationInMinutes": 0
+          }
+        ],
+        "id": "99a56911-0d30-40e6-8fa4-ca64da88930c",
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+        "companyName": {
+          "en": "Attendance 2"
+        },
+        "locationId": "00000000-0000-0000-0000-000000000000",
+        "locationName": {},
+        "workTemplateName": {
+          "en": "Flexi Daily Exceed 24h"
+        },
+        "shortCode": "FLX2401",
+        "templateType": "Flexi",
+        "status": "Active",
+        "version": "1.0",
+        "isDefault": true,
+        "isEditable": false,
+        "isDeleted": false,
+        "isArchivable": false,
+        "timeZoneId": "Asia/Riyadh",
+        "isCompanyLinked": false,
+        "hasPendingLocSync": false,
+        "totalWorkDurationInMinutes": 1500,
+        "totalWorkingDays": 5,
+        "totalDaysOff": 2,
+        "createdAt": "2026-10-28T05:48:29.3557232Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 200 |  | Latency: 1890ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 35,
+    "tc_id": "USER-34",
+    "desc": "Flexi WT - Reject weekly work duration exceeding total hours in a week (11000 mins > 10080 mins)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/flexi",
+    "payload": {
+      "templateName": {
+        "en": "Flexi Weekly Exceed 168h"
+      },
+      "shortCode": "FLXWK01",
+      "totalWorkDurationInMinutes": 11000,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "flexibleType": 2,
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1301,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1301ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 36,
+    "tc_id": "USER-35",
+    "desc": "Flexi WT - Reject active working day configured with 0 hours in Daily Flexible mode",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/flexi",
+    "payload": {
+      "templateName": {
+        "en": "Flexi Daily Zero Hours"
+      },
+      "shortCode": "FLXZR01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "flexibleType": 1,
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1358,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1358ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 37,
+    "tc_id": "USER-36",
+    "desc": "Flexi WT - Reject negative work duration (< 0 mins)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/flexi",
+    "payload": {
+      "templateName": {
+        "en": "Flexi Negative Duration"
+      },
+      "shortCode": "FLXNEG1",
+      "totalWorkDurationInMinutes": -480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "flexibleType": 1,
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": -480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1323,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1323ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 38,
+    "tc_id": "USER-37",
+    "desc": "Enum Validation - FlexibleType invalid value (e.g. 99)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/flexi",
+    "payload": {
+      "templateName": {
+        "en": "Invalid FlexibleType"
+      },
+      "shortCode": "FLXEN01",
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "flexibleType": 99,
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1281,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1281ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 60,
+    "tc_id": "USER-59",
+    "desc": "Split Negative - Overlapping Intervals within Same Day (08:00-12:00 & 11:00-15:00)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/split",
+    "payload": {
+      "templateName": {
+        "en": "Split Overlap Intervals"
+      },
+      "shortCode": "SPOVL01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "11:00",
+              "endTime": "15:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 500,
+    "latency_ms": 1292,
+    "response": {
+      "error": {
+        "code": "ValidationException",
+        "message": "Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between them, and each interval's end time must be after its start time. Severity: Error",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between th | Latency: 1292ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 61,
+    "tc_id": "USER-60",
+    "desc": "Split Negative - Zero Gap Between Intervals (Contiguous 08:00-12:00 & 12:00-16:00)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/split",
+    "payload": {
+      "templateName": {
+        "en": "Split Zero Gap"
+      },
+      "shortCode": "SPGAP01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "12:00",
+              "endTime": "16:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 500,
+    "latency_ms": 1303,
+    "response": {
+      "error": {
+        "code": "ValidationException",
+        "message": "Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between them, and each interval's end time must be after its start time. Severity: Error",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between th | Latency: 1303ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 62,
+    "tc_id": "USER-61",
+    "desc": "Split Negative - Inverted Start/End Timings in an Interval (12:00 to 08:00)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/split",
+    "payload": {
+      "templateName": {
+        "en": "Split Inverted Timing"
+      },
+      "shortCode": "SPINV01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "12:00",
+              "endTime": "08:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 500,
+    "latency_ms": 1308,
+    "response": {
+      "error": {
+        "code": "ValidationException",
+        "message": "Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between them, and each interval's end time must be after its start time. Severity: Error",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- SplitTimeSlots[0]: Split intervals on a working day must not overlap and need a break between th | Latency: 1308ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 63,
+    "tc_id": "USER-62",
+    "desc": "Split Negative - Single Interval Configured on Active Day (< 2 Intervals)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/split",
+    "payload": {
+      "templateName": {
+        "en": "Split Single Interval Day"
+      },
+      "shortCode": "SPSNG01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 240,
+          "noOfInterval": 1,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1286,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1286ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 64,
+    "tc_id": "USER-63",
+    "desc": "Split Negative - Active Time Slots Configured on Day Off (Friday isWorkingDay=false with intervals)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/split",
+    "payload": {
+      "templateName": {
+        "en": "Split Intervals on OffDay"
+      },
+      "shortCode": "SPOFF01",
+      "totalWorkDurationInMinutes": 480,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "noOfInterval": 2,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00",
+              "endTime": "18:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 240,
+          "noOfInterval": 1,
+          "timeSlots": [
+            {
+              "startTime": "08:00",
+              "endTime": "12:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0,
+          "noOfInterval": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 400,
+    "latency_ms": 1286,
+    "response": {
+      "error": {
+        "code": "Cit.Attendance:1010",
+        "message": "Company default already exists.",
+        "details": null,
+        "data": {
+          "CompanyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+          "DefaultTemplateId": "99a56911-0d30-40e6-8fa4-ca64da88930c"
+        },
+        "validationErrors": null
+      }
+    },
+    "result_status": "Pass",
+    "qa_remark": "HTTP 400 | Cit.Attendance:1010: Company default already exists. | Latency: 1286ms"
+  },
+  {
+    "sheet": "User Scenarios (Add Here)",
+    "row": 91,
+    "tc_id": "USER-90",
+    "desc": "PATCH Negative - Empty Request Body {} (Nothing to Update)",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/worktemplates/fixed/00000000-0000-0000-0000-000000000001",
+    "payload": {},
+    "expected_status": 400,
+    "actual_status": 500,
+    "latency_ms": 1298,
+    "response": {
+      "error": {
+        "code": "ValidationException",
+        "message": "Validation failed: \n -- FixedTimeSlots: All 7 days of the week must be defined, each day once. Severity: Error",
+        "details": null,
+        "data": null,
+        "validationErrors": null
+      }
+    },
+    "result_status": "Fail",
+    "qa_remark": "HTTP 500 (DEFECT: ValidationException returned 500 instead of 400) | ValidationException: Validation failed: \n -- FixedTimeSlots: All 7 days of the week must be defined, each day once. Severity: Error | Latency: 1298ms"
+  }
+]

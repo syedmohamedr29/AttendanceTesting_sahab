@@ -1,0 +1,1487 @@
+[
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/config",
+    "schema": "CreateAttGlobalConfigCommand",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "allowedFileLevel",
+      "allowedFiles",
+      "allowedLevels",
+      "allowedMonths",
+      "dayOffs",
+      "defaultWorkTemplateId",
+      "headers",
+      "hrContact",
+      "importPolicyMode",
+      "maxFileSizeInMB",
+      "minDaysAllowed",
+      "nextProcessingDay",
+      "nightShiftStart",
+      "policyLink"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/config/{id}",
+    "schema": "UpdateAttGlobalConfigCommand",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "allowedFileLevel",
+      "allowedFiles",
+      "allowedLevels",
+      "allowedMonths",
+      "dayOffs",
+      "defaultWorkTemplateId",
+      "headers",
+      "hrContact",
+      "importPolicyMode",
+      "maxFileSizeInMB",
+      "minDaysAllowed",
+      "nextProcessingDay",
+      "nightShiftStart",
+      "policyLink"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/state/{dateRangeKey}/{employeeCode}",
+    "schema": "TransitionEmpAttProcessStateCommand",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "action",
+      "payGroupId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/edit",
+    "schema": "EditL3Payload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "deduction",
+      "earlyLeave",
+      "entryTime",
+      "exitTime",
+      "holidayExtraHours",
+      "lateArrival",
+      "normalExtraHours",
+      "reason",
+      "shortfall",
+      "weekendExtraHours",
+      "workHours"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/regularize",
+    "schema": "RegularizeL3Payload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "deductionHours",
+      "earlyCheckout",
+      "entryTime",
+      "exitTime",
+      "hoursWorked",
+      "lateCheckin",
+      "normalExtraHours",
+      "reason",
+      "systemNotes",
+      "totalExtraHours",
+      "totalShortfall"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/mark-dayoff",
+    "schema": "MarkDayOffPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "reason",
+      "record"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/mark-holiday",
+    "schema": "MarkHolidayPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "holidayId",
+      "holidayName",
+      "reason",
+      "record"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/override-checkinout",
+    "schema": "OverrideL3CheckInOutPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "checkIn",
+      "checkOut",
+      "reason"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/override-overtime",
+    "schema": "OverrideL3OvertimePayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "overtime",
+      "reason"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/override-deduction",
+    "schema": "OverrideL3DeductionPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "deduction",
+      "reason"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/L3/{id}/clear",
+    "schema": "ManualMarkPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "reason"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/L3/settle",
+    "schema": "SettleL3DaysPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "dates",
+      "employeeCode",
+      "sessionKey"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/L3/unsettle",
+    "schema": "UnsettleL3DaysPayload",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "dates",
+      "employeeCode",
+      "sessionKey"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/errors/{sessionKey}/resolve",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/sessions/detail/{sessionId}",
+    "schema": "UpdateSessionMetadataCommand",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "month",
+      "sessionKey",
+      "year"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/uploadfile",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/data-import/{sessionId}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/start-process/{sessionKey}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/start-process/{sessionKey}/{employeeCode}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/re-process/{sessionKey}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/att-log/re-process/{sessionKey}/{employeeCode}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/att-log/publish/{sessionKey}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/attpolicies/break",
+    "schema": "BreakPolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "breaks",
+      "id",
+      "isActive",
+      "name",
+      "tenantName",
+      "totalBreakDurationInMinutes",
+      "totalPaidBreakDurationInMinutes",
+      "totalUnpaidBreakDurationInMinutes"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/attpolicies/graceperiod",
+    "schema": "GracePeriodPolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "deductLeaveFrom",
+      "deductionDays",
+      "deviationPeriod",
+      "deviationThreshold",
+      "earlyCheckOutGraceMinutes",
+      "id",
+      "isActive",
+      "lateCheckInGraceMinutes",
+      "name",
+      "tenantName"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/attpolicies/overtime",
+    "schema": "OvertimePolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "bufferMinutes",
+      "hasBufferBeforeOvertime",
+      "id",
+      "isActive",
+      "name",
+      "overtimeRule",
+      "rates",
+      "tenantName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/attpolicies/break/{policyId}",
+    "schema": "BreakPolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "breaks",
+      "id",
+      "isActive",
+      "name",
+      "tenantName",
+      "totalBreakDurationInMinutes",
+      "totalPaidBreakDurationInMinutes",
+      "totalUnpaidBreakDurationInMinutes"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/attpolicies/graceperiod/{policyId}",
+    "schema": "GracePeriodPolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "deductLeaveFrom",
+      "deductionDays",
+      "deviationPeriod",
+      "deviationThreshold",
+      "earlyCheckOutGraceMinutes",
+      "id",
+      "isActive",
+      "lateCheckInGraceMinutes",
+      "name",
+      "tenantName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/attpolicies/overtime/{policyId}",
+    "schema": "OvertimePolicyDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "bufferMinutes",
+      "hasBufferBeforeOvertime",
+      "id",
+      "isActive",
+      "name",
+      "overtimeRule",
+      "rates",
+      "tenantName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/attpolicies/{policyId}/delete",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/config/attendance/employee-exemp",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/config/attendance/employee-exemp/{id}",
+    "schema": "UpdateAttendanceConfigDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "effectiveFrom",
+      "effectiveTo",
+      "id"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/config/attendance/employee-exemp/{id}/remove",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/holidaylist",
+    "schema": "HolidayCalendarDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "calendarType",
+      "isActive",
+      "isDeleted",
+      "isLocked",
+      "name",
+      "shortCode",
+      "tenantName",
+      "year",
+      "yearlyCalendar"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/holidaylist/{id}/{year}",
+    "schema": "UpdateHolidayCalendarDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "holidayLists",
+      "yearlyCalendar"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/holidaylist/publish/{year}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/holidaylist/{id}/customise",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/holidaylist/{id}/remove/{holidayId}/{year}",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards",
+    "schema": "RosterBoardDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "areas",
+      "boardName",
+      "hasAreas",
+      "publishingFrequency",
+      "supervisor",
+      "tenantName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees",
+    "schema": "AddBoardEmployeesDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "areaId",
+      "employeeIds",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees/check-conflicts",
+    "schema": "CheckBoardEmployeeConflictsDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "employeeIds",
+      "endDate",
+      "excludeMembershipId",
+      "startDate"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}",
+    "schema": "UpdateRosterBoardDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "addedAreas",
+      "boardName",
+      "hasAreas",
+      "publishingFrequency",
+      "removedAreaIds",
+      "supervisor"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees/{membershipId}/period",
+    "schema": "EditBoardEmployeePeriodDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees/{membershipId}/remove",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees/{membershipId}/move/check-conflicts",
+    "schema": "MoveEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/employees/{membershipId}/move",
+    "schema": "MoveBoardEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/delete",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/areas/{areaId}/employees",
+    "schema": "AssignBoardAreaEmployeesDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "employeeIds"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/areas/{areaId}/rename",
+    "schema": "RenameBoardAreaDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "name"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/areas/{areaId}/delete",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/schedule/assign",
+    "schema": "AssignRosterShiftDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "dayOff",
+      "slots",
+      "workPlanId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/schedule/publish",
+    "schema": "PublishRosterScheduleDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "allowEmpty",
+      "anchor",
+      "version"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/schedule/unpublish",
+    "schema": "UnpublishRosterScheduleDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "anchor",
+      "force"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/schedule/clear",
+    "schema": "ClearRosterScheduleDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "anchor",
+      "dates",
+      "employeeIds"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/roster-boards/{boardId}/schedule/copy-previous",
+    "schema": "CopyPreviousRosterScheduleDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "anchor"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations",
+    "schema": "ShiftRotationDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "patternType",
+      "plans",
+      "rotationName",
+      "steps",
+      "teams",
+      "tenantName",
+      "weeksPerStep"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/preview",
+    "schema": "ShiftRotationDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "patternType",
+      "plans",
+      "rotationName",
+      "steps",
+      "teams",
+      "tenantName",
+      "weeksPerStep"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}",
+    "schema": "UpdateShiftRotationDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "patternType",
+      "plans",
+      "removedPlanIds",
+      "rotationName",
+      "steps",
+      "teams",
+      "weeksPerStep"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/generate-schedule",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/teams/{teamId}/employees/check-conflicts",
+    "schema": "AddRotationEmployeesDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "employeeIds",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/teams/{teamId}/employees",
+    "schema": "AddRotationEmployeesDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "employeeIds",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/members/{membershipId}",
+    "schema": "EditRotationMemberPeriodDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/members/{membershipId}/move-team",
+    "schema": "MoveRotationMemberTeamDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "effectiveFrom",
+      "teamId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/members/{membershipId}/move/check-conflicts",
+    "schema": "MoveEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/shift-rotations/{rotationId}/members/{membershipId}/move",
+    "schema": "MoveEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workassignments",
+    "schema": "WorkAssignmentDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "employeeIds",
+      "endDate",
+      "startDate",
+      "tenantName",
+      "workPlanId",
+      "workPlanName"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workassignments/check-conflicts",
+    "schema": "WorkAssignmentDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "employeeIds",
+      "endDate",
+      "startDate",
+      "tenantName",
+      "workPlanId",
+      "workPlanName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workassignments/details/{id}/effective-period",
+    "schema": "EditEffectivePeriodDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "endDate",
+      "startDate"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workassignments/details/{id}/remove",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workassignments/details/{id}/move/check-conflicts",
+    "schema": "MoveEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workassignments/details/{id}/move",
+    "schema": "MoveEmployeeDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "adjustConflicts",
+      "effectiveFrom",
+      "endDate",
+      "targetBoardId",
+      "targetRotationId",
+      "targetTeamId",
+      "targetType",
+      "targetWorkPlanId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workassignments/adjust",
+    "schema": "AdjustWorkAssignmentEmployeesDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "employeeIds",
+      "endDate",
+      "startDate",
+      "tenantName",
+      "workAssignmentId",
+      "workPlanId",
+      "workPlanName"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workplans/{id}",
+    "schema": "UpdateWorkPlanDto",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "description",
+      "isBreakPolicyEnabled",
+      "isDeleted",
+      "isGracePeriodPolicyEnabled",
+      "isOvertimePolicyEnabled",
+      "policyIds",
+      "workPlanName",
+      "workTemplateId"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workplans",
+    "schema": "WorkPlanDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "description",
+      "id",
+      "isBreakPolicyEnabled",
+      "isDeleted",
+      "isGracePeriodPolicyEnabled",
+      "isOvertimePolicyEnabled",
+      "policyIds",
+      "tenantName",
+      "workPlanName",
+      "workTemplateId"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workplans/{id}/delete",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workplans/{id}/default",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/workplans/roster",
+    "schema": "RosterWorkPlanDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "boardId",
+      "code",
+      "colour",
+      "description",
+      "isBreakPolicyEnabled",
+      "isGracePeriodPolicyEnabled",
+      "isOvertimePolicyEnabled",
+      "policyIds",
+      "rosterTimeSlots",
+      "shiftName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/workplans/roster/{id}",
+    "schema": "UpdateRosterWorkPlanDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": [
+      "boardId",
+      "code",
+      "colour",
+      "description",
+      "hasTemplateUpdate",
+      "isBreakPolicyEnabled",
+      "isGracePeriodPolicyEnabled",
+      "isOvertimePolicyEnabled",
+      "policyIds",
+      "rosterTimeSlots",
+      "shiftName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/apply-sync",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/fixed",
+    "schema": "FixedWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "fixedTimeSlots",
+      "shortCode",
+      "templateName",
+      "templateType",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/flexi",
+    "schema": "FlexiWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "flexiTimeSlots",
+      "flexibleType",
+      "shortCode",
+      "templateName",
+      "templateType",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/split",
+    "schema": "SplitWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "shortCode",
+      "splitTimeSlots",
+      "templateName",
+      "templateType",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/roster",
+    "schema": "RosterWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "colour",
+      "rosterTimeSlots",
+      "shortCode",
+      "templateName",
+      "templateType",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/api/companies/{companyId}/worktemplates/rotation",
+    "schema": "RotationWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "rotationTimeSlots",
+      "shortCode",
+      "templateName",
+      "templateType",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/fixed/{id}",
+    "schema": "UpdateFixedWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "fixedTimeSlots",
+      "hasPatternUpdate",
+      "isDefault",
+      "shortCode",
+      "templateName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/flexi/{id}",
+    "schema": "UpdateFlexiWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "flexiTimeSlots",
+      "flexibleType",
+      "hasPatternUpdate",
+      "isDefault",
+      "shortCode",
+      "templateName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/split/{id}",
+    "schema": "UpdateSplitWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "hasPatternUpdate",
+      "isDefault",
+      "shortCode",
+      "splitTimeSlots",
+      "templateName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/roster/{id}",
+    "schema": "UpdateRosterWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "colour",
+      "hasPatternUpdate",
+      "isDefault",
+      "rosterTimeSlots",
+      "shortCode",
+      "templateName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/rotation/{id}",
+    "schema": "UpdateRotationWorkTemplateDto",
+    "has_tenantName": true,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": true,
+    "all_props": [
+      "hasPatternUpdate",
+      "rotationTimeSlots",
+      "shortCode",
+      "templateName",
+      "tenantName",
+      "totalDaysOff",
+      "totalWorkDurationInMinutes",
+      "totalWorkingDays"
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/{id}/archive",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/{id}/restore",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/companies/{companyId}/worktemplates/{id}/delete",
+    "schema": "None",
+    "has_tenantName": false,
+    "has_tenantId": false,
+    "has_companyId": false,
+    "has_locationId": false,
+    "has_shortCode": false,
+    "all_props": []
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "tc_id": "TC-POL-BRK-01",
+    "title": "Create Valid Break Policy (Omitted tenantName & id)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/break",
+    "payload": {
+      "name": {
+        "en": "Attendance 6 Standard Break Policy",
+        "ar": "سياسة الاستراحة القياسية للحضور 6"
+      },
+      "breaks": [
+        {
+          "name": "Morning Coffee",
+          "type": "Paid",
+          "durationMinutes": 15
+        },
+        {
+          "name": "Lunch Break",
+          "type": "Unpaid",
+          "durationMinutes": 45
+        },
+        {
+          "name": "Afternoon Tea",
+          "type": "Paid",
+          "durationMinutes": 15
+        }
+      ]
+    },
+    "code": 200,
+    "response": {
+      "message": "Break policy created",
+      "policy": {
+        "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587",
+        "name": {
+          "en": "Attendance 6 Standard Break Policy",
+          "ar": "سياسة الاستراحة القياسية للحضور 6"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-05T12:24:11.8835565Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587"
+    },
+    "passed": true,
+    "expected": [
+      200,
+      201
+    ]
+  },
+  {
+    "tc_id": "TC-POL-GRC-01",
+    "title": "Create Valid Grace Period Policy (Omitted tenantName & id)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/graceperiod",
+    "payload": {
+      "name": {
+        "en": "Attendance 6 Flexible Grace Period",
+        "ar": "فترة السماح المرنة للحضور 6"
+      },
+      "lateCheckInGraceMinutes": 15,
+      "earlyCheckOutGraceMinutes": 10,
+      "deviationThreshold": 3,
+      "deviationPeriod": "Monthly",
+      "deductLeaveFrom": "AnnualLeave",
+      "deductionDays": 0.5
+    },
+    "code": 200,
+    "response": {
+      "message": "Grace period policy created",
+      "policy": {
+        "id": "8b38971d-e9b2-4776-96d9-c6fae1da652b",
+        "name": {
+          "en": "Attendance 6 Flexible Grace Period",
+          "ar": "فترة السماح المرنة للحضور 6"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-05T12:24:13.0781195Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "8b38971d-e9b2-4776-96d9-c6fae1da652b"
+    },
+    "passed": true,
+    "expected": [
+      200,
+      201
+    ]
+  },
+  {
+    "tc_id": "TC-POL-OVT-01",
+    "title": "Create Valid Overtime Policy (Omitted tenantName & id)",
+    "method": "post",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/overtime",
+    "payload": {
+      "name": {
+        "en": "Attendance 6 Standard Overtime Policy",
+        "ar": "سياسة العمل الإضافي للحضور 6"
+      },
+      "overtimeRule": "AllExtraTime",
+      "hasBufferBeforeOvertime": true,
+      "bufferMinutes": 15,
+      "rates": [
+        {
+          "dayRate": "WorkingDay",
+          "rateFormula": 1.5
+        },
+        {
+          "dayRate": "DayOff",
+          "rateFormula": 2.0
+        },
+        {
+          "dayRate": "Holiday",
+          "rateFormula": 2.5
+        }
+      ]
+    },
+    "code": 200,
+    "response": {
+      "message": "Overtime policy created",
+      "policy": {
+        "id": "6aa93a26-73ca-40af-b725-3faa28d8f4c1",
+        "name": {
+          "en": "Attendance 6 Standard Overtime Policy",
+          "ar": "سياسة العمل الإضافي للحضور 6"
+        },
+        "isActive": true,
+        "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+        "tenantName": {},
+        "companyId": "3a249870-184c-0373-f344-015d602678d7",
+        "companyName": {
+          "en": "Attendance 6",
+          "ar": "الحضور 6"
+        },
+        "createdAt": "2026-11-05T12:24:14.3510966Z",
+        "createdBy": "syed.mohamed@comm-it.in",
+        "modifiedAt": null,
+        "modifiedBy": null
+      },
+      "id": "6aa93a26-73ca-40af-b725-3faa28d8f4c1"
+    },
+    "passed": true,
+    "expected": [
+      200,
+      201
+    ]
+  }
+]

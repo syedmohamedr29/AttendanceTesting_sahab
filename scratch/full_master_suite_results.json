@@ -1,0 +1,6507 @@
+[
+  {
+    "test_id": "FLX-POS-01",
+    "suite": "Flexible",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1366,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": true,
+    "notes": "Flexible Daily standard 5-day (480m/day, 2400m total)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-POS-02",
+    "suite": "Flexible",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXW0001",
+        "ar": "وردية مرنة FXW0001"
+      },
+      "shortCode": "FXW0001",
+      "templateType": 2,
+      "flexibleType": 2,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1076,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "99a81ce8-5f57-4fea-9652-07156040f051",
+    "passed": true,
+    "notes": "Flexible Weekly required duration (2400m)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Weekly\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",..."
+  },
+  {
+    "test_id": "FLX-POS-03",
+    "suite": "Flexible",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0002",
+        "ar": "وردية مرنة FXD0002"
+      },
+      "shortCode": "FXD0002",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2880,
+      "totalWorkingDays": 6,
+      "totalDaysOff": 1,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1263,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "68dab14c-9355-4f19-b553-118b5a70212b",
+    "passed": true,
+    "notes": "Flexible 6-day schedule (2880m total)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-POS-04",
+    "suite": "Flexible",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0003",
+        "ar": "وردية مرنة FXD0003"
+      },
+      "shortCode": "FXD0003",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 1920,
+      "totalWorkingDays": 4,
+      "totalDaysOff": 3,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1299,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7562cf81-8eae-4c28-b59c-8ba893739848",
+    "passed": true,
+    "notes": "Flexible 4-day schedule (1920m total)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":0},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMi..."
+  },
+  {
+    "test_id": "FLX-POS-05",
+    "suite": "Flexible",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0004",
+        "ar": "وردية مرنة FXD0004"
+      },
+      "shortCode": "FXD0004",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Kolkata",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1349,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "0ae8a4ce-d405-4615-8ff1-9a2b9c2729bf",
+    "passed": true,
+    "notes": "Flexible India Timezone (Asia/Kolkata)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-NEG-01",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "",
+        "ar": ""
+      },
+      "shortCode": "FXDNEG1",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1307,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "An English template name is required.",
+    "validation_errors": [
+      {
+        "message": "An English template name is required.",
+        "members": [
+          "TemplateName"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Empty template name",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"An English template name is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"An English template name is required.\",\"members\":[\"TemplateName\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-02",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FLX01",
+        "ar": "وردية مرنة FLX01"
+      },
+      "shortCode": "FLX01",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1320,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "ShortCode must be exactly 7 letters or digits.",
+    "validation_errors": [
+      {
+        "message": "ShortCode must be exactly 7 letters or digits.",
+        "members": [
+          "ShortCode"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "ShortCode length < 7 ('FLX01')",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"members\":[\"ShortCode\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-03",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1293,
+    "error_code": "Cit.Attendance:1106",
+    "error_message": "This short code is already used by another work template in this company. Choose a different code.",
+    "validation_errors": null,
+    "created_id": null,
+    "passed": true,
+    "notes": "Duplicate shortCode (FXD0001)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:1106\",\"message\":\"This short code is already used by another work template in this company. Choose a different code.\",\"details\":null,\"data\":{\"companyId\":\"3a249871-7a8d-dec5-2d72-47795dd2662d\",\"shortCode\":\"FXD0001\"},\"validationErrors\":null}}"
+  },
+  {
+    "test_id": "FLX-NEG-04",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG4",
+        "ar": "وردية مرنة FXDNEG4"
+      },
+      "shortCode": "FXDNEG4",
+      "templateType": 2,
+      "flexibleType": 999,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1356,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Flexible type must be Daily or Weekly.",
+    "validation_errors": [
+      {
+        "message": "Flexible type must be Daily or Weekly.",
+        "members": [
+          "FlexibleType"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Invalid FlexibleType (999)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Flexible type must be Daily or Weekly.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Flexible type must be Daily or Weekly.\",\"members\":[\"FlexibleType\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-05",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG5",
+        "ar": "وردية مرنة FXDNEG5"
+      },
+      "shortCode": "FXDNEG5",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": -480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1291,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "A day's work duration cannot be negative. A working day's work duration must be greater than 0 minutes.",
+    "validation_errors": [
+      {
+        "message": "A day's work duration cannot be negative.",
+        "members": [
+          "FlexiTimeSlots[0]"
+        ]
+      },
+      {
+        "message": "A working day's work duration must be greater than 0 minutes.",
+        "members": [
+          "FlexiTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Negative daily duration (-480m)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A day's work duration cannot be negative. A working day's work duration must be greater than 0 minutes.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A day's work duration cannot be negative.\",\"members\":[\"FlexiTimeSlots[0]\"]},{\"me..."
+  },
+  {
+    "test_id": "FLX-NEG-06",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG6",
+        "ar": "وردية مرنة FXDNEG6"
+      },
+      "shortCode": "FXDNEG6",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1293,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "A working day's work duration must be greater than 0 minutes.",
+    "validation_errors": [
+      {
+        "message": "A working day's work duration must be greater than 0 minutes.",
+        "members": [
+          "FlexiTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Working day with 0 minutes on Daily Flexi",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A working day's work duration must be greater than 0 minutes.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A working day's work duration must be greater than 0 minutes.\",\"members\":[\"FlexiTimeSlots[0]\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-07",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG7",
+        "ar": "وردية مرنة FXDNEG7"
+      },
+      "shortCode": "FXDNEG7",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 480
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1289,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "A day off cannot have a work duration, times or intervals.",
+    "validation_errors": [
+      {
+        "message": "A day off cannot have a work duration, times or intervals.",
+        "members": [
+          "FlexiTimeSlots[6]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Off-day with active duration (480m)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A day off cannot have a work duration, times or intervals.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A day off cannot have a work duration, times or intervals.\",\"members\":[\"FlexiTimeSlots[6]\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-08",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG8",
+        "ar": "وردية مرنة FXDNEG8"
+      },
+      "shortCode": "FXDNEG8",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 8,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1358,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "All 7 days of the week must be defined, each day once.",
+    "validation_errors": [
+      {
+        "message": "All 7 days of the week must be defined, each day once.",
+        "members": [
+          "FlexiTimeSlots"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Invalid dayEnum (8)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"All 7 days of the week must be defined, each day once.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"All 7 days of the week must be defined, each day once.\",\"members\":[\"FlexiTimeSlots\"]}]}}"
+  },
+  {
+    "test_id": "FLX-NEG-09",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNEG9",
+        "ar": "وردية مرنة FXDNEG9"
+      },
+      "shortCode": "FXDNEG9",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            6
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1261,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "0ee23f7d-aa83-493b-af79-93c99c2f7c9d",
+    "passed": false,
+    "notes": "Invalid recurrence index ([6])",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[6],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationIn..."
+  },
+  {
+    "test_id": "FLX-NEG-10",
+    "suite": "Flexible",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDNE10",
+        "ar": "وردية مرنة FXDNE10"
+      },
+      "shortCode": "FXDNE10",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 3000,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1265,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "96a20f25-47fb-496a-b595-0259aedba8c5",
+    "passed": false,
+    "notes": "Duration sum mismatch (3000 vs 2400)",
+    "response_summary": "{\"message\":\"Flexi work template created\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-PAT-01",
+    "suite": "Flexible",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift Updated",
+        "ar": "وردية مرنة محدثة"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1298,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": true,
+    "notes": "Update Flexible template name",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-PAT-02",
+    "suite": "Flexible",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1201,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": true,
+    "notes": "Update daily duration to 540m (2700m total)",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":540},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-PAT-03",
+    "suite": "Flexible",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Dubai",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1253,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": true,
+    "notes": "Update timezone to Asia/Dubai",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-PAT-04",
+    "suite": "Flexible",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXDCHG1",
+        "ar": "وردية مرنة FXDCHG1"
+      },
+      "shortCode": "FXDCHG1",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1245,
+    "error_code": "Cit.Attendance:1107",
+    "error_message": "A work template's short code cannot be changed after it is created.",
+    "validation_errors": null,
+    "created_id": null,
+    "passed": true,
+    "notes": "Attempt to alter shortCode in PATCH (Cit.Attendance:1107)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"7ecfbe95-8d3c-4612-a0cc-1454e9093a53\",\"shortCode\":\"FXD0001\",\"requestedShortCode\":\"FXDCHG1\"},\"validationErrors\":null}}"
+  },
+  {
+    "test_id": "FLX-PAT-05",
+    "suite": "Flexible",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            6
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1302,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": false,
+    "notes": "Recurrence [6] in Flexible PATCH",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[6],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationIn..."
+  },
+  {
+    "test_id": "FLX-PAT-06",
+    "suite": "Flexible",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 3500,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1251,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": false,
+    "notes": "Duration mismatch in Flexible PATCH (3500 vs 2700)",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "FLX-PAT-07",
+    "suite": "Flexible",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift FXD0001",
+        "ar": "وردية مرنة FXD0001"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Invalid/Timezone",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1275,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": false,
+    "notes": "Invalid timezone in Flexible PATCH",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  },
+  {
+    "test_id": "SPL-POS-01",
+    "suite": "Split",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1278,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": true,
+    "notes": "Split standard 2-interval shift (240+240=480m/day, total 2400m)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-POS-02",
+    "suite": "Split",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0002",
+        "ar": "وردية مجزأة SPD0002"
+      },
+      "shortCode": "SPD0002",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "11:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "15:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "16:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 120
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "11:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "15:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "16:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 120
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "11:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "15:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "16:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 120
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "11:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "15:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "16:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 120
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "11:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "15:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "16:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 120
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1285,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "5766c9f3-8632-4359-b9a6-3796b14d355c",
+    "passed": true,
+    "notes": "Split 3-interval shift (180+180+120=480m/day)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"11:00:00\",\"workDurationInMinutes\":180},{\"startTime\":\"12:00:00\",\"endTime\":\"15:00:00\",\"workDurationInMinutes\":180},{\"startTime\":\"16:00:00\",\"endTime\":\"1..."
+  },
+  {
+    "test_id": "SPL-POS-03",
+    "suite": "Split",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0003",
+        "ar": "وردية مجزأة SPD0003"
+      },
+      "shortCode": "SPD0003",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2880,
+      "totalWorkingDays": 6,
+      "totalDaysOff": 1,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1339,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "0dc290bd-f874-41b7-89a2-4ab0de190b9d",
+    "passed": true,
+    "notes": "Split 6-day working schedule (2880m total)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-POS-04",
+    "suite": "Split",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0004",
+        "ar": "وردية مجزأة SPD0004"
+      },
+      "shortCode": "SPD0004",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 1920,
+      "totalWorkingDays": 4,
+      "totalDaysOff": 3,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1325,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "4565d924-fd11-42ae-a1ef-3fedaaafd722",
+    "passed": true,
+    "notes": "Split 4-day working schedule (1920m total)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[],\"dayEnum\":\"Sun\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":0},{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"work..."
+  },
+  {
+    "test_id": "SPL-POS-05",
+    "suite": "Split",
+    "category": "Positive POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0005",
+        "ar": "وردية مجزأة SPD0005"
+      },
+      "shortCode": "SPD0005",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Kolkata",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1290,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "e180b571-b783-4f00-a37f-c0a7b1c23d4c",
+    "passed": true,
+    "notes": "Split India Timezone (Asia/Kolkata)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-NEG-01",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "",
+        "ar": ""
+      },
+      "shortCode": "SPDNEG1",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1326,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "An English template name is required.",
+    "validation_errors": [
+      {
+        "message": "An English template name is required.",
+        "members": [
+          "TemplateName"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Empty template name",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"An English template name is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"An English template name is required.\",\"members\":[\"TemplateName\"]}]}}"
+  },
+  {
+    "test_id": "SPL-NEG-02",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPL01",
+        "ar": "وردية مجزأة SPL01"
+      },
+      "shortCode": "SPL01",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1353,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "ShortCode must be exactly 7 letters or digits.",
+    "validation_errors": [
+      {
+        "message": "ShortCode must be exactly 7 letters or digits.",
+        "members": [
+          "ShortCode"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "ShortCode length < 7 ('SPL01')",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"ShortCode must be exactly 7 letters or digits.\",\"members\":[\"ShortCode\"]}]}}"
+  },
+  {
+    "test_id": "SPL-NEG-03",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1303,
+    "error_code": "Cit.Attendance:1106",
+    "error_message": "This short code is already used by another work template in this company. Choose a different code.",
+    "validation_errors": null,
+    "created_id": null,
+    "passed": true,
+    "notes": "Duplicate shortCode (SPD0001)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:1106\",\"message\":\"This short code is already used by another work template in this company. Choose a different code.\",\"details\":null,\"data\":{\"companyId\":\"3a249871-7a8d-dec5-2d72-47795dd2662d\",\"shortCode\":\"SPD0001\"},\"validationErrors\":null}}"
+  },
+  {
+    "test_id": "SPL-NEG-04",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG4",
+        "ar": "وردية مجزأة SPDNEG4"
+      },
+      "shortCode": "SPDNEG4",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2460,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 540,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 300
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "16:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1299,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+    "validation_errors": [
+      {
+        "message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Overlapping split intervals (1 hr overlap)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Split intervals must be in ..."
+  },
+  {
+    "test_id": "SPL-NEG-05",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG5",
+        "ar": "وردية مجزأة SPDNEG5"
+      },
+      "shortCode": "SPDNEG5",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "16:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1296,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+    "validation_errors": [
+      {
+        "message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Zero break gap between intervals (12:00 to 12:00)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Split intervals must be in ..."
+  },
+  {
+    "test_id": "SPL-NEG-06",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG6",
+        "ar": "وردية مجزأة SPDNEG6"
+      },
+      "shortCode": "SPDNEG6",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "12:00:00",
+              "endTime": "08:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1296,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight. Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+    "validation_errors": [
+      {
+        "message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      },
+      {
+        "message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Inverted split interval (startTime 12:00 > endTime 08:00)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight. Each split interval's duration must equal its time range, and the day's duration must e..."
+  },
+  {
+    "test_id": "SPL-NEG-07",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG7",
+        "ar": "وردية مجزأة SPDNEG7"
+      },
+      "shortCode": "SPDNEG7",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1235,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "A split working day needs at least one interval.",
+    "validation_errors": [
+      {
+        "message": "A split working day needs at least one interval.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Empty timeSlots array on working day",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A split working day needs at least one interval.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A split working day needs at least one interval.\",\"members\":[\"SplitTimeSlots[0]\"]}]}}"
+  },
+  {
+    "test_id": "SPL-NEG-08",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG8",
+        "ar": "وردية مجزأة SPDNEG8"
+      },
+      "shortCode": "SPDNEG8",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 180
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1242,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+    "validation_errors": [
+      {
+        "message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Interval duration does not equal (endTime - startTime)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Each split interval's duration must equal its time range, and the ..."
+  },
+  {
+    "test_id": "SPL-NEG-09",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNEG9",
+        "ar": "وردية مجزأة SPDNEG9"
+      },
+      "shortCode": "SPDNEG9",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2520,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 600,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1292,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+    "validation_errors": [
+      {
+        "message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Daily duration does not equal interval sum (600 vs 480)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Each split interval's duration must equal its time range, and the ..."
+  },
+  {
+    "test_id": "SPL-NEG-10",
+    "suite": "Split",
+    "category": "Negative POST",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDNE10",
+        "ar": "وردية مجزأة SPDNE10"
+      },
+      "shortCode": "SPDNE10",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 3000,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1293,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "bdedeb03-6630-444b-8102-a04c6c59559e",
+    "passed": false,
+    "notes": "Total duration mismatch in Split (3000 vs 2400)",
+    "response_summary": "{\"message\":\"Split work template created\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-PAT-01",
+    "suite": "Split",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift Updated",
+        "ar": "وردية مجزأة محدثة"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1242,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": true,
+    "notes": "Update Split template name",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-PAT-02",
+    "suite": "Split",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "09:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "15:00:00",
+              "endTime": "19:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "09:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "15:00:00",
+              "endTime": "19:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "09:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "15:00:00",
+              "endTime": "19:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "09:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "15:00:00",
+              "endTime": "19:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "09:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "15:00:00",
+              "endTime": "19:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1237,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": true,
+    "notes": "Update Split interval timings (09-13 & 15-19)",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"09:00:00\",\"endTime\":\"13:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"15:00:00\",\"endTime\":\"19:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-PAT-03",
+    "suite": "Split",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Dubai",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1239,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": true,
+    "notes": "Update timezone to Asia/Dubai",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-PAT-04",
+    "suite": "Split",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPDCHG1",
+        "ar": "وردية مجزأة SPDCHG1"
+      },
+      "shortCode": "SPDCHG1",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1301,
+    "error_code": "Cit.Attendance:1107",
+    "error_message": "A work template's short code cannot be changed after it is created.",
+    "validation_errors": null,
+    "created_id": null,
+    "passed": true,
+    "notes": "Attempt to alter shortCode in Split PATCH (Cit.Attendance:1107)",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"ab6bb972-24e9-4b3c-9c23-55ef8770f6e5\",\"shortCode\":\"SPD0001\",\"requestedShortCode\":\"SPDCHG1\"},\"validationErrors\":null}}"
+  },
+  {
+    "test_id": "SPL-PAT-05",
+    "suite": "Split",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "13:00:00",
+              "workDurationInMinutes": 300
+            },
+            {
+              "startTime": "12:00:00",
+              "endTime": "16:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 400,
+    "elapsed_ms": 1308,
+    "error_code": "Cit.Attendance:Validation",
+    "error_message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight. Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+    "validation_errors": [
+      {
+        "message": "Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      },
+      {
+        "message": "Each split interval's duration must equal its time range, and the day's duration must equal the sum of its intervals.",
+        "members": [
+          "SplitTimeSlots[0]"
+        ]
+      }
+    ],
+    "created_id": null,
+    "passed": true,
+    "notes": "Overlapping intervals in Split PATCH",
+    "response_summary": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight. Each split interval's duration must equal its time range, and the day's duration must e..."
+  },
+  {
+    "test_id": "SPL-PAT-06",
+    "suite": "Split",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            6
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1075,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": false,
+    "notes": "Recurrence [6] in Split PATCH",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "SPL-PAT-07",
+    "suite": "Split",
+    "category": "Negative PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift SPD0001",
+        "ar": "وردية مجزأة SPD0001"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 3200,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1285,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": false,
+    "notes": "Duration mismatch in Split PATCH (3200 vs 2400)",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "TRANS-03",
+    "suite": "Cross-Type",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed/7ecfbe95-8d3c-4612-a0cc-1454e9093a53?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Transited to Fixed Shift",
+        "ar": "محولة إلى وردية ثابتة"
+      },
+      "shortCode": "FXD0001",
+      "templateType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "fixedTimeSlots": [
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 0,
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00"
+        },
+        {
+          "workDurationInMinutes": 0,
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00"
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1284,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "7ecfbe95-8d3c-4612-a0cc-1454e9093a53",
+    "passed": true,
+    "notes": "Flexible -> Fixed migration via /fixed/{id}",
+    "response_summary": "{\"message\":\"Fixed work template patched\",\"template\":{\"fixedTimeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"17:00:00\",\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":540},{\"startTime\":\"08:00:00\",\"endTime\":\"17:00:00\",\"dayEnum\":..."
+  },
+  {
+    "test_id": "TRANS-04",
+    "suite": "Cross-Type",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/split/68dab14c-9355-4f19-b553-118b5a70212b?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Split Location Shift FXD0002",
+        "ar": "وردية مجزأة FXD0002"
+      },
+      "shortCode": "FXD0002",
+      "templateType": 3,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "splitTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480,
+          "timeSlots": [
+            {
+              "startTime": "08:00:00",
+              "endTime": "12:00:00",
+              "workDurationInMinutes": 240
+            },
+            {
+              "startTime": "14:00:00",
+              "endTime": "18:00:00",
+              "workDurationInMinutes": 240
+            }
+          ]
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0,
+          "timeSlots": []
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1327,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "68dab14c-9355-4f19-b553-118b5a70212b",
+    "passed": true,
+    "notes": "Flexible -> Split migration via /split/{id}",
+    "response_summary": "{\"message\":\"Split work template patched\",\"template\":{\"splitTimeSlots\":[{\"noOfInterval\":\"NotApplicable\",\"timeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"12:00:00\",\"workDurationInMinutes\":240},{\"startTime\":\"14:00:00\",\"endTime\":\"18:00:00\",\"workDurationInMinutes\":240}],\"dayEnum\":\"Sun\",\"isWorkingDay\":true..."
+  },
+  {
+    "test_id": "TRANS-05",
+    "suite": "Cross-Type",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed/ab6bb972-24e9-4b3c-9c23-55ef8770f6e5?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Transited to Fixed Shift",
+        "ar": "محولة إلى وردية ثابتة"
+      },
+      "shortCode": "SPD0001",
+      "templateType": 1,
+      "totalWorkDurationInMinutes": 2700,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "fixedTimeSlots": [
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 540,
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "startTime": "08:00:00",
+          "endTime": "17:00:00"
+        },
+        {
+          "workDurationInMinutes": 0,
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00"
+        },
+        {
+          "workDurationInMinutes": 0,
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "startTime": "00:00:00",
+          "endTime": "00:00:00"
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1328,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "ab6bb972-24e9-4b3c-9c23-55ef8770f6e5",
+    "passed": true,
+    "notes": "Split -> Fixed migration via /fixed/{id}",
+    "response_summary": "{\"message\":\"Fixed work template patched\",\"template\":{\"fixedTimeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"17:00:00\",\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":540},{\"startTime\":\"08:00:00\",\"endTime\":\"17:00:00\",\"dayEnum\":..."
+  },
+  {
+    "test_id": "TRANS-06",
+    "suite": "Cross-Type",
+    "category": "Positive PATCH",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/flexi/5766c9f3-8632-4359-b9a6-3796b14d355c?locationId=3a24d646-b3cf-b1d4-61bb-1adf094b52fc",
+    "payload": {
+      "templateName": {
+        "en": "Flexible Location Shift SPD0002",
+        "ar": "وردية مرنة SPD0002"
+      },
+      "shortCode": "SPD0002",
+      "templateType": 2,
+      "flexibleType": 1,
+      "totalWorkDurationInMinutes": 2400,
+      "totalWorkingDays": 5,
+      "totalDaysOff": 2,
+      "timeZoneId": "Asia/Riyadh",
+      "flexiTimeSlots": [
+        {
+          "dayEnum": 1,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 2,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 3,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 4,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 5,
+          "isWorkingDay": true,
+          "recurrenceOfMonth": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "workDurationInMinutes": 480
+        },
+        {
+          "dayEnum": 6,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        },
+        {
+          "dayEnum": 7,
+          "isWorkingDay": false,
+          "recurrenceOfMonth": [],
+          "workDurationInMinutes": 0
+        }
+      ]
+    },
+    "status_code": 200,
+    "elapsed_ms": 1247,
+    "error_code": null,
+    "error_message": null,
+    "validation_errors": null,
+    "created_id": "5766c9f3-8632-4359-b9a6-3796b14d355c",
+    "passed": true,
+    "notes": "Split -> Flexible migration via /flexi/{id}",
+    "response_summary": "{\"message\":\"Flexi work template patched\",\"template\":{\"flexibleType\":\"Daily\",\"flexiTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"Third\",\"Fourth\",\"Fifth\"],\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[\"First\",\"Second\",\"..."
+  }
+]

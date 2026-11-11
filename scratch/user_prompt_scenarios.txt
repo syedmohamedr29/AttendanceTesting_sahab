@@ -1,0 +1,9 @@
+<USER_REQUEST>
+https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed?locationId=3a24d629-0d56-a428-baa1-98493a77e614
+
+
+now you test all the validation based above prompt
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-10T13:07:11+05:30.
+</ADDITIONAL_METADATA>

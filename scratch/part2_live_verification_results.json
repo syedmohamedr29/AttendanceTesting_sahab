@@ -1,0 +1,38 @@
+{
+  "DEFECT-20261027-01": {
+    "status_code": 400,
+    "response": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":400,\"errors\":{\"request\":[\"The request field is required.\"],\"$.description\":[\"The JSON value could not be converted to System.String. Path: $.description | LineNumber: 0 | BytePosit",
+    "verdict": "FIXED"
+  },
+  "DEFECT-20261027-02": {
+    "has_createdBy_in_dto": false,
+    "status_code": 500,
+    "response": "{\"error\":{\"code\":\"HttpRequestException\",\"message\":\"Company service company base info call failed: 500\",\"details\":null,\"data\":null,\"validationErrors\":null}}",
+    "verdict": "FIXED (createdBy removed from DTO)"
+  },
+  "DEFECT-20261027-03": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Late check-in grace minutes cannot be negative. Early check-out grace minutes cannot be negative.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Late check-in grace minutes cannot be negative.\",\"members\":[\"LateCheckInGraceMinutes\"]",
+    "verdict": "FIXED (HTTP 400 rejected negative grace)"
+  },
+  "DEFECT-20261027-04": {
+    "status_code": 400,
+    "response": "{\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":400,\"errors\":{\"request\":[\"The request field is required.\"],\"$.breaks[0].name\":[\"The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. P",
+    "verdict": "FIXED (HTTP 400 rejected negative break)"
+  },
+  "DEFECT-20261027-05": {
+    "status_code": 500,
+    "response": "{\"error\":{\"code\":\"HttpRequestException\",\"message\":\"Company service company base info call failed: 500\",\"details\":null,\"data\":null,\"validationErrors\":null}}",
+    "verdict": "HTTP 500"
+  },
+  "DEFECT-20261027-06": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Split intervals must be in shift order, must not overlap, need a break between them and must fit within 23 hours 59 minutes. An interval may cross midnight.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Split intervals must be in ",
+    "verdict": "FIXED (HTTP 400 Bad Request returned with validation error)"
+  },
+  "DEFECT-20261027-07": {
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 letters or digits. Total working days and total days off must add up to 7. Total working days and total days off must match the number of working and off days in the week.\",\"details\":null,\"data\":null,\"validationError",
+    "verdict": "FIXED (HTTP 400 rejected invalid day sum)"
+  }
+}
