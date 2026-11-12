@@ -7,7 +7,7 @@
 > • Company Service: MongoDB `CompanySvcNET8test` (Collection: `CompaniesMaster`)  
 > **Review Stakeholders:** QA Team (Shivam, Naushad, Syed Mohamed), Engineering Lead (Khalid)  
 > **Master Test Suite Reference:** [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx)  
-> **Report Last Updated:** **10 November 2026** (Updated with Live Attendance 7 Re-Verification, Policy DTO Request Body Structure Refinement & Enum Validations)
+> **Report Last Updated:** **12 November 2026 (PM Delta + Full Section 13 Spec)** (Updated with `DEFECT-20261112-01` to `DEFECT-20261112-13` — Shifts & Rotation — Work Plans & Work Assignments Full Regular API + `/employees` + MongoDB Audit across `ATT7`, `ATT8`, `ATT9`, **340 RTM Cases (`233` Pass, `101` Fail, `6` Blocked)** & **Evidences 59–71**)
 
 ---
 
@@ -30,9 +30,10 @@ Jump directly to any section, date-wise defect set, or execution summary:
 * [**🏢 Part 3G: Defects Discovered on 05 November 2026 (WORK TEMPLATE MODULE: EMPTY COMPANYNAME IN MONGO)**](#-part-3g-defects-identified-on-05-november-2026--work-template-module-live-mongodb-compass-verification) — *Live MongoDB Compass Evidence: CompanyName persists as Object (empty) {} upon CDWT creation (DEFECT-20261105-01)*
 * [**🏢 Part 3H: Defects Identified & Live Verified on 05 & 06 November 2026 (ATTENDANCE POLICY MODULE: ATTENDANCE 6 & 7)**](#-part-3h-defects-identified--live-verified-on-05--06-november-2026--attendance-policy-module-live-verification-on-attendance-6--attendance-7) — *Policy Lifecycles, Negative RateFormula (-1.5), Duplicate Key 500 Crash, Empty TenantName, Invalid Request Structure & Missing Enum Validations (8 Defects)*
 * [**🚨 Part 3I: Defects Discovered on 10 November 2026 (WORK TEMPLATES: FIXED, FLEXIBLE, SPLIT, DELETE & ROTATION - 23 DEFECTS)**](#-part-3i-defects-identified--live-verified-on-10-november-2026--work-template-fixed-flexible-split-delete--rotation-modules) — *Complete Work Template Testing: Fixed, Flexi, Split, Delete API Lifecycle & Rotation Templates (23 Defects Discovered & Live Verified)*
-* [**✅ Part 5: Actionable Developer Checklist (Date-Wise: Days 1 to 8)**](#-part-5-actionable-developer-checklist-date-wise) — *Consolidated Engineering Action Items for Khalid's Team (Days 1 to 8)*
-* [**🚨 Bottom Summary: Today's 23 Defects Quick Navigation (10 November 2026)**](#todays-defects-summary-10-november-2026-bottom) — *Jump directly to the bottom summary table & full list of today's defects*
-* [**📸 Master Visual Evidence Index (Evidences 01 to 58)**](#-master-visual-evidence-index) — *All 58 High-Resolution Screenshots, MongoDB Compass Dumps & Swagger Evidence*
+* [**🆕 Part 3J: Defects Discovered on 12 November 2026 (SHIFTS & ROTATION — WORK PLANS & WORK ASSIGNMENTS: DEFECT-20261112-01 to 13)**](#-part-3j-defect-identified-on-12-november-2026--work-plans--work-assignments-post--patch-dto-cleanup) — *DTO Cleanup (`DEFECT-20261112-01` & `-02`) Plus Full Live POST/PATCH/GET/`/employees`/Default/Delete/Propagation & Policy Audit (`DEFECT-20261112-03` to `-13`, 340 RTM Cases, Evidences 59–71)*
+* [**✅ Part 5: Actionable Developer Checklist (Date-Wise: Days 1 to 9)**](#-part-5-actionable-developer-checklist-date-wise) — *Consolidated Engineering Action Items for Khalid's Team (Days 1 to 9)*
+* [**🚨 Bottom Summary: Latest Updates (12 Nov 2026) & 10 Nov 2026 Recap**](#todays-defects-summary-10-november-2026-bottom) — *Jump directly to the bottom summary tables & full defect navigation*
+* [**📸 Master Visual Evidence Index (Evidences 01 to 71)**](#-master-visual-evidence-index) — *All 71 High-Resolution Screenshots, MongoDB Compass Dumps, Swagger & Retest Evidence*
 
 ---
 
@@ -344,7 +345,7 @@ Jump directly to any section, date-wise defect set, or execution summary:
 ---
 
 #### Defect `DEFECT-20261026-04` (`USER-04` / `USER-131`): `tenantName` Still Exposed in Request Body DTOs Across 26 POST & PATCH APIs — Missing System Pre-Population by Default
-* **Status:** ❌ **NOT FIXED / STILL OPEN ACROSS ALL 6 WORK TEMPLATE ENDPOINTS (Re-verified 04-Nov-2026)**
+* **Status:** ❌ **NOT FIXED / STILL OPEN ACROSS 26 POST & PATCH ENDPOINTS (Live Swagger Re-verified 12-Nov-2026 under [`DEFECT-20261112-01`](#defect-20261112-01) for Work Plans & Work Assignments — [Evidences 59–61](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png))**
 * **Severity:** **P1 (Data Integrity / Architecture & Security Risk)**
 * **Photographic Evidence from Swagger UI:**
   ![Swagger UI showing tenantName in request body](defect_evidence/evidence_07_swagger_tenantname_still_present.png)
@@ -6506,6 +6507,301 @@ public async Task<IActionResult> CreateRotationWorkTemplate(
 
 ---
 
+# 🆕 Part 3J: Defects Identified on 12 November 2026 — Shifts & Rotation — Work Plans & Work Assignments POST & PATCH DTO Cleanup
+<a id="-part-3j-defect-identified-on-12-november-2026--work-plans--work-assignments-post--patch-dto-cleanup"></a>
+
+> [!IMPORTANT]
+> **Audit Date:** **12 November 2026** | **Live Swagger Audited:** `https://attendance2.dev.zoolwork.com/swagger/v1/swagger.json` (`175` total paths)
+> **Scope / Naming:** **Shifts & Rotation — Work Plans & Work Assignments** (`DEFECT-20261112-01`: Remove `tenantName` across all `POST`/`PATCH` DTOs; `DEFECT-20261112-02`: Remove unnecessary `id` and `isDeleted` fields from `POST /workplans` & `PATCH /workplans/{id}` request DTOs).
+
+---
+
+#### Defect `DEFECT-20261112-01`: Shifts & Rotation — Work Plans & Work Assignments: Remove `tenantName` Across All POST and PATCH Request DTOs
+<a id="defect-20261112-01"></a>
+
+- **Severity:** 🟠 **P1 Critical** (API Contract Violation & Multi-Tenant Spoofing Risk)
+- **Module / Feature:** **Shifts & Rotation — Work Plans & Work Assignments** (`ERP.Attendance.WorkPlans`, `ERP.Attendance.WorkAssignments`, `ShiftRotations`, `RosterBoards`)
+- **Target Microservice:** `SP.AttendanceSvc` (.NET 9 / ASP.NET Core)
+- **Visual Evidence (Live Swagger & JSON Comparison — 12 November 2026):**
+  * [Evidence 59 — `POST /api/companies/{companyId}/workplans` Swagger UI (`tenantName` circled in red)](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png)
+  * [Evidence 61 — Full Swagger UI Window (`POST /workplans` Showing `tenantName`, `isDeleted`, `id` and HTTP `200 Success`)](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg)
+
+| Evidence 59 (`tenantName` Red-Circled in Swagger) | Evidence 60 (`isDeleted` & `id` Red-Circled in DTO) | Evidence 61 (Full Swagger UI Context `200 Success`) |
+| :---: | :---: | :---: |
+| ![Evidence 59 WorkPlan POST tenantName](defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png) | ![Evidence 60 WorkPlan DTO isDeleted and id](defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png) | ![Evidence 61 Full Swagger Context](defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg) |
+
+##### 1. Complete Live Swagger Audit — Work Plans & Work Assignments (`POST` & `PATCH`)
+
+A full OpenAPI schema scan of `https://attendance2.dev.zoolwork.com/swagger/v1/swagger.json` across every `POST` and `PATCH` operation under **Work Plans** (`6` routes) and **Work Assignments** (`7` routes) verified the exact fields currently exposed to clients:
+
+###### A. Work Plans Controller (`WorkPlansController`) — 6 POST/PATCH Endpoints Audited (`4` Require DTO Cleanup)
+
+| HTTP | Route | DTO Schema | Client-Unsafe Fields Exposed | All Request Body Properties Currently in Swagger | Action Required |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| **`POST`** | `/api/companies/{companyId}/workplans` | `WorkPlanDto` | **`tenantName`**, **`isDeleted`**, **`id`** | `tenantName`, `isDeleted`, `id`, `workPlanName`, `description`, `isBreakPolicyEnabled`, `isOvertimePolicyEnabled`, `isGracePeriodPolicyEnabled`, `policyIds`, `workTemplateId` | **Remove `tenantName`, `id`, and `isDeleted`** from `WorkPlanDto` |
+| **`PATCH`** | `/api/companies/{companyId}/workplans/{id}` | `UpdateWorkPlanDto` | **`isDeleted`** *(Note: `tenantName` already absent)* | `workPlanName`, `description`, `isBreakPolicyEnabled`, `isOvertimePolicyEnabled`, `isGracePeriodPolicyEnabled`, `policyIds`, `workTemplateId`, `isDeleted` | **Remove `isDeleted`** from `UpdateWorkPlanDto` (soft delete must go exclusively through `PATCH .../delete`) |
+| **`POST`** | `/api/companies/{companyId}/workplans/roster` | `RosterWorkPlanDto` | **`tenantName`** | `tenantName`, `boardId`, `shiftName`, `code`, `colour`, `description`, `totalWorkDurationInMinutes`, `totalWorkingDays`, `totalDaysOff`, `rosterTimeSlots`, `isBreakPolicyEnabled`, `isOvertimePolicyEnabled`, `isGracePeriodPolicyEnabled`, `policyIds` | **Remove `tenantName`** from `RosterWorkPlanDto` |
+| **`PATCH`** | `/api/companies/{companyId}/workplans/roster/{id}` | `UpdateRosterWorkPlanDto` | **`tenantName`** | `tenantName`, `boardId`, `shiftName`, `code`, `colour`, `description`, `totalWorkDurationInMinutes`, `totalWorkingDays`, `totalDaysOff`, `rosterTimeSlots`, `isBreakPolicyEnabled`, `isOvertimePolicyEnabled`, `isGracePeriodPolicyEnabled`, `policyIds`, `hasTemplateUpdate` | **Remove `tenantName`** from `UpdateRosterWorkPlanDto` |
+| `PATCH` | `/api/companies/{companyId}/workplans/{id}/default` | *(no request body)* | None | *(empty body)* | Already clean |
+| `PATCH` | `/api/companies/{companyId}/workplans/{id}/delete` | *(no request body)* | None | *(empty body)* | Already clean |
+
+###### B. Work Assignments Controller (`WorkAssignmentsController`) — 7 POST/PATCH Endpoints Audited (`3` Require DTO Cleanup)
+
+| HTTP | Route | DTO Schema | Client-Unsafe Fields Exposed | All Request Body Properties Currently in Swagger | Action Required |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| **`POST`** | `/api/companies/{companyId}/workassignments` | `WorkAssignmentDto` | **`tenantName`** | `tenantName`, `workPlanId`, `workPlanName`, `employeeIds`, `startDate`, `endDate` | **Remove `tenantName`** from `WorkAssignmentDto` |
+| **`POST`** | `/api/companies/{companyId}/workassignments/adjust` | `AdjustWorkAssignmentEmployeesDto` | **`tenantName`** | `tenantName`, `workPlanId`, `workPlanName`, `employeeIds`, `startDate`, `endDate`, `workAssignmentId` | **Remove `tenantName`** from `AdjustWorkAssignmentEmployeesDto` |
+| **`POST`** | `/api/companies/{companyId}/workassignments/check-conflicts` | `WorkAssignmentDto` | **`tenantName`** | `tenantName`, `workPlanId`, `workPlanName`, `employeeIds`, `startDate`, `endDate` | **Remove `tenantName`** (resolved via `WorkAssignmentDto`) |
+| `PATCH` | `/api/companies/{companyId}/workassignments/details/{id}/effective-period` | `EditEffectivePeriodDto` | None | `startDate`, `endDate`, `adjustConflicts` | Already clean |
+| `PATCH` | `/api/companies/{companyId}/workassignments/details/{id}/move` | `MoveEmployeeDto` | None | `targetType`, `targetBoardId`, `targetWorkPlanId`, `targetRotationId`, `targetTeamId`, `effectiveFrom`, `endDate`, `adjustConflicts` | Already clean |
+| `POST` | `/api/companies/{companyId}/workassignments/details/{id}/move/check-conflicts` | `MoveEmployeeDto` | None | `targetType`, `targetBoardId`, `targetWorkPlanId`, `targetRotationId`, `targetTeamId`, `effectiveFrom`, `endDate`, `adjustConflicts` | Already clean |
+| `PATCH` | `/api/companies/{companyId}/workassignments/details/{id}/remove` | *(no request body)* | None | *(empty body)* | Already clean |
+
+###### C. Remaining `SP.AttendanceSvc` Controllers Also Exposing `tenantName` (Full 26-Endpoint Inventory)
+To ensure a single-pass cleanup across the microservice (`swagger.json` confirmed **26** total `POST`/`PATCH` routes exposing `tenantName`):
+- **Shift Rotations (2 routes):** `POST /shift-rotations` & `POST /shift-rotations/preview` (`ShiftRotationDto` exposes `tenantName`; `PATCH /shift-rotations/{rotationId}` `UpdateShiftRotationDto` is already clean).
+- **Roster Boards (1 route):** `POST /roster-boards` (`RosterBoardDto` exposes `tenantName`; all Roster Board `PATCH` routes are already clean).
+- **Holiday Calendars (1 route):** `POST /holidaylist` (`HolidayCalendarDto` exposes `tenantName`, `shortCode`, and nested `id`; `PATCH /holidaylist/{id}/{year}` already omits `tenantName`).
+- **Attendance Policies (6 routes — `DEFECT-20261106-03`):** `POST` & `PATCH` `/attpolicies/{break,graceperiod,overtime}` expose both `tenantName` and `id`.
+- **Work Templates (10 routes — `DEFECT-20261026-04`):** `POST` & `PATCH` `/worktemplates/{fixed,flexi,roster,rotation,split}` expose `tenantName` (and PATCH exposes immutable `shortCode`).
+
+##### 2. Expected Clean Request Bodies (After Removing `tenantName`, `id`, and `isDeleted`)
+
+1. **Regular Work Plan — `POST /api/companies/{companyId}/workplans` (`WorkPlanDto`) & `PATCH /api/companies/{companyId}/workplans/{id}` (`UpdateWorkPlanDto`):**
+```json
+{
+  "workPlanName": { "en": "Morning Regular Plan", "ar": "خطة العمل الصباحية" },
+  "description": "Standard schedule with policies",
+  "isBreakPolicyEnabled": true,
+  "isOvertimePolicyEnabled": false,
+  "isGracePeriodPolicyEnabled": true,
+  "policyIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"],
+  "workTemplateId": "1a80d87c-e37b-4d3d-bfc3-74ebed0dfbbb"
+}
+```
+*(No `tenantName`, no `id`, and no `isDeleted` in either Create or Update request body.)*
+
+2. **Work Assignment — `POST /api/companies/{companyId}/workassignments` & `/check-conflicts` (`WorkAssignmentDto`):**
+```json
+{
+  "workPlanId": "eb99cc17-d0d9-4000-ba02-92c4bc669dab",
+  "workPlanName": { "en": "Morning Regular Plan", "ar": "خطة العمل الصباحية" },
+  "employeeIds": ["00000000-0000-0000-0000-000000000001"],
+  "startDate": "2026-11-15",
+  "endDate": "2026-12-31"
+}
+```
+*(For `POST /workassignments/adjust`, keep only `workAssignmentId` in addition to the fields above — no `tenantName`.)*
+
+3. **Roster Work Plan — `POST /api/companies/{companyId}/workplans/roster` (`RosterWorkPlanDto`) & `PATCH .../roster/{id}` (`UpdateRosterWorkPlanDto`):**
+Omit `tenantName` completely while keeping `boardId`, `shiftName`, `code`, `colour`, `description`, `totalWorkDurationInMinutes`, `totalWorkingDays`, `totalDaysOff`, `rosterTimeSlots`, policy flags/IDs (and `hasTemplateUpdate` on PATCH).
+
+##### 3. Impact & Business Risk
+1. **Multi-Tenant Data Integrity / Spoofing:** Client payloads can spoof `tenantName`, or omitting it risks persisting `TenantName: {}` (`DEFECT-20261026-02` / `DEFECT-20261105-04`) in `ERP.Attendance.WorkPlans` and `ERP.Attendance.WorkAssignments`.
+2. **Client-Supplied Entity ID Collision Risk:** Exposing `id` in `WorkPlanDto` (`POST /workplans`) mirrors the `BreakPolicyDto`/`OvertimePolicyDto` anti-pattern (`DEFECT-20261106-01`), inviting duplicate `_id` collisions or client-dictated UUIDs instead of server-generated IDs.
+3. **Soft-Delete Tombstone Bypass (`isDeleted`):** Exposing `isDeleted` in `WorkPlanDto` (`POST`) and `UpdateWorkPlanDto` (`PATCH`) allows creating pre-deleted records or flipping soft-delete state without invoking `PATCH /api/companies/{companyId}/workplans/{id}/delete` and its dependency checks.
+4. **Master Test Case Alignment:** Updated obsolete instruction in [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx) (`Work Plans` sheet, Row 72 `DOC-B-03`, and `Policy Defects Log` Row 38).
+
+##### 4. Developer Action & Remediation (.NET 9 C#)
+```csharp
+// 1. WorkPlansController DTOs: remove TenantName, Id, and IsDeleted from client request models
+public sealed class WorkPlanDto // POST /workplans
+{
+    // REMOVED: public MultilingualString? TenantName { get; set; }
+    // REMOVED: public Guid Id { get; set; }
+    // REMOVED: public bool IsDeleted { get; set; }
+    public MultilingualString WorkPlanName { get; set; } = default!;
+    public string? Description { get; set; }
+    public bool IsBreakPolicyEnabled { get; set; }
+    public bool IsOvertimePolicyEnabled { get; set; }
+    public bool IsGracePeriodPolicyEnabled { get; set; }
+    public List<Guid> PolicyIds { get; set; } = new();
+    public Guid WorkTemplateId { get; set; }
+}
+
+public sealed class UpdateWorkPlanDto // PATCH /workplans/{id}
+{
+    // REMOVED: public bool IsDeleted { get; set; }  // Use PATCH /workplans/{id}/delete only
+    public MultilingualString WorkPlanName { get; set; } = default!;
+    public string? Description { get; set; }
+    public bool IsBreakPolicyEnabled { get; set; }
+    public bool IsOvertimePolicyEnabled { get; set; }
+    public bool IsGracePeriodPolicyEnabled { get; set; }
+    public List<Guid> PolicyIds { get; set; } = new();
+    public Guid WorkTemplateId { get; set; }
+}
+
+// 2. Also remove TenantName from:
+//    - RosterWorkPlanDto (POST /workplans/roster) & UpdateRosterWorkPlanDto (PATCH /workplans/roster/{id})
+//    - WorkAssignmentDto (POST /workassignments & /workassignments/check-conflicts)
+//    - AdjustWorkAssignmentEmployeesDto (POST /workassignments/adjust)
+//    - ShiftRotationDto, RosterBoardDto, HolidayCalendarDto, *PolicyDto, *WorkTemplateDto
+
+// 3. Populate TenantName, Id & IsDeleted strictly server-side inside CQRS Command Handlers:
+entity.Id = Guid.NewGuid();
+entity.IsDeleted = false;
+entity.TenantName = new MultilingualString
+{
+    En = _currentTenant.Name ?? "Attendance",
+    Ar = _currentTenant.ArabicName ?? "الحضور"
+};
+```
+
+---
+
+#### Defect `DEFECT-20261112-02`: Shifts & Rotation — Work Plans & Work Assignments: Remove Unnecessary `id` and `isDeleted` Fields from `POST /workplans` (`WorkPlanDto`) & `PATCH /workplans/{id}` (`UpdateWorkPlanDto`)
+<a id="defect-20261112-02"></a>
+
+- **Severity:** 🟠 **P1 Critical** (Unnecessary Client-Writable System Fields / Identity Collision & Soft-Delete Guard Bypass Risk)
+- **Module / Feature:** **Shifts & Rotation — Work Plans & Work Assignments** (Planner → Regular & Work Plan Details)
+- **Affected Endpoints:**
+  * `POST /api/companies/{companyId}/workplans` (*Create regular work plan* — DTO: `WorkPlanDto`, exposes non-nullable `isDeleted` and `id`)
+  * `PATCH /api/companies/{companyId}/workplans/{id}` (*Update regular work plan* — DTO: `UpdateWorkPlanDto`, exposes nullable `isDeleted`)
+- **Visual Evidence:**
+  * [Evidence 60 — Side-by-Side JSON Request Comparison (`isDeleted: true` and `id: 3fa85f64-...` circled in red on `WorkPlanDto`)](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png)
+  * [Evidence 59 — Swagger UI (`POST /workplans` showing `isDeleted: true` and `id: "3fa85f64-..."` below `tenantName`)](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png)
+
+##### 1. Why `id` and `isDeleted` Have No Valid Client Purpose Here (Schema & Architecture Check)
+Inspection of live `https://attendance2.dev.zoolwork.com/swagger/v1/swagger.json` shows these fields leaked from shared domain/entity base classes instead of clean request-only DTOs:
+
+| Endpoint | Request DTO | Unnecessary Fields in Body | Schema Type / Nullability | Why Unnecessary & Risky for Client Use |
+| :--- | :--- | :--- | :--- | :--- |
+| **`POST /api/companies/{companyId}/workplans`** *(Create regular work plan)* | `WorkPlanDto` | **`id`** & **`isDeleted`** | `isDeleted: boolean (non-nullable)`<br>`id: uuid string (non-nullable)` | **1) `id`:** Document IDs must be server-generated (`Guid.NewGuid()`). Accepting client/Swagger GUIDs (`"3fa85f64-..."`) risks primary-key collisions (`MongoWriteException` HTTP 500, like `DEFECT-20261106-01`) or ID spoofing.<br>**2) `isDeleted`:** Newly created plans are always active (`IsDeleted = false`). Exposing `"isDeleted": true` (default in Swagger UI) makes no functional sense and risks persisting a pre-deleted record. |
+| **`PATCH /api/companies/{companyId}/workplans/{id}`** *(Update regular work plan)* | `UpdateWorkPlanDto` | **`isDeleted`** *(Note: `id` & `tenantName` already removed)* | `isDeleted: boolean (nullable: true)` | **Why unnecessary on Update:** `id` is already supplied in the URL route `/workplans/{id}`, and soft-deletion already has a dedicated endpoint **`PATCH /api/companies/{companyId}/workplans/{id}/delete`** (empty body, executes dependency/employee-assignment checks). Keeping `isDeleted` inside `UpdateWorkPlanDto` creates a backdoor allowing normal edit requests to soft-delete or restore a Work Plan while bypassing `.../delete` guards! |
+
+##### 2. Expected Clean Structure (Before vs. After)
+* **Before (`WorkPlanDto` in Swagger):** Includes `"tenantName"`, `"isDeleted": true`, `"id": "3fa85f64-..."` above `"workPlanName"`.
+* **After (`WorkPlanDto` & `UpdateWorkPlanDto`):** Clients send ONLY business fields (`workPlanName`, `description`, `isBreakPolicyEnabled`, `isOvertimePolicyEnabled`, `isGracePeriodPolicyEnabled`, `policyIds`, `workTemplateId`). Backend generates `Id` (`Guid.NewGuid()`), initializes `IsDeleted = false` on creation, and restricts soft-delete state changes exclusively to `PATCH /api/companies/{companyId}/workplans/{id}/delete`.
+
+---
+
+#### Defect `DEFECT-20261112-03`: Shifts & Rotation — Work Plans & Work Assignments: `GET /workplans?state=active|deleted` Query Filter Logic Is Inverted
+<a id="defect-20261112-03"></a>
+- **Severity:** 🔴 **P0 Blocker** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `GET /api/companies/{companyId}/workplans?locationId={locationId}&state={active|deleted}`
+- **Visual Evidence:** [Evidence 62](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png)
+- **Live Verification (`DOC-A-02-ACT` / `DOC-A-02-DEL`, ATT8 LOC3):** Calling `?state=active` returned HTTP `200` with **`14` records where `14/14` have `"isDeleted": true`** (`0` active plans). Calling `?state=deleted` returned HTTP `200` with **`8` records where `8/8` have `"isDeleted": false`** (`0` deleted plans).
+- **Recommended Fix:** Fix `GetAllWorkPlansQueryHandler` predicate: `state == "active"` -> `IsDeleted == false`; `state == "deleted"` -> `IsDeleted == true`.
+
+---
+
+#### Defect `DEFECT-20261112-04`: Shifts & Rotation — Work Plans & Work Assignments: Duplicate Active Defaults, Deleted/Roster/Rotation Promoted on `/default`, & Deleting Active Default Permitted
+<a id="defect-20261112-04"></a>
+- **Severity:** 🔴 **P0 Critical** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoints:** `POST /workplans`, `PATCH /workplans/{id}/default`, `PATCH /workplans/{id}/delete`
+- **Visual Evidence:** [Evidence 63](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_63_workplan_default_invariants_and_delete_defects.png)
+- **Live Verification (`WP_POST_WT_COMPDEF`, `WP_DB_INV_01`, `DOC-D-01/02`, `DOC-D-05`, `DOC-D-06-ROSTER/ROT`, `DOC-E-06`):**
+  1. Creating Regular WP `15e65678-...` with Company-Default WT `9580fd28-...` inherited `IsDefault: true` alongside `72ea54b3-...` (**2 active defaults** in ATT8 LOC2; also **2 pre-existing active defaults** in ATT8 LOC1 `dc09bc12` + `2844c0b9` and **2 active defaults** in ATT6 Chennai `08607316` + `d810843a` after `DOC-D-01/02`).
+  2. `PATCH /workplans/{id}/default` returned `200` on soft-deleted WP `250c54d7-...`, `Roster` shift `6b23ae63-...`, and `Rotation` plan `47881860-...`.
+  3. `PATCH /workplans/d810843a-.../delete` deleted active default WP (`200`), persisting `IsDeleted: true` and `IsDefault: true` simultaneously.
+- **Recommended Fix:** Never inherit WT `IsDefault` if an active default exists; reject `/default` on `IsDeleted == true` or `PlanType != Regular`; unset all other defaults in `(CompanyId, LocationId)`; block `/delete` on active default plans (`400 Cit.Attendance:1305`).
+
+---
+
+#### Defect `DEFECT-20261112-05`: Shifts & Rotation — Work Plans & Work Assignments: `PATCH /workplans/{id}` Retains Stale Embedded `Policies[]` When Disabling Flags
+<a id="defect-20261112-05"></a>
+- **Severity:** 🔴 **P0 High** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `PATCH /api/companies/{companyId}/workplans/{id}?locationId={locationId}`
+- **Visual Evidence:** [Evidence 64](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png)
+- **Live Verification (`WP_PATCH_006/008/010/012`, `WP_PATCH_PARTIAL_DROP1`, `WP_STATE_013/014`, `WP_Q8_FLIP_FALSE` on `250c54d7-...` & PM Retest `86f4b1e3-...` on `ATT7`):**
+  - Sending `isBreakPolicyEnabled: false` / `Overtime: false` / `Grace: false` with `policyIds: []` (`WP_PATCH_006/008/010/012`), omitting `policyIds` (`WP_Q8_FLIP_FALSE`), or retaining the policy ID (`WP_STATE_014`) returned `200` and flipped DB boolean flags to `False`, **but left stale full policy subdocuments embedded in MongoDB `Policies[]`** (`len=1..3`).
+  - **PM Retest Root-Cause Pinpoint (`WP_PATCH_PARTIAL_DROP1`):** Sending a **non-empty** partial list `policyIds: [break, overtime]` while setting `isGracePeriodPolicyEnabled: false` DID cleanly remove the Grace policy (`Types=[1, 2]`, `PASS`), proving the handler only updates `Policies[]` when `policyIds` is non-empty and silently skips clearing `Policies[]` when `policyIds: []` (empty) or omitted!
+- **Recommended Fix:** Explicitly process `policyIds: []` (not just `Any()`) and prune any `Policies[]` subdocument whose `Is*PolicyEnabled` flag is `false`; reject `isXPolicyEnabled == true` if no matching policy is supplied.
+
+---
+
+#### Defect `DEFECT-20261112-06`: Shifts & Rotation — Work Plans & Work Assignments: Policy Validation Completely Bypassed on `POST` & `PATCH`
+<a id="defect-20261112-06"></a>
+- **Severity:** 🔴 **P0 Critical** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoints:** `POST /api/companies/{companyId}/workplans` & `PATCH /api/companies/{companyId}/workplans/{id}`
+- **Visual Evidence:** [Evidence 65](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png)
+- **Live Verification (Across ATT6, ATT7, ATT8 — Initial + 12-Nov-2026 PM Retest):**
+  - **WITH vs WITHOUT Policy Baseline (`PASS`):** `POST WITH` single/all 3 policies (`WP_POST_005..008`, `WP_BOUND_013/014`, `WP_GET_POL_WITH`) & `POST WITHOUT` (`WP_POST_004`, `WP_BOUND_012`) cleanly embed matching `Policies[]` (`Types=[1]`, `[2]`, `[3]`, `[1,2,3]` vs `[]`) with 1:1 `GET /workplans/{id}` parity.
+  - **Flags ignored (`WP_BOOL_010..013`, `015`, `WP_POL_EX_08`, `WP_PATCH_POL_B_EMPTY`, `WP_PATCH_POL_ALL3_1ID`, `WP_STATE_013`):** `All False + 3 IDs` -> `200` (`PoliciesLen=3`); `Break/OT/Grace=True + []` or omitted -> `200` (`PoliciesLen=0`, consuming all remaining `ATT7_DAM657` slots in PM Retest; only `policyIds: null` returned `400`).
+  - **All 6 Wrong-Policy-Type Permutations & Count Mismatches (`WP_BOOL_016/017`, `WP_POST_034`, `WP_POL_EX_06`, `WP_BOUND_015`, `WP_PATCH_POL_B_OT`, `B_GRC`, `OT_B`, `OT_GRC`, `029`, `GRC_OT`):** Break+OT, Break+Grace, OT+Break, OT+Grace, Grace+Break, and Grace+OT ALL accepted with `200 OK` on PATCH (plus POST tested pairs & `4` IDs in `WP_BOUND_015`).
+  - **Inactive, deleted, cross-company & duplicate/multi-same policies (`WP_POL_EX_01..05`, `WP_POST_033/039`, `WP_PATCH_033`, `WP_PATCH_POL_INACT`, `OT_INACT`, `GRC_INACT`, `DEL`, `CROSS`, `2SAME`):** Inactive Break, Inactive OT, Inactive Grace, soft-deleted, cross-company (`ATT8` policy on `ATT7`), duplicate (`[B,B]`), and 2-same-type (`[OT1,OT2]`) ALL returned `200 OK`! (Only syntactically invalid or random non-existing policy UUIDs returned `400`).
+- **Recommended Fix:** Enforce `Policy.CompanyId == route companyId`, `IsActive == true`, `IsDeleted == false`, unique UUIDs, max 1 policy per `PolicyType`, and strict 1:1 matching with enabled booleans on both `POST` and `PATCH`.
+
+---
+
+#### Defect `DEFECT-20261112-07`: Shifts & Rotation — Work Plans & Work Assignments: `PATCH` Allows `isDeleted: true` Bypass of In-Use Guard (`1304`), Mutates Soft-Deleted Plans & Allows Double-Delete
+<a id="defect-20261112-07"></a>
+- **Severity:** 🟠 **P1 High** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoints:** `PATCH /api/companies/{companyId}/workplans/{id}` & `PATCH .../workplans/{id}/delete`
+- **Visual Evidence:** [Evidence 66](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png)
+- **Live Verification (`DOC-E-03` vs `DOC-C-11-BYPASS-INUSE`, `DOC-C-04`, `DOC-E-04`):** Official `/delete` blocked in-use plan `3811eab3-...` with `400 Cit.Attendance:1304`, **but `PATCH /workplans/3811eab3-...` with body `{"isDeleted": true}` returned `200` and archived `3811eab3-...` (`IsDeleted: True`, re-verified 12-Nov-2026 PM and restored)** despite active `WorkAssignment 206bf207-...`! Also `DOC-C-04` mutated already-deleted `0dea229a-...` (`200`) and `DOC-E-04` double-deleted (`200`).
+- **Recommended Fix:** Remove `isDeleted` from `UpdateWorkPlanDto` (`DEFECT-20261112-02`), block PATCH on `IsDeleted == true`, and return `400`/`404` on double-delete.
+
+---
+
+#### Defect `DEFECT-20261112-08`: Shifts & Rotation — Work Plans & Work Assignments: Work Assignment Propagation Fails for Name & Policy Edits (`Only Template Swap Propagates`)
+<a id="defect-20261112-08"></a>
+- **Severity:** 🟠 **P1 High** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `PATCH /api/companies/{companyId}/workplans/{id}?locationId={locationId}`
+- **Visual Evidence:** [Evidence 67](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_67_workplan_wa_propagation_broken_name_policies.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png)
+- **Live Verification (`WP_PROP_001..007`, `WP_PROP_WAM_CHECK` on `3811eab3-...` / WA `206bf207-...` — Retested 12-Nov-2026 PM):** Updating `workPlanName` (`WP_PROP_001`) AND toggling Break / Overtime / Grace / All-3 policies (`WP_PROP_003`, `004`, `005`, `006`, `007`) ALL returned `200` with **`propagatedToWorkAssignments: false, affectedWorkAssignmentCount: 0`**! Only swapping `workTemplateId` (`WP_PROP_002`) returned `propagatedToWorkAssignments: true, affectedWorkAssignmentCount: 1`. In MongoDB, `ERP.Attendance.WorkAssignmentMaps` is keyed by `WorkAssignmentId` (`wam_count=0` for future-dated assignment `206bf207`, and `POST /workassignments` on `ATT7` was blocked because `0` employees exist in the `Attendance` tenant).
+- **Recommended Fix:** Propagate name, description, flags & `Policies[]` changes to active `WorkAssignments` & `WorkAssignmentMaps`, not solely on template swaps.
+
+---
+
+#### Defect `DEFECT-20261112-09`: Shifts & Rotation — Work Plans & Work Assignments: Missing `workPlanName.en` & `WorkTemplate` Validations, No Max Lengths & `PATCH` Partial Quirks
+<a id="defect-20261112-09"></a>
+- **Severity:** 🟠 **P1 High** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoints:** `POST /api/companies/{companyId}/workplans` & `PATCH /api/companies/{companyId}/workplans/{id}`
+- **Visual Evidence:** [Evidence 68](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png)
+- **Live Verification (`WP_POST_023..026/030/030B/042/043`, `WP_PATCH_001B/025..027/032/032B/034/BND_DESC_0`, plus `ATT8 gw8` `ATT8-BUS-ROT`, `ATT8-BUS-ROST`, `ATT8-BUS-CROSSCOMP`, `ATT8-PATCH-N19`):**
+  1. Missing (`ar` only), `""`, `null`, `"   "` `workPlanName.en`, untrimmed spaces (`WP_SPEC_001`), control chars (`\x00\x07`), `256`/`501`-char names, and `50KB` descriptions all returned `200 OK` on both POST & PATCH.
+  2. Cross-company (`WP_POST_030`, `WP_PATCH_032`, `ATT8-BUS-CROSSCOMP` `ATT7 5fe610ef`), soft-deleted (`WP_POST_030B`, `WP_PATCH_032B`), and **incompatible Rotation (`TemplateType=5`, `c3f43025`) & Roster (`TemplateType=4`, `26681771`)** `workTemplateId` values returned `200 OK` on Regular `PATCH`.
+  3. **`PATCH {"policyIds": null}` (`ATT8-PATCH-N19`) returned `200 OK`** (inconsistent with `POST`, which rejects `"policyIds": null` with `400`), partial `{"workPlanName": {"en": "Only EN"}}` on PATCH (`WP_PATCH_001B_AR_OMIT`) wiped existing `workPlanName.ar`, whereas `{"description": ""}` (`WP_PATCH_BND_DESC_0`) returned `200` and silently preserved old DB `Description`.
+- **Recommended Fix:** Enforce trimmed non-empty `workPlanName.en`, max length bounds, control-char rejection, `WorkTemplate.CompanyId == companyId && !IsDeleted && TemplateType in {Fixed, Flexible, Split}`, reject `"policyIds": null` on PATCH, and consistent partial PATCH semantics.
+
+---
+
+#### Defect `DEFECT-20261112-10`: Shifts & Rotation — Work Plans & Work Assignments: Unhandled `500 HttpRequestException` on Unknown Company/Location & Soft-Deleted Plans Exhaust 10-Plan Quota
+<a id="defect-20261112-10"></a>
+- **Severity:** 🟡 **P1 Medium** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `POST /api/companies/{companyId}/workplans?locationId={locationId}`
+- **Visual Evidence:** [Evidence 69](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png)
+- **Live Verification (`WP_POST_018/021`, `DOC-B-09`, `WP_POST_010/050/054`, `WP_POST_017`, `ATT8-POST-P02/N26/N28`):**
+  1. Unknown valid-UUID `companyId` -> `500 HttpRequestException: "Company service company base info call failed: 500"` (confirmed again on `ATT8 gw8` `ATT8-POST-N28`); unknown valid-UUID `locationId` returned `500 HttpRequestException` on `attendance2` and **`404 Cit.Attendance:1215`** on `ATT8 gw8` (`ATT8-POST-N26`); malformed `companyId` -> bare `404` route miss (`WP_POST_017`).
+  2. Per-location cap `10` (`Cit.Attendance:1302 "Work plan maximum limit reached."`) counts soft-deleted records (`ATT8 LOC1/LOC2`: `Active=3 + Deleted=7 = 10` permanently blocks new creation).
+  3. Undocumented requirement: omitting `description` on POST returns `400 Cit.Attendance:Validation: "Description is required. Minimum 10 characters"` (`WP_POST_010/050/054`) despite being marked nullable/optional in Swagger.
+- **Recommended Fix:** Map CompanySvc non-2xx to `404`/`400`, filter `IsDeleted == false` in location quota count, and align `description` optionality across Swagger, UI, and validator.
+
+---
+
+#### Defect `DEFECT-20261112-11`: Shifts & Rotation — Work Plans & Work Assignments: `GET /workplans/{id}` Leaks Soft-Deleted, Roster & Rotation WorkPlans (`200 OK`)
+<a id="defect-20261112-11"></a>
+- **Severity:** 🟠 **P1 High** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `GET /api/companies/{companyId}/workplans/{id}`
+- **Visual Evidence:** [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png)
+- **Live Verification (`WP_GET_DEL`, `WP_GET_ROST`, `WP_GET_ROT` vs `WP_EMP_007_DEL`, `WP_EMP_008_ROST/ROT`):**
+  1. `GET .../workplans/86f4b1e3-ee62-4ab4-b55a-ebe9f21583c4` (`ATT7` soft-deleted doc) returned `200 OK` with `"isDeleted": true`, whereas `/employees` properly returned `404 Cit.Sbp:NotFound`.
+  2. `GET .../workplans/6b23ae63-...` (`ATT8` Roster, `"planType": "Roster"`) and `GET .../workplans/47881860-...` (`ATT8` Rotation, `"planType": "Rotation"`) returned `200 OK` on the Regular endpoint with Roster/Rotation sub-properties (`boardId`, `rotationId`).
+- **Recommended Fix:** Enforce `!p.IsDeleted && p.PlanType == PlanType.Regular` inside `GetWorkPlanByIdQueryHandler`.
+
+---
+
+#### Defect `DEFECT-20261112-12`: Shifts & Rotation — Work Plans & Work Assignments: Copy-Pasted Error Code `Cit.Attendance:1104 ("Invalid work template state transition.")` on `GET /workplans/{id}/employees`
+<a id="defect-20261112-12"></a>
+- **Severity:** 🟡 **P2 Medium** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoint:** `GET /api/companies/{companyId}/workplans/{id}/employees`
+- **Visual Evidence:** [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png)
+- **Live Verification (`WP_EMP_002_INV`, `WP_EMP_008_ROST`, `WP_EMP_008_ROT`):** Both `?segment=invalidseg` and Roster/Rotation IDs on `/employees` returned `400 {"error":{"code":"Cit.Attendance:1104","message":"Invalid work template state transition."}}` instead of WorkPlan validation errors.
+- **Recommended Fix:** Replace error constant `1104` with domain-specific WorkPlan `segment` (`Cit.Attendance:Validation`) and `planType` (`13xx`) error codes.
+
+---
+
+#### Defect `DEFECT-20261112-13`: Shifts & Rotation — Work Plans & Work Assignments: Silent Paging Coercion on `GET /employees` & Explicit `null` Accepted on `PATCH` Boolean Flags
+<a id="defect-20261112-13"></a>
+- **Severity:** 🔵 **P2 Low** | **Module:** **Shifts & Rotation — Work Plans & Work Assignments**
+- **Affected Endpoints:** `GET /api/companies/{companyId}/workplans/{id}/employees` & `PATCH /api/companies/{companyId}/workplans/{id}`
+- **Visual Evidence:** [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png)
+- **Live Verification (`WP_EMP_004_BADPG`, `WP_PATCH_BOOL_NULL`):** `?page=0&pageSize=0` returned `200 OK` clamped to `page=1, pageSize=1`; `PATCH {"isBreakPolicyEnabled": null}` returned `200 OK` (`"Work plan updated"`).
+- **Recommended Fix:** Confirm & document contract: enforce `page>=1, pageSize>=1` (`400`) and explicit `null` handling on boolean PATCH properties.
+
+---
+
 # 🔄 Part 4: Standardized Bug Lifecycle Procedure
 
 Every bug logged in Attendance 2 follows this strict 6-stage lifecycle:
@@ -6535,7 +6831,7 @@ Share this actionable checklist with Khalid and the engineering team:
 ### 📅 Day 1: 26 October 2026 Checklist (Re-Verified 28-Oct on Attendance 3)
 - [ ] **P2 (`DEFECT-20261026-01`):** Publish integration event from `SP.AttendanceSvc` to `SP.CompanySvc` to set `CompaniesMaster.CompanyChecklist.WorkSchedulesCreated = true`. *(Re-verified 28-Oct: STILL FAILING — checklist returns false; Note: Non-Blocker, confirming with Naushad)*
 - [ ] **P1 (`DEFECT-20261026-02`):** Pre-populate `TenantName` by default on backend from `_currentTenant.Name` (resolve 'Attendance'). Do NOT persist as `Object (empty)` `{}` and do NOT expect user/client to send this value. *(Re-verified 28-Oct: FAIL — verified in Compass as empty object)*
-- [ ] **P2 (`DEFECT-20261026-04`):** Purge `tenantName` completely from all 26 POST, PATCH, and PUT DTOs across the microservice, and remove immutable `shortCode` from all Update DTOs. Pre-populate `TenantName` strictly on the backend from `_currentTenant.Name`. *(Re-audited 28-Oct: CRITICAL FAIL — 26 endpoints expose tenantName in Swagger; spoofing verified with HTTP 200 OK)*
+- [ ] **P2 (`DEFECT-20261026-04`):** Purge `tenantName` completely from all 26 POST, PATCH, and PUT DTOs across the microservice, and remove immutable `shortCode` from all Update DTOs. Pre-populate `TenantName` strictly on the backend from `_currentTenant.Name`. *(Re-verified 12-Nov-2026 on Live Swagger under [`DEFECT-20261112-01`](#defect-20261112-01): `tenantName` still exposed across 26 routes including Work Plans & Work Assignments)*
 - [ ] **P3 (`DEFECT-20261026-03`):** Schedule architectural alignment on standardizing `CreatedBy` email into a composite `AuditIdentity` object across all microservices. *(Pending)*
 
 ### 📅 Day 2: 27 October 2026 Checklist (Re-Verified 28-Oct Live)
@@ -6625,6 +6921,43 @@ Share this actionable checklist with Khalid and the engineering team:
 - [ ] **P1 (`DEFECT-20261110-22`):** In `UpdateRotationWorkTemplateCommandHandler.cs`, query template with `!t.IsDeleted`. Throw `Cit.Attendance:1101` when attempting to PATCH soft-deleted rotation templates.
 - [ ] **P2 (`DEFECT-20261110-23`):** In `WorkTemplatesController.cs`, add `[Required]` to `[FromQuery, Required] Guid locationId` on `POST /worktemplates/rotation` so Swagger OpenAPI documents `locationId` as mandatory.
 
+### 📅 Day 9: 12 November 2026 Checklist (Shifts & Rotation — Work Plans & Work Assignments Full Audit)
+- [ ] **P1 (`DEFECT-20261112-01`):** In **Shifts & Rotation — Work Plans & Work Assignments** DTOs, remove `tenantName` completely from ALL POST and PATCH models (`WorkPlanDto`, `RosterWorkPlanDto`, `UpdateRosterWorkPlanDto`, `WorkAssignmentDto`, `AdjustWorkAssignmentEmployeesDto`) as well as remaining microservice DTOs. Populate `TenantName` strictly from `_currentTenant`.
+- [ ] **P1 (`DEFECT-20261112-02`):** Remove unnecessary client-exposed `id` and `isDeleted` fields from `WorkPlanDto` (`POST /workplans`), and remove `isDeleted` from `UpdateWorkPlanDto` (`PATCH /workplans/{id}`).
+- [ ] **P0 (`DEFECT-20261112-03`):** Fix inverted `state=active|deleted` boolean filter in `GetAllWorkPlansQueryHandler`.
+- [ ] **P0 (`DEFECT-20261112-04`):** Stop inheriting `IsDefault` from CDWT on create; block `/default` for `IsDeleted` or non-Regular plans; enforce single active default per `(CompanyId, LocationId)`; block `/delete` on active default WP.
+- [ ] **P0 (`DEFECT-20261112-05`):** Clear stale embedded `Policies[]` items when flags flip `false` or `policyIds: []` is sent on `PATCH /workplans/{id}`.
+- [ ] **P0 (`DEFECT-20261112-06`):** Validate every `policyIds` entry (`CompanyId == companyId`, `IsActive`, `!IsDeleted`, deduplicated, max 1 per `PolicyType`, strict match with enabled boolean flags) on POST & PATCH.
+- [ ] **P1 (`DEFECT-20261112-07`):** Block PATCH mutations on `IsDeleted == true` plans, block double-delete on `/delete`, and close the `isDeleted: true` in-use guard bypass.
+- [ ] **P1 (`DEFECT-20261112-08`):** Propagate `workPlanName`, `description`, and `Policies[]` updates (not only `workTemplateId` swaps) to active `WorkAssignments` & `WorkAssignmentMaps`.
+- [ ] **P1 (`DEFECT-20261112-09`):** Require trimmed non-empty `workPlanName.en`, max lengths, control-char filtering, same-company active `WorkTemplate` checks, and fix PATCH `workPlanName.ar` overwrite / `description: ""` no-op inconsistencies.
+- [ ] **P1 (`DEFECT-20261112-10`):** Map CompanySvc errors to `404`/`400` instead of `500 HttpRequestException`, exclude `IsDeleted == true` from the 10-plan location cap (`Cit.Attendance:1302`), and align `description` optionality across Swagger & API.
+- [ ] **P1 (`DEFECT-20261112-11`):** Enforce `!IsDeleted && PlanType == Regular` inside `GET /workplans/{id}` so deleted (`404`) & Roster/Rotation (`400`/`404`) plans are rejected.
+- [ ] **P2 (`DEFECT-20261112-12`):** Replace copy-pasted WorkTemplate error `Cit.Attendance:1104` on `GET /workplans/{id}/employees` with WorkPlan validation codes.
+- [ ] **P2 (`DEFECT-20261112-13`):** Validate `page >= 1, pageSize >= 1` on `GET /employees` and clarify explicit `null` boolean semantics on `PATCH`.
+
+---
+
+## 🚨 LATEST DEFECT UPDATE (12 NOVEMBER 2026 PM RETEST + DELTA AUDIT) – SHIFTS & ROTATION — WORK PLANS & WORK ASSIGNMENTS (`DEFECT-20261112-01` TO `DEFECT-20261112-13`)
+
+> **12-Nov-2026 Verified on `ATT7`, `ATT8` (`gw8.dev.zoolwork.com`), `ATT9`:** All **13** issues (`DEFECT-20261112-01`..`-13`) are documented & live-verified (`340` RTM TCs: **`233` Pass, `101` Fail, `6` Blocked** + focused `ATT8 gw8` reverification **`58` TCs: `40` Pass, `17` Fail, `1` Blocked** — see [`REGULAR_WORK_PLAN_EXECUTION.md`](file:///d:/Code/Attendance%20Testing/reports/REGULAR_WORK_PLAN_EXECUTION.md), [`REGULAR_WORK_PLAN_DEFECTS.md`](file:///d:/Code/Attendance%20Testing/defects/REGULAR_WORK_PLAN_DEFECTS.md), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png) & [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png); Full Section 13 Spec in [`Regular_Work_Plan_API_Test_Cases_Master_Suite.md`](file:///d:/Code/Attendance%20Testing/Regular_Work_Plan_API_Test_Cases_Master_Suite.md)).
+
+| Defect ID | Severity | Module / Issue Name | Affected Endpoints | Defect Summary & Required Fix | Live Status & Evidence |
+| :--- | :---: | :--- | :--- | :--- | :---: |
+| [**`DEFECT-20261112-01`**](#defect-20261112-01) | 🟠 **P1 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `POST /workplans/roster`, `PATCH /workplans/roster/{id}`, `POST /workassignments`, `/adjust`, `/check-conflicts` | **Remove `tenantName` Across All POST/PATCH DTOs (`WP_DTO_LIVE_01/02` confirmed spoofing & `{}` DB persistence).** | ❌ **FAIL ([Evidence 59](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png), [Evidence 61](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-02`**](#defect-20261112-02) | 🟠 **P1 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans` (`WorkPlanDto`), `PATCH /workplans/{id}` (`UpdateWorkPlanDto`) | **Remove Unnecessary `id` & `isDeleted` Fields from Create & Update DTOs.** | ❌ **FAIL ([Evidence 60](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-03`**](#defect-20261112-03) | 🔴 **P0 Blocker** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans?state=active\|deleted` | **`?state=active` Returns `20/20` Deleted Plans & `?state=deleted` Returns `7/7` Active Plans (Inverted Boolean Predicate).** | ❌ **FAIL ([Evidence 62](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-04`**](#defect-20261112-04) | 🔴 **P0 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH .../default`, `PATCH .../delete` | **Duplicate Active Defaults, Deleted/Roster/Rotation Promoted to Default (`200`), & Deleting Active Default Permitted (`IsDeleted=True, IsDefault=True`).** | ❌ **FAIL ([Evidence 63](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_63_workplan_default_invariants_and_delete_defects.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-05`**](#defect-20261112-05) | 🔴 **P0 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}` | **Disabling All Flags with `policyIds: []` or Omitted Retains Stale Embedded `Policies[]` (`PARTIAL_DROP1` `[B,O]` Proves Handler Skips `[]`).** | ❌ **FAIL ([Evidence 64](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-06`**](#defect-20261112-06) | 🔴 **P0 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **All 6 Wrong-Type Pairs, 3 Inactive Types, Deleted, Cross-Company, Dupes, 2-Same-Type & `Flag=T+[]` Bypass Validation (`200 OK`).** | ❌ **FAIL ([Evidence 65](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-07`**](#defect-20261112-07) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}`, `PATCH .../delete` | **`PATCH {"isDeleted": true}` Bypasses In-Use `Cit.Attendance:1304` Guard on `3811eab3`, Mutates Soft-Deleted WPs, & Double-Delete Returns `200`.** | ❌ **FAIL ([Evidence 66](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-08`**](#defect-20261112-08) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}` | **Name & All 5 Policy Toggles (`WP_PROP_001/003..007`) Return `prop=False, cnt=0` (Only Template Swap Propagates).** | ❌ **FAIL ([Evidence 67](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_67_workplan_wa_propagation_broken_name_policies.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-09`**](#defect-20261112-09) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **Empty/Null/Whitespace EN Name, Cross-Company/Deleted WT & 50KB Text Return `200`; EN-only PATCH Wipes AR; `description: ""` Silent No-Op.** | ❌ **FAIL ([Evidence 68](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-10`**](#defect-20261112-10) | 🟡 **P1 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans` | **Unhandled `500 HttpRequestException` on Unknown Company/Location, 10-Plan Quota Counts Soft-Deleted Plans, & Undocumented Min-10 Description Rule.** | ❌ **FAIL ([Evidence 69](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-11`**](#defect-20261112-11) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans/{id}` | **`GET /{id}` Returns `200 OK` for Soft-Deleted (`isDeleted:true`), Roster & Rotation WorkPlans Missing `/employees` Guards.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
+| [**`DEFECT-20261112-12`**](#defect-20261112-12) | 🟡 **P2 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans/{id}/employees` | **Returns Copy-Pasted WorkTemplate Error `Cit.Attendance:1104 ("Invalid work template state transition.")` for Invalid `segment` & Non-Regular Plans.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
+| [**`DEFECT-20261112-13`**](#defect-20261112-13) | 🔵 **P2 Low** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /employees`, `PATCH /workplans/{id}` | **`page=0&pageSize=0` Silently Clamped to `1/1`; Explicit `{"isBreakPolicyEnabled": null}` on PATCH Returns `200`.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
+
 ---
 
 ## 🚨 TODAY'S NEW DEFECTS SUMMARY (10 NOVEMBER 2026) – 23 DEFECTS FOUND & LIVE VERIFIED
@@ -6668,11 +7001,24 @@ Share this actionable checklist with Khalid and the engineering team:
 
 ---
 
-## 📸 Master Visual Evidence Index (Evidences 01 to 58)
+## 📸 Master Visual Evidence Index (Evidences 01 to 71)
 <a id="-master-visual-evidence-index"></a>
 
 | Evidence ID | Description / Scope | Target Service / Database Collection | Visual File Path |
 | :---: | :--- | :--- | :--- |
+| **Evidence 71** | **12-Nov-2026 Delta Audit & `DEFECT-20261112-11`..`-13`** (`GET /employees`, `GET /{id}` Deleted/Roster/Rotation Leak, `Cit.Attendance:1104`, `1->2`/`2->1`, Rollback & Combined `340` RTM TCs) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` & `WorkAssignments` | [evidence_71_workplan_get_employees_and_edge_defects.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) |
+| **Evidence 70** | **12-Nov-2026 PM Retest Summary (`308` RTM TCs: `206` Pass, `96` Fail, `6` Blocked)** — `POST`/`PATCH` WITH vs WITHOUT Policies, `PARTIAL_DROP1` Root Cause & 10/10 Defects Live | `SP.AttendanceSvc` / `WorkPlans`, `WorkAssignments` & `Swagger` | [evidence_70_workplan_retest_policy_with_without_and_rtm.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png) |
+| **Evidence 69** | `DEFECT-20261112-10` — `500 HttpRequestException` on Unknown Company/Location, `Cit.Attendance:1302` Deleted Quota Exhaustion & Description Rule | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png) |
+| **Evidence 68** | `DEFECT-20261112-09` — Missing `workPlanName.en` / WT Validations, Cross-Company & Deleted WTs, 50KB Lengths & PATCH Partial Quirks | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_68_workplan_name_wt_validation_and_patch_quirks.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png) |
+| **Evidence 67** | `DEFECT-20261112-08` — Work Assignment Propagation Fails for Name & Policy Edits (`Only Template Swap Propagates`) + WAM Check | `SP.AttendanceSvc` / `WorkAssignments` & `WorkAssignmentMaps` | [evidence_67_workplan_wa_propagation_broken_name_policies.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_67_workplan_wa_propagation_broken_name_policies.png) |
+| **Evidence 66** | `DEFECT-20261112-07` — `PATCH {"isDeleted": true}` Bypass of `1304` In-Use Guard, Mutating Deleted Plans & Double-Delete `200` | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png) |
+| **Evidence 65** | `DEFECT-20261112-06` — Policy Validation Bypasses on POST & PATCH (17 TCs: Flags Ignored, Wrong Types, Inactive, Deleted, Cross-Company, 4 IDs, Dupes) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_65_workplan_policy_validation_bypasses_post_patch.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png) |
+| **Evidence 64** | `DEFECT-20261112-05` — `PATCH /workplans/{id}` Stale Embedded `Policies[]` Desync When Disabling Policy Booleans | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_64_workplan_patch_stale_policies_desync.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png) |
+| **Evidence 63** | `DEFECT-20261112-04` — Duplicate Active Location Defaults, Deleted/Roster/Rotation Promoted on `/default`, & Deleting Active Default | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_63_workplan_default_invariants_and_delete_defects.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_63_workplan_default_invariants_and_delete_defects.png) |
+| **Evidence 62** | `DEFECT-20261112-03` — `GET /workplans?state=active\|deleted` Boolean Query Filter Inverted (`14/14` vs `8/8`) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_62_workplan_get_state_filter_inverted.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png) |
+| **Evidence 61** | Full Swagger UI Window (`POST /workplans`) Showing `tenantName`, `isDeleted`, `id` and HTTP `200 Success` | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_61_workplan_post_swagger_200_full_context.jpg](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg) |
+| **Evidence 60** | JSON Contract Comparison With Client-Exposed `isDeleted` & `id` Red-Circled (`WorkPlanDto`) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_60_workplan_swagger_isdeleted_and_id_circled.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png) |
+| **Evidence 59** | Swagger UI (`POST /api/companies/{companyId}/workplans`) With `tenantName` Red-Circled (`isDeleted` & `id` Visible) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_59_workplan_post_swagger_tenantname_circled.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png) |
 | **Evidence 51** | Seeded Location Work Template Missing Arabic Name in MongoDB Compass | `SP.AttendanceSvc` / `ERP.Attendance.WorkTemplates` | [evidence_51_location_default_worktemplate_ar_name_empty_compass.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_51_location_default_worktemplate_ar_name_empty_compass.png) & [User Compass Capture](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_51_user_location_default_ar_name_empty.jpg) |
 | **Evidence 52** | Company Default Assigned to Location Immutable By Design (`HasPendingLocSync: true`) | `SP.AttendanceSvc` / Web UI & Architecture | [evidence_52_company_default_assigned_location_immutable_by_design.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_52_company_default_assigned_location_immutable_by_design.png) & [User Edit Proof](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_52_user_cdwt_edit_haspendinglocsync_true.jpg) |
 | **Evidence 53** | CDWT PATCH Sets `HasPendingLocSync: true` Without Auto-Overwriting Location Records | `SP.AttendanceSvc` / `ERP.Attendance.WorkTemplates` | [evidence_53_cdwt_patch_sets_haspendinglocsync_true_not_auto_overwrite_compass.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_53_cdwt_patch_sets_haspendinglocsync_true_not_auto_overwrite_compass.png) & [User Sync Proof](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_53_user_flexi_sync_verification.jpg) |

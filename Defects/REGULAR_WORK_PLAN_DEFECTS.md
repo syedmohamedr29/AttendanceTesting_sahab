@@ -1,0 +1,20 @@
+# Regular Work Plan — Verified Defects Register (Company: Attendance 8 & Attendance Suite)
+
+> **Service:** `SP.AttendanceSvc` | **Verified Host:** `https://gw8.dev.zoolwork.com` & `https://attendance2.dev.zoolwork.com` | **Database:** MongoDB `Sahab`  
+> **Master Defect Cross-Reference:** [`Attendance2_Master_Defect_Log.md`](file:///d:/Code/Attendance%20Testing/Defects/Attendance2_Master_Defect_Log.md) (`DEFECT-20261112-01`..`-13`)
+
+| Defect ID | Severity | Title | Verified Live on ATT8 (`gw8.dev.zoolwork.com`) | Reference TCs |
+| :--- | :---: | :--- | :--- | :--- |
+| **`DEFECT-20261112-01`** | P1 Critical | Remove `tenantName` Across All WorkPlan & WorkAssignment POST/PATCH DTOs | Re-verified in live Swagger schema | `SWAGGER_WorkPlanDto`, `WP_DTO_LIVE_01/02` |
+| **`DEFECT-20261112-02`** | P1 Critical | Remove Unnecessary `id` & `isDeleted` from Create/Update DTOs | Re-verified in live Swagger schema & `PATCH` | `SWAGGER_*`, `WP_DTO_LIVE_03/04` |
+| **`DEFECT-20261112-03`** | P0 Blocker | `GET /workplans?state=active\|deleted` Inverted Boolean Filter | Re-verified (`active` returns deleted, `deleted` returns active) | `DOC-A-02`, `WP_GET_STATE_*` |
+| **`DEFECT-20261112-04`** | P0 Critical | Duplicate Active Defaults (`dc09bc12` & `2844c0b9` both `IsDefault=true` in ATT8 LOC1!), Roster/Rotation Promoted on `/default` | Verified in ATT8 MongoDB | `WP_DB_INV_01`, `DOC-D-06-*` |
+| **`DEFECT-20261112-05`** | P0 High | `PATCH` Disabling All Policy Flags (`policyIds: []`) Retains Stale `Policies[]` in DB | Re-verified live on ATT8 `8d00c3e6` (`ATT8-BOOL-01` left `Type=[1]`) | `ATT8-BOOL-01`, `WP_PATCH_006/008/010/012` |
+| **`DEFECT-20261112-06`** | P0 Critical | Policy Business Validation Bypassed (Disabled+ID `GRACE-02`, Enabled+`[]`, Wrong-Type `GRACE-06`, Cross-Company `ATT7` `GRACE-07`, Duplicates `GRACE-08`, Inactive `GRACE-INACT`) | All 7 bypasses returned `200 OK` on ATT8 `gw8` | `ATT8-GRACE-02/04/06/07/08/INACT` |
+| **`DEFECT-20261112-07`** | P1 High | `PATCH` Mutates Soft-Deleted Plans (`200 OK` on `0dea229a` ATT8 LOC2) & `{"isDeleted":true}` Bypasses In-Use `1304` Guard | Verified live on ATT8 (`ATT8-PATCH-N26 -> 200 FAIL`) | `ATT8-PATCH-N26`, `DOC-C-11-BYPASS-INUSE` |
+| **`DEFECT-20261112-08`** | P1 High | WorkAssignment Propagation Fails (`prop=False, cnt=0`) for Name & All Policy Edits | Verified on ATT8 `3811eab3` | `WP_PROP_001`, `003..007` |
+| **`DEFECT-20261112-09`** | P1 High | Empty/Null/Whitespace EN Name (`ATT8-PATCH-N09/10/11`), **Incompatible Rotation (`Type=5`) & Roster (`Type=4`) Templates**, Cross-Company `ATT7` Template, & **`PATCH policyIds: null`** ALL Accepted `200 OK` on Regular WorkPlan | **Newly verified on ATT8 (`ATT8-BUS-ROT`, `ATT8-BUS-ROST`, `ATT8-BUS-CROSSCOMP`, `ATT8-PATCH-N19`!)** | `ATT8-BUS-ROT/ROST/CROSSCOMP`, `ATT8-PATCH-N09/10/11/19` |
+| **`DEFECT-20261112-10`** | P1 Medium | `POST` Unknown `companyId` Throws Unhandled `500 HttpRequestException` (`ATT8-POST-N28`) & Soft-Deleted Plans (`7` Deleted on LOC1/LOC2) Exhaust `10/10` Cap (`Cit.Attendance:1302`) | Verified live on ATT8 (`ATT8-POST-P02 -> 400 1302`, `ATT8-POST-N28 -> 500`) | `ATT8-POST-P02`, `ATT8-POST-N28`, `ATT8-POST-N09` |
+| **`DEFECT-20261112-11`** | P1 High | `GET /workplans/{id}` Leaks `200 OK` for Soft-Deleted, Roster (`6b23ae63`) & Rotation (`47881860`) Plans on ATT8 | Verified live on ATT8 | `WP_GET_DEL`, `WP_GET_ROST`, `WP_GET_ROT` |
+| **`DEFECT-20261112-12`** | P2 Medium | `GET /workplans/{id}/employees` Returns Wrong Copy-Pasted `Cit.Attendance:1104` WorkTemplate Message | Verified live on ATT8 | `WP_EMP_002_INV`, `WP_EMP_008_ROST/ROT` |
+| **`DEFECT-20261112-13`** | P2 Low | `GET /employees?page=0&pageSize=0` Clamps to `1/1`; `PATCH` Explicit `null` Boolean (`isGracePeriodPolicyEnabled: null`) Returns `200` | Verified live on ATT8 (`ATT8-PATCH-N22 -> 200 FAIL`) | `ATT8-PATCH-N22`, `WP_EMP_004_BADPG` |
