@@ -1,0 +1,262 @@
+[
+  {
+    "tc_id": "WA-GET-001",
+    "name": "GET /workassignments with valid location",
+    "endpoint": "GET /workassignments",
+    "expected_status": 200,
+    "actual_status": 0,
+    "passed": false,
+    "details": "HTTPSConnectionPool(host='gw8.dev.zoolwork.com', port=443): Read timed out. (read timeout=10)",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-GET-002",
+    "name": "GET /workassignments with clean location (Riyadh)",
+    "endpoint": "GET /workassignments",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No Work Assignments are found\",\"workAssignments\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-GET-004",
+    "name": "GET /workassignments missing mandatory locationId query",
+    "endpoint": "GET /workassignments",
+    "expected_status": 400,
+    "actual_status": 0,
+    "passed": false,
+    "details": "HTTPSConnectionPool(host='gw8.dev.zoolwork.com', port=443): Read timed out. (read timeout=10)",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-UP-001",
+    "name": "GET /workassignments/upcoming with valid location",
+    "endpoint": "GET /workassignments/upcoming",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No upcoming work assignments are found\",\"upcomingWorkAssignments\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-UP-002",
+    "name": "GET /workassignments/upcoming missing mandatory locationId query",
+    "endpoint": "GET /workassignments/upcoming",
+    "expected_status": 400,
+    "actual_status": 200,
+    "passed": false,
+    "details": "{\"message\":\"No upcoming work assignments are found\",\"upcomingWorkAssignments\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-GETID-001",
+    "name": "GET /workassignments/{id} for existing header",
+    "endpoint": "GET /workassignments/f9e467c6-fd79-4066-87f6-b4262419c5f8",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"workAssignment\":{\"id\":\"f9e467c6-fd79-4066-87f6-b4262419c5f8\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{\"en\":\"Attendance\",\"ar\":\"Attendance\"},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"workPlanId\":\"a1ae96cd-587b-4145-8859-3b42877ea4a5\",\"workPlanName\":{\"en\":\"Default Work Plan\"},\"startDate\":\"2026-11-13\",\"endDate\":null,",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-GETID-002",
+    "name": "GET /workassignments/{id} for non-existent GUID",
+    "endpoint": "GET /workassignments/00000000-0000-0000-0000-000000000000",
+    "expected_status": "404 or 400",
+    "actual_status": 404,
+    "passed": true,
+    "details": "{\"error\":{\"code\":\"Cit.Attendance:1401\",\"message\":\"Work assignment not found.\",\"details\":null,\"data\":{\"workAssignmentId\":\"00000000-0000-0000-0000-000000000000\"},\"validationErrors\":null}}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-DET-001",
+    "name": "GET /workassignments/details with locationId & state=Active",
+    "endpoint": "GET /workassignments/details",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": false,
+    "details": "{\"workAssignmentDetails\":[{\"id\":\"b9e30791-da83-4d65-8c3f-25faa251360a\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{\"en\":\"Attendance\",\"ar\":\"Attendance\"},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"startDate\":\"2026-11-13\",\"endDate\":null,\"status\":\"Pending\",\"isActive\":true,\"createdAt\":\"2026-11-13T11:28:33.261Z\",\"createdBy\":",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-DET-003",
+    "name": "GET /workassignments/details missing mandatory locationId query",
+    "endpoint": "GET /workassignments/details",
+    "expected_status": 400,
+    "actual_status": 200,
+    "passed": false,
+    "details": "{\"workAssignmentDetails\":[{\"id\":\"b9e30791-da83-4d65-8c3f-25faa251360a\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{\"en\":\"Attendance\",\"ar\":\"Attendance\"},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"startDate\":\"2026-11-13\",\"endDate\":null,\"status\":\"Pending\",\"isActive\":true,\"createdAt\":\"2026-11-13T11:28:33.261Z\",\"createdBy\":",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-DETID-001",
+    "name": "GET /workassignments/details/{id} for existing detail map",
+    "endpoint": "GET /workassignments/details/b9e30791-da83-4d65-8c3f-25faa251360a",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"workAssignmentDetail\":{\"id\":\"b9e30791-da83-4d65-8c3f-25faa251360a\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{\"en\":\"Attendance\",\"ar\":\"Attendance\"},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"startDate\":\"2026-11-13\",\"endDate\":null,\"status\":\"Pending\",\"isActive\":true,\"createdAt\":\"2026-11-13T11:28:33.261Z\",\"createdBy\":\"s",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CUR-001",
+    "name": "GET /workassignments/current-plans with asOf & employeeIds",
+    "endpoint": "GET /workassignments/current-plans",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"asOf\":\"2026-11-13\",\"count\":1,\"currentPlans\":[{\"employeeId\":\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\",\"currentPlan\":{\"type\":\"Regular\",\"id\":\"a1ae96cd-587b-4145-8859-3b42877ea4a5\",\"name\":{\"en\":\"Default Work Plan\"},\"startDate\":\"2026-11-13\",\"endDate\":null}}]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-001",
+    "name": "POST /check-conflicts for clean active employee",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"b72232b9-162c-aa41-bd76-595796ccee3c\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-002",
+    "name": "POST /check-conflicts for employee with existing Regular plan overlap",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"Assignment conflict detected\",\"hasConflicts\":true,\"allowedEmployeeIds\":[],\"conflictedEmployeeIds\":[\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\"],\"adjustableEmployeeIds\":[\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\"],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[{\"employeeId\":\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\",\"isBlocked\":false,\"conflicts\":[{\"mapId\":\"b9e30791-da83-4d65-8c3f-25faa251360a\",\"boardId\":null,\"rotationId\":null,\"membershipId\":null,\"startDate\":\"2026-11-13\",\"endDate\":nul",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-007",
+    "name": "POST /check-conflicts with past startDate & enforceFutureStart=true",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 400,
+    "actual_status": 400,
+    "passed": true,
+    "details": "{\"error\":{\"code\":\"Cit.Attendance:1405\",\"message\":\"Work assignment start date must be a future date.\",\"details\":null,\"data\":{\"startDate\":\"2024-01-01\"},\"validationErrors\":null}}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-008",
+    "name": "POST /check-conflicts with past startDate & enforceFutureStart=false",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"b72232b9-162c-aa41-bd76-595796ccee3c\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-010",
+    "name": "POST /check-conflicts inverted dates (endDate < startDate)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 400,
+    "actual_status": 400,
+    "passed": true,
+    "details": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"EndDate must be greater than StartDate.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"EndDate must be greater than StartDate.\",\"members\":[\"EndDate\"]}]}}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-CHK-011",
+    "name": "POST /check-conflicts empty employeeIds array",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": 400,
+    "actual_status": 400,
+    "passed": true,
+    "details": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"At least one employee ID is required. EmployeeIds list cannot be empty.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"At least one employee ID is required.\",\"members\":[\"EmployeeIds\"]},{\"message\":\"EmployeeIds list cannot be empty.\",\"members\":[\"EmployeeIds\"]}]}}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-007",
+    "name": "Assignment startDate before employee Date of Joining (startDate < DOJ)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": "400 or Blocked in 200",
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"Assignment conflict detected\",\"hasConflicts\":true,\"allowedEmployeeIds\":[],\"conflictedEmployeeIds\":[\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\"],\"adjustableEmployeeIds\":[\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\"],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[{\"employeeId\":\"f9e1a6d5-6bd5-7d46-ae85-38b81dc80887\",\"isBlocked\":false,\"conflicts\":[{\"mapId\":\"b9e30791-da83-4d65-8c3f-25faa251360a\",\"boardId\":null,\"rotationId\":null,\"membershipId\":null,\"startDate\":\"2026-11-13\",\"endDate\":nul",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-002",
+    "name": "Inactive Employee assigned via check-conflicts (IsActive=False)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": "400 or Blocked in 200",
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"272e9196-ef39-ed40-b19a-ed60dee4d9a0\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-010",
+    "name": "Dynamic Employee Activation via PUT /api/Employees/activateemployees",
+    "endpoint": "PUT /api/Employees/activateemployees",
+    "expected_status": 200,
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"activationSuccessEmployees\":[\"272e9196-ef39-ed40-b19a-ed60dee4d9a0\"],\"activationFailureEmployees\":[]}",
+    "db_verified": "MongoDB IsActive=True, Status=2"
+  },
+  {
+    "tc_id": "WA-EMP-003-SETUP",
+    "name": "Initiate Employee Offboarding via POST /OffboardEmployee",
+    "endpoint": "POST /OffboardEmployee/c83d586e-ee2f-ec48-ad75-12ea7742a522",
+    "expected_status": 200,
+    "actual_status": 403,
+    "passed": false,
+    "details": "{\"error\":{\"code\":\"EmployeeSvc:60003\",\"message\":\"Employee salary details must be configured before initiating offboarding.\",\"details\":null,\"data\":{\"0\":\"Employee 'c83d586e-ee2f-ec48-ad75-12ea7742a522' doesn't have salary details configured.\"},\"validationErrors\":null}}",
+    "db_verified": "MongoDB Status=2 (5=Offboarding)"
+  },
+  {
+    "tc_id": "WA-EMP-003",
+    "name": "Offboarding Employee open-ended assignment rejection (endDate=null)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": "400 or Blocked",
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"c83d586e-ee2f-ec48-ad75-12ea7742a522\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-004",
+    "name": "Offboarding Employee assignment exceeding LWD (endDate > LWD)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": "400 or Blocked",
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"c83d586e-ee2f-ec48-ad75-12ea7742a522\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-005-SETUP",
+    "name": "Finalize Exit via PUT /OffboardEmployee/{id}/Exit",
+    "endpoint": "PUT /OffboardEmployee/c83d586e-ee2f-ec48-ad75-12ea7742a522/Exit",
+    "expected_status": 200,
+    "actual_status": 403,
+    "passed": false,
+    "details": "{\"error\":{\"code\":\"EmpSvc_Employee_NotInOffboardingState\",\"message\":\"An internal error occurred during your request!\",\"details\":null,\"data\":{},\"validationErrors\":null}}",
+    "db_verified": "MongoDB Status=2 (6=Exited)"
+  },
+  {
+    "tc_id": "WA-EMP-005",
+    "name": "Exited Employee assignment rejection (EmployeeStatus=6)",
+    "endpoint": "POST /workassignments/check-conflicts",
+    "expected_status": "400 or Blocked",
+    "actual_status": 200,
+    "passed": true,
+    "details": "{\"message\":\"No conflicts detected\",\"hasConflicts\":false,\"allowedEmployeeIds\":[\"c83d586e-ee2f-ec48-ad75-12ea7742a522\"],\"conflictedEmployeeIds\":[],\"adjustableEmployeeIds\":[],\"blockedEmployeeIds\":[],\"canProceed\":true,\"conflictDetails\":[]}",
+    "db_verified": null
+  },
+  {
+    "tc_id": "WA-EMP-012",
+    "name": "Revert Offboarding via PUT /OffboardEmployee/{id}/RevertBack",
+    "endpoint": "PUT /OffboardEmployee/c83d586e-ee2f-ec48-ad75-12ea7742a522/RevertBack",
+    "expected_status": 200,
+    "actual_status": 403,
+    "passed": false,
+    "details": "{\"error\":{\"code\":\"EmpSvc_Employee_NotInOffboardingState\",\"message\":\"An internal error occurred during your request!\",\"details\":null,\"data\":{},\"validationErrors\":null}}",
+    "db_verified": "MongoDB Status=2 (Restored to Active 2)"
+  }
+]

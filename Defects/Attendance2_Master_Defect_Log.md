@@ -2,7 +2,7 @@
 
 > **Service:** `SP.AttendanceSvc` (.NET 9 Microservice) | **Environment:** Sahab DEV (`sp.dev.zoolwork.com`)
 > **Database:** MongoDB (`Sahab` @ `10.1.0.4:27018`) | **Author:** QA Engineering & Microservice Architecture Team
-> **Status:** **Active Master Defect Register** | **Date:** **12 November 2026 (PM Delta + Full Section 13 Spec)** (Updated with `DEFECT-20261112-01` to `DEFECT-20261112-13` — Shifts & Rotation — Work Plans & Work Assignments Full Regular API + `/employees` + MongoDB Audit across `ATT7`, `ATT8`, `ATT9`, **340 RTM Cases (`233` Pass, `101` Fail, `6` Blocked)** & **Evidences 59–71**)
+> **Status:** **Active Master Defect Register** | **Date:** **13 November 2026 (Day 10 Update — Extreme QA on Attendance 10 + Compass Proof)** (Updated with `DEFECT-20261112-01` to `DEFECT-20261112-13` — Shifts & Rotation — Work Plans & Work Assignments Full Regular API + `/employees` + MongoDB Audit across `ATT7`, `ATT8`, `ATT9`, **340 RTM Cases (`233` Pass, `101` Fail, `6` Blocked)**, **30 Extreme QA Cases on `Attendance 10` (`7` Pass, `23` Fail / Invariant Breaches)**, live MongoDB Compass verification of `DEFECT-20261112-06` [Evidence 72], upstream `CompanySvc` 500 crash on POST, and **Evidences 01–73**)
 
 ---
 
@@ -16,22 +16,22 @@
 - [7. Verified Business Scenarios Confirmed as 'Not a Bug' (By Design)](#7-verified-business-scenarios-confirmed-as-not-a-bug)
 - [8. Developer Remediation Action Checklist (Days 1 to 9)](#8-developer-remediation-action-checklist)
 - [9. 🚨 Latest Defect Update (12 Nov 2026) & 10 Nov 2026 Summary – Bottom Recap Tables](#todays-defects-summary-10-november-2026-bottom)
-- [10. 📸 Master Visual Evidence Index (Evidences 01 to 70)](#-master-visual-evidence-index)
+- [10. 📸 Master Visual Evidence Index (Evidences 01 to 73)](#-master-visual-evidence-index)
 
 ---
 
 ## 1. Executive Summary & Defect Metrics Dashboard
 
-During rigorous manual, Swagger, Web UI (`sp.dev.zoolwork.com`), and MongoDB Compass testing of the Attendance 2 microservice, a total of **69 defects and architecture gaps** were identified and verified with photographic proof.
+During rigorous manual, Swagger, Web UI (sp.dev.zoolwork.com), and MongoDB Compass testing of the Attendance 2 microservice, a total of **104 defects and architecture gaps** were identified and verified with photographic proof.
 
 ### Defect Severity Breakdown
 
 | Severity Level | Count | Impact Summary |
 | :--- | :---: | :--- |
-| 🔴 **P0 (Blocker)** | **11** | **System Blockers:** Inverted `?state=active\|deleted` filter (`-03`), duplicate location defaults & deleting active default (`-04`), PATCH retaining stale `Policies[]` (`-05`), complete policy validation bypass (`-06`), expired JWT bypass, inverted shifts, PATCH deadlock (`1706`), empty calendar publish. |
-| 🟠 **P1 (Critical)** | **52** | **Critical Domain / Data Integrity:** `PATCH isDeleted:true` bypassing `1304` in-use guard (`-07`), broken WA propagation (`-08`), missing EN name / WT validation & PATCH quirks (`-09`), `500 HttpRequestException` & deleted quota exhaustion (`-10`), client-exposed `tenantName` (`-01`), `id`/`isDeleted` DTO leaks (`-02`), HTTP 500 crashes, broken math invariants. |
-| 🟡 **P2 (Major)** | **6** | **Audit / DX / Contracts:** Audit fields stored as plain emails instead of composite user objects, redundant DTO fields, missing Swagger OAuth2 login flow. |
-| **TOTAL** | **69** | **100% Verified with live screenshots & MongoDB Compass records.** |
+| 🔴 **P0 (Blocker)** | **13** | **System Blockers:** Inverted ?state=active\|deleted filter (-03), duplicate location defaults & deleting active default (-04), PATCH retaining stale Policies[] (-05), complete policy validation bypass (-06), expired JWT bypass, inverted shifts, PATCH deadlock (1706), empty calendar publish. |
+| 🟠 **P1 (Critical)** | **79** | **Critical Domain / Data Integrity:** PATCH isDeleted:true bypassing 1304 in-use guard (-07), broken WA propagation (-08), missing EN name / WT validation & PATCH quirks (-09), 500 HttpRequestException & deleted quota exhaustion (-10), client-exposed 	enantName (-01), id/isDeleted DTO leaks (-02), HTTP 500 crashes, broken math invariants. |
+| 🟡 **P2 (Major)** | **12** | **Audit / DX / Contracts:** Audit fields stored as plain emails instead of composite user objects, redundant DTO fields, copy-pasted error codes (Cit.Attendance:1104), pagination edge quirks, missing Swagger OAuth2 login flow. |
+| **TOTAL** | **104** | **100% Verified with live screenshots & MongoDB Compass records.** |
 
 ### Defect Distribution by Functional Module
 
@@ -4629,9 +4629,10 @@ entity.IsDeleted = false; // Soft-deletes happen exclusively via PATCH /workplan
 - **Target Routes:** `POST /api/companies/{companyId}/workplans`, `PATCH /api/companies/{companyId}/workplans/{id}`
 - **Database Target:** `Sahab.ERP.Attendance.WorkPlans`
 - **Status:** ❌ **OPEN / LIVE API + MONGO VERIFIED (12-Nov-2026 — Evidence 65)**
-- **Visual Evidence:** [Evidence 65 — Policy Validation Bypasses](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png)
-- **Live Evidence (17 Failing TCs across ATT6, ATT7, ATT8):**
+- **Visual Evidence:** [Evidence 65 — Policy Validation Bypasses](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png) & [Evidence 72 — Overtime Flag False with Overtime Policy Embedded](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg)
+- **Live Evidence (18 Failing TCs across ATT6, ATT7, ATT8, ATT10):**
   - `WP_BOOL_010` (`All False + 3 IDs`) -> `200` (`DB PoliciesLen=3`); `WP_BOOL_011..013` / `WP_POL_EX_08` (`Flag=True + []` or omitted) -> `200` (`PoliciesLen=0`, while `policyIds: null` -> `400`).
+  - **Live Compass Verified (13-Nov-2026 Evidence 72 - ATT10 `803a6a50-4c68-4aa0-909a-deee1d4dbae6`):** Plan created with `isOvertimePolicyEnabled: false` and `policyIds: ["81120ad2-dc16-4efc-a3e0-b2ac5b8b0d69"]` (Overtime Policy Type 2) returned `200 OK` and persisted `IsOvertimePolicyEnabled: false` while storing the active Overtime Policy in `Policies[]` array!
   - Mismatched types (`WP_BOOL_016`, `WP_POST_034`, `WP_POL_EX_06`, `WP_PATCH_029`), `All 3 True + 1 ID` (`WP_BOOL_017`), `4 IDs` incl. cross-company (`WP_BOUND_015` `DB PoliciesLen=4`), inactive (`WP_POL_EX_01..03`, `WP_PATCH_POL_INACT`), soft-deleted (`WP_POL_EX_04`, `WP_PATCH_POL_DEL`), cross-company (`WP_POST_033`), same-type 2x Break (`WP_POL_EX_05`), and duplicate UUIDs (`WP_POST_039`, `WP_PATCH_033`) **all returned `200 OK`**.
 - **Developer Remediation:** Enforce `CompanyId == companyId`, `IsActive == true`, `IsDeleted == false`, unique UUIDs, max 1 policy per `PolicyType`, and strict 1:1 matching with enabled flags on both POST & PATCH.
 
@@ -5537,25 +5538,29 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 
 ---
 
-## 🚨 LATEST DEFECT UPDATE (12 NOVEMBER 2026 PM RETEST + DELTA AUDIT) – SHIFTS & ROTATION — WORK PLANS & WORK ASSIGNMENTS (`DEFECT-20261112-01` TO `DEFECT-20261112-13`)
+## 🚨 LATEST DEFECT UPDATE (12-13 NOVEMBER 2026 FULL AUDIT) – SHIFTS & ROTATION — WORK PLANS & WORK ASSIGNMENTS (`DEFECT-20261112-01` TO `DEFECT-20261112-13`)
 
-> **12-Nov-2026 Verified on `ATT7`, `ATT8` (`gw8.dev.zoolwork.com`), `ATT9`:** All **13** issues (`DEFECT-20261112-01`..`-13`) are documented & live-verified (`340` RTM TCs: **`233` Pass, `101` Fail, `6` Blocked** + focused `ATT8 gw8` reverification **`58` TCs: `40` Pass, `17` Fail, `1` Blocked** — see [`REGULAR_WORK_PLAN_EXECUTION.md`](file:///d:/Code/Attendance%20Testing/reports/REGULAR_WORK_PLAN_EXECUTION.md), [`REGULAR_WORK_PLAN_DEFECTS.md`](file:///d:/Code/Attendance%20Testing/defects/REGULAR_WORK_PLAN_DEFECTS.md), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png) & [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png); Full Section 13 Spec in [`Regular_Work_Plan_API_Test_Cases_Master_Suite.md`](file:///d:/Code/Attendance%20Testing/Regular_Work_Plan_API_Test_Cases_Master_Suite.md)).
+> **Verified Across `ATT6`, `ATT7`, `ATT8` (`gw8.dev.zoolwork.com`), `ATT9`, and `ATT10` (`3a249872-e23c-a401-7d8b-4a8049ac8c9b`):**  
+> All **13** defects (`DEFECT-20261112-01`..`-13`) are documented, reproduced, and live-verified with **124 total failing test scenarios**:
+> - **12-Nov-2026 (Day 9):** `340` RTM cases (`233` Pass, `101` Fail, `6` Blocked) + `58` ATT8 gw8 cases (`40` Pass, `17` Fail, `1` Blocked).
+> - **13-Nov-2026 (Day 10):** `30` Extreme QA cases on `Attendance 10` (**`7` Pass, `23` Fail / Invariant Breaches**) + Live Compass verification of doc `803a6a50` (`IsOvertime=false` with Overtime Policy stored in DB, [Evidence 72](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg) & [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png)) + Upstream `CompanySvc` 500 crash on `POST`.
+> - **Reference Reports:** [`REGULAR_WORK_PLAN_EXECUTION.md`](file:///d:/Code/Attendance%20Testing/reports/REGULAR_WORK_PLAN_EXECUTION.md), [`REGULAR_WORK_PLAN_DEFECTS.md`](file:///d:/Code/Attendance%20Testing/defects/REGULAR_WORK_PLAN_DEFECTS.md), [`REGULAR_WORK_PLAN_BUSINESS_VALIDATION.md`](file:///d:/Code/Attendance%20Testing/reports/REGULAR_WORK_PLAN_BUSINESS_VALIDATION.md).
 
 | Defect ID | Severity | Module / Issue Name | Affected Endpoints | Defect Summary & Required Cleanup | Live Status & Evidence |
 | :--- | :---: | :--- | :--- | :--- | :---: |
-| [**`DEFECT-20261112-01`**](#defect-20261112-01) | 🟠 **P1 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `POST /workplans/roster`, `PATCH /workplans/roster/{id}`, `POST /workassignments`, `/adjust`, `/check-conflicts` | **Remove `tenantName` Across All Work Plan & Work Assignment POST/PATCH DTOs (`WP_DTO_LIVE_01/02` confirmed spoofing & `{}` persistence).** | ❌ **FAIL ([Evidence 59](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png), [Evidence 61](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-01`**](#defect-20261112-01) | 🟠 **P1 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `POST /workplans/roster`, `PATCH /workplans/roster/{id}`, `POST /workassignments`, `/adjust`, `/check-conflicts` | **Remove `tenantName` Across All Work Plan & Work Assignment POST/PATCH DTOs (`WP_DTO_LIVE_01/02` confirmed spoofing & `{}` persistence in ATT10 `803a6a50`).** | ❌ **FAIL ([Evidence 59](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png), [Evidence 61](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_61_workplan_post_swagger_200_full_context.jpg), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), [Evidence 72](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg))** |
 | [**`DEFECT-20261112-02`**](#defect-20261112-02) | 🟠 **P1 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans` (`WorkPlanDto`), `PATCH /workplans/{id}` (`UpdateWorkPlanDto`) | **Remove Unnecessary `id` & `isDeleted` Fields from Regular Work Plan Create & Update DTOs.** | ❌ **FAIL ([Evidence 60](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-03`**](#defect-20261112-03) | 🔴 **P0 Blocker** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans?state=active\|deleted` | **`?state=active` Returns `20/20` Deleted Plans & `?state=deleted` Returns `7/7` Active Plans (Inverted Boolean Predicate).** | ❌ **FAIL ([Evidence 62](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-03`**](#defect-20261112-03) | 🔴 **P0 Blocker** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans?state=active\|deleted` | **`?state=active` Returns Deleted Plans & `?state=deleted` Returns Active Plans (Inverted Boolean Predicate verified on ATT6, ATT8 & ATT10).** | ❌ **FAIL ([Evidence 62](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), `ATT10-GET-05`)** |
 | [**`DEFECT-20261112-04`**](#defect-20261112-04) | 🔴 **P0 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH .../default`, `PATCH .../delete` | **Duplicate Active Defaults, Deleted/Roster/Rotation Promoted to Default (`200`), & Deleting Active Default Permitted.** | ❌ **FAIL ([Evidence 63](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_63_workplan_default_invariants_and_delete_defects.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-05`**](#defect-20261112-05) | 🔴 **P0 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}` | **Disabling All Flags with `policyIds: []` or Omitted Retains Stale Embedded `Policies[]` (`PARTIAL_DROP1` `[B,O]` Proves Handler Skips `[]`).** | ❌ **FAIL ([Evidence 64](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-06`**](#defect-20261112-06) | 🔴 **P0 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **All 6 Wrong-Type Pairs, 3 Inactive Types, Deleted, Cross-Company, Dupes, 2-Same-Type & `Flag=T+[]` Bypass Validation (`200 OK`).** | ❌ **FAIL ([Evidence 65](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-07`**](#defect-20261112-07) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}`, `PATCH .../delete` | **`PATCH {"isDeleted": true}` Bypasses In-Use `Cit.Attendance:1304` Guard on `3811eab3`, Mutates Deleted WPs, & Double-Delete Returns `200`.** | ❌ **FAIL ([Evidence 66](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-05`**](#defect-20261112-05) | 🔴 **P0 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}` | **Disabling All Flags with `policyIds: []` Retains Stale Embedded `Policies[]` (Verified on ATT8 `8d00c3e6` and ATT10 `7a29bd21`).** | ❌ **FAIL ([Evidence 64](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-06`**](#defect-20261112-06) | 🔴 **P0 Critical** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **Policy Validation Bypassed: Disabled Flag + Policy ID Passed Allowed & Stored (`IsOvertime=false` + OT ID `803a6a50`, `ATT10-POL-01`), Enabled+`[]`, Wrong Types, Cross-Company & Dupes Accepted `200 OK`.** | ❌ **FAIL ([Evidence 65](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), [Evidence 72](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg), [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png))** |
+| [**`DEFECT-20261112-07`**](#defect-20261112-07) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}`, `PATCH .../delete` | **`PATCH {"isDeleted": true}` Bypasses In-Use `Cit.Attendance:1304` Guard, Mutates Deleted WPs, & Double-Delete Returns `200` (`ATT10-DTO-03`).** | ❌ **FAIL ([Evidence 66](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png))** |
 | [**`DEFECT-20261112-08`**](#defect-20261112-08) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `PATCH /workplans/{id}` | **Name & All 5 Policy Toggles (`WP_PROP_001/003..007`) Return `prop=False, cnt=0` (Only Template Swap Propagates).** | ❌ **FAIL ([Evidence 67](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_67_workplan_wa_propagation_broken_name_policies.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-09`**](#defect-20261112-09) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **Empty/Null/Whitespace EN Name, Cross-Company/Deleted WT & 50KB Text Return `200`; EN PATCH Wipes AR; `""` Desc No-Op.** | ❌ **FAIL ([Evidence 68](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
-| [**`DEFECT-20261112-10`**](#defect-20261112-10) | 🟡 **P1 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans` | **Unhandled `500 HttpRequestException` on Unknown Company/Location, 10-Plan Quota Counts Soft-Deleted Plans, & Min-10 Desc Rule.** | ❌ **FAIL ([Evidence 69](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png))** |
+| [**`DEFECT-20261112-09`**](#defect-20261112-09) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans`, `PATCH /workplans/{id}` | **Empty/Null/Whitespace EN Name (`ATT10-BVA-NAME-01/02/03`), Incompatible Rotation/Roster WTs (`ATT10-WT-01/02`), Cross-Company WT & 50KB Payload Return `200`; `policyIds: null` Accepted on PATCH.** | ❌ **FAIL ([Evidence 68](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png))** |
+| [**`DEFECT-20261112-10`**](#defect-20261112-10) | 🟡 **P1 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `POST /workplans` | **Unhandled `500 HttpRequestException` on CompanySvc 500 Failure across all companies, 10-Plan Quota Counts Deleted Plans, & Min-10 Desc Rule.** | ❌ **FAIL ([Evidence 69](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png), [Evidence 70](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png), [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png))** |
 | [**`DEFECT-20261112-11`**](#defect-20261112-11) | 🟠 **P1 High** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans/{id}` | **`GET /{id}` Returns `200 OK` for Soft-Deleted, Roster & Rotation WorkPlans Missing `/employees` Guards.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
-| [**`DEFECT-20261112-12`**](#defect-20261112-12) | 🟡 **P2 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans/{id}/employees` | **Returns Copy-Pasted WorkTemplate Error `Cit.Attendance:1104 ("Invalid work template state transition.")` for Invalid `segment` & Non-Regular Plans.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
-| [**`DEFECT-20261112-13`**](#defect-20261112-13) | 🔵 **P2 Low** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /employees`, `PATCH /workplans/{id}` | **`page=0&pageSize=0` Silently Clamped to `1/1`; Explicit `{"isBreakPolicyEnabled": null}` on PATCH Returns `200`.** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png))** |
+| [**`DEFECT-20261112-12`**](#defect-20261112-12) | 🟡 **P2 Medium** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /workplans/{id}/employees` | **Returns Copy-Pasted WorkTemplate Error `Cit.Attendance:1104` or `404 Cit.Sbp:NotFound` for Valid/Invalid WorkPlan IDs (`ATT10-GET-03/04`).** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png), `ATT10-GET-03/04`)** |
+| [**`DEFECT-20261112-13`**](#defect-20261112-13) | 🔵 **P2 Low** | **Shifts & Rotation — Work Plans & Work Assignments** | `GET /employees`, `PATCH /workplans/{id}` | **`page=0&pageSize=0` Clamping & Explicit `{"isOvertimePolicyEnabled": null}` on PATCH Returns `200` (`ATT10-DTO-02`).** | ❌ **FAIL ([Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png), `ATT10-DTO-02`)** |
 
 ---
 
@@ -5600,11 +5605,13 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 
 ---
 
-## 📸 Master Visual Evidence Index (Evidences 01 to 71)
+## 📸 Master Visual Evidence Index (Evidences 01 to 73)
 <a id="-master-visual-evidence-index"></a>
 
 | Evidence ID | Description / Scope | Target Service / Database Collection | Visual File Path |
 | :---: | :--- | :--- | :--- |
+| **Evidence 73** | **13-Nov-2026 Extreme QA Validation Suite on Attendance 10 (`30` Cases: `7` Pass, `23` Fail)** — Live MongoDB Mutations, BVA 501-char/50KB stress, Incompatible Rotation/Roster WT, & Policy Invariant Breaches | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_73_attendance10_extreme_qa_validation_findings.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png) |
+| **Evidence 72** | **13-Nov-2026 Live Compass Verification on Attendance 10 (`803a6a50`)** — `IsOvertimePolicyEnabled: false` but active Overtime Policy embedded in `Policies[]` & `TenantName: {}` (`DEFECT-20261112-06`) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_72_workplan_overtime_disabled_with_overtime_policy_embedded.jpg) |
 | **Evidence 71** | **12-Nov-2026 Delta Audit & `DEFECT-20261112-11`..`-13`** (`GET /employees`, `GET /{id}` Deleted/Roster/Rotation Leak, `Cit.Attendance:1104`, `1->2`/`2->1`, Rollback & Combined `340` RTM TCs) | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` & `WorkAssignments` | [evidence_71_workplan_get_employees_and_edge_defects.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) |
 | **Evidence 70** | **12-Nov-2026 PM Retest Summary (`308` RTM TCs: `206` Pass, `96` Fail, `6` Blocked)** — `POST`/`PATCH` WITH vs WITHOUT Policies, `PARTIAL_DROP1` Root Cause & 10/10 Defects Live | `SP.AttendanceSvc` / `WorkPlans`, `WorkAssignments` & `Swagger` | [evidence_70_workplan_retest_policy_with_without_and_rtm.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_70_workplan_retest_policy_with_without_and_rtm.png) |
 | **Evidence 69** | `DEFECT-20261112-10` — `500 HttpRequestException` on Unknown Company/Location, `Cit.Attendance:1302` Deleted Quota Exhaustion & Description Rule | `SP.AttendanceSvc` / `ERP.Attendance.WorkPlans` | [evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png) |
@@ -5632,3 +5639,440 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 | **Evidence 01 - 40** | Core Architecture, Holiday Calendars, Security & Swagger Invariants | `SP.AttendanceSvc` / DEV Collections | [defect_evidence/](file:///d:/Code/Attendance%20Testing/defect_evidence/) |
 
 ---
+
+
+---
+
+# PART IX: WORK ASSIGNMENT & EMPLOYEE LIFECYCLE DEFECTS (LIVE ATTENDANCE 11 RUN)
+
+## Defect 59: CRITICAL — Inactive Employee Assignment Commit returns HTTP 200 OK and Generates Orphaned Header in MongoDB with 0 Detail Maps
+
+- **Defect ID:** `DEFECT-WA-01` / `BUG-WA-03`
+- **Severity:** High / Data Integrity
+- **Component:** Work Assignments (`POST /api/companies/{companyId}/workassignments`)
+- **Microservices Involved:** `AttendanceSvcNET8test` (Gateway: `gw8.dev.zoolwork.com`), `EmployeeSvcNET8test`
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+- **Database Collections:** `Sahab.ERP.Attendance.WorkAssignments`, `Sahab.ERP.Attendance.WorkAssignmentMaps`
+
+### 1. Description & Defect Overview
+When a client submits an inactive employee (`IsActive: false`, `EmployeeStatus: 1`, e.g., `SA-EMP-0006`) to `POST /api/companies/{companyId}/workassignments?locationId={locationId}`, the microservice responds with `HTTP 200 OK: {"message":"Work assignment created"}`. It physically inserts a Header document in `ERP.Attendance.WorkAssignments` (`9dd98d95-9aef-47e6-b216-7d72a5674827`), but silently fails to create any corresponding employee mapping document in `ERP.Attendance.WorkAssignmentMaps`.
+
+### 2. Live Reproduction Steps
+1. Identify inactive employee in MongoDB (`SA-EMP-0006` `39879386-4c24-ee4c-84ec-6eb7daa765ac`, `IsActive: false`).
+2. Send `POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/workassignments?locationId=3a24e666-df63-3dc7-0ea7-02ec8be341e7`:
+   ```json
+   {
+     "tenantName": {"en": "Attendance", "ar": "Attendance"},
+     "workPlanId": "a1ae96cd-587b-4145-8859-3b42877ea4a5",
+     "workPlanName": {"en": "Default Work Plan"},
+     "employeeIds": ["39879386-4c24-ee4c-84ec-6eb7daa765ac"],
+     "startDate": "2026-11-14",
+     "endDate": null
+   }
+   ```
+3. Observe HTTP Response: Returns `HTTP 200 OK: {"message":"Work assignment created","workAssignment":{"id":"9dd98d95-9aef-47e6-b216-7d72a5674827"}}`.
+4. Inspect MongoDB:
+   - `ERP.Attendance.WorkAssignments`: Header `9dd98d95...` exists.
+   - `ERP.Attendance.WorkAssignmentMaps`: Exactly `0` documents exist for Header `9dd98d95...` or `SA-EMP-0006`.
+
+### 3. Business Impact & Root Cause
+- **Impact:** Frontend displays a success message, but the employee is never actually assigned. Orphaned headers pollute the database.
+- **Root Cause:** Backend creation pipeline validates the work plan and inserts the Header *before* validating the active status of employees in `EmployeeSvc`. The detail map generator then skips inactive employees, leaving the header orphaned.
+- **Expected Behavior:** The endpoint must validate employee active status *first*, rejecting the entire request with `HTTP 400 Bad Request` (`Cit.Attendance:Validation` / Inactive employee cannot be assigned).
+
+---
+
+## Defect 60: Swagger Route Gap — `PATCH /workassignments/details/{id}/remove` Returns HTTP 404 Not Found
+
+- **Defect ID:** `DEFECT-WA-02` / `BUG-WA-04`
+- **Severity:** Medium
+- **Component:** Work Assignments (`PATCH /api/companies/{companyId}/workassignments/details/{id}/remove`)
+- **Route:** `PATCH /api/companies/{companyId}/workassignments/details/{id}/remove?locationId={locationId}`
+- **Observed:** Returns `HTTP 404 Not Found` with empty response body.
+- **Expected:** Endpoint documented in Swagger specification to deactivate assignment row. Must execute and return `HTTP 200 OK`.
+
+---
+
+## Defect 61: Missing Location Query Enforcement on `GET /workassignments/upcoming` Returns HTTP 200 OK Instead of 400
+
+- **Defect ID:** `DEFECT-WA-03` / `DEFECT-20261114-03`
+- **Severity:** Medium / Scoping Inconsistency
+- **Component:** Work Assignments (`GET /api/companies/{companyId}/workassignments/upcoming`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 / ASP.NET Core)
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+
+### 1. Description
+The OpenAPI/Swagger schema defines `locationId` as a mandatory query parameter (`required: true`) for `GET /api/companies/{companyId}/workassignments/upcoming`.
+However, when `locationId` is omitted, the API responds with `HTTP 200 OK: {"message":"No upcoming work assignments are found","upcomingWorkAssignments":[]}` instead of enforcing mandatory input validation.
+
+### 2. Expected Behavior
+Missing mandatory query parameters must return `HTTP 400 Bad Request` (`Cit.Attendance:Validation` / `"Location ID is required."`).
+
+---
+
+## Defect 62: Missing Location Query Enforcement on `GET /workassignments/details` Returns Records Across All Locations (200 OK) Bypassing Isolation
+
+- **Defect ID:** `DEFECT-WA-04` / `DEFECT-20261114-04`
+- **Severity:** Medium / Location Isolation Bypass
+- **Component:** Work Assignments (`GET /api/companies/{companyId}/workassignments/details`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 / ASP.NET Core)
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+
+### 1. Description
+Executing `GET /api/companies/{companyId}/workassignments/details?state=Active` without the `locationId` query parameter returns `HTTP 200 OK` and serializes employee detail maps across **all locations** belonging to the company, bypassing multi-location isolation guards.
+
+### 2. Expected Behavior
+The endpoint must enforce strict location scoping by requiring `locationId`. Requests lacking `locationId` must be rejected with `HTTP 400 Bad Request`.
+
+---
+
+## Defect 63: CRITICAL — Cross-Location Assignment Allowed & Multi-Location Concurrent Active Schedules Permitted (Location Integrity Breach)
+
+- **Defect ID:** `DEFECT-WA-05` / `DEFECT-20261114-05`
+- **Severity:** 🔴 **P0 Critical** (Business Invariant & Data Integrity Breach)
+- **Component:** Work Assignments (`POST /api/companies/{companyId}/workassignments` & `POST /check-conflicts`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9), `SP.EmployeeSvc` (.NET 8)
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+- **Database Collections:** `Sahab.ERP.Attendance.WorkAssignmentMaps`, `EmployeeSvcNET8test.Employee`
+
+### 1. Description & Defect Overview
+The system does not validate employee employment location during the work assignment process. 
+1. An employee whose assigned work location in `SP.EmployeeSvc` is **Dammam** can be freely assigned to a work plan belonging to **Jeddah** (`POST /workassignments?locationId={Jeddah}`).
+2. Worse, `POST /check-conflicts?locationId={Jeddah}` queries existing maps strictly filtered by `locationId == Jeddah`. It is completely blind to assignments in other locations, returning `hasConflicts: false, canProceed: true`.
+3. Consequently, an employee can hold **two simultaneous, open-ended active work assignments across two different cities**, creating conflicting attendance evaluation schedules and corruption in timesheet processing.
+
+### 2. Live Reproduction Steps & Proof on Attendance 11
+1. **Employee Verification in EmployeeSvc:**
+   - Employee `SA-EMP-0001` (`f9e1a6d5-6bd5-7d46-ae85-38b81dc80887`):
+     `WorkInformation.WorkLocation._id`: `3a24e666-df63-3dc7-0ea7-02ec8be341e7` (**Dammam**).
+2. **Existing Assignment in AttendanceSvc:**
+   - Active open-ended assignment in **Dammam**: `StartDate: 2026-11-13`, `EndDate: null` / `9999-12-31`.
+3. **Preflight Conflict Check on Jeddah:**
+   - `POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/workassignments/check-conflicts?locationId=3a24e667-5941-8331-9a1f-d77aa73945b3` (Jeddah):
+     ```json
+     {
+       "locationId": "3a24e667-5941-8331-9a1f-d77aa73945b3",
+       "startDate": "2026-11-20",
+       "endDate": null,
+       "employeeIds": ["f9e1a6d5-6bd5-7d46-ae85-38b81dc80887"]
+     }
+     ```
+   - **Observed Result:** Returns `HTTP 200 OK: {"message":"No conflicts detected","hasConflicts":false,"allowedEmployeeIds":["f9e1a6d5..."],"canProceed":true}`. (FAILS TO CHECK EMPLOYEE'S ACTUAL LOCATION).
+4. **Commit Assignment to Jeddah:**
+   - `POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/workassignments?locationId=3a24e667-5941-8331-9a1f-d77aa73945b3` (Jeddah) with plan `a7e0804a-d313-4410-9428-1781d480dd45`.
+   - **Observed Result:** Returns `HTTP 200 OK: {"message":"Work assignment created","workAssignment":{"id":"959cbf80-1cc2-48ae-8eb3-ce0dbf440b4d"}}`.
+5. **MongoDB Proof in `Sahab.ERP.Attendance.WorkAssignmentMaps`:**
+   ```javascript
+   db['ERP.Attendance.WorkAssignmentMaps'].find({ EmployeeCode: "SA-EMP-0001", IsActive: true })
+   ```
+   **Output:** Exactly **2 concurrent active open-ended maps**:
+   * Map 1: `Location: Dammam`, `StartDate: 2026-11-13`, `EndDate: 9999-12-31`, `IsActive: true`.
+   * Map 2: `Location: Jeddah`, `StartDate: 2026-11-20`, `EndDate: 9999-12-31`, `IsActive: true`.
+
+### 3. Expected Behavior & Fix
+1. In `POST /workassignments/check-conflicts` and `POST /workassignments`, the backend must fetch the employee's `WorkLocationId` from `SP.EmployeeSvc`. If `Employee.WorkLocationId != request.locationId`, reject with `HTTP 400 Bad Request` (`Cit.Attendance:Validation` / "Employee does not belong to the selected location").
+2. Furthermore, conflict detection must search `ERP.Attendance.WorkAssignmentMaps` by `EmployeeId` across the **entire company (tenant)**, not strictly scoped to the single `locationId` query parameter, to prevent multi-location overlapping schedules.
+
+
+---
+
+# PART X: SHIFT ROTATION WORK PLAN DEFECTS & ARCHITECTURAL GAPS (LIVE ATTENDANCE 11 AUDIT)
+
+## Defect 64: CRITICAL — Delete Shift Rotation Board Returns HTTP 200 OK While Active Assigned Members Exist (Missing Active Member Guard)
+
+- **Defect ID:** `DEFECT-ROT-01` / `DEFECT-20261114-06`
+- **Severity:** P0 Critical / Data Integrity
+- **Component:** Shift Rotation Board (`DELETE /api/companies/{companyId}/shift-rotations/{rotationId}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9), MongoDB `Sahab.ERP.Attendance.ShiftRotationBoard`
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+When calling `DELETE /shift-rotations/{rotationId}?locationId={locationId}` on a rotation board that currently has **active, assigned employees** in its teams (e.g. `SA-EMP-0002` and `SA-EMP-0003` active in Team Bravo), the endpoint returns `HTTP 200 OK: {"message":"Rotation deleted successfully"}` and sets `IsDeleted: true` on the board. The backend completely lacks a pre-deletion active member validation guard.
+
+### 2. Reproduction Evidence
+1. **Target Board:** `06a8cb5c-c60b-4a45-bf18-87a2e88a2448` (Dammam).
+2. **Active Members in MongoDB:** 2 active members in `Members[]` array (`IsActive: true`).
+3. **Execution Request:**
+   ```http
+   DELETE /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/shift-rotations/06a8cb5c-c60b-4a45-bf18-87a2e88a2448?locationId=3a24e666-df63-3dc7-0ea7-02ec8be341e7
+   ```
+4. **Observed Response:**
+   ```json
+   {
+     "message": "Rotation deleted successfully",
+     "rotation": {
+       "rotationId": "06a8cb5c-c60b-4a45-bf18-87a2e88a2448",
+       "rotationName": {"en": "Factory Alternating Rotation", "ar": "دوران المصنع المتناوب"},
+       "plansDeleted": 2
+     }
+   }
+   ```
+5. **Business Impact:** Active workforce members are left with orphaned rotation memberships. Materialized schedule maps in `ERP.Attendance.WorkAssignmentMaps` point to a deleted rotation board, causing schedule calculation and attendance tracking anomalies.
+
+### 3. Expected Behavior & Fix
+Before soft-deleting a rotation board, `ShiftRotationsController.DeleteAsync` must check if `Members.Any(m => m.IsActive && (m.EndDate == null || m.EndDate >= DateTime.UtcNow))`. If active members exist, reject with `HTTP 400 Bad Request` (`Cit.Attendance:2005` / "Cannot delete rotation board with active member assignments. Remove or transfer all members before deleting.").
+
+---
+
+## Defect 65: CRITICAL — Cross-Location Team Enrollment Allowed (Dammam Employee Enrolled in Jeddah Rotation Board)
+
+- **Defect ID:** `DEFECT-ROT-02` / `DEFECT-20261114-07`
+- **Severity:** P0 Critical / Multi-Tenant & Location Isolation Breach
+- **Component:** Shift Rotation Team Enrollment (`POST /shift-rotations/{rotationId}/teams/{teamId}/employees`) & Preflight Check (`POST /check-conflicts`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9), `SP.EmployeeSvc` (.NET 8)
+- **Environment:** DEV | Company: `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+An employee whose physical work location in `SP.EmployeeSvc` is **Dammam** (`SA-EMP-0001` / `f9e1a6d5-6bd5-7d46-ae85-38b81dc80887`) was submitted for assignment to a **Jeddah** Rotation Board (`03ade8fe-7d7f-4244-8172-94111fffef78`, Location: `3a24e667-5941-8331-9a1f-d77aa73945b3`).
+- The preflight check `POST /check-conflicts` reported `enrollableEmployeeIds: ["f9e1a6d5-6bd5-7d46-ae85-38b81dc80887"]`, `blockedEmployeeIds: []`, and `canProceed: true`.
+- The commit endpoint returned `HTTP 200 OK: {"message":"1 employee(s) enrolled"}` and materialized 104 rotational shift steps in Jeddah for the Dammam employee!
+
+### 2. Reproduction Evidence
+```http
+POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/shift-rotations/03ade8fe-7d7f-4244-8172-94111fffef78/teams/c2751b6b-77b2-4af3-b18d-340979eb02e2/employees?locationId=3a24e667-5941-8331-9a1f-d77aa73945b3
+Content-Type: application/json
+
+{
+  "employeeIds": ["f9e1a6d5-6bd5-7d46-ae85-38b81dc80887"],
+  "startDate": "2026-11-20",
+  "endDate": null,
+  "adjustConflicts": true
+}
+```
+**Response:**
+```json
+{
+  "message": "1 employee(s) enrolled",
+  "result": {
+    "rotationId": "03ade8fe-7d7f-4244-8172-94111fffef78",
+    "teamId": "c2751b6b-77b2-4af3-b18d-340979eb02e2",
+    "teamName": {"en": "Jeddah Team A"},
+    "addedMembers": [
+      {
+        "employeeId": "f9e1a6d5-6bd5-7d46-ae85-38b81dc80887",
+        "employeeCode": "SA-EMP-0001",
+        "periodStartDate": "2026-11-20",
+        "periodEndDate": "9999-12-31"
+      }
+    ],
+    "generatedStepCount": 104
+  }
+}
+```
+**MongoDB Impact:** `SA-EMP-0001` now possesses active concurrent schedule maps in `ERP.Attendance.WorkAssignmentMaps` across two completely disparate geographic facilities (Dammam and Jeddah).
+
+### 3. Expected Behavior & Fix
+Cross-service location verification must be enforced. In `POST /teams/{teamId}/employees` and `POST /check-conflicts`, fetch each employee's `CompanyLocationId` from `SP.EmployeeSvc`. If `employee.CompanyLocationId != rotationBoard.LocationId`, block enrollment with `HTTP 400 Bad Request` (`Cit.Attendance:Validation` / "Employee does not belong to the rotation work location.").
+
+---
+
+## Defect 66: MAJOR — Silent Referential Integrity Corruption on Shift Rotation Creation (Non-Existent `planIndex` Accepted)
+
+- **Defect ID:** `DEFECT-ROT-03` / `DEFECT-20261114-08`
+- **Severity:** P1 Major / Schema Corruption
+- **Component:** Shift Rotation Creation (`POST /api/companies/{companyId}/shift-rotations`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Environment:** DEV | Company: `Attendance 11`
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+When creating a Shift Rotation board where `steps[]` references a `planIndex` that was never declared in `plans[]` (e.g. `plans: [{planIndex: 1}]`, `steps: [{planIndex: 99}]`), the API returns `HTTP 200 OK` and persists the malformed document into `Sahab.ERP.Attendance.ShiftRotationBoard`.
+
+### 2. Reproduction Evidence
+```http
+POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/shift-rotations?locationId=3a24e666-df63-3dc7-0ea7-02ec8be341e7
+{
+  "tenantName": {"en": "Attendance"},
+  "rotationName": {"en": "Corrupted Steps Rotation"},
+  "patternType": "Alternating",
+  "weeksPerStep": 1,
+  "plans": [{"planIndex": 1, "workPlanName": {"en": "Day"}, "workTemplateId": "1e71cba4-11e7-4414-a4e0-7ad8a9bf8acb"}],
+  "steps": [{"planIndex": 99, "durationWeeks": 1}],
+  "teams": [{"teamName": {"en": "Team 1"}, "startSequenceOrder": 1}]
+}
+```
+**Response:** `HTTP 200 OK` (Board created with `planIndex: 99` pointing to nowhere).
+
+### 3. Expected Behavior & Fix
+Add validator: For every step in `request.Steps`, assert `request.Plans.Any(p => p.PlanIndex == step.PlanIndex)`. If any step index is undeclared, return `HTTP 400 Bad Request` (`Cit.Attendance:Validation` / "Step references undeclared plan index.").
+
+---
+
+## Defect 67: MEDIUM — Mandatory Location Scoping Bypass on `GET /shift-rotations`
+
+- **Defect ID:** `DEFECT-ROT-04` / `DEFECT-20261114-09`
+- **Severity:** P2 Medium / API Governance
+- **Component:** Query Rotations (`GET /api/companies/{companyId}/shift-rotations`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+`GET /api/companies/{companyId}/shift-rotations` returns `HTTP 200 OK` even when the mandatory `locationId` query parameter is omitted entirely. Consistent with Work Assignments scoping bypass (`DEFECT-20261114-03`), all location-scoped attendance queries must enforce `locationId`.
+
+### 2. Expected Behavior & Fix
+Check `if (locationId == null || locationId == Guid.Empty) return BadRequest(new ProblemDetails { Title = "LocationId is required." });`.
+
+---
+
+## Defect 68: MEDIUM — Date Range Inversion Bypass on `GET /rotation-grid` (`from > to`)
+
+- **Defect ID:** `DEFECT-ROT-05` / `DEFECT-20261114-10`
+- **Severity:** P2 Medium / Input Validation
+- **Component:** Rotation Matrix Query (`GET /shift-rotations/{rotationId}/rotation-grid`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+Querying `GET /rotation-grid?from=2026-12-31&to=2026-11-01` (`from > to`) returns `HTTP 200 OK` with an empty matrix instead of rejecting the inverted date range with `HTTP 400 Bad Request`.
+
+### 2. Expected Behavior & Fix
+Add date validation check: `if (from.HasValue && to.HasValue && from > to) return BadRequest("From date cannot be after To date.");`.
+
+---
+
+## Defect 69: MAJOR — Status Code Ambiguity when Enrolling Inactive Employee (`SA-EMP-0006`, `IsActive: false`)
+
+- **Defect ID:** `DEFECT-ROT-06` / `DEFECT-20261114-11`
+- **Severity:** P1 Major / API Contract & Error Handling
+- **Component:** Team Enrollment (`POST /shift-rotations/{rotationId}/teams/{teamId}/employees`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+When an inactive employee (`SA-EMP-0006`, `IsActive: false` in `SP.EmployeeSvc`) is submitted for rotation team assignment, the API returns `HTTP 200 OK` with response body:
+```json
+{
+  "message": "No employees were enrolled",
+  "result": {
+    "rotationId": "06a8cb5c-c60b-4a45-bf18-87a2e88a2448",
+    "teamId": "911089f2-8bc1-423d-9085-87d7fa344275",
+    "addedMembers": [],
+    "totalEmployeeCount": 0
+  }
+}
+```
+Returning `HTTP 200 OK` for a completely unfulfilled mutation where the input contained invalid inactive employees creates client ambiguity. Frontend clients assume the mutation succeeded.
+
+### 2. Expected Behavior & Fix
+When all requested employees are ineligible due to inactive status, return `HTTP 400 Bad Request` with itemized error: `{"error":{"code":"Cit.Attendance:Validation","message":"None of the requested employees could be enrolled. Inactive employees cannot be assigned to shift rotations."}}`.
+
+
+---
+
+## Defect 70: MAJOR — Missing Mandatory Location Scoping on Schedule Generation (`POST /generate-schedule`)
+
+- **Defect ID:** `DEFECT-RWA-01` / `DEFECT-20261114-12`
+- **Severity:** P1 Major / Multi-Tenancy & Location Scoping
+- **Component:** Shift Rotation Schedule Generation (`POST /shift-rotations/{rotationId}/generate-schedule`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Target Company:** `Attendance 11` (`3a24e5e5-302e-91bd-feaa-b07979766dfe`)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+When invoking `POST /api/companies/{companyId}/shift-rotations/{rotationId}/generate-schedule` without the mandatory `?locationId={locId}` query parameter, the API returns `HTTP 200 OK` and generates operational schedules across the entire board without location validation. In contrast, enrollment and team query endpoints strictly return `HTTP 400 Bad Request` when `locationId` is missing.
+
+### 2. Reproduction Evidence
+```http
+POST /api/companies/3a24e5e5-302e-91bd-feaa-b07979766dfe/shift-rotations/28636e78-43be-4859-b904-2644f8eea88b/generate-schedule
+Content-Type: application/json
+Authorization: Bearer <valid_jwt>
+
+{
+  "throughDate": "2027-06-30",
+  "regenerateExisting": true
+}
+```
+**Response:** `HTTP 200 OK: {"message": "Schedule generated successfully"}`
+
+### 3. Expected Behavior & Fix
+Add validation in `GenerateScheduleCommandValidator`:
+```csharp
+RuleFor(x => x.LocationId)
+    .NotEmpty()
+    .WithMessage("LocationId query parameter is mandatory for schedule generation.");
+```
+
+---
+
+## Defect 71: MAJOR — Missing Mandatory Location Scoping on Member Period Modification (`PATCH /members/{membershipId}`)
+
+- **Defect ID:** `DEFECT-RWA-02` / `DEFECT-20261114-13`
+- **Severity:** P1 Major / Location Isolation
+- **Component:** Member Period Resizing (`PATCH /shift-rotations/{rotationId}/members/{membershipId}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+Calling `PATCH /api/companies/{companyId}/shift-rotations/{rotationId}/members/{membershipId}` without `?locationId={locId}` returns `HTTP 200 OK` and modifies the employee's enrollment start and end dates directly in MongoDB `ShiftRotationBoard.Members[]` without verifying location ownership.
+
+### 2. Expected Behavior & Fix
+Enforce `[FromQuery, Required] Guid locationId` and assert `rotationBoard.LocationId == locationId` in `EditRotationMemberPeriodCommandHandler`. Return `HTTP 400 Bad Request` when omitted.
+
+---
+
+## Defect 72: MEDIUM — Pagination Boundary Zero Bypass (`GET /employees?page=0`)
+
+- **Defect ID:** `DEFECT-RWA-03` / `DEFECT-20261114-14`
+- **Severity:** P2 Medium / API Contract & Input Validation
+- **Component:** Roster Member Query (`GET /shift-rotations/{rotationId}/employees`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+Querying roster members with `page=0` returns `HTTP 200 OK` instead of rejecting the non-positive 1-based page index with `HTTP 400 Bad Request`.
+
+### 2. Expected Behavior & Fix
+Add FluentValidation rule: `RuleFor(x => x.Page).GreaterThan(0).WithMessage("Page must be 1 or greater.");`.
+
+---
+
+## Defect 73: MEDIUM — Pagination PageSize Zero Bypass (`GET /employees?pageSize=0`)
+
+- **Defect ID:** `DEFECT-RWA-04` / `DEFECT-20261114-15`
+- **Severity:** P2 Medium / API Contract & Input Validation
+- **Component:** Roster Member Query (`GET /shift-rotations/{rotationId}/employees`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+Querying roster members with `pageSize=0` returns `HTTP 200 OK` with an empty items array instead of validating standard page bounds.
+
+### 2. Expected Behavior & Fix
+Add FluentValidation rule: `RuleFor(x => x.PageSize).InclusiveBetween(1, 100).WithMessage("PageSize must be between 1 and 100.");`.
+
+---
+
+## Defect 74: MEDIUM — Misleading Internal Exception Code & Error Message on Invalid Segment Query
+
+- **Defect ID:** `DEFECT-RWA-05` / `DEFECT-20261114-16`
+- **Severity:** P2 Medium / Developer Experience & Error Clarity
+- **Component:** Roster Member Query (`GET /shift-rotations/{rotationId}/employees?segment={val}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9)
+- **Date Discovered:** 14 November 2026
+
+### 1. Issue Description
+When passing an invalid roster segment string (e.g. `segment=Inactive` or `segment=Current`), the API returns `HTTP 400 Bad Request` with an internal Work Template domain exception:
+```json
+{
+  "error": {
+    "code": "Cit.Attendance:1104",
+    "message": "Invalid work template state transition.",
+    "details": null,
+    "data": { "segment": "Inactive" }
+  }
+}
+```
+`Cit.Attendance:1104` ("Invalid work template state transition") is a Work Template state machine error mistakenly thrown by the Rotation Roster AppService.
+
+### 2. Expected Behavior & Fix
+Return a clean validation error:
+```json
+{
+  "error": {
+    "code": "Cit.Attendance:Validation",
+    "message": "The value 'Inactive' is not a valid roster segment. Allowed values are: Active, Past, Upcoming, All."
+  }
+}
+```

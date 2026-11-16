@@ -5,7 +5,7 @@
   },
   "USER-21": {
     "status_code": 400,
-    "response": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"53470658-5f9b-47b4-b254-f96b9501401c\",\"shortCode\":\"ATT4FLX\",\"requestedShortCode\":\"HACKCODE\"},\"validationErrors\":null}}"
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"members\":[\"\"]}]}}"
   },
   "USER-22": {
     "status_code": 400,
@@ -17,15 +17,15 @@
   },
   "USER-81": {
     "status_code": 400,
-    "response": "{\"error\":{\"code\":\"Cit.Attendance:1107\",\"message\":\"A work template's short code cannot be changed after it is created.\",\"details\":null,\"data\":{\"workTemplateId\":\"a31a2f5e-bc53-4221-b2d2-ff8c5ed54dbb\",\"shortCode\":\"ATT4FLX\",\"requestedShortCode\":\"HACKCODE\"},\"validationErrors\":null}}"
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"members\":[\"\"]}]}}"
   },
   "USER-82": {
     "status_code": 400,
-    "response": "{\"error\":{\"code\":\"Cit.Attendance:1101\",\"message\":\"Work template not found.\",\"details\":null,\"data\":{\"workTemplateId\":\"00000000-0000-0000-0000-000000000001\"},\"validationErrors\":null}}"
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"members\":[\"\"]}]}}"
   },
   "USER-83": {
     "status_code": 400,
-    "response": "{\"error\":{\"code\":\"Cit.Attendance:9001\",\"message\":\"The provided company does not match the entity company.\",\"details\":null,\"data\":{\"entityCompanyId\":\"3a247435-3cea-83ae-6a9f-6dda99f386a3\",\"requestCompanyId\":\"3a247436-8669-844a-7d2f-1a209af02d8e\"},\"validationErrors\":null}}"
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Total work duration must equal the sum of the working days' durations.\",\"members\":[\"\"]}]}}"
   },
   "USER-102": {
     "status_code": 200,

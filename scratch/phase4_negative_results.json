@@ -105,7 +105,7 @@
           "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.BreakItem. Path: $.breaks[0].type | LineNumber: 0 | BytePositionInLine: 79."
         ]
       },
-      "traceId": "00-3c2d613906435f0f7e13a2fe759b1a58-8ade1a26f6d822b8-00"
+      "traceId": "00-3451cc87428e1ececa07075bf0cf9d85-d24c1ddafc692aca-00"
     },
     "passed": true,
     "expected": [
@@ -128,7 +128,7 @@
     "response": {
       "error": {
         "code": "Cit.Attendance:Validation",
-        "message": "Late check-in grace minutes cannot be negative.",
+        "message": "Late check-in grace minutes cannot be negative. Deviation period must be Weekly, BiWeekly or Monthly.",
         "details": null,
         "data": null,
         "validationErrors": [
@@ -136,6 +136,12 @@
             "message": "Late check-in grace minutes cannot be negative.",
             "members": [
               "LateCheckInGraceMinutes"
+            ]
+          },
+          {
+            "message": "Deviation period must be Weekly, BiWeekly or Monthly.",
+            "members": [
+              "DeviationPeriod"
             ]
           }
         ]
@@ -170,7 +176,7 @@
           "The JSON value could not be converted to Sahab.Attendance.HttpAPI.Enums.Policies.GracePeriodDeviationPeriod. Path: $.deviationPeriod | LineNumber: 0 | BytePositionInLine: 62."
         ]
       },
-      "traceId": "00-54eb7ebd4060f40da6af422d1db1df8e-8ca0d982e5d5330a-00"
+      "traceId": "00-d591bc01d81f0c85b3a9ea0b5675fadc-17535dfb221ac1b6-00"
     },
     "passed": true,
     "expected": [
@@ -192,7 +198,7 @@
     "response": {
       "error": {
         "code": "Cit.Attendance:Validation",
-        "message": "DeductionDays must be >= 0",
+        "message": "DeductionDays must be >= 0 Deviation period must be Weekly, BiWeekly or Monthly.",
         "details": null,
         "data": null,
         "validationErrors": [
@@ -200,6 +206,12 @@
             "message": "DeductionDays must be >= 0",
             "members": [
               "DeductionDays"
+            ]
+          },
+          {
+            "message": "Deviation period must be Weekly, BiWeekly or Monthly.",
+            "members": [
+              "DeviationPeriod"
             ]
           }
         ]
@@ -225,14 +237,26 @@
     "response": {
       "error": {
         "code": "Cit.Attendance:Validation",
-        "message": "BufferMinutes must be >= 0",
+        "message": "Overtime rule must be AllExtraTime, BeforeShiftStarts or AfterShiftEnds. Buffer minutes cannot be negative. At least one overtime rate is required.",
         "details": null,
         "data": null,
         "validationErrors": [
           {
-            "message": "BufferMinutes must be >= 0",
+            "message": "Overtime rule must be AllExtraTime, BeforeShiftStarts or AfterShiftEnds.",
+            "members": [
+              "OvertimeRule"
+            ]
+          },
+          {
+            "message": "Buffer minutes cannot be negative.",
             "members": [
               "BufferMinutes"
+            ]
+          },
+          {
+            "message": "At least one overtime rate is required.",
+            "members": [
+              "Rates"
             ]
           }
         ]
@@ -259,17 +283,30 @@
         }
       ]
     },
-    "code": 500,
+    "code": 400,
     "response": {
       "error": {
-        "code": "HttpRequestException",
-        "message": "Company service company base info call failed: 500",
+        "code": "Cit.Attendance:Validation",
+        "message": "Overtime rule must be AllExtraTime, BeforeShiftStarts or AfterShiftEnds. Overtime rate must be greater than 0.",
         "details": null,
         "data": null,
-        "validationErrors": null
+        "validationErrors": [
+          {
+            "message": "Overtime rule must be AllExtraTime, BeforeShiftStarts or AfterShiftEnds.",
+            "members": [
+              "OvertimeRule"
+            ]
+          },
+          {
+            "message": "Overtime rate must be greater than 0.",
+            "members": [
+              "Rates[0].RateFormula"
+            ]
+          }
+        ]
       }
     },
-    "passed": false,
+    "passed": true,
     "expected": [
       400
     ]
@@ -303,7 +340,7 @@
           "The JSON value could not be converted to Sahab.Attendance.HttpAPI.ValueObjects.Policies.OvertimeRate. Path: $.rates[0].dayRate | LineNumber: 0 | BytePositionInLine: 72."
         ]
       },
-      "traceId": "00-7af1ea2c4e0cb74cbe07869c690d9d13-708d467fe1c79722-00"
+      "traceId": "00-01a28d6c6214e4cacef1387333115305-a01925076605de5b-00"
     },
     "passed": true,
     "expected": [
@@ -339,13 +376,9 @@
     "method": "patch",
     "url": "https://attendance2.dev.zoolwork.com/api/companies/3a249870-184c-0373-f344-015d602678d7/attpolicies/88a26cf7-54bc-42a1-9624-5fba47cc3587/delete",
     "payload": null,
-    "code": 200,
-    "response": {
-      "message": "Policy deleted",
-      "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587",
-      "isActive": false
-    },
-    "passed": true,
+    "code": 404,
+    "response": "",
+    "passed": false,
     "expected": [
       200,
       204
@@ -376,7 +409,6 @@
         "totalBreakDurationInMinutes": 80,
         "totalPaidBreakDurationInMinutes": 20,
         "totalUnpaidBreakDurationInMinutes": 60,
-        "id": "88a26cf7-54bc-42a1-9624-5fba47cc3587",
         "name": {
           "en": "Attendance 6 Updated Break Policy",
           "ar": "سياسة الاستراحة المحدثة للحضور 6"

@@ -1,43 +1,54 @@
 import re
-import json
 
-with open('scratch/part2_fixed_scenarios.txt', 'r', encoding='utf-8') as f:
+with open('reports/WORK_ASSIGNMENT_TEST_CASES.md', 'r', encoding='utf-8') as f:
     text = f.read()
 
-def extract_cases(section_title, next_section_title):
-    start = text.find(section_title)
-    end = text.find(next_section_title) if next_section_title else len(text)
-    section_text = text[start:end]
-    cases = re.findall(r'###\s+([PNBVA\d]+[^\n]+)\n(.*?)(?=\n###|\n##|\Z)', section_text, re.DOTALL)
-    result = {}
-    for title, body in cases:
-        code_id = title.split(' ')[0].strip()
-        json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', body, re.DOTALL)
-        payload = None
-        if json_match:
-            try:
-                payload = json.loads(json_match.group(1))
-            except Exception as e:
-                payload = json_match.group(1) # raw string if json parse fails
-        result[code_id] = {
-            'title': title.strip(),
-            'body': body.strip(),
-            'payload': payload
-        }
-    return result
+lines = text.splitlines()
+current_section = "General"
+all_tcs = []
 
-pos_post = extract_cases('## 2. POST', '## 3. POST')
-neg_post = extract_cases('## 3. POST', '## 4. PATCH')
-pos_patch = extract_cases('## 4. PATCH', '## 5. PATCH')
-neg_patch = extract_cases('## 5. PATCH', '## 6. Boundary')
+for line in lines:
+    if line.startswith('### '):
+        current_section = line.replace('### ', '').strip()
+    elif line.startswith('## '):
+        current_section = line.replace('## ', '').strip()
+    
+    # check for table row with `WA-
+    if line.strip().startswith('|') and '`WA-' in line:
+        parts = [p.strip() for p in line.split('|')]
+        if len(parts) >= 6:
+            tc_id = parts[1].replace('`', '').strip()
+            if tc_id.startswith('WA-'):
+                scenario = parts[2].strip()
+                category = parts[3].strip() if len(parts) > 3 else ''
+                params = parts[4].strip() if len(parts) > 4 else ''
+                expected_http = parts[5].strip() if len(parts) > 5 else ''
+                expected_resp = parts[6].strip() if len(parts) > 6 else ''
+                all_tcs.append({
+                    'id': tc_id,
+                    'section': current_section,
+                    'scenario': scenario,
+                    'category': category,
+                    'params': params,
+                    'expected_http': expected_http,
+                    'expected_resp': expected_resp
+                })
 
-print(f"Parsed {len(pos_post)} POST Positive cases")
-print(f"Parsed {len(neg_post)} POST Negative cases")
-print(f"Parsed {len(pos_patch)} PATCH Positive cases")
-print(f"Parsed {len(neg_patch)} PATCH Negative cases")
+print(f"Total extracted test cases: {len(all_tcs)}")
+unique_ids = set()
+duplicates = []
+for t in all_tcs:
+    if t['id'] in unique_ids:
+        duplicates.append(t['id'])
+    unique_ids.add(t['id'])
 
-# Let's inspect any JSON parse failures
-for grp_name, grp in [('POST Pos', pos_post), ('POST Neg', neg_post), ('PATCH Pos', pos_patch), ('PATCH Neg', neg_patch)]:
-    for cid, cdata in grp.items():
-        if isinstance(cdata['payload'], str):
-            print(f"Warning: {grp_name} {cid} JSON could not be parsed automatically: {cdata['payload'][:100]}")
+print(f"Unique TC IDs: {len(unique_ids)}")
+if duplicates:
+    print(f"Duplicates: {duplicates}")
+
+print("First 3:")
+for t in all_tcs[:3]:
+    print(" ", t)
+print("Last 3:")
+for t in all_tcs[-3:]:
+    print(" ", t)

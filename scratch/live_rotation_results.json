@@ -1,0 +1,151 @@
+{
+  "results": {
+    "ROT-TMP-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Rotation template ROTD001 created (1e71cba4-11e7-4414-a4e0-7ad8a9bf8acb)."
+    },
+    "ROT-TMP-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Night rotation template ROTN001 created with overnight slot (8a8ec948-b92a-4be9-a4fa-52baa2202d30)."
+    },
+    "ROT-TMP-006": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing templateName correctly rejected."
+    },
+    "ROT-TMP-007": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing rotationTimeSlots correctly rejected."
+    },
+    "ROT-TMP-009": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Duplicate shortCode ROTD001 blocked."
+    },
+    "ROT-TMP-014": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "PATCH template failed: {\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"RotationTimeSlots cannot be empty when provided.\",\"details\":null,\"data\":null,\"validationErrors"
+    },
+    "ROT-CRT-005": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preview matrix grid generated cleanly without DB persist."
+    },
+    "ROT-CRT-006": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "cycles=4 parameter projects 4 cycles."
+    },
+    "ROT-CRT-009": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing rotationName rejected."
+    },
+    "ROT-CRT-010": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty en name rejected."
+    },
+    "ROT-CRT-012": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Invalid patternType rejected."
+    },
+    "ROT-CRT-014": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "weeksPerStep=0 rejected."
+    },
+    "ROT-CRT-015": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "weeksPerStep=-1 rejected."
+    },
+    "ROT-CRT-018": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty plans array rejected."
+    },
+    "ROT-CRT-020": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty teams array rejected."
+    },
+    "ROT-CRT-022": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "Non-existent planIndex reference rejected."
+    },
+    "ROT-CRT-024": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Duplicate team sequence order rejected."
+    },
+    "ROT-CRT-028": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Fixed template in rotation plan rejected with Cit.Attendance:2004."
+    },
+    "ROT-CRT-029": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing locationId query returned HTTP 400."
+    },
+    "ROT-CRT-001": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "Failed to create rotation: {\"error\":{\"code\":\"Cit.Attendance:2001\",\"message\":\"A rotation with this name already exists at this location.\",\"details\":null,\"data\":{\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"locationId\":\"3a"
+    },
+    "ROT-CRT-002": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "Failed to create uneven rotation: {\"type\":\"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\"title\":\"One or more validation errors occurred.\",\"status\":400,\"errors\":{\"request\":[\"The request field is required.\"],\"$.weeksPerStep\":[\"Th"
+    },
+    "ROT-GET-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "List rotations returned locations array."
+    },
+    "ROT-GET-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Clean location returned 200 OK empty list."
+    },
+    "ROT-GET-003": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "Missing locationId query returned HTTP 200 (Audit scoping bypass)."
+    },
+    "ROT-GET-005": {
+      "status": "Pass",
+      "http_code": 404,
+      "remarks": "Non-existent rotation returned 404."
+    },
+    "ROT-GET-021": {
+      "status": "Fail",
+      "http_code": 403,
+      "remarks": "GET /me/rotation returned HTTP 403."
+    },
+    "ROT-PAT-019": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "Non-existent rotation on PATCH returned 404."
+    },
+    "ROT-DEL-007": {
+      "status": "Pass",
+      "http_code": 404,
+      "remarks": "Non-existent board delete returned 404."
+    }
+  },
+  "defects": [
+    {
+      "tc_id": "ROT-GET-003",
+      "http_code": 200,
+      "desc": "GET /shift-rotations returned 200 when locationId omitted."
+    }
+  ]
+}

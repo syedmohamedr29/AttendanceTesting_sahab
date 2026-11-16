@@ -6,6 +6,7 @@
 ## Execution Totals
 
 - **Attendance 8 (`gw8.dev.zoolwork.com`) Focused Reverification Suite (`reverify_att8_gw8_suite.py`):** **58 Cases** — **40 Pass**, **17 Fail**, **1 Blocked (`Cit.Attendance:1302`)**
+- **Attendance 10 (`attendance2.dev.zoolwork.com`) Live Missing-Validation Suite (13-Nov-2026):** **12 Cases** — **0 Pass**, **12 Fail (100% missing backend validations verified live in MongoDB)**
 - **Full Work Plans Regular API RTM Consolidated Suite (`ATT6`/`ATT7`/`ATT8`/`ATT9`):** **340 Cases** — **233 Pass**, **101 Fail**, **6 Blocked**
 - **Logged Defects:** **13 Active Defects (`DEFECT-20261112-01`..`-13`)**
 

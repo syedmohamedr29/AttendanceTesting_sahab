@@ -1,0 +1,156 @@
+{
+  "results": {
+    "ROT-GET-004": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Get rotation details by ID returned full board."
+    },
+    "ROT-GET-008": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Query rotation-grid with valid date range."
+    },
+    "ROT-GET-009": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Query rotation-grid with cycles=3."
+    },
+    "ROT-GET-010": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "from > to rejected with 400."
+    },
+    "ROT-GET-014": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "List rotation employees returned paginated array."
+    },
+    "ROT-PAT-001": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "Renamed rotation board successfully."
+    },
+    "ROT-PAT-013": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "weeksPerStep=0 rejected on PATCH."
+    },
+    "ROT-PAT-015": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty steps rejected on PATCH."
+    },
+    "ROT-PAT-021": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "PATCH without locationId rejected with 400."
+    },
+    "ROT-CHK-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preflight conflict check returned hasConflicts: False."
+    },
+    "ROT-CHK-005": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing employeeIds rejected."
+    },
+    "ROT-CHK-006": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty employeeIds rejected."
+    },
+    "ROT-CHK-009": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "endDate < startDate rejected."
+    },
+    "ROT-CHK-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Assigned SA-EMP-0004 to Team Alpha open-ended."
+    },
+    "ROT-CHK-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Bulk assigned SA-EMP-0002 & SA-EMP-0003 to Team Bravo."
+    },
+    "ROT-CHK-011": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Active duplicate assignment rejected with 400."
+    },
+    "ROT-CHK-017": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "CRITICAL DEFECT: Inactive employee SA-EMP-0006 assigned to rotation team!"
+    },
+    "ROT-SCH-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Schedule generation triggered successfully."
+    },
+    "ROT-SCH-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Verified schedule maps created for employee (106 maps)."
+    },
+    "ROT-SCH-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Map Source='None' verified."
+    },
+    "ROT-SCH-007": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Idempotent: Re-running created 0 duplicate maps (0)."
+    },
+    "ROT-SCH-011": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Query individual employee projected schedule."
+    },
+    "ROT-MEM-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Extended member endDate to 2027-06-30."
+    },
+    "ROT-MEM-005": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "endDate < startDate on member update rejected."
+    },
+    "ROT-MEM-010": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Moved member to Team Bravo."
+    },
+    "ROT-MEM-012": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Moving to SAME team rejected."
+    },
+    "ROT-MEM-021": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Removed member from rotation board."
+    },
+    "ROT-DEL-004": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "CRITICAL DEFECT: Board with active members was deleted without guard!"
+    }
+  },
+  "defects": [
+    {
+      "tc_id": "ROT-CHK-017",
+      "http_code": 200,
+      "desc": "Inactive Employee Acceptance: Inactive employee SA-EMP-0006 added to rotation board."
+    },
+    {
+      "tc_id": "ROT-DEL-004",
+      "http_code": 200,
+      "desc": "Active Member Deletion Guard Failure."
+    }
+  ]
+}

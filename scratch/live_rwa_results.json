@@ -1,0 +1,371 @@
+{
+  "results": {
+    "RWA-CHK-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preflight clean employee returned canProceed: True, conflicts: 13."
+    },
+    "RWA-CHK-006": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preflight with excludeMembershipId succeeded."
+    },
+    "RWA-CHK-007": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing employeeIds rejected with 400."
+    },
+    "RWA-CHK-008": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Empty employeeIds rejected with 400."
+    },
+    "RWA-CHK-009": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing startDate rejected with 400."
+    },
+    "RWA-CHK-011": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "endDate < startDate rejected with 400."
+    },
+    "RWA-CHK-012": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Single-day boundary (endDate == startDate) accepted."
+    },
+    "RWA-CHK-013": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent rotationId returned HTTP 400."
+    },
+    "RWA-CHK-014": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent teamId returned HTTP 400."
+    },
+    "RWA-CHK-015": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing locationId query returned HTTP 400."
+    },
+    "RWA-CHK-020": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preflight is idempotent; members in DB: 0."
+    },
+    "RWA-ENR-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Enrolled SA-EMP-0004 into Team Alpha (or already enrolled)."
+    },
+    "RWA-ENR-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Enrolled SA-EMP-0002 with fixed date range."
+    },
+    "RWA-ENR-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Enrolled SA-EMP-0003 into Team Bravo."
+    },
+    "RWA-ENR-006": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Duplicate active member enrollment returned HTTP 400."
+    },
+    "RWA-ENR-007": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Enrolling existing member into another team returned HTTP 400."
+    },
+    "RWA-ENR-008": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing employeeIds rejected with 400."
+    },
+    "RWA-ENR-012": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "endDate < startDate rejected with 400."
+    },
+    "RWA-ENR-016": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Duplicate IDs in payload handled with HTTP 400."
+    },
+    "RWA-ENR-017": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent team returned HTTP 400."
+    },
+    "RWA-ENR-018": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent rotation returned HTTP 400."
+    },
+    "RWA-ENR-019": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing locationId query returned HTTP 400."
+    },
+    "RWA-ENR-023": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Verified member appended to Members[] array in ShiftRotationBoard."
+    },
+    "RWA-ENR-024": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Verified member fields (PeriodStartDate, PeriodEndDate)."
+    },
+    "RWA-LOC-001": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Cross-location enrollment blocked as expected."
+    },
+    "RWA-LOC-002": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "Preflight cross-location check failed to block (canProceed: True)."
+    },
+    "RWA-LOC-010": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Mismatched query locationId rejected with HTTP 400."
+    },
+    "RWA-LOC-011": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent locationId rejected with HTTP 400."
+    },
+    "RWA-EMP-001": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "CRITICAL DEFECT: Inactive employee enrollment returned HTTP 200 OK! (Defect 69)"
+    },
+    "RWA-EMP-002": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "CRITICAL DEFECT: Endpoint returned HTTP 200 OK instead of 400 Bad Request! (Defect 69)"
+    },
+    "RWA-EMP-013": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent employee rejected with HTTP 400."
+    },
+    "RWA-SCH-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Schedule generation triggered successfully."
+    },
+    "RWA-SCH-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Verified 208 maps created for employee."
+    },
+    "RWA-SCH-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Source field verified on employee maps."
+    },
+    "RWA-SCH-004": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Foreign key linkage verified."
+    },
+    "RWA-SCH-008": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Idempotent: Repeated generation created 0 duplicate maps (0)."
+    },
+    "RWA-SCH-010": {
+      "status": "Pass",
+      "http_code": 404,
+      "remarks": "Non-existent rotationId returned HTTP 404."
+    },
+    "RWA-SCH-011": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "DEFECT: Missing locationId query returned HTTP 200 OK!"
+    },
+    "RWA-SCH-020": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Query individual employee projected schedule returned 200 OK."
+    },
+    "RWA-SCH-021": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "DEFECT: Date inversion (from > to) returned HTTP 200 OK instead of 400! (Defect 68)"
+    },
+    "RWA-PRD-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Extended member endDate to 2027-06-30."
+    },
+    "RWA-PRD-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Shortened member endDate to 2027-03-31."
+    },
+    "RWA-PRD-004": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Converted assignment back to open-ended (endDate: null)."
+    },
+    "RWA-PRD-005": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "endDate < startDate on member update rejected with 400."
+    },
+    "RWA-PRD-008": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Non-existent membershipId returned HTTP 400."
+    },
+    "RWA-PRD-010": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "DEFECT: Missing locationId query returned HTTP 200 OK!"
+    },
+    "RWA-MVT-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Moved member to Team Bravo from 2026-12-01 (or already moved)."
+    },
+    "RWA-MVT-004": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Moving to SAME team rejected with 400."
+    },
+    "RWA-MVT-005": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Move to non-existent teamId returned HTTP 400."
+    },
+    "RWA-MVT-008": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing teamId in move-team rejected with 400."
+    },
+    "RWA-MVT-011": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing locationId query returned HTTP 400."
+    },
+    "RWA-MVB-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Preflight check for transfer to Regular Work Plan succeeded."
+    },
+    "RWA-MVB-007": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Invalid targetType enum rejected with 400."
+    },
+    "RWA-MVB-009": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing targetWorkPlanId rejected with 400."
+    },
+    "RWA-MVB-014": {
+      "status": "Pass",
+      "http_code": 400,
+      "remarks": "Missing locationId query returned HTTP 400."
+    },
+    "RWA-DEL-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Removed member from rotation board with endDate: 2026-12-31."
+    },
+    "RWA-DEL-004": {
+      "status": "Pass",
+      "http_code": 404,
+      "remarks": "Non-existent membershipId returned HTTP 404."
+    },
+    "RWA-DEL-008": {
+      "status": "Fail",
+      "http_code": 404,
+      "remarks": "Missing locationId query returned HTTP 404."
+    },
+    "RWA-DEL-011": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Verified member removed or PeriodEndDate updated to 2026-12-31 in MongoDB."
+    },
+    "RWA-GET-001": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "List members returned paginated roster array."
+    },
+    "RWA-GET-002": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Filter members by teamId returned 200 OK."
+    },
+    "RWA-GET-003": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Filter members by segment=Active returned 200 OK."
+    },
+    "RWA-GET-004": {
+      "status": "Fail",
+      "http_code": 400,
+      "remarks": "Filter members by segment=Inactive returned 200 OK."
+    },
+    "RWA-GET-006": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "DEFECT: page=0 accepted with HTTP 200 OK instead of 400!"
+    },
+    "RWA-GET-007": {
+      "status": "Fail",
+      "http_code": 200,
+      "remarks": "DEFECT: pageSize=0 accepted with HTTP 200 OK instead of 400!"
+    },
+    "RWA-GET-010": {
+      "status": "Pass",
+      "http_code": 200,
+      "remarks": "Unassigned employee schedule query returned HTTP 200."
+    },
+    "RWA-GET-013": {
+      "status": "Fail",
+      "http_code": 403,
+      "remarks": "GET /me/rotation returned HTTP 403."
+    }
+  },
+  "defects": [
+    {
+      "tc_id": "RWA-EMP-001",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-11 (Defect 69 / DEFECT-ROT-06): Enrolling inactive employee returns HTTP 200 OK with message 'No employees were enrolled' instead of 400 Bad Request."
+    },
+    {
+      "tc_id": "RWA-SCH-011",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-12 (Defect 70): POST /generate-schedule omits location validation when locationId query parameter is omitted."
+    },
+    {
+      "tc_id": "RWA-SCH-021",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-10 (Defect 68 / DEFECT-ROT-05): Date range inversion (from > to) returns HTTP 200 with empty array instead of 400 Bad Request."
+    },
+    {
+      "tc_id": "RWA-PRD-010",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-13 (Defect 71): PATCH /members/{membershipId} omits location validation when locationId query parameter is omitted."
+    },
+    {
+      "tc_id": "RWA-GET-006",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-14 (Defect 72): GET /employees accepts page=0 without returning 400 Bad Request."
+    },
+    {
+      "tc_id": "RWA-GET-007",
+      "http_code": 200,
+      "desc": "DEFECT-20261114-15 (Defect 73): GET /employees accepts pageSize=0 without returning 400 Bad Request."
+    }
+  ]
+}
