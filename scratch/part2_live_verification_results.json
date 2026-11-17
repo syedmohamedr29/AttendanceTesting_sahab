@@ -6,8 +6,8 @@
   },
   "DEFECT-20261027-02": {
     "has_createdBy_in_dto": false,
-    "status_code": 500,
-    "response": "{\"error\":{\"code\":\"HttpRequestException\",\"message\":\"Company service company base info call failed: 500\",\"details\":null,\"data\":null,\"validationErrors\":null}}",
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:1505\",\"message\":\"Another policy of this type already has exactly the same settings.\",\"details\":null,\"data\":{\"companyId\":\"3a247435-e31d-ef15-8cc9-62c587f4eb3f\",\"duplica",
     "verdict": "FIXED (createdBy removed from DTO)"
   },
   "DEFECT-20261027-03": {

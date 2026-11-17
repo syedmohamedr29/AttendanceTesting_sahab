@@ -1,0 +1,239 @@
+{
+  "execution_time": "2026-11-17T11:02:09.737699",
+  "total": 21,
+  "passed": 18,
+  "failed": 3,
+  "results": [
+    {
+      "id": "SR-QA-AUTH-01",
+      "category": "Auth & Tenancy",
+      "title": "No Authorization Header",
+      "method": "GET",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 401,
+      "passed": true,
+      "note": "",
+      "body_snippet": ""
+    },
+    {
+      "id": "SR-QA-AUTH-02",
+      "category": "Auth & Tenancy",
+      "title": "Forged / Invalid JWT Token",
+      "method": "GET",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 200,
+      "passed": false,
+      "note": "Expected 401, got HTTP 200",
+      "body_snippet": "{'holidayCalendars': [{'id': '1b60e06f-6a26-45d3-ad4b-1991f4afdefd', 'isActive': True, 'tenantId': '3a24741e-2667-1223-f12e-62a69fab3838', 'tenantName': {}, 'companyId': '3a247435-3cea-83ae-6a9f-6dda9"
+    },
+    {
+      "id": "SR-QA-AUTH-03",
+      "category": "Auth & Tenancy",
+      "title": "Missing __tenant Header on POST",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': \"'Short Code' must not be empty. 'Yearly Calendar Year' must be greater than '1900'. A holiday calendar needs at least one holiday.\", 'detail"
+    },
+    {
+      "id": "SR-QA-AUTH-04",
+      "category": "Auth & Tenancy",
+      "title": "Cross-Tenant Access with Spoofed Header",
+      "method": "GET",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 200,
+      "passed": false,
+      "note": "Expected [401, 403, 404, 400], got HTTP 200",
+      "body_snippet": "{'holidayCalendars': [{'id': '1b60e06f-6a26-45d3-ad4b-1991f4afdefd', 'isActive': True, 'tenantId': '3a24741e-2667-1223-f12e-62a69fab3838', 'tenantName': {}, 'companyId': '3a247435-3cea-83ae-6a9f-6dda9"
+    },
+    {
+      "id": "SR-QA-DTO-01",
+      "category": "DTO Validation",
+      "title": "Empty JSON Body on POST /holidaylist",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': \"'Short Code' must not be empty. An English calendar name is required. 'Yearly Calendar Year' must be greater than '1900'. A holiday calendar"
+    },
+    {
+      "id": "SR-QA-DTO-02",
+      "category": "DTO Validation",
+      "title": "Missing English Name (Arabic only)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'An English calendar name is required.', 'details': None, 'data': None, 'validationErrors': [{'message': 'An English calendar name is require"
+    },
+    {
+      "id": "SR-QA-DTO-03",
+      "category": "DTO Validation",
+      "title": "Whitespace-only English Name",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'An English calendar name is required.', 'details': None, 'data': None, 'validationErrors': [{'message': 'An English calendar name is require"
+    },
+    {
+      "id": "SR-QA-DTO-04",
+      "category": "DTO Validation",
+      "title": "Empty holidayLists [] array on Creation",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'A holiday calendar needs at least one holiday.', 'details': None, 'data': None, 'validationErrors': [{'message': 'A holiday calendar needs a"
+    },
+    {
+      "id": "SR-QA-DTO-05",
+      "category": "DTO Validation",
+      "title": "Chronological Inversion on Creation (endDate < startDate)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'A holiday cannot end before it starts.', 'details': None, 'data': None, 'validationErrors': [{'message': 'A holiday cannot end before it sta"
+    },
+    {
+      "id": "SR-QA-DTO-06",
+      "category": "DTO Validation",
+      "title": "Cross-Year Date Infiltration (2028 holiday in 2027 calendar)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'Every holiday must start and end within the calendar year.', 'details': None, 'data': None, 'validationErrors': [{'message': 'Every holiday "
+    },
+    {
+      "id": "SR-QA-DTO-07",
+      "category": "DTO Validation",
+      "title": "Year Mismatch (outer year: 2027 vs yearlyCalendar.year: 2026)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:1713', 'message': 'A company holiday calendar already exists for the selected year.', 'details': None, 'data': {'companyId': '3a247435-3cea-83ae-6a9f-6dda99f386a3', "
+    },
+    {
+      "id": "SR-QA-DTO-08",
+      "category": "DTO Validation",
+      "title": "Non-existing holidayTypeId (Bogus GUID)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'A holiday type does not exist for this company.', 'details': None, 'data': None, 'validationErrors': [{'message': 'A holiday type does not e"
+    },
+    {
+      "id": "SR-QA-PATCH-01",
+      "category": "Patch Invariants",
+      "title": "Empty PATCH Body",
+      "method": "PATCH",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd/2026",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'At least one update field is required.', 'details': None, 'data': None, 'validationErrors': [{'message': 'At least one update field is requi"
+    },
+    {
+      "id": "SR-QA-PATCH-02",
+      "category": "Patch Invariants",
+      "title": "PATCH with Empty holidayLists: []",
+      "method": "PATCH",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd/2026",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:1704', 'message': 'Holidays can only be updated for the current year (future dates only) or next year.', 'details': None, 'data': {'reason': 'no-holidays-provided'},"
+    },
+    {
+      "id": "SR-QA-PATCH-03",
+      "category": "Patch Invariants",
+      "title": "PATCH with Chronological Inversion (endDate < startDate)",
+      "method": "PATCH",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd/2026",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': 'A holiday cannot end before it starts.', 'details': None, 'data': None, 'validationErrors': [{'message': 'A holiday cannot end before it sta"
+    },
+    {
+      "id": "SR-QA-PATCH-04",
+      "category": "Patch Invariants",
+      "title": "PATCH with Today's Date (2026-11-17) \u2014 Deadlock Check",
+      "method": "PATCH",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd/2026",
+      "status": 200,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'message': 'Holiday calendar updated successfully', 'calendar': {'id': '1b60e06f-6a26-45d3-ad4b-1991f4afdefd', 'isActive': True, 'tenantId': '3a24741e-2667-1223-f12e-62a69fab3838', 'tenantName': {}, "
+    },
+    {
+      "id": "SR-QA-PATCH-05",
+      "category": "Patch Invariants",
+      "title": "PATCH with Past Holiday Date (2026-01-01) \u2014 Rule 1706 Check",
+      "method": "PATCH",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd/2026",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:1706', 'message': 'In the current year, only holidays from today onward can be added or edited.', 'details': None, 'data': {'holidayDate': '2026-01-01'}, 'validation"
+    },
+    {
+      "id": "SR-QA-SEC-01",
+      "category": "Security & Injection",
+      "title": "Stored XSS Payload in Calendar Name",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:1713', 'message': 'A company holiday calendar already exists for the selected year.', 'details': None, 'data': {'companyId': '3a247435-3cea-83ae-6a9f-6dda99f386a3', "
+    },
+    {
+      "id": "SR-QA-SEC-02",
+      "category": "Security & Bounds",
+      "title": "Extreme Out-of-Bounds Year (9999)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:1712', 'message': 'Holiday calendar can only be created for the current year or next year.', 'details': None, 'data': {'requestedYear': 9999, 'allowedYears': [2026, "
+    },
+    {
+      "id": "SR-QA-SEC-03",
+      "category": "Security & Bounds",
+      "title": "Negative Year Boundary (-2026)",
+      "method": "POST",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist",
+      "status": 400,
+      "passed": true,
+      "note": "",
+      "body_snippet": "{'error': {'code': 'Cit.Attendance:Validation', 'message': \"'Yearly Calendar Year' must be greater than '1900'. Every holiday must start and end within the calendar year.\", 'details': None, 'data': No"
+    },
+    {
+      "id": "SR-QA-DB-01",
+      "category": "Database Integrity",
+      "title": "Inspect Audit Fields & Multilingual TenantName in MongoDB",
+      "method": "GET",
+      "url": "https://attendance2.dev.zoolwork.com/api/companies/3a247435-3cea-83ae-6a9f-6dda99f386a3/holidaylist/1b60e06f-6a26-45d3-ad4b-1991f4afdefd",
+      "status": 200,
+      "passed": false,
+      "note": "TenantName persists as empty object {} | CreatedBy stored as plain email string ('syed.mohamed@comm-it.in') instead of AuditUser composite document | ModifiedBy stored as plain email string ('syed.mohamed@comm-it.in') | LocationName persists as empty object {}",
+      "body_snippet": "{'holidayCalendar': {'id': '1b60e06f-6a26-45d3-ad4b-1991f4afdefd', 'isActive': True, 'tenantId': '3a24741e-2667-1223-f12e-62a69fab3838', 'tenantName': {}, 'companyId': '3a247435-3cea-83ae-6a9f-6dda99f"
+    }
+  ]
+}

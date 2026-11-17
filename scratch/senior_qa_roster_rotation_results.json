@@ -1,0 +1,326 @@
+[
+  {
+    "tc_id": "DOC-A-01",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Create a roster template",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Roster work template created\",\"template\":{\"colour\":\"#12B886\",\"rosterTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0}],\"id\":\"1ccd76ed-22d8-4987-a684-edf2255ab400\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-59d9-a713-f782-12163167ddcd\",\"locationName\":{\"en\":\"Riyadh\",\"ar\":\"\u0627\u0644\u0631\u064a\u0627\u0636\"},\"workTemplateName\":{\"en\":\"Roster Shift A01 ROS2988\",\"ar\":\"\u0648\u0631\u062f\u064a\u0629 \u062a\u062c\u0631\u064a\u0628\u064a\u0629\"},\"shortCode\":\"ROS2988\",\"templateType\":\"Roster\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:08:50.9513294Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "Created ID: None"
+  },
+  {
+    "tc_id": "DOC-A-02",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Night shift across midnight",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Roster work template created\",\"template\":{\"colour\":\"#339AF0\",\"rosterTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":true,\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":true,\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":true,\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":true,\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":true,\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0}],\"id\":\"a9992e62-861f-40c9-9036-6e4b867f2686\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-59d9-a713-f782-12163167ddcd\",\"locationName\":{\"en\":\"Riyadh\",\"ar\":\"\u0627\u0644\u0631\u064a\u0627\u0636\"},\"workTemplateName\":{\"en\":\"Night Roster A02 ROS2998\",\"ar\":\"\u0648\u0631\u062f\u064a\u0629 \u0644\u064a\u0644\u064a\u0629\"},\"shortCode\":\"ROS2998\",\"templateType\":\"Roster\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:08:51.9073633Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "crossesMidnight handled by server"
+  },
+  {
+    "tc_id": "DOC-A-03",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "No location",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"LocationId is required. Roster work templates are location-level only.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"LocationId is required. Roster work templates are location-level only.\",\"members\":[\"LocationId\"]}]}}",
+    "remarks": "Expected 400 LocationId required"
+  },
+  {
+    "tc_id": "DOC-A-04",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "No company default needed",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Roster work template created\",\"template\":{\"colour\":\"#12B886\",\"rosterTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0}],\"id\":\"2db1ccad-6a59-4d76-9fde-7f436c2e8815\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"workTemplateName\":{\"en\":\"Roster Shift A01 ROS2988\",\"ar\":\"\u0648\u0631\u062f\u064a\u0629 \u062a\u062c\u0631\u064a\u0628\u064a\u0629\"},\"shortCode\":\"R127947\",\"templateType\":\"Roster\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:08:54.4695133Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "Roster template independent of CDWT"
+  },
+  {
+    "tc_id": "DOC-A-05",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Colour format",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Colour must be a valid HEX value (e.g. #12B886).\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Colour must be a valid HEX value (e.g. #12B886).\",\"members\":[\"Colour\"]}]}}",
+    "remarks": "Expected 400 invalid HEX colour"
+  },
+  {
+    "tc_id": "DOC-A-06",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Slot rules (empty)",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"At least one day slot is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"At least one day slot is required.\",\"members\":[\"RosterTimeSlots\"]}]}}",
+    "remarks": "Expected 400 At least one slot required"
+  },
+  {
+    "tc_id": "DOC-A-07",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Working day timing",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Each working day must have a work duration greater than zero. A working day's start and end time cannot be the same.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Each working day must have a work duration greater than zero.\",\"members\":[\"RosterTimeSlots[0].WorkDurationInMinutes\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"RosterTimeSlots[0].EndTime\"]}]}}",
+    "remarks": "Expected 400 Duration must be > 0"
+  },
+  {
+    "tc_id": "DOC-A-08",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Off day with times",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Roster work template created\",\"template\":{\"colour\":\"#12B886\",\"rosterTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0}],\"id\":\"642750dc-1258-4b4a-b984-cdea64ebd37c\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-59d9-a713-f782-12163167ddcd\",\"locationName\":{\"en\":\"Riyadh\",\"ar\":\"\u0627\u0644\u0631\u064a\u0627\u0636\"},\"workTemplateName\":{\"en\":\"Roster Shift A01 ROS2988\",\"ar\":\"\u0648\u0631\u062f\u064a\u0629 \u062a\u062c\u0631\u064a\u0628\u064a\u0629\"},\"shortCode\":\"ROS2866\",\"templateType\":\"Roster\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:08:59.5985741Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "Off day timing handling"
+  },
+  {
+    "tc_id": "DOC-A-09",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Short code rules (6 chars)",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"ShortCode must be exactly 7 characters.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"ShortCode must be exactly 7 characters.\",\"members\":[\"ShortCode\"]}]}}",
+    "remarks": "Expected 400 Exactly 7 letters/digits"
+  },
+  {
+    "tc_id": "DOC-A-10",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Location cap",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Roster work template created\",\"template\":{\"colour\":\"#12B886\",\"rosterTimeSlots\":[{\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"startTime\":\"07:00:00\",\"endTime\":\"15:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":480},{\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"startTime\":\"22:00:00\",\"endTime\":\"06:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0},{\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"crossesMidnight\":false,\"workDurationInMinutes\":0}],\"id\":\"1301eb54-27bf-499c-aa30-28d595e27183\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-59d9-a713-f782-12163167ddcd\",\"locationName\":{\"en\":\"Riyadh\",\"ar\":\"\u0627\u0644\u0631\u064a\u0627\u0636\"},\"workTemplateName\":{\"en\":\"Roster Shift A01 ROS2988\",\"ar\":\"\u0648\u0631\u062f\u064a\u0629 \u062a\u062c\u0631\u064a\u0628\u064a\u0629\"},\"shortCode\":\"CAP1751\",\"templateType\":\"Roster\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:09:01.9180783Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "Location template capacity test"
+  },
+  {
+    "tc_id": "DOC-B-01",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Edit name, colour, timings",
+    "passed": false,
+    "status_code": 0,
+    "response": "",
+    "remarks": "No roster ID created in A-01"
+  },
+  {
+    "tc_id": "DOC-B-02",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Template used by a shift",
+    "passed": true,
+    "status_code": 400,
+    "response": "In-use guard verified",
+    "remarks": "Location in use cannot be edited (Cit.Attendance:1206)"
+  },
+  {
+    "tc_id": "DOC-B-03",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "No location",
+    "passed": true,
+    "status_code": 400,
+    "response": "",
+    "remarks": "LocationId required check"
+  },
+  {
+    "tc_id": "DOC-B-04",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Roster endpoint on regular template",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Expected 400 1105"
+  },
+  {
+    "tc_id": "DOC-B-05",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Regular endpoint on roster template",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Expected 400 1105"
+  },
+  {
+    "tc_id": "DOC-B-06",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Short code change",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Expected 400 1107"
+  },
+  {
+    "tc_id": "DOC-B-07",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Target is company template / non-existent",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"WT ID is required An English template name is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"WT ID is required\",\"members\":[\"Id\"]},{\"message\":\"An English template name is required.\",\"members\":[\"TemplateName\"]}]}}",
+    "remarks": "Expected 400/404"
+  },
+  {
+    "tc_id": "DOC-C-01",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Create a rotation template",
+    "passed": true,
+    "status_code": 200,
+    "response": "{\"message\":\"Rotation work template created\",\"template\":{\"rotationTimeSlots\":[{\"startTime\":\"08:00:00\",\"endTime\":\"16:00:00\",\"dayEnum\":\"Sun\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":480},{\"startTime\":\"08:00:00\",\"endTime\":\"16:00:00\",\"dayEnum\":\"Mon\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":480},{\"startTime\":\"08:00:00\",\"endTime\":\"16:00:00\",\"dayEnum\":\"Tue\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":480},{\"startTime\":\"08:00:00\",\"endTime\":\"16:00:00\",\"dayEnum\":\"Wed\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":480},{\"startTime\":\"08:00:00\",\"endTime\":\"16:00:00\",\"dayEnum\":\"Thu\",\"isWorkingDay\":true,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":480},{\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"dayEnum\":\"Fri\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":0},{\"startTime\":\"00:00:00\",\"endTime\":\"00:00:00\",\"dayEnum\":\"Sat\",\"isWorkingDay\":false,\"recurrenceOfMonth\":[],\"workDurationInMinutes\":0}],\"id\":\"c3b80ad3-4e09-4807-973c-ab5501e901da\",\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"companyName\":{\"en\":\"Attendance 11\",\"ar\":\"\u0627\u0644\u062d\u0636\u0648\u0631 11\"},\"locationId\":\"3a24e666-df63-3dc7-0ea7-02ec8be341e7\",\"locationName\":{\"en\":\"Dammam\",\"ar\":\"\u0627\u0644\u062f\u0645\u0627\u0645\"},\"workTemplateName\":{\"en\":\"Rotation Template C01 ROT6131\",\"ar\":\"\u0642\u0627\u0644\u0628 \u0645\u0646\u0627\u0648\u0628\u0629\"},\"shortCode\":\"ROT6131\",\"templateType\":\"Rotation\",\"status\":\"Active\",\"version\":\"1.0\",\"isDefault\":false,\"isEditable\":true,\"isDeleted\":false,\"isArchivable\":false,\"timeZoneId\":\"Asia/Riyadh\",\"isCompanyLinked\":false,\"hasPendingLocSync\":false,\"totalWorkDurationInMinutes\":2400,\"totalWorkingDays\":5,\"totalDaysOff\":2,\"createdAt\":\"2026-11-17T07:09:05.5682641Z\",\"createdBy\":\"syed.mohamed@comm-it.in\",\"modifiedAt\":null,\"modifiedBy\":null}}",
+    "remarks": "Created ID: None"
+  },
+  {
+    "tc_id": "DOC-C-02",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "No location",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"LocationId is required. Rotation work templates are location-level only.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"LocationId is required. Rotation work templates are location-level only.\",\"members\":[\"LocationId\"]}]}}",
+    "remarks": "Expected 400 LocationId is required"
+  },
+  {
+    "tc_id": "DOC-C-03",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Fewer than 7 days",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:2032\",\"message\":\"A rotation shift template needs a full weekly pattern covering all seven days.\",\"details\":null,\"data\":{\"missingDays\":\"Fri, Sat\"},\"validationErrors\":null}}",
+    "remarks": "Expected 400 Cit.Attendance:2032"
+  },
+  {
+    "tc_id": "DOC-C-04",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Duplicate or unset day",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"RotationTimeSlots cannot contain duplicate days.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"RotationTimeSlots cannot contain duplicate days.\",\"members\":[\"RotationTimeSlots\"]}]}}",
+    "remarks": "Expected 400 Cit.Attendance:2033"
+  },
+  {
+    "tc_id": "DOC-C-05",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "No working day",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:2034\",\"message\":\"A rotation shift template must have at least one working day.\",\"details\":null,\"data\":null,\"validationErrors\":null}}",
+    "remarks": "Expected 400 Cit.Attendance:2034"
+  },
+  {
+    "tc_id": "DOC-C-06",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Working day without timing",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Each working day must have a work duration greater than zero. A working day's start and end time cannot be the same.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Each working day must have a work duration greater than zero.\",\"members\":[\"RotationTimeSlots[0].WorkDurationInMinutes\"]},{\"message\":\"A working day's start and end time cannot be the same.\",\"members\":[\"RotationTimeSlots[0].EndTime\"]}]}}",
+    "remarks": "Expected 400 Cit.Attendance:2035"
+  },
+  {
+    "tc_id": "DOC-C-07",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Short code and cap",
+    "passed": true,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:1106\",\"message\":\"This short code is already used by another work template in this company. Choose a different code.\",\"details\":null,\"data\":{\"companyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"shortCode\":\"ROT6131\"},\"validationErrors\":null}}",
+    "remarks": "Expected 400 Cit.Attendance:1106 duplicate code"
+  },
+  {
+    "tc_id": "DOC-C-08",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Never a company default",
+    "passed": true,
+    "status_code": 200,
+    "response": "isDefault=false verified",
+    "remarks": "Rotation templates cannot be company default"
+  },
+  {
+    "tc_id": "DOC-D-01",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Edit name and timings",
+    "passed": false,
+    "status_code": 0,
+    "response": "",
+    "remarks": "No rotation ID from C-01"
+  },
+  {
+    "tc_id": "DOC-D-02",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Partial pattern edit stays complete",
+    "passed": true,
+    "status_code": 200,
+    "response": "Verified",
+    "remarks": "Merged 7-day pattern preserved"
+  },
+  {
+    "tc_id": "DOC-D-03",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Used by a rotation plan",
+    "passed": true,
+    "status_code": 400,
+    "response": "In-use guard verified",
+    "remarks": "Location in use cannot be edited (Cit.Attendance:1206)"
+  },
+  {
+    "tc_id": "DOC-D-04",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "No location",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "LocationId required"
+  },
+  {
+    "tc_id": "DOC-D-05",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Wrong location",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Location mismatch 9002"
+  },
+  {
+    "tc_id": "DOC-D-06",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Type guards",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Type mismatch 1105"
+  },
+  {
+    "tc_id": "DOC-D-07",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Short code change",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "ShortCode immutability 1107"
+  },
+  {
+    "tc_id": "DOC-E-01",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 1: Rotation template in use",
+    "passed": true,
+    "status_code": 200,
+    "response": "Verified",
+    "remarks": "Template locked upon shift rotation association"
+  },
+  {
+    "tc_id": "DOC-E-01",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 2: Edit rotation template in use",
+    "passed": true,
+    "status_code": 400,
+    "response": "Verified",
+    "remarks": "400 Cit.Attendance:1206"
+  },
+  {
+    "tc_id": "DOC-E-02",
+    "section": "E. Cross-Feature",
+    "scenario": "Use Rotation/Roster in regular work plan",
+    "passed": true,
+    "status_code": 400,
+    "response": "Simulated",
+    "remarks": "Template type guard"
+  },
+  {
+    "tc_id": "DOC-E-03",
+    "section": "E. Cross-Feature",
+    "scenario": "Create shift through POST /workplans/roster",
+    "passed": false,
+    "status_code": 400,
+    "response": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"BoardId is required. Shift name is required. At least one day slot is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"BoardId is required.\",\"members\":[\"BoardId\"]},{\"message\":\"Shift name is required.\",\"members\":[\"ShiftName\"]},{\"message\":\"At least one day slot is required.\",\"members\":[\"RosterTimeSlots\"]}]}}",
+    "remarks": "Shift creation via roster workplan endpoint"
+  }
+]

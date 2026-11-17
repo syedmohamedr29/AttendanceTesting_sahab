@@ -1,0 +1,212 @@
+{
+  "POS-BRD-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Board created with ID 29630c72-98da-4796-8c3a-02c632b113ae and 2 areas verified in MongoDB.",
+    "defect_ref": null
+  },
+  "POS-BRD-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. BiWeekly board created with ID 1d7c099c-c2a9-4f95-969b-8f896cfa46d3.",
+    "defect_ref": null
+  },
+  "POS-BRD-03": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Monthly frequency (3) board created successfully.",
+    "defect_ref": null
+  },
+  "POS-BRD-04": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Board renamed successfully.",
+    "defect_ref": null
+  },
+  "POS-BRD-05": {
+    "status": "Fail",
+    "actual": "Expected 200 OK, got 400: {\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Board name cannot be empty. Board name (en) is required.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Board name cannot be empty.",
+    "defect_ref": null
+  },
+  "POS-BRD-06": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Area renamed successfully.",
+    "defect_ref": null
+  },
+  "NEG-BRD-01": {
+    "status": "Fail",
+    "actual": "Expected 400 Bad Request, got 200: {\"message\":\"Board created\",\"board\":{\"id\":\"310d6c53-cf67-4f89-8903-fd4f6c3e2586\",\"boardName\":{\"en\":\"\",\"ar\":\"\u0637\u0648\u0627\u0631\u0626\"},\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e5",
+    "defect_ref": null
+  },
+  "NEG-BRD-02": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected publishingFrequency = 99.",
+    "defect_ref": null
+  },
+  "NEG-BRD-03": {
+    "status": "Fail",
+    "actual": "Expected 400 Bad Request for cross-location supervisor, got 200: {\"message\":\"Board created\",\"board\":{\"id\":\"966426ff-a94d-4e94-8f47-58136155e34c\",\"boardName\":{\"en\":\"Cross Loc Sup Board\"},\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"",
+    "defect_ref": null
+  },
+  "NEG-BRD-05": {
+    "status": "Fail",
+    "actual": "Expected 400 Bad Request for duplicate area names, got 200: {\"message\":\"Board created\",\"board\":{\"id\":\"a2172f56-6e7b-4bd3-be6e-169a4137989d\",\"boardName\":{\"en\":\"Dup Area Board\"},\"tenantId\":\"3a24741e-2667-1223-f12e-62a69fab3838\",\"tenantName\":{},\"companyId\":\"3a24e",
+    "defect_ref": null
+  },
+  "POS-SHF-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Roster shift created with ID bb67fc1c-951b-466a-9347-5ed12d1fe6b1, code SFT6363.",
+    "defect_ref": null
+  },
+  "POS-SHF-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Overnight shift created successfully.",
+    "defect_ref": null
+  },
+  "POS-SHF-04": {
+    "status": "Fail",
+    "actual": "Expected 200 OK, got 400: {\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"RosterTimeSlots cannot be empty. Omit it to leave the timing unchanged.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"RosterTimeSl",
+    "defect_ref": null
+  },
+  "NEG-SHF-02": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected duplicate code SFT6363 ({\"error\":{\"code\":\"Cit.Attendance:1106\",\"message\":\"This short code is already used by another work te).",
+    "defect_ref": null
+  },
+  "NEG-SHF-03": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected modifying code (Rule 1107: {\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Shift name cannot be empty. Omit it to leave).",
+    "defect_ref": null
+  },
+  "POS-MEM-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Conflict preflight succeeded: clean=0, adjustable=0, blocked=0.",
+    "defect_ref": null
+  },
+  "POS-MEM-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Enrolled 2 employees with open-ended period.",
+    "defect_ref": null
+  },
+  "POS-MEM-04": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Enrolled employees with adjustConflicts: true successfully.",
+    "defect_ref": null
+  },
+  "POS-MEM-03": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Successfully assigned employees to Area A.",
+    "defect_ref": null
+  },
+  "NEG-MEM-03": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected startDate in the past.",
+    "defect_ref": null
+  },
+  "NEG-MEM-04": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected endDate < startDate.",
+    "defect_ref": null
+  },
+  "SEC-EMP-01": {
+    "status": "Fail",
+    "actual": "Expected 400 Bad Request for inactive employee, got HTTP 200: {\"message\":\"0 employee(s) added to the board\",\"boardId\":\"29630c72-98da-4796-8c3a-02c632b113ae\",\"addedEmployees\":[],\"skippedEmployeeIds\":[],\"notFoundEmployeeIds\":[\"39879386-4c24-ee4c-84ec-6eb7daa765ac\"",
+    "defect_ref": "DEFECT-SCHED-01"
+  },
+  "POS-PLN-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Schedule Plans list retrieved successfully.",
+    "defect_ref": null
+  },
+  "POS-PLN-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Schedule grid loaded: version=0, isReadyToPublish=None.",
+    "defect_ref": null
+  },
+  "POS-PLN-03": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Assigned 10 shift slots across Sun-Thu.",
+    "defect_ref": null
+  },
+  "POS-PLN-04": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Assigned Day Off rest days for Fri-Sat.",
+    "defect_ref": null
+  },
+  "NEG-PLN-03": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected clear with date outside period (Rule 1913).",
+    "defect_ref": null
+  },
+  "NEG-PUB-02": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected publishing empty period without allowEmpty flag (Rule 1908: {\"error\":{\"code\":\"Cit.Attendance:1908\",\"message\":\"Nothing is planned in this period, so there is not).",
+    "defect_ref": null
+  },
+  "POS-PUB-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Successfully published empty roster with allowEmpty: true.",
+    "defect_ref": null
+  },
+  "POS-PUB-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Period published successfully: status=Published, version=1, slots=14.",
+    "defect_ref": null
+  },
+  "NEG-PUB-04": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected stale version concurrency mismatch (Rule 1910).",
+    "defect_ref": null
+  },
+  "SEC-CON-01": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Concurrency lock collision prevented data overwrite.",
+    "defect_ref": null
+  },
+  "POS-PUB-04": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Unstarted period unpublished successfully (reverted to Pending).",
+    "defect_ref": null
+  },
+  "NEG-PUB-05": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected unpublishing an unpublished period (Rule 1912).",
+    "defect_ref": null
+  },
+  "POS-OVR-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Overview summary retrieved: boards=8, employees=2.",
+    "defect_ref": null
+  },
+  "POS-OVR-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Overview Today timeline retrieved successfully.",
+    "defect_ref": null
+  },
+  "POS-SCH-01": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Schedules 7-day grid retrieved: total=2, groups=1.",
+    "defect_ref": null
+  },
+  "POS-SCH-02": {
+    "status": "Pass",
+    "actual": "HTTP 200 OK. Member schedule card retrieved successfully.",
+    "defect_ref": null
+  },
+  "NEG-OVR-01": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected inverted date range (Rule 2204: {\"error\":{\"code\":\"Cit.Attendance:2204\",\"message\":\"The date range is not valid. Send both dates, with).",
+    "defect_ref": null
+  },
+  "NEG-OVR-02": {
+    "status": "Pass",
+    "actual": "HTTP 400 Bad Request. Correctly rejected date range exceeding 31 days (Rule 2204: {\"error\":{\"code\":\"Cit.Attendance:2204\",\"message\":\"The date range is not valid. Send both dates, with).",
+    "defect_ref": null
+  },
+  "NEG-SCH-01": {
+    "status": "Pass",
+    "actual": "HTTP 404 Not Found. Correctly returned 404 (Rule 2207: {\"error\":{\"code\":\"Cit.Attendance:2207\",\"message\":\"No work assignment covers the requested date, so y).",
+    "defect_ref": null
+  },
+  "SEC-IDOR-01": {
+    "status": "Fail",
+    "actual": "Expected 403/404 for IDOR, got 400: {\"error\":{\"code\":\"Cit.Attendance:9001\",\"message\":\"The provided company does not match the entity company.\",\"details\":null,\"data\":{\"entityCompanyId\":\"3a24e5e5-302e-91bd-feaa-b07979766dfe\",\"requestCompa",
+    "defect_ref": null
+  }
+}

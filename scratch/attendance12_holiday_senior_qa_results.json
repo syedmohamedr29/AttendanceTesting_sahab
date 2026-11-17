@@ -1,0 +1,189 @@
+[
+  {
+    "tc_id": "SR-A12-01",
+    "section": "Auth & Tenancy",
+    "title": "No Authorization Header",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 401,
+    "expected_status": 401,
+    "passed": true,
+    "response_snippet": ""
+  },
+  {
+    "tc_id": "SR-A12-02",
+    "section": "Auth & Tenancy",
+    "title": "Expired JWT Token Rejection",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 200,
+    "expected_status": 401,
+    "passed": false,
+    "response_snippet": "{\"holidayCalendars\":[]}"
+  },
+  {
+    "tc_id": "SR-A12-03",
+    "section": "Auth & Tenancy",
+    "title": "Cross-Tenant Header Rejection",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 200,
+    "expected_status": 403,
+    "passed": false,
+    "response_snippet": "{\"holidayCalendars\":[]}"
+  },
+  {
+    "tc_id": "SR-A12-04",
+    "section": "Auth & Tenancy",
+    "title": "Missing __tenant Header Handled",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"'Short Code' must not be empty. An English calendar name is required. 'Yearly Calendar Year' must be greater than '1900'. A holiday calendar needs at least one holiday.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"'Short Code' mu"
+  },
+  {
+    "tc_id": "SR-A12-05",
+    "section": "Create Calendar",
+    "title": "Create with Company's Seeded HolidayType",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 200,
+    "passed": false,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A holiday type does not exist for this company.\",\"members\":[\"\"]}]}}"
+  },
+  {
+    "tc_id": "SR-A12-06",
+    "section": "Create Calendar",
+    "title": "Empty Request Body {}",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"'Short Code' must not be empty. An English calendar name is required. 'Yearly Calendar Year' must be greater than '1900'. A holiday calendar needs at least one holiday.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"'Short Code' mu"
+  },
+  {
+    "tc_id": "SR-A12-07",
+    "section": "Create Calendar",
+    "title": "Missing English Name (Arabic Only)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"An English calendar name is required. A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"An English calendar name is required.\",\"members\":[\"Name\"]},{\"message\":\"A holiday type does not exi"
+  },
+  {
+    "tc_id": "SR-A12-08",
+    "section": "Create Calendar",
+    "title": "Empty holidayLists [] Array",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A holiday calendar needs at least one holiday.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A holiday calendar needs at least one holiday.\",\"members\":[\"YearlyCalendar.HolidayLists\"]}]}}"
+  },
+  {
+    "tc_id": "SR-A12-09",
+    "section": "Create Calendar",
+    "title": "Chronological Inversion on Create",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A holiday cannot end before it starts. A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A holiday cannot end before it starts.\",\"members\":[\"YearlyCalendar.HolidayLists[0]\"]},{\"message\":"
+  },
+  {
+    "tc_id": "SR-A12-10",
+    "section": "Create Calendar",
+    "title": "Future Year Infiltration (2027 in 2026)",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"Every holiday must start and end within the calendar year. A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"Every holiday must start and end within the calendar year.\",\"members\":[\"Yearl"
+  },
+  {
+    "tc_id": "SR-A12-11",
+    "section": "Create Calendar",
+    "title": "Duplicate Holiday Date in Same Calendar",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A holiday type does not exist for this company.\",\"members\":[\"\"]}]}}"
+  },
+  {
+    "tc_id": "SR-A12-12",
+    "section": "Read Endpoints",
+    "title": "List All Company Calendars",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist",
+    "status": 200,
+    "expected_status": 200,
+    "passed": true,
+    "response_snippet": "{\"holidayCalendars\":[]}"
+  },
+  {
+    "tc_id": "SR-A12-13",
+    "section": "Read Endpoints",
+    "title": "Get Calendars for Year 2026",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/2026",
+    "status": 200,
+    "expected_status": 200,
+    "passed": true,
+    "response_snippet": "{\"holidayCalendars\":[]}"
+  },
+  {
+    "tc_id": "SR-A12-14",
+    "section": "Read Endpoints",
+    "title": "Get Upcoming Holidays Feed",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/upcoming",
+    "status": 200,
+    "expected_status": 200,
+    "passed": true,
+    "response_snippet": "{\"from\":\"2026-11-17\",\"locationCount\":0,\"items\":[]}"
+  },
+  {
+    "tc_id": "SR-A12-15",
+    "section": "Read Endpoints",
+    "title": "Get Non-Existing Calendar ID",
+    "method": "GET",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/00000000-0000-0000-0000-000000000000",
+    "status": 400,
+    "expected_status": 404,
+    "passed": false,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:1701\",\"message\":\"Holiday calendar not found.\",\"details\":null,\"data\":{\"holidayCalendarId\":\"00000000-0000-0000-0000-000000000000\"},\"validationErrors\":null}}"
+  },
+  {
+    "tc_id": "SR-A12-16",
+    "section": "Publish Lifecycle",
+    "title": "Publish When No Calendar Exists",
+    "method": "POST",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/publish/2026",
+    "status": 400,
+    "expected_status": 400,
+    "passed": true,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:1717\",\"message\":\"Company default holiday calendar not found for the selected year.\",\"details\":null,\"data\":{\"companyId\":\"3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc\",\"year\":2026},\"validationErrors\":null}}"
+  },
+  {
+    "tc_id": "SR-A12-17",
+    "section": "Cross-Tenant Security",
+    "title": "Attendance 12 PATCH foreign calendar (Att 3)",
+    "method": "PATCH",
+    "url": "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/8f5e3115-0d59-40b1-85ce-ed9dc207126c/2026",
+    "status": 400,
+    "expected_status": 404,
+    "passed": false,
+    "response_snippet": "{\"error\":{\"code\":\"Cit.Attendance:Validation\",\"message\":\"A holiday type does not exist for this company.\",\"details\":null,\"data\":null,\"validationErrors\":[{\"message\":\"A holiday type does not exist for this company.\",\"members\":[\"\"]}]}}"
+  }
+]

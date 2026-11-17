@@ -1,0 +1,45 @@
+{
+  "holidayCalendar": {
+    "id": "1b60e06f-6a26-45d3-ad4b-1991f4afdefd",
+    "isActive": true,
+    "tenantId": "3a24741e-2667-1223-f12e-62a69fab3838",
+    "tenantName": {},
+    "companyId": "3a247435-3cea-83ae-6a9f-6dda99f386a3",
+    "companyName": {
+      "en": "Attendance 2"
+    },
+    "locationId": "00000000-0000-0000-0000-000000000000",
+    "locationName": {},
+    "shortCode": "HC2026A",
+    "name": {
+      "en": "Test Holiday Calendar 2026",
+      "ar": "\u062a\u0642\u0648\u064a\u0645 \u0627\u0644\u0639\u0637\u0644\u0627\u062a 2026"
+    },
+    "isDeleted": false,
+    "isLocked": false,
+    "isInherited": false,
+    "isPublished": true,
+    "lastPublishedOn": "2026-10-29T05:25:40.807Z",
+    "calendarType": "CompanyDefault",
+    "yearlyCalendar": {
+      "year": 2026,
+      "holidayLists": [
+        {
+          "id": "89231e6c-c50f-46c7-a093-b1db968d9b39",
+          "holidayName": {
+            "en": "New Year Day",
+            "ar": "\u0631\u0623\u0633 \u0627\u0644\u0633\u0646\u0629"
+          },
+          "holidayTypeName": {},
+          "holidayTypeId": "3a247435-3cfa-7c43-8e74-eda55a21e647",
+          "startDate": "2026-01-01",
+          "endDate": "2026-01-01"
+        }
+      ]
+    },
+    "createdAt": "2026-10-29T05:23:38.338Z",
+    "createdBy": "syed.mohamed@comm-it.in",
+    "modifiedAt": "2026-10-29T05:25:40.808Z",
+    "modifiedBy": "syed.mohamed@comm-it.in"
+  }
+}

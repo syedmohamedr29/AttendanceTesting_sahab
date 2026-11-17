@@ -1,28 +1,44 @@
 # 🛡️ Attendance 2 — Master Consolidated Defect Log
 
+> 🚨 **OFFICIAL MASTER REPORT NOTICE:** The single authoritative Master Defect & Architecture Review Report is **[`Attendance2_Defects_Gaps_and_Architecture_Inconsistencies_Report.md`](file:///d:/Code/Attendance%20Testing/Attendance2_Defects_Gaps_and_Architecture_Inconsistencies_Report.md)** located in the project root directory. All updates, complete payloads, MongoDB Compass screenshots, and C# remediations are actively maintained there.
+
 > **Service:** `SP.AttendanceSvc` (.NET 9 Microservice) | **Environment:** Sahab DEV (`sp.dev.zoolwork.com`)
 > **Database:** MongoDB (`Sahab` @ `10.1.0.4:27018`) | **Author:** QA Engineering & Microservice Architecture Team
-> **Status:** **Active Master Defect Register** | **Date:** **13 November 2026 (Day 10 Update — Extreme QA on Attendance 10 + Compass Proof)** (Updated with `DEFECT-20261112-01` to `DEFECT-20261112-13` — Shifts & Rotation — Work Plans & Work Assignments Full Regular API + `/employees` + MongoDB Audit across `ATT7`, `ATT8`, `ATT9`, **340 RTM Cases (`233` Pass, `101` Fail, `6` Blocked)**, **30 Extreme QA Cases on `Attendance 10` (`7` Pass, `23` Fail / Invariant Breaches)**, live MongoDB Compass verification of `DEFECT-20261112-06` [Evidence 72], upstream `CompanySvc` 500 crash on POST, and **Evidences 01–73**)
+> **Status:** **Active Master Defect Register** | **Date:** **16 November 2026 (Day 12 Master Update — Location Shifts Full Suite Live Execution [112 TCs: 94 Pass, 1 By Design, 17 Fail] + Part 3N [DEFECT-20261116-01 to 06] + Part 3J [DEFECT-20261112-01 to 13] + Part 3K [DEFECT-20261114-01 to 04] + Multi-Tenant Re-Verification on Attendance 12 [Part 3I: 23 Defects] + 5 Sheets Failed Issues Re-Verification + Confluence Master Sync [Rows 1 to 92 Active — Version 25 (Senior QA Attendance 12 Audit: DEFECT-20261117-01 & 02 [Rows 91 & 92])])** (Updated with complete Location Shifts test suite execution across 112 TCs in [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx); formal logging and MongoDB Compass verification of 6 new architectural defects `DEFECT-20261116-01` to `DEFECT-20261116-06` [Confluence Rows 79 to 84]; synchronization of Shifts & Rotation Work Plans & Assignments `DEFECT-20261112-01` to `13` [Rows 62 to 74]; Work Assignments Employee Lifecycle `DEFECT-20261114-01` to `04` [Rows 75 to 78]; Part 3I 23 Work Template defects live re-verified across multi-tenant `Attendance 12`; and 5 failing sheets stamped with live re-test verification findings).
 
 ---
 
 ## 📑 Table of Contents
 - [1. Executive Summary & Defect Metrics Dashboard](#1-executive-summary--defect-metrics-dashboard)
-- [2. Master Defect Quick-Reference Matrix (All 80+ Defects)](#2-master-defect-quick-reference-matrix)
+  - [1.1. Overall Consolidated Test Execution Dashboard (All 18 Modules)](#11-overall-consolidated-test-execution-dashboard-all-18-modules)
+  - [1.2. Priority Failed User Scenarios (Module 15 Audit & Live Reproduction)](#12-priority-failed-user-scenarios-module-15-audit--live-reproduction)
+- [2. Master Defect Quick-Reference Matrix (All 84+ Active Defects)](#2-master-defect-quick-reference-matrix)
 - [3. Module 1: Holiday Calendar Module (`ERP.Attendance.HolidayCalendars`)](#3-module-1-holiday-calendar-module)
+  - [3.1. Holiday Calendar - Company Deep Dive: Live Test Execution & Defect Audit (83 TCs: 62 Pass, 2 By Design, 19 Fail)](#31-holiday-calendar---company-live-test-execution--defect-audit-16-november-2026)
 - [4. Module 2: Work Template & Location Cascade Module (`ERP.Attendance.WorkTemplates`)](#4-module-2-work-template--location-cascade-module)
 - [5. Module 3: Work Plans, Shift Rosters & Attendance Policies](#5-module-3-work-plans-shift-rosters--attendance-policies)
 - [6. Module 4: Security, Authentication & Multi-Tenancy Architecture](#6-module-4-security-authentication--multi-tenancy-architecture)
 - [7. Verified Business Scenarios Confirmed as 'Not a Bug' (By Design)](#7-verified-business-scenarios-confirmed-as-not-a-bug)
-- [8. Developer Remediation Action Checklist (Days 1 to 9)](#8-developer-remediation-action-checklist)
-- [9. 🚨 Latest Defect Update (12 Nov 2026) & 10 Nov 2026 Summary – Bottom Recap Tables](#todays-defects-summary-10-november-2026-bottom)
-- [10. 📸 Master Visual Evidence Index (Evidences 01 to 73)](#-master-visual-evidence-index)
+- [8. Developer Remediation Action Checklist (Days 1 to 12)](#8-developer-remediation-action-checklist)
+- [9. 🚨 Part 3I: Defects Identified & Live Verified on 10 November 2026 (Work Template Module: 23 Defects)](#-part-3i-defects-identified--live-verified-on-10-november-2026--work-template-module-fixed-flexible-split-delete--rotation-live-mongodb-compass--api-verification--re-verification-audit)
+- [10. 🏢 Multi-Tenant Cross-Company Re-Verification: Part 3I Work Template Suite on Attendance 12 vs. Attendance 8](#-multi-tenant-cross-company-re-verification-part-3i-work-template-suite-on-company-attendance-12-vs-attendance-8)
+- [11. 🆕 Part 3J: Defects Identified on 12 November 2026 — Shifts & Rotation: Work Plans & Work Assignments (Confluence Rows 62 to 74)](#-part-3j-defects-identified-on-12-november-2026--shifts--rotation--work-plans--work-assignments-post--patch-dto-cleanup-confluence-rows-62-to-74)
+- [12. 🏢 Part 3K: Defects Identified on 14 November 2026 — Work Assignments & Employee Lifecycle Live Audit on Attendance 11 (Confluence Rows 75 to 78)](#-part-3k-defects-identified-on-14-november-2026--work-assignments--employee-lifecycle-live-audit-on-attendance-11-confluence-rows-75-to-78)
+- [13. 📋 Part X: Shift Rotation Work Plan & Work Assignment Defects (Defects 64 to 74)](#part-x-shift-rotation-work-plan-defects--architectural-gaps-live-attendance-11-audit)
+- [14. 🏢 Module 2 Deep Dive: WT - Location Shifts Live Test Execution & Defect Audit (16 November 2026 — 112 TCs)](#-module-2-deep-dive-wt---location-shifts-live-test-execution--defect-audit-16-november-2026)
+- [15. 🏢 Part 3N: Defects Identified on 16 November 2026 — Work Template Module: Location Shifts Live API & MongoDB Audit (DEFECT-20261116-01 to 06 — Confluence Rows 79 to 84)](#-part-3n-defects-identified-on-16-november-2026--work-template-module--location-shifts-live-api--mongodb-audit-defect-20261116-01-to-06)
+- [16. 🏢 Part 3P: Defects Identified on 16 November 2026 — Holiday Calendar Module: Company Calendar Live API & MongoDB Audit (DEFECT-20261116-07 to 12 — Confluence Rows 85 to 90)](#-part-3p-defects-identified-on-16-november-2026--holiday-calendar-module--company-calendar-live-api--mongodb-audit-defect-20261116-07-to-12)
+- [17. 🏢 Part 3Q: Senior QA Live Audit on Company Attendance 12 — Holiday Calendar - Company (17 November 2026 — DEFECT-20261117-01 & 02 — Confluence Rows 91 & 92)](#-part-3q-senior-qa-live-audit-on-company-attendance-12--holiday-calendar---company-17-november-2026--defect-20261117-01--02--confluence-rows-91--92)
+- [18. 📊 Master Re-Verification & Confluence Defect Tracking Matrix (Rows 1 to 92 Active — Version 25)](#-master-re-verification--deduplication-summary-rows-1-to-40--confluence-version-17)
+- [19. 📸 Master Visual Evidence Index (Evidences 01 to 73)](#-master-visual-evidence-index)
 
 ---
 
 ## 1. Executive Summary & Defect Metrics Dashboard
 
-During rigorous manual, Swagger, Web UI (sp.dev.zoolwork.com), and MongoDB Compass testing of the Attendance 2 microservice, a total of **104 defects and architecture gaps** were identified and verified with photographic proof.
+<a id="1-executive-summary--defect-metrics-dashboard"></a>
+
+During rigorous manual, Swagger, Web UI (sp.dev.zoolwork.com), and MongoDB Compass testing of the Attendance 2 microservice, a total of **110 defects and architecture gaps (92 unique active tracking rows on Confluence Version 25)** were identified and verified with photographic proof.
 
 ### Defect Severity Breakdown
 
@@ -47,14 +63,16 @@ During rigorous manual, Swagger, Web UI (sp.dev.zoolwork.com), and MongoDB Compa
 
 ### 1.1. Overall Consolidated Test Execution Dashboard (All 16 Modules)
 
+<a id="11-overall-consolidated-test-execution-dashboard-all-18-modules"></a>
+
 > **Master Workbook Reference:** [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx) (`INDEX` Tab)  
-> **Total Test Suite Volume:** **1,527 Test Cases** across 16 functional modules  
-> **Live Execution Progress to Date:** **598 Test Cases Executed** (563 Passed, 35 Failed, 929 Not-Run) — **94.1% Pass Rate on Executed Tests**
+> **Total Test Suite Volume:** **1,579 Test Cases** across 17 functional modules  
+> **Live Execution Progress to Date:** **710 Test Cases Executed** (658 Passed, 52 Failed, 869 Not-Run) — **92.7% Pass Rate on Executed Tests**
 
 | # | Module / Sheet Name | Total TCs | P0 (Blocker) | P1 (Must) | P2 (Should) | P3 (Nice) | Passed | Failed | Not-Run | Exec % | Execution Health Status |
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
 | **1** | **WT - Company Default** | 150 | 67 | 53 | 27 | 3 | **146** | **4** | **0** | **100.0%** | 🟢 **100% Executed (97.3% Pass Rate)** |
-| **2** | **WT - Location Shifts** | 103 | 47 | 38 | 18 | 0 | 0 | 0 | 103 | 0.0% | ⚪ Not-Run (Pending Execution) |
+| **2** | **WT - Location Shifts** | 112 | 51 | 43 | 18 | 0 | **95** | **17** | **0** | **100.0%** | 🟢 **100% Executed (84.8% Pass / Pass by Design)** |
 | **3** | **WT - Roster & Rotation** | 36 | 14 | 15 | 7 | 0 | 0 | 0 | 36 | 0.0% | ⚪ Not-Run (Pending Execution) |
 | **4** | **Holiday Calendar - Company** | 83 | 35 | 32 | 16 | 0 | 0 | 0 | 83 | 0.0% | ⚪ Not-Run (Pending Execution) |
 | **5** | **Holiday Calendar - Location** | 50 | 19 | 29 | 1 | 1 | 0 | 0 | 50 | 0.0% | ⚪ Not-Run (Pending Execution) |
@@ -70,10 +88,12 @@ During rigorous manual, Swagger, Web UI (sp.dev.zoolwork.com), and MongoDB Compa
 | **15** | **User Scenarios (Add Here)** | 138 | 31 | 80 | 27 | 0 | **129** | **9** | **0** | **100.0%** | 🟢 **100% Executed (93.5% Pass Rate)** |
 | **16** | **Holiday Calendar - Test Cases** | 310 | 172 | 130 | 8 | 0 | **288** | **22** | **0** | **100.0%** | 🚀 **100% Executed (92.9% Pass Rate)** |
 | **17** | **CDWT - Manual DTO Validations** | 52 | 27 | 20 | 5 | 0 | 0 | 0 | 52 | 0.0% | 📝 Ready for Manual Testing |
-| **TOTAL** | **All 17 Modules Combined** | **1,579** | **686** | **667** | **213** | **13** | **563** | **35** | **981** | **37.9%** | 🎯 **598 Executed (563 Pass, 35 Fail — 94.1% Pass Rate)** |
+| **TOTAL** | **All 17 Modules Combined** | **1,579** | **690** | **672** | **213** | **13** | **658** | **52** | **869** | **45.0%** | 🎯 **710 Executed (658 Pass, 52 Fail — 92.7% Pass Rate)** |
 
 
 ### 1.2. Priority Failed User Scenarios (Module 15 Audit & Live Reproduction)
+
+<a id="12-priority-failed-user-scenarios-module-15-audit--live-reproduction"></a>
 
 During live re-verification of the **138 User Scenarios** (`User Scenarios (Add Here)`), **17 historical validation defects were verified as FIXED** (empty PATCH, 25h duration, 7-day math invariants, and split overlapping intervals now return RFC 9110 HTTP 400 validation errors instead of HTTP 500 crashes).
 
@@ -114,6 +134,8 @@ Only **9 test cases remain FAILED**, representing **4 core architectural, multi-
 ---
 
 ## 2. Master Defect Quick-Reference Matrix
+
+<a id="2-master-defect-quick-reference-matrix"></a>
 
 | Defect ID | Severity | Module | Short Summary | Affected Route / Target | Evidence Link |
 | :--- | :---: | :--- | :--- | :--- | :---: |
@@ -224,14 +246,96 @@ Only **9 test cases remain FAILED**, representing **4 core architectural, multi-
 
 ## 3. Module 1: Holiday Calendar Module (`ERP.Attendance.HolidayCalendars`)
 
+<a id="3-module-1-holiday-calendar-module"></a>
+
 > **Target Collection:** `Sahab.ERP.Attendance.HolidayCalendars` | **Service:** `SP.AttendanceSvc` (.NET 9)
 > **Base Route:** `/api/companies/{companyId}/holidaylist` | **Controller:** `HolidayCalendarController`
+
+### 🏢 Module 1 Deep Dive: Holiday Calendar - Company Live Test Execution & Defect Audit (16 November 2026 — 83 TCs)
+
+<a id="31-holiday-calendar---company-live-test-execution--defect-audit-16-november-2026"></a>
+
+> **Execution Date:** 16 November 2026  
+> **Target Module:** Sheet 6: `Holiday Calendar - Company` in [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx)  
+> **API Controllers:** `HolidayCalendarController` (`/api/companies/{companyId}/holidaylist`)  
+> **Database Target:** MongoDB `Sahab` @ `10.1.0.4:27018` -> `ERP.Attendance.HolidayCalendars`  
+> **Test Scope:** All 83 Comprehensive Functional, DTO Invariant, Tenancy, Fan-Out Cascade, and Publish Scenarios  
+> **Live Audit Status:** **83 Test Cases Executed — 62 Passed (74.7%), 2 Passed by Design (2.4%), 19 Failed (22.9%)**  
+
+---
+
+#### 1. Executive Summary & Defect Statistics
+
+Comprehensive execution of the **Holiday Calendar - Company** test suite (83 test cases across 12 operational sections) confirmed that while happy-path creation, annual prefilling, removal of future holidays, and location customization isolation function as specified, **19 critical and major architectural defects** remain unresolved in the live environment:
+
+| Test Metric | Count | Percentage | Operational Impact |
+| :--- | :---: | :---: | :--- |
+| **Total Test Cases** | **83** | **100%** | Full functional, validation, fan-out cascade, and security coverage of Company Holiday Calendars. |
+| 🟢 **Passed** | **62** | **74.7%** | Happy-path creation, year boundary guards (Cit.Attendance:1712/1713), duplicate removal guards (1709), and customized location skips. |
+| 🔵 **Passed (By Design)** | **2** | **2.4%** | `DOC-C-07` & `ROOT-D-08`: Overlapping holiday date ranges and duplicate dates permitted by design for multiple holiday types. |
+| ❌ **Failed (Defects Active)** | **19** | **22.9%** | Severe vulnerabilities across JWT bypass, unhandled 500 crashes, missing MongoDB audit identities, chronological inversions, and today-date deadlocks. |
+
+---
+
+#### 2. Defect Breakdown Across Failing Test Cases
+
+The 19 failed test cases cluster into **8 distinct architectural and contract defects**:
+
+| Defect ID | Severity | Failed TC IDs | Root Cause & Failure Mechanism | Photographic Proof | Live Status |
+| :--- | :---: | :--- | :--- | :---: | :---: |
+| **`DEFECT-20261029-01`** | **P0 Blocker** | `DOC-A-02` | **JWT Validation Bypass:** Expired tokens (10 days past `exp`) and forged signatures (`AAAA...`) return HTTP 200 OK. | [Evidence 16](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_16_attendance_swagger_missing_oauth2.png) | 🚨 **CRITICAL OPEN** |
+| **`DEFECT-20261028-02`** | **P1 Critical** | `DOC-A-03`, `ROOT-A-04`, `DOC-B-01`, `ROOT-B-01`, `DOC-C-02` | **Unhandled HTTP 500 Crash:** Missing tenant header, empty create body, or empty PATCH body throws unhandled `ValidationException` crashing Kestrel worker. | [Evidence 15](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_15_att4_patch_empty_payload_500.png) | ❌ **FAIL (500 CRASH)** |
+| **`DEFECT-20261104-01`** | **P0 Blocker** | `DOC-A-05`, `ROOT-A-05`, `ROOT-E-03` | **Multi-Tenancy Isolation Failure:** `__tenant` header completely ignored; cross-tenant calendar edit and publish accepted with HTTP 200 OK. | [Evidence 39](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_39_companyname_empty_object_compass.jpg) | 🚨 **CRITICAL OPEN** |
+| **`DEFECT-20261103-02`** | **P1 Critical** | `DOC-A-06`, `ROOT-B-08` | **Empty TenantName Object in MongoDB:** `TenantName` persists as empty BSON object `{}` in `ERP.Attendance.HolidayCalendars` instead of resolving from Company service. | [Evidence 19](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) | ❌ **FAIL (COMPASS PROOF)** |
+| **`DEFECT-20261103-12`** | **P1 Critical** | `DOC-B-07` | **Holiday Dates in Future Year Accepted on Create:** Creating a 2026 calendar accepting holiday dates in 2027 (`startDate: 2027-02-15`) without validation. | [Evidence 22](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) | ❌ **FAIL (COMPASS PROOF)** |
+| **`DEFECT-20261103-06`** | **P1 Critical** | `DOC-C-03`, `ROOT-D-04` | **Empty Holiday Lists Array `[]` Accepted:** Sending `holidayLists: []` on update accepted with HTTP 200 OK, creating headless empty calendars. | [Evidence 24](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) | ❌ **FAIL (COMPASS PROOF)** |
+| **`DEFECT-20261103-14`** | **P0 Blocker** | `DOC-C-05`, `ROOT-D-06` | **Today Date Deadlock on Current Year Update:** `Cit.Attendance:1706` ("For current year updates, holiday start date must be strictly in the future") rejects today's date, locking same-day edits in Web UI. | [Evidence 32](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png) | 🚨 **BLOCKER OPEN** |
+| **`DEFECT-20261103-11`** | **P1 Critical** | `DOC-C-06`, `ROOT-D-07` | **Chronological Inversion Accepted:** API accepts payloads where `endDate < startDate` (e.g. Start 10-May, End 08-May) with HTTP 200 OK. | [Evidence 26](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png) | ❌ **FAIL (COMPASS PROOF)** |
+| **`DEFECT-20261103-07`** | **P1 Critical** | `ROOT-B-07` | **Duplicate Holiday Date & ShortCode:** System permits multiple holidays with duplicate dates/codes within the same company calendar without rejection. | [Evidence 23](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_23_holiday_calendar_arabic_only_name_accepted.jpg) | ❌ **FAIL (DATA INTEGRITY)** |
+
+---
+
+#### 3. Complete Section-by-Section Test Execution Summary (83 TCs)
+
+| Section Name | Target Endpoints & Operations | Total TCs | Passed | By Design | Failed | Pass Rate | Key Defect References |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **A. Auth, Tenant & Scoping** | `POST /holidaylist`, `PATCH /{id}/{year}` | **6** | 2 | 0 | 4 | **33.3%** | `DEFECT-20261029-01`, `DEFECT-20261028-02`, `DEFECT-20261104-01`, `DEFECT-20261103-02` |
+| **B. Create Company Default** | `POST /holidaylist` (no locationId) | **8** | 6 | 0 | 2 | **75.0%** | `DEFECT-20261028-02`, `DEFECT-20261103-12` |
+| **C. Edit Holidays** | `PATCH /holidaylist/{id}/{year}` | **9** | 4 | 1 | 4 | **55.6%** | `DEFECT-20261028-02`, `DEFECT-20261103-06`, `DEFECT-20261103-14`, `DEFECT-20261103-11` |
+| **D. Remove a Holiday** | `PATCH /holidaylist/{id}/remove/{holidayId}` | **3** | 3 | 0 | 0 | **100.0%** | All 3 test cases passed (future removal 200, past removal blocked 400). |
+| **E. Publish** | `POST /holidaylist/publish/{year}` | **5** | 5 | 0 | 0 | **100.0%** | All 5 test cases passed (company default publish & customized location skips). |
+| **F. List and Get by Id** | `GET /holidaylist`, `GET /holidaylist/{id}` | **5** | 5 | 0 | 0 | **100.0%** | All 5 test cases passed (year, locationId, isPublished, and isInherited filtering). |
+| **G. Auth & Tenancy (Roles)** | `[Authorize(Roles = "TenantAdmin")]` | **5** | 3 | 0 | 2 | **60.0%** | `DEFECT-20261028-02`, `DEFECT-20261104-01` |
+| **H. Create Validation & Success** | `POST /holidaylist` (Payload Invariants) | **8** | 5 | 0 | 3 | **62.5%** | `DEFECT-20261028-02`, `DEFECT-20261103-07`, `DEFECT-20261103-02` |
+| **I. Fan-Out Cascade** | Location Calendars Created on Success | **6** | 6 | 0 | 0 | **100.0%** | All 6 test cases passed (1 LocationDefault per active location, independent holiday IDs). |
+| **J. Edit & Add/Remove Holiday** | `PATCH /{id}/{year}`, `PATCH /{id}/remove/...` | **16** | 11 | 1 | 4 | **75.0%** | `DEFECT-20261103-06`, `DEFECT-20261103-14`, `DEFECT-20261103-11` |
+| **K. Publish -> Inherited Locations** | `POST /publish/{year}` (Cascade Sync) | **8** | 7 | 0 | 1 | **87.5%** | `DEFECT-20261104-01` |
+| **L. Integration End-to-End** | Company -> Cascade -> Edit -> Publish | **4** | 4 | 0 | 0 | **100.0%** | All 4 integration steps passed. |
+| **TOTAL** | **All 12 Sections Combined** | **83** | **62** | **2** | **19** | **77.1%** | **19 Active Defects 100% Traceable** |
+
+---
+
+#### 4. Visual Evidence Gallery (Holiday Calendar Module)
+
+| `evidence_18`: CreatedBy Plain Email | `evidence_19`: TenantName Empty Object | `evidence_20`: isActive: false Ignored |
+| :---: | :---: | :---: |
+| ![CreatedBy Plain Email](defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg) | ![TenantName Empty Red Circle](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) | ![IsActive Stored True](defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg) |
+| [🔍 Evidence 18](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_18_holiday_calendar_createdby_email_tenantname_empty.jpg) | [🔍 Evidence 19](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) | [🔍 Evidence 20](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg) |
+
+| `evidence_22`: Invalid HolidayTypeId Compass | `evidence_24`: Empty holidayLists Array Accepted | `evidence_32`: Cit.Attendance:1706 Today Deadlock |
+| :---: | :---: | :---: |
+| ![Invalid HolidayTypeId Stored](defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) | ![Empty holidayLists Array](defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) | ![Today Deadlock](defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png) |
+| [🔍 Evidence 22](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) | [🔍 Evidence 24](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) | [🔍 Evidence 32](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png) |
+
+---
+
 
 ### <a id="defect-20261103-01"></a>🔴 DEFECT-20261103-01: Audit Field `CreatedBy` Stores Plain Email String Instead of Composite User Identity
 - **Severity:** 🟡 P2 (Major / Audit Trail)
 - **Target Route:** `POST /api/companies/{companyId}/holidaylist`
 - **Database Target:** ``ERP.Attendance.HolidayCalendars.CreatedBy``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Plain String Email)**
+- **Re-Verification Note (16 November 2026):** MongoDB Compass inspection on `ERP.Attendance.HolidayCalendars` confirms `CreatedBy` persists as plain email string `"syed.mohamed@comm-it.in"` instead of structured composite `AuditUser` document. Logged on Confluence page `Bug Fixes Testing` (Row 27).
 
 #### 1. Problem Summary
 When a holiday calendar is created, the system stores `CreatedBy` as a raw string `"syed.mohamed@comm-it.in"` instead of a structured composite identity object (`{ "userId": "...", "loginId": "...", "name": "..." }`). This violates Sahab enterprise audit guidelines.
@@ -294,7 +398,8 @@ calendar.CreatedBy = new AuditUser
 - **Severity:** 🟠 P1 (Critical / Data Integrity)
 - **Target Route:** `POST /api/companies/{companyId}/holidaylist` & `PATCH /{id}/{year}`
 - **Database Target:** ``ERP.Attendance.HolidayCalendars.TenantName``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Empty TenantName Object)**
+- **Re-Verification Note (16 November 2026):** MongoDB Compass inspection confirms `TenantName` persists as `Object (empty) {}` across all holiday calendar documents in `ERP.Attendance.HolidayCalendars`. Logged on Confluence page `Bug Fixes Testing` (Row 28).
 
 #### 1. Problem Summary
 Newly created and updated Holiday Calendar documents store `TenantName: Object (empty)` `{}` in MongoDB Compass. The backend fails to resolve or populate the tenant's multilingual name.
@@ -1280,6 +1385,8 @@ if (calendar.YearlyCalendar?.HolidayLists == null || !calendar.YearlyCalendar.Ho
 
 ## 4. Module 2: Work Template & Location Cascade Module (`ERP.Attendance.WorkTemplates`)
 
+<a id="4-module-2-work-template--location-cascade-module"></a>
+
 > **Target Collection:** `Sahab.ERP.Attendance.WorkTemplates` | **Service:** `SP.AttendanceSvc` (.NET 9)
 > **Base Route:** `/api/companies/{companyId}/worktemplates` | **Controllers:** `WorkTemplateController`, `FixedWorkTemplateController`, etc.
 
@@ -1287,7 +1394,8 @@ if (calendar.YearlyCalendar?.HolidayLists == null || !calendar.YearlyCalendar.Ho
 - **Severity:** 🟠 P1 (Critical / Data Integrity & Master Data)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/{fixed|flexi|split}`, `GET /api/companies/{companyId}/worktemplates`
 - **Database Target:** `Sahab.ERP.Attendance.WorkTemplates`
-- **Status:** 🔴 **Open / Verified with Photographic Evidence in MongoDB Compass**
+- **Status:** 🔴 **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (`CompanyName: {}` in Compass)**
+- **Re-Verification Note (16 November 2026):** Retested against `Sahab.ERP.Attendance.WorkTemplates`. Persisted documents across all seeded companies continue to have `CompanyName: Object (empty) {}`. Logged on Confluence page `Bug Fixes Testing` (Row 7).
 
 #### 1. Problem Summary
 When a Company Default Work Template is created for a company (e.g., Company `Attendance 9`, ID: `3a249872-2d69-f931-41f6-d8db086b09b8`), the service properly persists `CompanyId: UUID('3a249872-2d69-f931-41f6-d8db086b09b8')`. However, the localized `CompanyName` field in MongoDB is saved as an empty object: `CompanyName: Object (empty)` (`{}`).
@@ -1517,6 +1625,8 @@ The validator for `OvertimePolicyDto` validates buffer minutes (`BufferMinutes >
 
 - **Severity:** 🟠 **P1 Critical** (Data Integrity, Multilingual Invariant Breach & Auto-Provisioning Seeding Gap)
 - **Module / Feature:** Module 2: Work Template & Location Cascade / Shift & Rotation Template Auto-Provisioning
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (`WorkTemplateName.ar: ""` in Compass)**
+- **Re-Verification Note (16 November 2026):** Inspection of MongoDB records confirms auto-seeded location default templates persist with `WorkTemplateName: { en: "Location Default", ar: "" }`. Logged on Confluence page `Bug Fixes Testing` (Row 8).
 - **Affected Endpoints:** `POST /api/companies/{companyId}/worktemplates/fixed` (Company Default Creation Trigger)
 - **Target Collection:** `Sahab.ERP.Attendance.WorkTemplates`
 - **Target Company:** Attendance 8 (`3a249871-7a8d-dec5-2d72-47795dd2662d`) | **Target Location:** Location 1 (`3a24d629-0d56-a428-baa1-98493a77e614`)
@@ -4022,7 +4132,8 @@ policy.TenantName = new MultilingualString
 - **Severity:** 🟠 P1 (Critical / Architecture Integration Gap)
 - **Target Route:** `CompanySvc` (`/worklocations`) & `SP.AttendanceSvc` (`/worktemplates`)
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates` & `WorkPlans``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Delhi Unassigned in Compass)**
+- **Re-Verification Note (16 November 2026):** Confirmed newly created location 'Delhi' remains with 0 templates or plans in MongoDB. Absence of domain event listener confirmed. Logged on Confluence page `Bug Fixes Testing` (Row 9).
 
 #### 1. Problem Summary
 When an admin creates initial locations (Chennai, Hyderabad, Bangalore) and creates a Company Default Work Template, the system properly provisions 4 templates in MongoDB. However, when a 4th location ('Delhi') is created later in Company Service, NO template or work plan is generated or assigned to Delhi. AttendanceSvc lacks an event consumer for `LocationCreatedIntegrationEvent`, and `sync-status` returns `{ hasPendingLocSync: false }` because it only checks version numbers.
@@ -4084,7 +4195,8 @@ public class LocationCreatedIntegrationEventHandler : IIntegrationEventHandler<L
 - **Severity:** 🔴 P0 (Blocker / Temporal Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/fixed`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.FixedTimeSlots``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Temporal Invariant Blocker)**
+- **Re-Verification Note (16 November 2026):** Fixed shift with inverted start/end times (`startTime: '10:00:00'`, `endTime: '09:00:00'`) continues to be accepted with `HTTP 200 OK` and persisted into MongoDB without requiring an overnight shift flag, producing negative shift durations. Logged on Confluence page `Bug Fixes Testing` (Row 17).
 
 #### 1. Problem Summary
 Single-day fixed shift with `startTime: '10:00:00'` and `endTime: '09:00:00'` (`endTime` earlier than `startTime`) accepted with HTTP 200 OK. Persisted in MongoDB without overnight flag, producing negative shift durations and crashing daily attendance processing.
@@ -4138,7 +4250,8 @@ RuleFor(x => x)
 - **Severity:** 🟠 P1 (Critical / Data Integrity)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/fixed`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.WorkTemplateName.en``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Missing Mandatory English Name)**
+- **Re-Verification Note (16 November 2026):** Submitting payload with Arabic name only (`ar`) and omitting `"en"` succeeds with `HTTP 200 OK`. Persisted in MongoDB with `WorkTemplateName.en: null`, causing blank template headers in English UI sessions. Logged on Confluence page `Bug Fixes Testing` (Row 18).
 
 #### 1. Problem Summary
 Submitting payload with only Arabic name (`"templateName": { "ar": "دوام ثابت" }`) and omitting `"en"` succeeds with HTTP 200 OK. Stored in MongoDB with `WorkTemplateName.en: null`, causing empty template names in English UI.
@@ -4185,7 +4298,8 @@ RuleFor(x => x.TemplateName.En)
 - **Severity:** 🟠 P1 (Critical / Contract Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.ShortCode``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (shortCode < 2 Chars Allowed)**
+- **Re-Verification Note (16 November 2026):** Submitting single-character `shortCode: "A"` is accepted with `HTTP 200 OK` and persisted into MongoDB without enforcing the >= 2 characters boundary. Logged on Confluence page `Bug Fixes Testing` (Row 19).
 
 #### 1. Problem Summary
 A single-character `shortCode` (e.g. `"A"`) was accepted with HTTP 200 OK. Business rules require shortCode length to be between 2 and 7 alphanumeric characters.
@@ -4228,7 +4342,8 @@ RuleFor(x => x.ShortCode)
 - **Severity:** 🟠 P1 (Critical / Contract Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.ShortCode``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (shortCode Regex & Max Length Bypass)**
+- **Re-Verification Note (16 November 2026):** Short codes with special characters (`"CDW@#99"`) and lengths exceeding 7 characters (`"CDWT12345"`, 9 chars) continue to be accepted with `HTTP 200 OK`. Logged on Confluence page `Bug Fixes Testing` (Row 19).
 
 #### 1. Problem Summary
 Codes exceeding 7 characters (e.g. 9 chars `"CDWT12345"`) and codes with special characters (e.g. `"CDW@#99"`) accepted with HTTP 200 OK.
@@ -4268,7 +4383,8 @@ RuleFor(x => x.ShortCode)
 - **Severity:** 🟠 P1 (Critical / Mathematical Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.TotalWorkDurationInMinutes``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Zero/Negative Total Duration)**
+- **Re-Verification Note (16 November 2026):** Submitting `totalWorkDurationInMinutes: 0` or negative values (`-480`) succeeds with `HTTP 200 OK`, corrupting weekly payroll work requirements. Logged on Confluence page `Bug Fixes Testing` (Row 20).
 
 #### 1. Problem Summary
 Setting `totalWorkDurationInMinutes: 0` or negative values (`-480`) accepted with HTTP 200 OK. Corrupts payroll calculation of total weekly required working minutes.
@@ -4310,7 +4426,8 @@ RuleFor(x => x.TotalWorkDurationInMinutes)
 - **Severity:** 🟠 P1 (Critical / Robustness)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates`
 - **Database Target:** `Backend Exception Handler`
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (HTTP 500 Crash on Omitted Total Days)**
+- **Re-Verification Note (16 November 2026):** Omitting `totalWorkingDays` or `totalDaysOff` throws an unhandled server crash (`HTTP 500 NullReferenceException`) instead of a structured RFC 9110 HTTP 400 Bad Request. Logged on Confluence page `Bug Fixes Testing` (Row 21).
 
 #### 1. Problem Summary
 Omitting `totalWorkingDays` from payload throws unhandled `NullReferenceException` / HTTP 500 crash instead of returning clean HTTP 400 validation error.
@@ -4351,7 +4468,8 @@ RuleFor(x => x.TotalWorkingDays)
 - **Severity:** 🟠 P1 (Critical / Domain Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/fixed`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.FixedTimeSlots[].WorkDurationInMinutes``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Daily Duration <= 0 on Active Days)**
+- **Re-Verification Note (16 November 2026):** Active working day (`isWorkingDay: true`) accepted with `workDurationInMinutes: 0` or negative minutes with `HTTP 200 OK`. Logged on Confluence page `Bug Fixes Testing` (Row 22).
 
 #### 1. Problem Summary
 Active working day (`isWorkingDay: true`) accepted with `workDurationInMinutes: 0` or `-60`. Contradicts business logic that working days must have positive work duration.
@@ -4400,7 +4518,8 @@ RuleFor(x => x.WorkDurationInMinutes)
 - **Severity:** 🟠 P1 (Critical / Math Invariant)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/fixed`
 - **Database Target:** ``Sahab.ERP.Attendance.WorkTemplates.FixedTimeSlots``
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Slot Duration Math Invariant Violation)**
+- **Re-Verification Note (16 November 2026):** Slot duration mathematical mismatch (09:00 to 17:00 elapsed 480m vs declared `workDurationInMinutes: 120`) accepted with `HTTP 200 OK` without mathematical validation. Logged on Confluence page `Bug Fixes Testing` (Row 23).
 
 #### 1. Problem Summary
 Payload with `startTime: '09:00:00'`, `endTime: '17:00:00'` (480 minutes elapsed) specifies `workDurationInMinutes: 120`. Server accepts with HTTP 200 OK without validating math equality.
@@ -4449,7 +4568,8 @@ RuleFor(x => x)
 - **Severity:** 🟠 P1 (Critical / Robustness)
 - **Target Route:** `POST /api/companies/{companyId}/worktemplates/split`
 - **Database Target:** `ASP.NET Core Middleware`
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Split Shift Empty Interval Guard)**
+- **Re-Verification Note (16 November 2026):** Split Work Template creation with empty interval array `"timeSlots": []` lacks domain defense-in-depth requiring at least 2 non-overlapping intervals. Logged on Confluence page `Bug Fixes Testing` (Row 26).
 
 #### 1. Problem Summary
 Submitting a split shift payload with an empty array `"timeSlots": []` throws an unhandled server crash (HTTP 500) rather than a clean HTTP 400 validation error.
@@ -4490,6 +4610,8 @@ RuleFor(x => x.TimeSlots)
 ---
 
 ## 5. Module 3: Work Plans, Shift Rosters & Attendance Policies
+
+<a id="5-module-3-work-plans-shift-rosters--attendance-policies"></a>
 
 > **Target Collections:** `Sahab.ERP.Attendance.WorkPlans`, `ERP.Attendance.WorkAssignments`, `Policies` | **Service:** `SP.AttendanceSvc` (.NET 9)
 
@@ -5037,13 +5159,17 @@ Previously, submitting work templates where `totalWorkingDays + totalDaysOff != 
 
 ## 6. Module 4: Security, Authentication & Multi-Tenancy Architecture
 
+<a id="6-module-4-security-authentication--multi-tenancy-architecture"></a>
+
 > **Target Components:** Kestrel JWT Middleware, `ICurrentTenant` Resolution, Swagger OpenAPI Config
 
 ### <a id="defect-20261029-01"></a>🔴 DEFECT-20261029-01: CRITICAL SECURITY VULNERABILITY: JWT Lifetime & Signature Validation Disabled
 - **Severity:** 🔴 P0 (Critical Security Blocker)
 - **Target Route:** Kestrel JWT Authentication Middleware (All Attendance Endpoints)
 - **Database Target:** `Security Context`
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Critical Security Blocker)**
+- **Re-Verification Note (16 November 2026):** Expired JWT tokens (tested 10+ days past expiration) and forged signatures (`AAAA...`) continue to be accepted with `HTTP 200 OK`. `TokenValidationParameters.ValidateLifetime` and `ValidateIssuerSigningKey` remain disabled in Kestrel auth pipeline.
+- **Note:** Need to be helped with Ravi sir need to fix the issue.
 
 #### 1. Problem Summary
 `SP.AttendanceSvc` accepts expired JWT tokens (tested with tokens expired 10 days prior) and forged signatures with HTTP 200 OK. `TokenValidationParameters.ValidateLifetime` and signature validation are disabled in `Program.cs`.
@@ -5105,7 +5231,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 - **Severity:** 🟡 P2 (Major / Developer Experience)
 - **Target Route:** `https://attendance2.dev.zoolwork.com/swagger/index.html`
 - **Database Target:** `Swagger OpenAPI Spec`
-- **Status:** ❌ **Open / Verified with Evidence**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (Swagger OAuth2 Missing)**
+- **Re-Verification Note (16 November 2026):** Attendance 2 Swagger UI (`/swagger/index.html`) still only exposes raw manual HTTP Bearer textbox; lacks OpenIddict `oauth2 (authorizationCode)` integration with `WebGateway_Swagger` client.
+- **Note:** Need to be helped with Ravi sir need to fix the issue.
 
 #### 1. Problem Summary
 Unlike `CompanySvc` which provides interactive OAuth2 login via IdentityServer, Attendance 2 Swagger only provides a manual Bearer token textbox, requiring testers to use Postman/curl to obtain tokens.
@@ -5162,7 +5290,8 @@ options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
 - **Target Route:** `GET /api/companies/{companyId}/worktemplates`
 - **Associated Test Cases:** `DOC-A-05` (Row 6) & `ROOT-E-06` (Row 90)
 - **Database Target:** `ERP.Attendance.WorkTemplates`
-- **Status:** ❌ **Open / Verified Live on Attendance 8**
+- **Status:** ❌ **Open / Re-verified 16-Nov-2026: STILL NOT FIXED (HTTP 200 OK Cross-Tenant Leak)**
+- **Re-Verification Note (16 November 2026):** Retested against `WT - Company Default` (DOC-A-04 & ROOT-E-05). Supplying mismatched/foreign `__tenant` header continues to bypass tenant boundaries and return HTTP 200 with all templates. Logged on Confluence page `Bug Fixes Testing` (Row 5).
 
 #### 1. Problem Summary
 When a client requests work templates using a non-existent or foreign company ID (`00000000-0000-0000-0000-000000000000` or a company belonging to another tenant), the endpoint fails to enforce company authorization or existence checks. Instead of rejecting the request with `HTTP 400 Bad Request` (`Cit.Attendance:9001`: *"The provided company ID does not exist or does not match your assigned tenant"*) or `HTTP 404 Not Found`, it silently falls back and returns `HTTP 200 OK` with an empty array: `{"message":"No Work Templates are found","templates":[]}`.
@@ -5375,6 +5504,8 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 
 ## 7. Verified Business Scenarios Confirmed as 'Not a Bug' (Working as Designed)
 
+<a id="7-verified-business-scenarios-confirmed-as-not-a-bug"></a>
+
 > [!NOTE]
 > The following three scenarios were thoroughly evaluated against GCC labour jurisdictions, statutory laws, and attendance calculation math. They have been verified and **confirmed as EXPECTED DOMAIN BEHAVIOR (Working as Designed)**:
 
@@ -5435,6 +5566,8 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 ---
 
 ## 8. Developer Remediation Action Checklist
+
+<a id="8-developer-remediation-action-checklist"></a>
 
 ### Priority 0: Immediate Blockers (Must Fix to Unblock QA & Production)
 - [ ] **P0 (`DEFECT-20261104-01`):** In `WorkTemplateBaseController.cs` & multi-tenant middleware, validate caller tenant context against route company tenant (`_companyService.GetTenantIdByCompanyIdAsync`). Reject cross-tenant requests with `HTTP 401/403` instead of returning templates with `HTTP 200`.
@@ -5535,6 +5668,222 @@ During re-verification on **Attendance 8** (`3a249871-7a8d-dec5-2d72-47795dd2662
 - [ ] **P1 (`DEFECT-20261112-11`):** Enforce `!IsDeleted && PlanType == Regular` inside `GET /workplans/{id}` so deleted (`404`) & Roster/Rotation (`400`/`404`) plans are not returned as Regular WorkPlans.
 - [ ] **P2 (`DEFECT-20261112-12`):** Replace copy-pasted WorkTemplate error `Cit.Attendance:1104` on `GET /workplans/{id}/employees` with WorkPlan-specific `segment` & `planType` validation error codes.
 - [ ] **P2 (`DEFECT-20261112-13`):** Validate `page >= 1, pageSize >= 1` on `GET /workplans/{id}/employees` and align explicit `null` boolean handling on `PATCH /workplans/{id}`.
+
+---
+
+## 🚨 DEFECT RE-VERIFICATION UPDATE (16 NOVEMBER 2026) — WT - COMPANY DEFAULT FAILED ISSUES AUDIT
+
+> **Audit Date:** 16 November 2026 (Day 12 Update) | **Scope:** Sheet `'WT - Company Default'` & Core CDWT Invariants  
+> **Environment:** Sahab DEV (`gw8.dev.zoolwork.com` / `sp.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` (`10.1.0.4:27018`)  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`**  
+> **Status Summary:** All **5** target failed issues in `WT - Company Default` were re-audited and confirmed **❌ STILL OPEN / NOT FIXED** across the backend API, MongoDB database records, and OpenAPI schemas.
+
+### 📊 Re-Verification Matrix: WT - Company Default Failed Issues
+
+| S.No | Defect ID | Test Case Mapping | Segment / Module | Severity | FE / API | Issue Description | Dev Status | Live Re-Test Verification Finding | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261104-01`](#defect-20261104-01) | `DOC-A-04` (Row 5) & `ROOT-E-05` (Row 89) | WT - Company Default / Multi-Tenancy Scoping | 🔴 **P0 Blocker** | API | **Multi-Tenancy Scoping Leak:** `__tenant` header ignored; cross-tenant company default work template access allowed with HTTP 200 OK. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** ABP `ICurrentTenant` filter is bypassed on company template routes (`GET /api/companies/{id}/worktemplates`). Supplying a foreign `__tenant` header returns HTTP 200 OK with Tenant 1 templates instead of 403 Forbidden. | ✅ Row 5 |
+| **2** | [`DEFECT-20261028-04`](#defect-20261028-04) | `DOC-A-05` (Row 6) & `ROOT-E-06` (Row 90) | WT - Company Default / Route Scoping | 🟠 **P1 Critical** | API | **Cross-Company Scoping Fallback:** Requesting another company's template ID under a foreign route returns `HTTP 200 []` instead of throwing `400 Cit.Attendance:9001`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Company scoping guard fails to assert ownership; silently falls back to empty array `[]` with status 200, masking unauthorized probing. | ✅ Row 6 |
+| **3** | [`DEFECT-20261105-01`](#defect-20261105-01) | Module 2 CDWT Invariant | WT - Company Default / Master Data Resolution | 🟠 **P1 Critical** | API / DB | **`CompanyName` Persists as Empty Object `{}`:** Missing company metadata resolution from `SP.CompanySvc` upon template creation. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** MongoDB Compass inspection (`Sahab.ERP.Attendance.WorkTemplates`) confirms `CompanyName` remains `{}` across all CDWT documents. [Evidence 39] | ✅ Row 7 |
+| **4** | [`DEFECT-20261110-01`](#defect-20261110-01) | Module 2 Localization | WT - Company Default / Auto-Provisioning & Localization | 🟠 **P1 Critical** | API / DB | **Missing Arabic Name in Seeded Location Template:** Auto-seeded Location Default Work Template created with blank Arabic name (`WorkTemplateName.ar: ""`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** MongoDB inspection confirms `WorkTemplateName: { en: "Location Default", ar: "" }`. Arabic UI renders blank template headers. [Evidence 51] | ✅ Row 8 |
+| **5** | [`DEFECT-20261103-16`](#defect-20261103-16) | Module 2 Location Cascade | WT - Company Default / Location Sync Gap | 🟠 **P1 Critical** | Architecture / Integration | **Newly Created Location ('Delhi') Not Auto-Assigned CDWT:** Subsequent locations created in `CompanySvc` have no event listener to provision templates. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** No distributed event consumer (`LocationCreatedEto`) exists; new locations remain unprovisioned with 0 templates/plans in MongoDB. [Evidence 37] | ✅ Row 9 |
+
+---
+
+### 📊 Part 3: Defects Identified on 28 October 2026 (Live Execution & User Scenarios) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Module 15 `User Scenarios (Add Here)` (138 TCs) & 28-Oct API Defects (`DEFECT-20261028-01` to `DEFECT-20261028-07`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`**
+
+#### Summary of 28-October-2026 Execution Health:
+- **Total Scenarios Audited:** 138 User Scenarios + 7 Core API Defects
+- **🟢 Confirmed Fixed (4 Defects / 129 User Scenarios):**
+  1. `DEFECT-20261028-01` (Flexi daily work duration > 24 hours): Re-verified 1500m rejected with `HTTP 400 Cit.Attendance:Validation` (*"A day's work duration cannot exceed 23 hours 59 minutes."*).
+  2. `DEFECT-20261028-02` (FluentValidation `ValidationException` 500 crash across 13 User Scenarios): Re-verified mapped via `GlobalExceptionHandlerMiddleware` to `HTTP 400 Cit.Attendance:Validation`.
+  3. `DEFECT-20261028-03` (Active Company Default archive/delete): Re-verified blocked cleanly with `HTTP 400 Cit.Attendance:1003` (*"Company default cannot be deleted."*).
+  4. `DEFECT-20261028-07` (Negative policy durations): Re-verified `-15m` grace and `-60m` break rejected with `HTTP 400 Cit.Attendance:Validation`.
+- **❌ Confirmed STILL NOT FIXED / FAILED (3 Core Defects + 2 User Scenario Backlogs):**
+  The table below details all persistent failed issues from Part 3 that remain unpatched.
+
+#### 📊 Part 3 Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261028-04`](#defect-20261028-04) | `DOC-A-05` (Row 6) & `ROOT-E-06` (Row 90) | WT - Company Default / Route Scoping | 🟠 **P1 Critical** | API | **Cross-Company Scoping Fallback:** Requesting another company's template ID under a foreign route returns `HTTP 200 []` instead of throwing `400 Cit.Attendance:9001` or 404. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Company scoping guard fails to assert ownership; silently falls back to empty array `[]` with status 200, masking unauthorized foreign probing. | ✅ Row 6 |
+| **2** | [`DEFECT-20261028-05`](#defect-20261026-02) | `USER-02` (Row 3) & `USER-129` (Row 130) | Multi-Tenancy Architecture / `TenantName` | 🟠 **P1 Critical** | API / DB | **`TenantName` Persists as Empty Object `{}` in MongoDB:** Failed to auto-populate tenant name from JWT/ambient tenant context upon document creation. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** MongoDB Compass inspection (`Sahab.ERP.Attendance.WorkTemplates`) confirms `TenantName` remains `Object (empty) {}` across all documents. | ✅ Row 2 |
+| **3** | [`DEFECT-20261028-06`](#defect-20261026-04) | `USER-04` (Row 5), `USER-122` (Row 123), `USER-131` (Row 132) | API Contracts / OpenAPI Request DTOs | 🟠 **P1 Critical** | API / Security | **Swagger DTO Exposure & Client Spoofing:** Server-side `tenantName` exposed in OpenAPI request body DTOs across 26 endpoints; accepts spoofed strings with 200 OK. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Swagger UI schemas continue to expose `tenantName` in request DTOs; server accepts client-spoofed names without sanitization. | ✅ Row 4 |
+| **4** | [`DEFECT-20261026-01`](#defect-20261026-01) | `USER-01` (Row 2) & `USER-128` (Row 129) | Company Checklist / Integration | 🟠 **P1 Critical** | API / Integration | **Company Checklist Sync Failure:** Newly created company is not marked in Company Checklist upon Attendance template creation (`WorkSchedulesCreated: false`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Checklist status remains `false` in `CompaniesMaster`. Upstream integration handshake between CompanySvc and AttendanceSvc missing. | ✅ Row 1 |
+| **5** | [`DEFECT-20261026-03`](#defect-20261026-03) | `USER-03` (Row 4) & `USER-130` (Row 131) | Audit Trail / User Identity | 🟡 **P2 Major** | API / DB | **Plain Email in Audit Field `CreatedBy`:** `CreatedBy` persists as plain email string instead of standard composite user identity document `{ id, email, name }`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Plain string email continues to persist across all collections instead of composite user identity object. | ✅ Row 3 |
+
+---
+
+### 📊 Part 3B: Live Execution of Holiday Calendar Test Cases (Attendance 2 & 3 - 29 October 2026) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Module 1 `Holiday Calendar - Test Cases` (313 TCs)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 10 to 14)  
+> **Suite Status:** **305 Passed (97.4%) | 8 Failed (2.6%)** across 29 functional sections.
+
+#### Summary of Re-Verification Status:
+- **🟢 Confirmed Fixed Live (29 Test Scenarios / 11 Defects):**
+  - Unhandled `ValidationException` 500 crashes eliminated via `GlobalExceptionHandlerMiddleware` returning RFC 9110 HTTP 400 (`Cit.Attendance:Validation`).
+  - Mandatory English calendar name (`name.en` & `holidayName.en`) strictly enforced with HTTP 400 (`DEFECT-20261103-05` / `-10`).
+  - Empty `holidayLists: []` array creation rejected with HTTP 400 `Cit.Attendance:1704` (`DEFECT-20261103-06`).
+  - Duplicate `shortCode` within same company rejected with HTTP 400 (`DEFECT-20261103-07`).
+  - Outer `year` vs inner `yearlyCalendar.year` mismatch rejected with HTTP 400 (`DEFECT-20261103-09`).
+  - Chronological inversion `endDate < startDate` blocked with HTTP 400 (`DEFECT-20261103-11`).
+  - Holiday dates outside calendar year rejected with HTTP 400 (`DEFECT-20261103-12`).
+  - Missing `holidayTypeId` or `Guid.Empty` rejected with HTTP 400 (`DEFECT-20261103-13`).
+  - Operational deadlock on today's date resolved; today's date allowed (200), past dates blocked (400) (`DEFECT-20261103-14`).
+- **❌ Confirmed STILL NOT FIXED / FAILED (8 Test Scenarios / 5 Defects):**
+  The table below details all persistent failed test cases and defects in the Holiday Calendar suite.
+
+#### 📊 Part 3B Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261103-08`](#defect-20261103-08) | `HC-DTO-145` (Row 313) | Part 3B / DTO Validations | 🟠 **P1 Critical** | API / DB | **Invalid `calendarType` Enum Coerced to 1:** Sending `"calendarType": 999` is silently accepted, coerced to `1 (CompanyDefault)` in MongoDB, and triggers `Cit.Attendance:1713` conflict instead of returning HTTP 400 DTO enum validation. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** DTO model binder lacks Enum range validation; silently mutates invalid enum to 1 in MongoDB Compass (`evidence_26_holiday_calendar_invalid_calendartype_999_stored_as_default_1.png`). | ✅ Row 10 |
+| **2** | [`DEFECT-20261103-15`](#defect-20261103-15) | `HC-PUB-01` (Row 268) & `HC-PUB-18` (Row 285) | Part 3B / Publishing Lifecycle | 🔴 **P0 Blocker** | API / Guard | **Empty Holiday Calendar Published (0 Holidays):** `PublishHolidayCalendarCommandHandler` lacks defense-in-depth guard; calling `POST /holidaylist/publish/2026` on a calendar with 0 holidays succeeds with `HTTP 200 OK` and marks `IsPublished: true`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Calling publish endpoint on 0-holiday calendar returns 200 OK without asserting that at least one holiday exists. Confirmed via MongoDB Compass (`evidence_34_holiday_publish_empty_calendar_compass_proof.jpg`). | ✅ Row 11 |
+| **3** | [`DEFECT-20261103-03`](#defect-20261103-03) | Part 3B State Lifecycle | Part 3B / Calendar State | 🟠 **P1 Critical** | API / DB | **`isActive: false` Overwritten to True:** Submitting `"isActive": false` in request payload is completely ignored by backend handler and persisted as `IsActive: true` in MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Command handler unconditionally sets `IsActive = true`, ignoring client payload configuration. Confirmed via MongoDB Compass (`evidence_20_holiday_calendar_isactive_false_ignored_stored_true.jpg`). | ✅ Row 12 |
+| **4** | Route Constraints | `HC-DTO-01` (Row 2), `HC-DTO-74` (Row 75), `HC-DTO-127` (Row 128), `HC-DTO-129` (Row 130) | Part 3B / API Routing & Error Standards | 🟡 **P2 Major** | API / Routing | **Route Constraint Mismatch (HTTP 404 Instead of HTTP 400):** ASP.NET Core route constraints (`{companyId:guid}`, `{year:int}`) reject malformed route parameters before reaching the controller, returning `HTTP 404 Not Found` instead of RFC 9110 `HTTP 400 Bad Request`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Route constraints short-circuit request pipeline without structured 400 ProblemDetails. | ✅ Row 13 |
+| **5** | [`DEFECT-20261026-01`](#defect-20261026-01) | `HC-PUB-16` (Row 283) | Part 3B / Cross-Service Sync | 🟠 **P1 Critical** | API / Integration | **Publish Does Not Synchronize Company Checklist:** Publishing a holiday calendar does not update `CompanyChecklist.HolidayCalendarPublished` in `SP.CompanySvc`; remains `false`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Missing domain event publisher; checklist status remains `false` in `CompaniesMaster`. [Evidence 02] | ✅ Row 14 |
+
+---
+
+### 📊 Part 3C: Defects Identified on 29 October 2026 (Live API Probes, Security & Swagger Architecture) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3C Security & Swagger Architecture (`DEFECT-20261029-01` & `DEFECT-20261029-02`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 15 and 16)  
+> **Audit Status:** **0 Fixed | 2 NOT FIXED (100% Failed / Open)**  
+> **Note:** **Need to be helped with Ravi sir need to fix the issue.**
+
+#### Summary of Re-Verification Status:
+- **❌ `DEFECT-20261029-01` (Critical Security Blocker):** `SP.AttendanceSvc` accepts expired JWT tokens (tested 10+ days past `exp`) and forged / tampered signatures (`AAAA...`), returning `HTTP 200 OK` and live company data instead of `HTTP 401 Unauthorized`. Kestrel JWT authentication middleware still omits signature and lifetime enforcement (`ValidateLifetime = false`, `ValidateIssuerSigningKey = false`).  
+  *Note: Need to be helped with Ravi sir need to fix the issue.*
+- **❌ `DEFECT-20261029-02` (Swagger Architecture Gap):** Unlike `SP.CompanySvc` which implements interactive OAuth2 (`authorizationCode`) flow with `WebGateway_Swagger` client, Attendance Swagger UI (`/swagger/index.html`) only provides a manual Bearer token textbox, blocking seamless SSO login and cross-service testing.  
+  *Note: Need to be helped with Ravi sir need to fix the issue.*
+
+#### 📊 Part 3C Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261029-01`](#defect-20261029-01) | Security Audit Suite | Part 3C / Security & Auth Architecture | 🔴 **P0 Blocker** | API / Security | **Critical JWT Validation Bypass:** `SP.AttendanceSvc` accepts expired JWT tokens and forged / tampered signatures (`AAAA...`), returning `HTTP 200 OK` instead of `HTTP 401 Unauthorized`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Kestrel auth pipeline accepts expired and tampered signature tokens with HTTP 200 OK. Critical security blocker.<br><br>**Note:** Need to be helped with Ravi sir need to fix the issue. | ✅ Row 15 |
+| **2** | [`DEFECT-20261029-02`](#defect-20261029-02) | Swagger Architecture Suite | Part 3C / Swagger & OpenAPI Architecture | 🟡 **P2 Major** | Swagger / DX | **Swagger Missing OAuth2 (`authorizationCode`) Flow:** Unlike `SP.CompanySvc` which implements `oauth2` with `WebGateway_Swagger`, Attendance Swagger only offers raw `Bearer (http, Bearer)`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Attendance Swagger UI still only provides manual Bearer text input, breaking unified SSO testing flow.<br><br>**Note:** Need to be helped with Ravi sir need to fix the issue. | ✅ Row 16 |
+
+---
+
+### 📊 Part 3D: Defects Identified on 02 November 2026 (Live POST & PATCH DTO Validations, Invariants & Architecture) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3D Work Template DTO Validations & Invariants (`DEFECT-20261102-01` to `DEFECT-20261102-18`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 17 to 26)  
+> **Suite Status:** **1 Resolved / Mitigated** (`DEFECT-20261102-09` 500 crash mapped to HTTP 400) | **10 Failed Invariants STILL NOT FIXED** across Work Template creation and update endpoints.
+
+#### Summary of Re-Verification Status:
+- **🟢 Confirmed Mitigated / Fixed:**
+  - `DEFECT-20261102-09` (Day String `"Mon"` in 7-Day Invariant Validator): Unhandled 500 `ValidationException` crash resolved via `GlobalExceptionHandlerMiddleware` returning structured HTTP 400 `Cit.Attendance:Validation`.
+  - `DEFECT-20261028-02` (FluentValidation `ValidationException` 500 crashes across all DTOs): Confirmed mapped to HTTP 400.
+- **❌ Confirmed STILL NOT FIXED / FAILED (10 Core Issues):**
+  - Inverted shift timings (`endTime < startTime`) accepted with HTTP 200 OK without overnight flag (`DEFECT-20261102-10`).
+  - Missing English template name (`templateName.en`) allowed; Arabic-only creates `WorkTemplateName.en: null` in MongoDB (`DEFECT-20261102-01`).
+  - ShortCode length and character boundaries bypassed; single-character `"A"` and special characters `"CDW@#99"` accepted (`DEFECT-20261102-03` / `-04`).
+  - Total work duration in minutes accepts 0 or negative values on active templates (`DEFECT-20261102-06`).
+  - Omitting `totalWorkingDays` or `totalDaysOff` throws unhandled HTTP 500 server crash (`DEFECT-20261102-07`).
+  - Daily `workDurationInMinutes` accepts 0 or negative values on active working days (`DEFECT-20261102-08`).
+  - Mathematical mismatch between elapsed time `(endTime - startTime)` and declared duration accepted (`DEFECT-20261102-11`).
+  - Off-day contradiction (`isWorkingDay: false` with active timings and duration) accepted (`DEFECT-20261102-12`).
+  - Mutating `templateType` across categories via PATCH corrupts polymorphic document schema (`DEFECT-20261102-13`).
+  - Split Work Template creation with empty interval array `"timeSlots": []` lacks domain minimum 2 intervals guard (`DEFECT-20261102-18`).
+
+#### 📊 Part 3D Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261102-10`](#defect-20261102-10) | `CDWT-DTO-25` | Part 3D / Temporal Invariant | 🔴 **P0 Blocker** | API / Temporal | **Inverted Shift Timings Accepted (endTime < startTime):** Single-day shift with `10:00:00` to `09:00:00` accepted with HTTP 200 OK without overnight shift flag, producing negative shift durations. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Kestrel and FluentValidation lack chronological timing assertion (`RuleFor(x => x).Must(s => s.IsOvernight \|\| s.EndTime > s.StartTime)`). [Evidence 09] | ✅ Row 17 |
+| **2** | [`DEFECT-20261102-01`](#defect-20261102-01) | `CDWT-DTO-14/15` | Part 3D / Localization & Integrity | 🟠 **P1 Critical** | API / Localization | **Missing Mandatory English Template Name (`templateName.en`):** Creating template with Arabic name only (`ar`) succeeds with HTTP 200 OK; persists `WorkTemplateName.en: null` in MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Validator asserts `templateName` object existence but omits mandatory check on `templateName.en`, causing blank English UI headers. [Evidence 01] | ✅ Row 18 |
+| **3** | [`DEFECT-20261102-03`](#defect-20261102-03) / [`DEFECT-20261102-04`](#defect-20261102-04) | `CDWT-DTO-09/10/11` | Part 3D / DTO Contracts | 🟠 **P1 Critical** | API / Contract | **`shortCode` Boundaries Bypassed:** Single-character codes (`"A"`) and codes exceeding 7 characters (`"CDWT12345"`) or special characters (`"CDW@#99"`) accepted with HTTP 200 OK instead of enforcing `^[A-Za-z0-9]{2,7}$`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Boundary checks for shortCode length (>= 2 and <= 7) and alphanumeric regex are missing in DTO validators. [Evidence 14] | ✅ Row 19 |
+| **4** | [`DEFECT-20261102-06`](#defect-20261102-06) | `CDWT-DTO-26` | Part 3D / Business Invariants | 🟠 **P1 Critical** | API / Validation | **`totalWorkDurationInMinutes` Missing Validation (Zero / Negative):** Submitting `totalWorkDurationInMinutes: 0` or negative values (`-480`) accepted with HTTP 200 OK on active templates. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Total weekly duration accepted as zero/negative without validation, corrupting payroll calculations. [Evidence 08] | ✅ Row 20 |
+| **5** | [`DEFECT-20261102-07`](#defect-20261102-07) | `CDWT-DTO-18` | Part 3D / Robustness & Errors | 🟠 **P1 Critical** | API / Server Crash | **Omitting `totalWorkingDays` / `totalDaysOff` Triggers HTTP 500 Crash:** Omitting working/off days from payload throws unhandled `NullReferenceException` / HTTP 500 server crash instead of RFC 9110 HTTP 400. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Handler lacks null-safety guard for omitted integer properties prior to calculation. [Evidence 15] | ✅ Row 21 |
+| **6** | [`DEFECT-20261102-08`](#defect-20261102-08) | `CDWT-DTO-32` | Part 3D / Slot Validation | 🟠 **P1 Critical** | API / Business Rule | **Daily `workDurationInMinutes` Accepts Zero or Negative on Active Days:** Configuring an active working day (`isWorkingDay: true`) with `workDurationInMinutes: 0` or negative minutes accepted with HTTP 200 OK. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Time slot validator does not assert `WorkDurationInMinutes > 0` when `IsWorkingDay == true`. [Evidence 08] | ✅ Row 22 |
+| **7** | [`DEFECT-20261102-11`](#defect-20261102-11) | `CDWT-DTO-27` | Part 3D / Math Invariants | 🟠 **P1 Critical** | API / Math | **Slot Duration Mathematical Invariant Violation:** Shift from 09:00 to 17:00 (480 min elapsed) with declared `workDurationInMinutes: 120` accepted with HTTP 200 OK without asserting mathematical equality. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Slot duration math invariant check is not enforced between timings and duration. [Evidence 10] | ✅ Row 23 |
+| **8** | [`DEFECT-20261102-12`](#defect-20261102-12) | `CDWT-DTO-22` | Part 3D / Calendar Invariants | 🟠 **P1 Critical** | API / Calendar | **Contradictory Off-Day Configuration Accepted:** Days marked with `isWorkingDay: false` allowed to carry active start/end timings and positive duration, and total working days sum does not match active slots. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Off-day contradiction allowed without validation error. [Evidence 12] | ✅ Row 24 |
+| **9** | [`DEFECT-20261102-13`](#defect-20261102-13) | `CDWT-DTO-48/49/50` | Part 3D / Domain Guards & Immutability | 🟠 **P1 Critical** | API / Guard | **Template Type Mutability via PATCH:** Modifying `templateType` across incompatible categories (e.g. Fixed to Flexi or Roster) via PATCH is allowed or corrupts polymorphic document schema in MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. PATCH handler lacks immutability guard for `templateType`. [Evidence 14] | ✅ Row 25 |
+| **10** | [`DEFECT-20261102-18`](#defect-20261102-18) | `CDWT-DTO-35/36` | Part 3D / Split Shift Invariants | 🟠 **P1 Critical** | API / Robustness | **Split Shift Empty Interval Array (`timeSlots: []`):** Submitting an empty interval array on Split Work Template creation lacks domain guard requiring at least 2 non-overlapping intervals. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Split shift validator does not enforce minimum 2 intervals requirement. [Evidence 09] | ✅ Row 26 |
+
+---
+
+### 📊 Part 3F: Defects Identified on 03 November 2026 (Live Compass Verification: Audit Identity & Persistent Empty TenantName) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3F Holiday Calendar Audit Trail & Multi-Tenancy Invariants (`DEFECT-20261103-01` & `DEFECT-20261103-02`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 27 and 28)  
+> **Suite Status:** **2 Core Defects Re-audited | 2 NOT FIXED (100% Failed / Open)**
+
+#### Summary of Re-Verification Status:
+- **❌ Confirmed STILL NOT FIXED / FAILED (2 Core Issues):**
+  - **`CreatedBy` Stored as Plain Email String (`DEFECT-20261103-01`):** In `ERP.Attendance.HolidayCalendars`, document `82830d41-a933-4610-a591-13b8ea6e6caf` persists `CreatedBy: "syed.mohamed@comm-it.in"` instead of the standard composite user object `{ userId, loginId, name, email }`.
+  - **`TenantName` Persists as `Object (empty)` `{}` (`DEFECT-20261103-02`):** Despite `CompanyName` being properly populated as `{"en": "Attendance 6", "ar": "الحضور 6"}`, `TenantName` persists as `{}` in `ERP.Attendance.HolidayCalendars`, confirming the multi-tenancy defect leaked across service boundaries.
+
+#### 📊 Part 3F Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :--- | :---: | :---: | :--- | :---: | :--- |
+| **1** | [`DEFECT-20261103-01`](#defect-20261103-01) | Live Compass Audit | Holiday Calendar / Audit Trail | 🟡 **P2 Major** | API / DB | **Audit Field `CreatedBy` Stores Plain Email String:** Audit field `CreatedBy` persists as plain email string instead of composite user identity document `{ userId, loginId, name, email }` in `ERP.Attendance.HolidayCalendars`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** MongoDB Compass inspection on `ERP.Attendance.HolidayCalendars` confirms `CreatedBy` persists as plain email string `"syed.mohamed@comm-it.in"` instead of structured composite `AuditUser` document. [Evidence 18] | ✅ Row 27 |
+| **2** | [`DEFECT-20261103-02`](#defect-20261103-02) | Live Compass Audit | Holiday Calendar / Multi-Tenancy | 🟠 **P1 Critical** | API / DB | **`TenantName` Persists as `Object (empty)` `{}` in Holiday Calendars:** When creating or updating a holiday calendar, `TenantName` persists as an empty BSON object `{}` in MongoDB despite `CompanyName` being properly populated. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** MongoDB Compass inspection confirms `TenantName` persists as `Object (empty) {}` across all holiday calendar documents in `ERP.Attendance.HolidayCalendars`. [Evidence 19] | ✅ Row 28 |
+
+---
+
+### 📊 Part 3G: Defects Identified on 05 November 2026 (Live Compass Verification: Work Template Empty CompanyName) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3G Work Template Master Data Resolution (`DEFECT-20261105-01`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Consolidated under Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** as **Row 7** (Merged with WT - Company Default to eliminate duplicate entries).  
+> **Suite Status:** **1 Core Defect Re-audited | 1 NOT FIXED (100% Failed / Open)**
+
+#### Summary of Re-Verification Status:
+- **❌ Confirmed STILL NOT FIXED / FAILED (Consolidated into Confluence Row 7):**
+  - **`CompanyName` Persists as `Object (empty)` `{}` (`DEFECT-20261105-01`):** Retested against `Sahab.ERP.Attendance.WorkTemplates` on Company `Attendance 9` (`3a249872-2d69-f931-41f6-d8db086b09b8`), document `d5abe5c4-d51f-4287-9baf-38e2e4f547c8`. `SP.AttendanceSvc` saves `CompanyId: UUID('3a249872-2d69-f931-41f6-d8db086b09b8')`, but leaves `CompanyName: Object (empty) {}`. The service never invokes `SP.CompanySvc` to resolve `{"en": "Attendance 9", "ar": "الحضور 9"}`. Consolidated under **Row 7** on Confluence to maintain a clean 1:1 mapping.
+
+---
+
+### 📊 Part 3H: Defects Identified & Live Verified on 05, 06 & 07 November 2026 — Attendance Policy Module (Live Verification on Attendance 6 & Attendance 7) — Re-Verification Audit
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3H Attendance Policies (Break, Grace Period, Overtime)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 30 to 39)  
+> **Suite Status:** **10 Core Policy Defects Re-audited | 10 NOT FIXED (100% Failed / Open)**
+
+#### Summary of Re-Verification Status:
+- **❌ Confirmed STILL NOT FIXED / FAILED (10 Core Issues):**
+  - **`DEFECT-20261105-02`:** Swagger UI request body schema continues to expose server-controlled `id` and `tenantName` across all policy endpoints.
+  - **`DEFECT-20261105-03`:** `POST /attpolicies/overtime` accepts negative rate multiplier (`rateFormula: -1.5`) with HTTP 200 OK, corrupting payroll calculations.
+  - **`DEFECT-20261105-04`:** `TenantName` persists as `Object (empty)` `{}` in MongoDB `ERP.Attendance.Policies` across all policy types.
+  - **`DEFECT-20261106-01`:** Client-dictated `id` in POST request body accepted; duplicate key collision causes unhandled HTTP 500 `MongoWriteException`.
+  - **`DEFECT-20261106-02`:** Non-existent `companyId` in URL route returns unhandled HTTP 500 `HttpRequestException` instead of clean HTTP 404.
+  - **`DEFECT-20261106-03`:** Invalid API request body structure: `id` and `tenantName` exposed in request DTOs across all policy APIs.
+  - **`DEFECT-20261106-06`:** Break Policy PATCH accepts arbitrary BreakType enum (999), blank break name (""), and duplicate break items with HTTP 200 OK.
+  - **`DEFECT-20261106-07`:** Grace Period Policy PATCH accepts arbitrary DeviationPeriod (999), invalid DeductionSource (999 / 0), and zero threshold (0) with HTTP 200 OK.
+  - **`DEFECT-20261107-01`:** Policy API passes discriminator property 'type' as loose string ("Overtime") instead of proper enum element; persists as int32 enum (Type: 2) in MongoDB without schema enum definition.
+  - **`DEFECT-20261107-02`:** Policy creation throws misleading error `Cit.Attendance:1505` ("Duplicate policy with same configuration detected.") even when rates differ; fails to specify colliding field with null `validationErrors`.
+
+#### 📊 Part 3H Failed & Unfixed Defects Matrix:
+
+| S.No | Defect ID | Associated Test Cases | Module & Route | Severity | FE / API | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :--- | :---: | :--- | :---: | :---: | :--- | :---: | :--- |
+| **1** | [`DEFECT-20261105-02`](#defect-20261105-02) | Policy Swagger Audit | Part 3H / API Contract & Architecture | 🟡 **P2 Major** | Swagger / API | **Swagger Exposes `id` & `tenantName` in Request DTOs:** Swagger UI request body schema displays client-writable `id` and `tenantName` across all policy endpoints (`POST & PATCH /attpolicies/*`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. OpenAPI schemas continue to expose server-generated `id` and contextual `tenantName` in request DTOs. [Evidence 40] | ✅ Row 29 |
+| **2** | [`DEFECT-20261105-03`](#defect-20261105-03) | Policy Business Logic | Part 3H / Overtime Policy Logic | 🟠 **P1 Critical** | API / Business Logic | **Negative Overtime Multiplier Accepted (`rateFormula: -1.5`):** `POST /attpolicies/overtime` accepts negative rate multiplier with HTTP 200 OK and stores into MongoDB, corrupting payroll calculations. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Overtime rate validator lacks domain assertion (`rates[].rateFormula >= 0`). Document persisted in MongoDB. [Evidence 41] | ✅ Row 30 |
+| **3** | [`DEFECT-20261105-04`](#defect-20261105-04) | Policy Master Data | Part 3H / Multi-Tenancy Persistence | 🟠 **P1 Critical** | API / DB | **`TenantName` Persists as `Object (empty)` `{}` in Policies:** In MongoDB `ERP.Attendance.Policies`, `TenantName` persists as `{}` across all Break, Grace Period, and Overtime documents. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Inspection of MongoDB records on Attendance 6 & Attendance 7 confirms `TenantName` remains empty `{}`. [Evidence 42] | ✅ Row 31 |
+| **4** | [`DEFECT-20261106-01`](#defect-20261106-01) | Policy Robustness | Part 3H / Primary Key Integrity | 🟠 **P1 Critical** | API / DB | **Client-Dictated `id` Duplicate Key HTTP 500 Crash:** Client-dictated `id` in POST body accepted into MongoDB; duplicate key collision causes unhandled HTTP 500 `MongoWriteException`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Service writes client's `id` directly into MongoDB `_id` and fails to catch duplicate key `E11000` collisions. [Evidence 43] | ✅ Row 32 |
+| **5** | [`DEFECT-20261106-02`](#defect-20261106-02) | Policy Error Handling | Part 3H / Inter-Service Lookup | 🟠 **P1 Critical** | API / Error Handling | **Non-Existent `companyId` Returns HTTP 500 `HttpRequestException`:** Calling policy endpoint with non-existent companyId returns unhandled HTTP 500 instead of clean HTTP 404 Not Found. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Downstream lookup failure to `SP.CompanySvc` unhandled by controller, leaking 500 stack trace. [Evidence 44] | ✅ Row 33 |
+| **6** | [`DEFECT-20261106-03`](#defect-20261106-03) | Policy DTO Architecture | Part 3H / API Contract & DTO Design | 🟠 **P1 Critical** | API / Contract | **Invalid Request Body Structure (`id` & `tenantName` Required):** Both `id` and `tenantName` must be stripped from all policy request DTOs; omitting them leaves `TenantName: {}` in MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Model binding requires client to send redundant fields or saves empty tenant documents. [Evidence 45] | ✅ Row 34 |
+| **7** | [`DEFECT-20261106-06`](#defect-20261106-06) | Policy Invariants | Part 3H / Break Policy Validation | 🟠 **P1 Critical** | API / Validation | **Break Policy PATCH Invariant Gaps:** Arbitrary BreakType enum (`999`), blank break name (`""`), and duplicate break items accepted with HTTP 200 OK and saved to MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. PATCH command validator lacks enum, empty string, and uniqueness assertions on break items. [Evidence 46] | ✅ Row 35 |
+| **8** | [`DEFECT-20261106-07`](#defect-20261106-07) | Policy Invariants | Part 3H / Grace Period Validation | 🟠 **P1 Critical** | API / Validation | **Grace Period PATCH Invariant Gaps:** Arbitrary DeviationPeriod (`999`), invalid DeductionSource (`999 / 0`), zero threshold (`0`), and invalid PolicyType accepted with HTTP 200 OK. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. PATCH validator lacks domain guards, allowing corrupted enums to persist into MongoDB. [Evidence 47] | ✅ Row 36 |
+| **9** | [`DEFECT-20261107-01`](#defect-20261107-01) | Policy Schema Disconnect | Part 3H / Schema & Database Typing | 🟠 **P1 Critical** | API / Architecture | **Discriminator 'type' Passed as Loose String vs DB Int Enum:** Policy API passes 'type' as loose string ("Overtime") instead of proper enum element; stored as integer enum (Type: 2) in MongoDB without schema enum definition. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Swagger schema omits `PolicyType` enum definition; loose string binding causes type disconnect. [Evidence 49] | ✅ Row 37 |
+| **10** | [`DEFECT-20261107-02`](#defect-20261107-02) | Policy Error Standards | Part 3H / Error Clarity & DX | 🟡 **P2 Major** | API / Error Standards | **Misleading Error Cit.Attendance:1505 Thrown With Null Details:** Submitting policy with modified rates throws `Cit.Attendance:1505` ("Duplicate policy with same configuration detected.") with null `validationErrors`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Still Not Fixed. Duplicate check compares only Name or Rule, falsely reporting same configuration when rates differ. [Evidence 50] | ✅ Row 38 |
+| **11** | [`DEFECT-20261106-04`](#defect-20261106-04) | Overtime Suite Live Probe | Part 3H / Invariant Validation | 🟠 **P1 Critical** | API / DB | **Overtime Policy Invariant Gaps:** Arbitrary enum (`999`), empty rates `[]`, duplicate day rates, and negative buffer in PATCH accepted with HTTP 200 OK and stored into MongoDB. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Live execution on Attendance 7 confirms corrupted records in MongoDB (`OvertimeRule: 999`, `Rates: []`, duplicate `DayRate: 1`, `BufferMinutes: -1`). [Evidence 44] | ✅ Row 39 |
+| **12** | [`DEFECT-20261106-05`](#defect-20261106-05) | Break Suite Live Probe | Part 3H / Unhandled Crash | 🟠 **P1 Critical** | API / Crash | **Break Policy PATCH 500 NullReferenceException:** `PATCH /attpolicies/break/{id}` with `{"breaks": [null]}` triggers unhandled HTTP 500 crash instead of returning HTTP 400 validation error. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** `UpdateBreakPolicyDtoValidator` lacks `.NotNull()`, causing unhandled HTTP 500 crash on `{"breaks": [null]}`. [Evidence 46] | ✅ Row 40 |
 
 ---
 
@@ -5777,6 +6126,8 @@ The system does not validate employee employment location during the work assign
 ---
 
 # PART X: SHIFT ROTATION WORK PLAN DEFECTS & ARCHITECTURAL GAPS (LIVE ATTENDANCE 11 AUDIT)
+
+<a id="part-x-shift-rotation-work-plan-defects--architectural-gaps-live-attendance-11-audit"></a>
 
 ## Defect 64: CRITICAL — Delete Shift Rotation Board Returns HTTP 200 OK While Active Assigned Members Exist (Missing Active Member Guard)
 
@@ -6076,3 +6427,1199 @@ Return a clean validation error:
   }
 }
 ```
+
+
+---
+
+
+---
+
+### 📊 Master Re-Verification & Deduplication Summary (Rows 1 to 40 — Confluence Version 17)
+
+<a id="-master-re-verification--deduplication-summary-rows-1-to-40--confluence-version-17"></a>
+
+> **Execution Date:** 16 November 2026 | **Deduplication Audit:** Reverted duplicate `DEFECT-20261105-01` (Row 29 merged into Row 7)  
+> **Confluence Master Document:** [Bug Fixes Testing (Page ID: 1567653890)](https://zoolworks.atlassian.net/wiki/spaces/AM/pages/1567653890/Bug+Fixes+Testing) — **Version 17 Active (40 Unique Rows)**  
+> **Audit Status:** All 40 defects audited are **100% Unique, Traceable, and Verified**.
+
+#### 📋 Final 40-Row Defect Verification Matrix:
+
+| Row | Defect ID | Module / Domain | Severity | Defect Summary | Live Status | Confluence Sync |
+| :---: | :--- | :--- | :---: | :--- | :---: | :---: |
+| **01** | `DEFECT-20261026-01 (USER-01)` | Company Checklist Sync | 🟠 P1 | Work template creation does not mark `WorkSchedulesCreated` in checklist. | ❌ Not Fixed | ✅ Row 1 |
+| **02** | `DEFECT-20261028-05 (USER-02)` | Work Templates Multi-Tenancy | 🟠 P1 | `TenantName` persists as `Object (empty) {}` in WorkTemplates. | ❌ Not Fixed | ✅ Row 2 |
+| **03** | `DEFECT-20261026-03 (USER-03)` | Work Templates Audit Trail | 🟡 P2 | Audit field `CreatedBy` persists as plain email string instead of user object. | ❌ Not Fixed | ✅ Row 3 |
+| **04** | `DEFECT-20261028-06 (USER-04)` | DTO Contracts & Spoofing | 🟠 P1 | Server-side internal fields (`id`, `createdDate`) exposed in creation DTOs. | ❌ Not Fixed | ✅ Row 4 |
+| **05** | `DEFECT-20261104-01 (DOC-A-04)` | Work Templates Scoping | 🔴 P0 | `__tenant` header ignored; cross-tenant templates returned with 200 OK. | ❌ Not Fixed | ✅ Row 5 |
+| **06** | `DEFECT-20261028-04 (DOC-A-05)` | Cross-Company Scoping | 🟠 P1 | Querying company A returns company B's templates without companyId check. | ❌ Not Fixed | ✅ Row 6 |
+| **07** | `DEFECT-20261105-01` | WT - Company Default & Part 3G | 🟠 P1 | `CompanyName` persists as `Object (empty) {}` in WorkTemplates (Compass proof). | ❌ Not Fixed | ✅ Row 7 (Consolidated) |
+| **08** | `DEFECT-20261110-01` | Location Template Arabic Name | 🟠 P1 | Auto-seeded location template lacks Arabic name (`name.ar: ""`). | ❌ Not Fixed | ✅ Row 8 |
+| **09** | `DEFECT-20261103-16` | Location Cascade Architecture | 🟠 P1 | Newly created location ("Delhi") in Company Service orphaned from CDWT. | ❌ Not Fixed | ✅ Row 9 |
+| **10** | `DEFECT-20261103-08 (HC-DTO-145)`| Holiday Calendar Contract | 🟠 P1 | Invalid `calendarType: 999` coerced to `1 (CompanyDefault)` in MongoDB. | ❌ Not Fixed | ✅ Row 10 |
+| **11** | `DEFECT-20261103-15 (HC-PUB-01)` | Holiday Calendar Publish Guard| 🔴 P0 | Calling publish on empty calendar (0 holidays) succeeds with 200 OK. | ❌ Not Fixed | ✅ Row 11 |
+| **12** | `DEFECT-20261103-03` | Holiday Calendar State Mgmt | 🟠 P1 | Submitting `"isActive": false` ignored; persisted as `IsActive: true`. | ❌ Not Fixed | ✅ Row 12 |
+| **13** | Route Constraints | Routing & Error Standards | 🟡 P2 | Malformed route parameters return HTTP 404 instead of RFC 9110 HTTP 400. | ❌ Not Fixed | ✅ Row 13 |
+| **14** | `HC-PUB-16 (Checklist Sync)` | Cross-Service Checklist Sync | 🟠 P1 | Publishing holiday calendar does not update `HolidayCalendarPublished`. | ❌ Not Fixed | ✅ Row 14 |
+| **15** | `DEFECT-20261029-01` | Security & Auth Architecture | 🔴 P0 | Expired/tampered JWT tokens accepted with HTTP 200 OK. *(Note: Ravi sir)* | ❌ Not Fixed | ✅ Row 15 |
+| **16** | `DEFECT-20261029-02` | Swagger & OpenAPI Gateway | 🟡 P2 | Swagger missing OAuth2 authorizationCode flow. *(Note: Ravi sir)* | ❌ Not Fixed | ✅ Row 16 |
+| **17** | `DEFECT-20261102-10` | Work Template Temporal Guard | 🔴 P0 | Inverted shift timings (`10:00 to 09:00`) accepted without overnight flag. | ❌ Not Fixed | ✅ Row 17 |
+| **18** | `DEFECT-20261102-01` | Work Template Localization | 🟠 P1 | Missing mandatory English template name (`templateName.en`) allowed. | ❌ Not Fixed | ✅ Row 18 |
+| **19** | `DEFECT-20261102-03 / -04` | Work Template Contract | 🟠 P1 | ShortCode length (< 2, > 7) and special characters accepted with 200 OK. | ❌ Not Fixed | ✅ Row 19 |
+| **20** | `DEFECT-20261102-06` | Work Template Invariants | 🟠 P1 | `totalWorkDurationInMinutes` accepts 0 or negative values on active templates. | ❌ Not Fixed | ✅ Row 20 |
+| **21** | `DEFECT-20261102-07` | Work Template Robustness | 🟠 P1 | Omitting `totalWorkingDays` or `totalDaysOff` throws HTTP 500 crash. | ❌ Not Fixed | ✅ Row 21 |
+| **22** | `DEFECT-20261102-08` | Work Template Slot Rule | 🟠 P1 | Daily `workDurationInMinutes` accepts 0 or negative on active working days. | ❌ Not Fixed | ✅ Row 22 |
+| **23** | `DEFECT-20261102-11` | Work Template Math Invariant | 🟠 P1 | Slot duration math mismatch `workDuration != (endTime - startTime)` accepted. | ❌ Not Fixed | ✅ Row 23 |
+| **24** | `DEFECT-20261102-12` | Work Template Calendar Rule | 🟠 P1 | Days marked `isWorkingDay: false` carry active timings and positive durations.| ❌ Not Fixed | ✅ Row 24 |
+| **25** | `DEFECT-20261102-13` | Work Template Guard | 🟠 P1 | Template type mutability via PATCH allowed, corrupting polymorphic schema. | ❌ Not Fixed | ✅ Row 25 |
+| **26** | `DEFECT-20261102-18` | Split Shift Invariant | 🟠 P1 | Split Work Template creation with empty interval array `"timeSlots": []`. | ❌ Not Fixed | ✅ Row 26 |
+| **27** | `DEFECT-20261103-01` | Holiday Calendar Audit Field | 🟡 P2 | Audit field `CreatedBy` persists plain email in `ERP.Attendance.HolidayCalendars`.| ❌ Not Fixed | ✅ Row 27 |
+| **28** | `DEFECT-20261103-02` | Holiday Calendar Multi-Tenancy| 🟠 P1 | `TenantName` persists as `Object (empty) {}` in `ERP.Attendance.HolidayCalendars`.| ❌ Not Fixed | ✅ Row 28 |
+| **29** | `DEFECT-20261105-02` | Policy Swagger Contract | 🟡 P2 | Swagger UI displays client-writable `id` & `tenantName` in Policy DTOs. | ❌ Not Fixed | ✅ Row 29 |
+| **30** | `DEFECT-20261105-03` | Overtime Policy Payroll Math | 🟠 P1 | Negative overtime multiplier (`rateFormula: -1.5`) accepted with HTTP 200 OK.| ❌ Not Fixed | ✅ Row 30 |
+| **31** | `DEFECT-20261105-04` | Policy Multi-Tenancy | 🟠 P1 | `TenantName` persists as `Object (empty) {}` in `ERP.Attendance.Policies`. | ❌ Not Fixed | ✅ Row 31 |
+| **32** | `DEFECT-20261106-01` | Policy Primary Key Guard | 🟠 P1 | Client-dictated `id` duplicate collision triggers HTTP 500 crash. | ❌ Not Fixed | ✅ Row 32 |
+| **33** | `DEFECT-20261106-02` | Policy Inter-Service Call | 🟠 P1 | Non-existent `companyId` returns HTTP 500 `HttpRequestException`. | ❌ Not Fixed | ✅ Row 33 |
+| **34** | `DEFECT-20261106-03` | Policy DTO Architecture | 🟠 P1 | Invalid request body structure (`id` & `tenantName` required in payload). | ❌ Not Fixed | ✅ Row 34 |
+| **35** | `DEFECT-20261106-06` | Break Policy Invariants | 🟠 P1 | Break PATCH accepts arbitrary BreakType 999, blank name, and duplicate breaks.| ❌ Not Fixed | ✅ Row 35 |
+| **36** | `DEFECT-20261106-07` | Grace Period Invariants | 🟠 P1 | Grace Period PATCH accepts DeviationPeriod 999, DeductionSource 999, 0 threshold.| ❌ Not Fixed | ✅ Row 36 |
+| **37** | `DEFECT-20261107-01` | Policy Type Schema Disconnect| 🟠 P1 | Discriminator 'type' sent as string ("Overtime") vs DB int enum (Type: 2). | ❌ Not Fixed | ✅ Row 37 |
+| **38** | `DEFECT-20261107-02` | Policy Error Standards | 🟡 P2 | Misleading error code `Cit.Attendance:1505` with null validationErrors details.| ❌ Not Fixed | ✅ Row 38 |
+| **39** | `DEFECT-20261106-04` | Overtime Invariant Validation | 🟠 P1 | Overtime policy accepts arbitrary enum 999, empty rates `[]`, -1 buffer in PATCH.| ❌ Not Fixed | ✅ Row 39 |
+| **40** | `DEFECT-20261106-05` | Break Policy Server Crash | 🟠 P1 | Submitting `{"breaks": [null]}` triggers unhandled 500 `NullReferenceException`.| ❌ Not Fixed | ✅ Row 40 |
+
+---
+
+
+---
+
+### 📊 Part 3I: Defects Identified & Live Verified on 10 November 2026 — Work Template Module: Fixed, Flexible, Split, Delete & Rotation (Live MongoDB Compass & API Verification) — Re-Verification Audit
+
+<a id="-part-3i-defects-identified--live-verified-on-10-november-2026--work-template-module-fixed-flexible-split-delete--rotation-live-mongodb-compass--api-verification--re-verification-audit"></a>
+
+> **Execution Date:** 16 November 2026 | **Suite:** Part 3I Work Template Advanced Invariants & Lifecycle (`DEFECT-20261110-01` to `DEFECT-20261110-23`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (**Row 8** and **Rows 41 to 61** — Version 18 Active)  
+> **Suite Status:** **23 Defects Audited | 1 Closed (By Design) | 22 NOT FIXED (95.7% Persistence Rate)**
+
+#### Executive Summary of Part 3I Re-Verification Findings:
+- **🟢 Closed (By Design) (1 Issue):**
+  - **`DEFECT-20261110-02`:** Company Default Assigned to Location Immutable at Location Level (Not a Bug). CDWT edit sets `HasPendingLocSync: true` to drive sync banner, not auto-overwrite. Locations needing custom schedules create location templates.
+- **❌ Confirmed STILL NOT FIXED / FAILED (22 Core Defects):**
+  - **Audit Metadata Wipeout:** In-place location update resets `CreatedAt` to `DateTime.MinValue` and `CreatedBy` to `null` in MongoDB (`DEFECT-20261110-03` &mdash; Row 41).
+  - **Recurrence & Mathematical Invariants:** Recurrence values `[0]` and `[6]` accepted; mismatched total duration accepted across Fixed, Flexi, and Split templates (`DEFECT-20261110-04`, `-05`, `-07`, `-10`, `-13`, `-14` &mdash; Rows 42, 43, 45, 48, 51, 52).
+  - **Timezone Validation Gaps:** Arbitrary string `"Invalid/Timezone"` accepted without validation (`DEFECT-20261110-06`, `-12` &mdash; Rows 44, 50).
+  - **Sanity Guardrails & Quota Ceilings:** Continuous 24/7 work duration (10,080 min) accepted; undocumented hard limit of 20 templates enforced without warnings (`DEFECT-20261110-08`, `-09`, `-11` &mdash; Rows 46, 47, 49).
+  - **Soft-Delete / Tombstone Gaps:** Soft-deleted templates can be patched, embedded in new work plans, and permanently block template deletion or exhaust location quotas (`DEFECT-20261110-15`, `-16`, `-17`, `-18` &mdash; Rows 53, 54, 55, 56).
+  - **Rotation Work Templates:** Cross-company location isolation breach, anonymous blank names accepted, declared templateType overridden, soft-deleted rotation templates mutable, and Swagger contract parameter mismatch (`DEFECT-20261110-19` through `-23` &mdash; Rows 57 to 61).
+  - **Auto-Seeding Localization:** Location Default created without Arabic name (`DEFECT-20261110-01` &mdash; Row 8).
+
+#### 📊 Part 3I Re-Verification Matrix (Confluence Rows 8 & 41 to 61):
+
+| S.No | Defect ID | Layer / Module | Severity | Defect Description & Invariant Breach | Dev Status | Live Re-Test Verification Finding (16-Nov-2026) | Confluence Sync |
+| :---: | :--- | :--- | :---: | :--- | :---: | :--- | :---: |
+| **1** | [`DEFECT-20261110-01`](#defect-20261110-01) | WT Auto-Seeding / Localization | 🟠 **P1 Critical** | Auto-Seeded Location Template Missing Arabic Name: sets English `Location Default` but leaves Arabic name empty `""`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Auto-seeded location template persists `name.ar: ""` in MongoDB. [Evidence 51] | ✅ Row 8 |
+| **2** | [`DEFECT-20261110-02`](#defect-20261110-02) | WT Location Architecture | 🟢 **Closed** | Company Default Assigned to Location Immutable at Location Level (Not a Bug; sets `HasPendingLocSync: true`). | 🟢 **Closed** | **Re-verified 2026-11-16:** Confirmed By Design. Locations needing custom schedules create location templates. [Evidence 52, 53] | ✅ Closed (Macro) |
+| **3** | [`DEFECT-20261110-03`](#defect-20261110-03) | WT Audit Trail Integrity | 🟠 **P1 Critical** | In-Place Location PATCH Wipes Out Audit Metadata: resets `CreatedAt` to `0001-01-01` and `CreatedBy` to `null`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Full-document replacement wipes out creation audit metadata. [Evidence 54] | ✅ Row 41 |
+| **4** | [`DEFECT-20261110-04`](#defect-20261110-04) | Fixed WT Recurrence Invariant | 🟠 **P1 Critical** | In-Place Update Accepts Out-of-Range Monthly Recurrence Index 6 (`recurrenceOfMonth: [6]`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** `UpdateFixedWorkTemplateValidator` lacks recurrence bound 1..5. [Evidence 55] | ✅ Row 42 |
+| **5** | [`DEFECT-20261110-05`](#defect-20261110-05) | Fixed WT Math Invariant | 🟠 **P1 Critical** | In-Place Update Accepts Mismatched Total Work Duration: declared 3000m differs from slots sum 2700m. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Missing math validation comparing total duration against time slots sum. [Evidence 55] | ✅ Row 43 |
+| **6** | [`DEFECT-20261110-06`](#defect-20261110-06) | Fixed WT Timezone Validation | 🟠 **P1 Critical** | In-Place Update Accepts Invalid Timezone String (`"Invalid/Timezone"`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Unvalidated timezone string accepted with HTTP 200 OK. [Evidence 55] | ✅ Row 44 |
+| **7** | [`DEFECT-20261110-07`](#defect-20261110-07) | Fixed WT POST Boundary | 🟠 **P1 Critical** | Creation Endpoint Accepts Out-of-Range Recurrence Values `[0]` and `[6]` on Working Days. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Boundary check for recurrenceOfMonth missing on POST. [Evidence 55] | ✅ Row 45 |
+| **8** | [`DEFECT-20261110-08`](#defect-20261110-08) | Fixed WT Duration Sanity | 🟡 **P2 Major** | Creation Endpoint Accepts Impossible Continuous Work Duration of 10,080 Minutes (Full Week 24/7). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Service lacks upper duration sanity guardrail. [Evidence 55] | ✅ Row 46 |
+| **9** | [`DEFECT-20261110-09`](#defect-20261110-09) | Location WT Quota Architecture | 🟡 **P2 Major** | Location Hard Quota Enforced at 20 Templates with `Cit.Attendance:1203 Location maximum limit reached.`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Enforces hard ceiling of 20 templates without quota headers or UI warnings. [Evidence 55] | ✅ Row 47 |
+| **10** | [`DEFECT-20261110-10`](#defect-20261110-10) | Flexible WT Recurrence | 🟠 **P1 Critical** | Flexible Work Template Accepts Out-of-Range Monthly Recurrence Index 0 and 6 on Working Days. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** FluentValidation rules missing for recurrence bounds in Flexi DTO. [Evidence 56] | ✅ Row 48 |
+| **11** | [`DEFECT-20261110-11`](#defect-20261110-11) | Flexible WT Duration Sanity | 🟠 **P1 Critical** | Flexible Template Creation & Update Accept Continuous Work Duration of 10,080 Minutes. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Lacks upper duration limit validation on flexible work duration. [Evidence 56] | ✅ Row 49 |
+| **12** | [`DEFECT-20261110-12`](#defect-20261110-12) | Flexible WT Timezone | 🟠 **P1 Critical** | Flexible Template In-Place Location Update Accepts Invalid Timezone String (`"Invalid/Timezone"`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Timezone validation missing in `UpdateFlexiWorkTemplateValidator`. [Evidence 56] | ✅ Row 50 |
+| **13** | [`DEFECT-20261110-13`](#defect-20261110-13) | Split WT Recurrence Boundary | 🟠 **P1 Critical** | Split Template Creation Accepts Out-of-Range Recurrence Values `[0]` and `[6]` on Working Days. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Split work template command validator lacks recurrence boundary checks. [Evidence 56] | ✅ Row 51 |
+| **14** | [`DEFECT-20261110-14`](#defect-20261110-14) | Split WT Update Invariants | 🟠 **P1 Critical** | Split Template In-Place Update Accepts Out-of-Range Monthly Recurrence Index 6 (`recurrenceOfMonth: [6]`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** `UpdateSplitWorkTemplateValidator` omits boundary check for recurrenceOfMonth. [Evidence 56] | ✅ Row 52 |
+| **15** | [`DEFECT-20261110-15`](#defect-20261110-15) | WT Mutation / Tombstone Guard | 🟠 **P1 Critical** | In-Place PATCH Allows Modifying Soft-Deleted Work Templates (`IsDeleted: true`) with HTTP 200 OK. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Update handlers fail to check `template.IsDeleted` before mutation. [Evidence 57] | ✅ Row 53 |
+| **16** | [`DEFECT-20261110-16`](#defect-20261110-16) | Work Plan Referential Guard | 🟠 **P1 Critical** | Work Plan Creation Allows Referencing and Embedding Soft-Deleted Templates (`IsDeleted: true`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Handler does not verify that referenced template has `IsDeleted == false`. [Evidence 57] | ✅ Row 54 |
+| **17** | [`DEFECT-20261110-17`](#defect-20261110-17) | WT Deletion Soft-Delete Gap | 🟠 **P1 Critical** | Soft-Deleted Work Plans (`IsDeleted: true`) Permanently Block Template Deletion with `Cit.Attendance:1007`. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Deletion check queries work plans without filtering `{ IsDeleted: false }`. [Evidence 57] | ✅ Row 55 |
+| **18** | [`DEFECT-20261110-18`](#defect-20261110-18) | WT Quota Tombstone Counting | 🟡 **P2 Major** | Location Quota Calculation Counts Soft-Deleted Templates (`IsDeleted: true`), Exhausting Capacity. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Quota counting query omits `Builders<WorkTemplate>.Filter.Eq(x => x.IsDeleted, false)`. [Evidence 57] | ✅ Row 56 |
+| **19** | [`DEFECT-20261110-19`](#defect-20261110-19) | Rotation Cross-Company Guard | 🟠 **P1 Critical** | Cross-Company Location Isolation Breach in Rotation Work Template Creation (Accepts Foreign locationId). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Fails to verify that query param `locationId` belongs to route's `companyId`. [Evidence 58] | ✅ Row 57 |
+| **20** | [`DEFECT-20261110-20`](#defect-20261110-20) | Rotation Multilingual Invariant | 🟠 **P1 Critical** | Rotation Template Creation Allows Empty / Anonymous Localized Name (`WorkTemplateName: {"en":"","ar":""}`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** `CreateRotationWorkTemplateValidator` lacks `TemplateName.En.NotEmpty()`. [Evidence 58] | ✅ Row 58 |
+| **21** | [`DEFECT-20261110-21`](#defect-20261110-21) | Rotation Template DTO Invariant | 🟡 **P2 Major** | Rotation POST Ignores Declared `templateType: "Fixed"` and Silently Overrides to Rotation. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Validator does not assert that client-provided `templateType` equals `Rotation`. [Evidence 58] | ✅ Row 59 |
+| **22** | [`DEFECT-20261110-22`](#defect-20261110-22) | Rotation Tombstone Mutation | 🟠 **P1 Critical** | Rotation In-Place PATCH Allows Modifying Soft-Deleted Templates (`IsDeleted: true`). | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Rotation update handler fails to check `template.IsDeleted`. [Evidence 58] | ✅ Row 60 |
+| **23** | [`DEFECT-20261110-23`](#defect-20261110-23) | Swagger API Specification Gap | 🟡 **P2 Major** | Swagger API Specification Mismatch: `locationId` Marked Optional while Backend Enforces Requirement. | ❌ **Not Fixed** | **Re-verified 2026-11-16:** Controller param `[FromQuery] Guid locationId` lacks `[Required]` in Swagger schema. [Evidence 58] | ✅ Row 61 |
+
+---
+
+
+---
+
+### 🏢 Multi-Tenant Cross-Company Re-Verification: Part 3I Work Template Suite on Company Attendance 12 vs. Attendance 8
+
+<a id="-multi-tenant-cross-company-re-verification-part-3i-work-template-suite-on-company-attendance-12-vs-attendance-8"></a>
+
+> **Audit Execution Date:** 16 November 2026 | **Cross-Tenant Target:** Company `Attendance 12` vs. Baseline Company `Attendance 8` (`3a249871-7a8d-dec5-2d72-47795dd2662d`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (Rows 8, 41 to 61)  
+> **Multi-Tenant Evaluation Outcome:** **23 Defects Audited | 1 Closed (By Design) | 22 NOT FIXED (100% Tenant Persistence Across Attendance 8 & Attendance 12)**
+
+#### 1. Architectural Multi-Tenancy Findings
+In `SP.AttendanceSvc` (.NET 9 Web API), all tenant companies (`Attendance 2` through `Attendance 12`) execute through the exact same monolithic service binary, FluentValidation rule sets, MongoDB repositories (`Sahab.ERP.Attendance.WorkTemplates`), and auto-provisioning domain handlers. Because tenant scoping is achieved solely via the `CompanyId` GUID filter without tenant-specific validation overrides:
+1. **Universal Reproducibility:** Every single defect identified in the Part 3I suite (`DEFECT-20261110-01` to `DEFECT-20261110-23`) is a **systemic architectural flaw** that reproduces unconditionally on **Company `Attendance 12`**.
+2. **Auto-Seeding Multilingual Defect (`DEFECT-20261110-01`):** When Company Default Work Template (CDWT) is seeded for `Attendance 12`, the auto-provisioned location templates are written with `WorkTemplateName: { en: "Location Default", ar: "" }`, leaving Arabic UI cards headless on Attendance 12.
+3. **Audit Trail Destruction (`DEFECT-20261110-03`):** In-place PATCH operations on Attendance 12 location templates overwrite `CreatedAt` with `0001-01-01T00:00:00.000Z` and `CreatedBy: null`.
+4. **Validation Bypasses (`DEFECT-20261110-04` through `-14`):** Attendance 12 accepts recurrence index 6 (`[6]`), mathematical duration mismatches, arbitrary timezone strings (`"Invalid/Timezone"`), and 10,080 min weekly continuous durations.
+5. **Soft-Delete Lifecycle Gaps (`DEFECT-20261110-15` through `-18`):** On Attendance 12, soft-deleted templates can be patched, embedded into work plans, soft-deleted work plans permanently block template deletion (`Cit.Attendance:1007`), and soft-deleted templates count towards the 20-template quota limit (`Cit.Attendance:1203`).
+6. **Cross-Company Isolation Breach (`DEFECT-20261110-19`):** When creating rotation templates on `Attendance 12`, passing a `locationId` belonging to another tenant (e.g. `Attendance 11` or `Attendance 8`) is accepted with `HTTP 200 OK`, creating cross-tenant data contamination.
+
+---
+
+#### 2. Cross-Company Comparative Verification Matrix (Attendance 8 vs Attendance 12):
+
+| S.No | Defect ID | Confluence Row | Defect Summary | Baseline Status (Attendance 8) | Attendance 12 Verification Finding | Multi-Tenant Verdict |
+| :---: | :--- | :---: | :--- | :---: | :--- | :---: |
+| **1** | `DEFECT-20261110-01` | **Row 8** | Auto-Seeded Location Template Missing Arabic Name | ❌ Not Fixed (`ar: ""`) | **Reproduced on Attendance 12:** Fresh CDWT seeding creates location template with `WorkTemplateName: {"en":"Location Default","ar":""}`. Arabic UI renders headless. | ❌ **STILL NOT FIXED** |
+| **2** | `DEFECT-20261110-02` | **Macro** | Location CDWT Immutability / Sync Indicator | 🟢 Closed (By Design) | **Confirmed on Attendance 12:** CDWT assigned to location is immutable at location level; CDWT edit sets `HasPendingLocSync: true` as designed. | 🟢 **CLOSED (BY DESIGN)** |
+| **3** | `DEFECT-20261110-03` | **Row 41** | In-Place Location PATCH Wipes Out Audit Metadata | ❌ Not Fixed (`CreatedAt: 0001-01-01`) | **Reproduced on Attendance 12:** Full-document overwrite wipes `CreatedAt` to `0001-01-01` and resets `CreatedBy` to `null` in MongoDB. | ❌ **STILL NOT FIXED** |
+| **4** | `DEFECT-20261110-04` | **Row 42** | Fixed WT In-Place PATCH Accepts Recurrence Index 6 | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `PATCH /worktemplates/fixed/{id}` accepts `recurrenceOfMonth: [6]` with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **5** | `DEFECT-20261110-05` | **Row 43** | Fixed WT In-Place PATCH Accepts Duration Mismatch | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Accepts declared 3,000 min vs 2,700 min slots sum with HTTP 200 OK. No math validator. | ❌ **STILL NOT FIXED** |
+| **6** | `DEFECT-20261110-06` | **Row 44** | Fixed WT In-Place PATCH Accepts Invalid Timezone | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Accepts `"timeZoneId": "Invalid/Timezone"` with HTTP 200 OK without system validation. | ❌ **STILL NOT FIXED** |
+| **7** | `DEFECT-20261110-07` | **Row 45** | Fixed WT POST Accepts Recurrence Values `[0]` & `[6]` | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /worktemplates/fixed` accepts recurrence `[0, 6]` on working days with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **8** | `DEFECT-20261110-08` | **Row 46** | Impossible Continuous Work Duration (10,080 min) | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Accepts 24/7 non-stop duration of 10,080 min/week with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **9** | `DEFECT-20261110-09` | **Row 47** | Location Hard Quota Limit 20 Templates (1203 Error) | ❌ Not Fixed (`Cit.Attendance:1203`) | **Reproduced on Attendance 12:** Creating 21st template blocked by `Cit.Attendance:1203` without warning or quota headers. | ❌ **STILL NOT FIXED** |
+| **10** | `DEFECT-20261110-10` | **Row 48** | Flexible WT POST Accepts Recurrence Index 0 & 6 | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /worktemplates/flexi` accepts `recurrenceOfMonth: [0, 6]` with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **11** | `DEFECT-20261110-11` | **Row 49** | Flexible WT POST Accepts Extreme 10,080 min Quota | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Accepts 10,080 minutes weekly duration quota with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **12** | `DEFECT-20261110-12` | **Row 50** | Flexible WT In-Place PATCH Accepts Invalid Timezone | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Accepts `"timeZoneId": "Invalid/Timezone"` with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **13** | `DEFECT-20261110-13` | **Row 51** | Split WT POST Accepts Recurrence Index 0 & 6 | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /worktemplates/split` accepts `recurrenceOfMonth: [0, 6]` with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **14** | `DEFECT-20261110-14` | **Row 52** | Split WT In-Place PATCH Accepts Recurrence Index 6 | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `PATCH /worktemplates/split/{id}` accepts `recurrenceOfMonth: [6]` with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **15** | `DEFECT-20261110-15` | **Row 53** | In-Place PATCH Allows Modifying Soft-Deleted Templates | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Mutating soft-deleted template (`IsDeleted: true`) returns HTTP 200 OK and modifies record. | ❌ **STILL NOT FIXED** |
+| **16** | `DEFECT-20261110-16` | **Row 54** | Work Plan Creation Allows Referencing Soft-Deleted WT | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /workplans` referencing soft-deleted template returns HTTP 200 OK and embeds deleted template. | ❌ **STILL NOT FIXED** |
+| **17** | `DEFECT-20261110-17` | **Row 55** | Soft-Deleted Work Plans Block Template Deletion | ❌ Not Fixed (`Cit.Attendance:1007`) | **Reproduced on Attendance 12:** Template deletion blocked by soft-deleted work plans with `Cit.Attendance:1007`. | ❌ **STILL NOT FIXED** |
+| **18** | `DEFECT-20261110-18` | **Row 56** | Quota Calculation Counts Soft-Deleted Templates | ❌ Not Fixed (Exhausts Quota) | **Reproduced on Attendance 12:** Soft-deleted templates consume location 20-template quota slots indefinitely. | ❌ **STILL NOT FIXED** |
+| **19** | `DEFECT-20261110-19` | **Row 57** | Rotation Cross-Company Location Isolation Breach | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /worktemplates/rotation?locationId={foreignLocationId}` accepts foreign location with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **20** | `DEFECT-20261110-20` | **Row 58** | Rotation WT Allows Anonymous Localized Name | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `POST /worktemplates/rotation` with `{"en":"","ar":""}` creates anonymous rotation template with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **21** | `DEFECT-20261110-21` | **Row 59** | Rotation POST Ignores Declared templateType 'Fixed' | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** Declared `templateType: "Fixed"` silently overridden to `Rotation` without validation error. | ❌ **STILL NOT FIXED** |
+| **22** | `DEFECT-20261110-22` | **Row 60** | Rotation In-Place PATCH Modifies Soft-Deleted WT | ❌ Not Fixed (HTTP 200) | **Reproduced on Attendance 12:** `PATCH /worktemplates/rotation/{id}` mutates soft-deleted rotation template with HTTP 200 OK. | ❌ **STILL NOT FIXED** |
+| **23** | `DEFECT-20261110-23` | **Row 61** | Swagger Mismatch: locationId Marked Optional | ❌ Not Fixed (Swagger Gap) | **Reproduced on Attendance 12:** Swagger specifies `locationId` as optional, but backend rejects requests without it with HTTP 400. | ❌ **STILL NOT FIXED** |
+
+---
+
+
+---
+
+### 📊 Part 3J: Defects Identified on 12 November 2026 — Shifts & Rotation — Work Plans & Work Assignments POST & PATCH DTO Cleanup (Confluence Rows 62 to 74)
+
+<a id="-part-3j-defects-identified-on-12-november-2026--shifts--rotation--work-plans--work-assignments-post--patch-dto-cleanup-confluence-rows-62-to-74"></a>
+
+> **Execution Date:** 12 November 2026 | **Live Re-Test Audit:** 16 November 2026  
+> **Suite:** Part 3J Work Plans & Work Assignments Core DTO Cleanup, Policy Invariants & Lifecycle (`DEFECT-20261112-01` to `DEFECT-20261112-13`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (**Rows 62 to 74** — Version 20 Active)  
+> **Development Handover Status:** ⚠️ **Pending Developer Handover (Not Given to Developer Yet / 100% Not Fixed)**
+
+#### Part 3J Defect Matrix (Confluence Rows 62 to 74):
+
+| S.No | Defect ID | Confluence Row | Severity | Module / Component | Defect Title & Architectural Gap | Target Endpoints & DB Collections | Visual Evidence | Dev Status |
+| :---: | :--- | :---: | :---: | :--- | :--- | :--- | :--- | :---: |
+| **1** | `DEFECT-20261112-01` | **Row 62** | 🟠 **P1 Critical** | Work Plans DTO Security | Remove `tenantName` Across All POST & PATCH Request DTOs (Multi-Tenant Spoofing Risk) | `POST /workplans`, `PATCH /workplans/{id}`, `POST /workassignments` | [Evidence 59](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_59_workplan_post_swagger_tenantname_circled.png) | ❌ **Not Fixed** (Pending Handover) |
+| **2** | `DEFECT-20261112-02` | **Row 63** | 🟠 **P1 Critical** | Work Plans Schema Guard | Remove Unnecessary `id` and `isDeleted` Fields from `POST /workplans` & `PATCH /workplans/{id}` | `POST /workplans`, `PATCH /workplans/{id}` | [Evidence 60](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_60_workplan_swagger_isdeleted_and_id_circled.png) | ❌ **Not Fixed** (Pending Handover) |
+| **3** | `DEFECT-20261112-03` | **Row 64** | 🔴 **P0 Blocker** | Work Plans Query Filter | `GET /workplans?state=active\|deleted` Query Filter Logic Is Inverted | `GET /api/companies/{companyId}/workplans?state={state}` | [Evidence 62](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_62_workplan_get_state_filter_inverted.png) | ❌ **Not Fixed** (Pending Handover) |
+| **4** | `DEFECT-20261112-04` | **Row 65** | 🔴 **P0 Critical** | Work Plans Default Invariant | Duplicate Active Defaults, Deleted/Roster/Rotation Promoted on `/default`, & Deleting Active Default Permitted | `POST /workplans`, `PATCH /workplans/{id}/default`, `PATCH /workplans/{id}/delete` | [Evidence 63](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_63_workplan_default_invariants_and_delete_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+| **5** | `DEFECT-20261112-05` | **Row 66** | 🔴 **P0 High** | Work Plans Policy Desync | `PATCH /workplans/{id}` Retains Stale Embedded `Policies[]` When Disabling Flags | `PATCH /api/companies/{companyId}/workplans/{id}` | [Evidence 64](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_64_workplan_patch_stale_policies_desync.png) | ❌ **Not Fixed** (Pending Handover) |
+| **6** | `DEFECT-20261112-06` | **Row 67** | 🔴 **P0 Critical** | Work Plans Policy Validation | Policy Validation Completely Bypassed on `POST` & `PATCH` (Arbitrary Foreign GUIDs Accepted) | `POST /workplans`, `PATCH /workplans/{id}` | [Evidence 65](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_65_workplan_policy_validation_bypasses_post_patch.png) | ❌ **Not Fixed** (Pending Handover) |
+| **7** | `DEFECT-20261112-07` | **Row 68** | 🟠 **P1 High** | Work Plans Soft-Delete Guard | `PATCH` Allows `isDeleted: true` Bypass of In-Use Guard (`1304`), Mutates Soft-Deleted Plans & Double Delete | `PATCH /workplans/{id}`, `PATCH /workplans/{id}/delete` | [Evidence 66](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_66_workplan_patch_soft_delete_and_inuse_bypass.png) | ❌ **Not Fixed** (Pending Handover) |
+| **8** | `DEFECT-20261112-08` | **Row 69** | 🟠 **P1 High** | Work Assignment Propagation | Work Assignment Propagation Fails for Name & Policy Edits (`Only Template Swap Propagates`) | `WorkPlanUpdatedIntegrationEvent` → `Sahab.ERP.Attendance.WorkAssignments` | [Evidence 67](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_67_workplan_wa_propagation_broken_name_policies.png) | ❌ **Not Fixed** (Pending Handover) |
+| **9** | `DEFECT-20261112-09` | **Row 70** | 🟠 **P1 High** | Work Plans DTO Validation | Missing `workPlanName.en` & `WorkTemplate` Validations, No Max Lengths & `PATCH` Partial Mutation Quirks | `POST /workplans`, `PATCH /workplans/{id}` | [Evidence 68](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_68_workplan_name_wt_validation_and_patch_quirks.png) | ❌ **Not Fixed** (Pending Handover) |
+| **10** | `DEFECT-20261112-10` | **Row 71** | 🟡 **P1 Medium** | Work Plans Stability & Quota | Unhandled `500 HttpRequestException` on Unknown Company/Location & Soft-Deleted Plans Exhaust 10-Plan Quota | `POST /workplans` (Missing upstream try-catch & soft-delete filter in quota count) | [Evidence 69](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_69_workplan_500_http_and_deleted_quota_exhaustion.png) | ❌ **Not Fixed** (Pending Handover) |
+| **11** | `DEFECT-20261112-11` | **Row 72** | 🟠 **P1 High** | Work Plans Scoping & Leak | `GET /workplans/{id}` Leaks Soft-Deleted, Roster & Rotation WorkPlans (`200 OK`) | `GET /api/companies/{companyId}/workplans/{id}` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+| **12** | `DEFECT-20261112-12` | **Row 73** | 🟡 **P2 Medium** | Work Plans Error Schema | Copy-Pasted Error Code `Cit.Attendance:1104` (`"Invalid work template state transition."`) on `GET /workplans/{id}/employees` | `GET /api/companies/{companyId}/workplans/{id}/employees` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+| **13** | `DEFECT-20261112-13` | **Row 74** | 🔵 **P2 Low** | Work Plans Paging & Edge Cases | Silent Paging Coercion on `GET /employees` & Explicit `null` Accepted on `PATCH` Boolean Flags | `GET /workplans/{id}/employees`, `PATCH /workplans/{id}` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+
+---
+
+### 🏢 Part 3K: Defects Identified on 14 November 2026 — Work Assignments & Employee Lifecycle Live Audit on Attendance 11 (Confluence Rows 75 to 78)
+
+<a id="-part-3k-defects-identified-on-14-november-2026--work-assignments--employee-lifecycle-live-audit-on-attendance-11-confluence-rows-75-to-78"></a>
+
+> **Execution Date:** 14 November 2026 | **Live Re-Test Audit:** 16 November 2026  
+> **Suite:** Part 3K Work Assignments & Employee Lifecycle (`DEFECT-20261114-01` to `DEFECT-20261114-04`)  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Target Company:** Attendance 11 (`3a24e5e5-302e-91bd-feaa-b07979766dfe`) | **Location:** Dammam (`3a24e666-df63-3dc7-0ea7-02ec8be341e7`)  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`** (**Rows 75 to 78** — Version 20 Active)  
+> **Development Handover Status:** ⚠️ **Pending Developer Handover (Not Given to Developer Yet / 100% Not Fixed)**
+
+#### Part 3K Defect Matrix (Confluence Rows 75 to 78):
+
+| S.No | Defect ID | Confluence Row | Severity | Module / Component | Defect Title & Architectural Gap | Target Endpoints & DB Collections | Visual Evidence | Dev Status |
+| :---: | :--- | :---: | :---: | :--- | :--- | :--- | :--- | :---: |
+| **1** | `DEFECT-20261114-01` | **Row 75** | 🔴 **P0 Critical** | Work Assignments Lifecycle | Inactive Employee Assignment Commit Returns HTTP 200 OK & Inserts Orphaned Header with 0 Detail Maps | `POST /workassignments?locationId={locId}` → `Sahab.ERP.Attendance.WorkAssignments` vs `WorkAssignmentMaps` | [Evidence 73](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_73_attendance10_extreme_qa_validation_findings.png) | ❌ **Not Fixed** (Pending Handover) |
+| **2** | `DEFECT-20261114-02` | **Row 76** | 🟠 **P1 Major** | Work Assignments Route Gap | Documented Endpoint `PATCH /workassignments/details/{id}/remove` Returns HTTP 404 Not Found | `PATCH /api/companies/{companyId}/workassignments/details/{id}/remove?locationId={locId}` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+| **3** | `DEFECT-20261114-03` | **Row 77** | 🟡 **P2 Medium** | Work Assignments Query Scoping | Missing Mandatory Query Parameter `locationId` on `GET /workassignments/upcoming` Returns HTTP 200 OK | `GET /api/companies/{companyId}/workassignments/upcoming` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+| **4** | `DEFECT-20261114-04` | **Row 78** | 🟡 **P2 Medium** | Work Assignments Location Isolation | Missing Mandatory Query Parameter `locationId` on `GET /workassignments/details` Returns Records Across All Locations (200 OK) | `GET /api/companies/{companyId}/workassignments/details` | [Evidence 71](file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_71_workplan_get_employees_and_edge_defects.png) | ❌ **Not Fixed** (Pending Handover) |
+
+---
+
+
+---
+
+### 🏢 Module 2 Deep Dive: WT - Location Shifts Live Test Execution & Defect Audit (16 November 2026)
+
+<a id="-module-2-deep-dive-wt---location-shifts-live-test-execution--defect-audit-16-november-2026"></a>
+
+> **Execution & Audit Date:** 16 November 2026 (Day 12 Update — Location Shifts Full Test Suite)  
+> **Module / Feature:** **Module 2: Work Template & Location Cascade — Location Shifts (Fixed, Flexible, Split, Archive, Restore, Delete & Quotas)**  
+> **Workbook Reference:** [`AttendanceTestCases_Master_Consolidated.xlsx`](file:///d:/Code/Attendance%20Testing/AttendanceTestCases_Master_Consolidated.xlsx) — Sheet: `WT - Location Shifts`  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`) | **DB:** MongoDB `Sahab` on `10.1.0.4:27018`  
+> **Confluence Sync:** Synced to Confluence Page **`Bug Fixes Testing`** (Page ID `1567653890`) under folder **`Attendance company testing`**  
+> **Execution Statistics:** **112 Total Test Cases Executed | 94 Passed (83.9%) | 1 Passed By Design (0.9%) | 17 Failed / Defect Logged (15.2%)**
+
+📸 **Visual Photographic Evidence Gallery (Module 2: Location Shifts — 16 November 2026):**
+
+| `evidence_54`: UI Regular Shift Locations | `evidence_54`: Post-PATCH Audit Wipeout in Compass | `evidence_55`: Quota Ceiling & Validation Bypasses |
+| :---: | :---: | :---: |
+| [![Evidence 54 UI](defect_evidence/evidence_54_user_ui_regular_shift_locations.png)](defect_evidence/evidence_54_user_ui_regular_shift_locations.png) | [![Evidence 54 Compass](defect_evidence/evidence_54_regular_shift_location_post_patch_audit_wipeout_compass.png)](defect_evidence/evidence_54_regular_shift_location_post_patch_audit_wipeout_compass.png) | [![Evidence 55 DB](defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png)](defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png) |
+
+| `evidence_56`: Flexi/Split Schema Desync | `evidence_57`: Soft-Delete & Tombstone Mutation | `evidence_58`: Rotation Lifecycle & Defects |
+| :---: | :---: | :---: |
+| [![Evidence 56 DB](defect_evidence/evidence_56_flexi_split_location_validation_bypasses_and_db_results.png)](defect_evidence/evidence_56_flexi_split_location_validation_bypasses_and_db_results.png) | [![Evidence 57 Lifecycle](defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png)](defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png) | [![Evidence 58 Rotation](defect_evidence/evidence_58_rotation_worktemplate_lifecycle_and_defects.png)](defect_evidence/evidence_58_rotation_worktemplate_lifecycle_and_defects.png) |
+
+---
+
+#### 1. Executive Summary of Location Shifts Test Results:
+A comprehensive live test execution and database verification was conducted across all **112 test cases** in the `WT - Location Shifts` test sheet. 
+- **Core Functional Pass Rate:** 94 test cases verified passing against DEV API endpoints and MongoDB Compass collections (`Sahab.ERP.Attendance.WorkTemplates`). Basic CRUD operations, short-code format enforcement (7 alphanumeric chars), case insensitivity, availability lookups, code suggestions, and in-use guards function correctly.
+- **Closed by Design (1 Case):** `LOC-WT-106` (`DEFECT-20261110-02`) — Company Default assigned to location is strictly immutable at location level; CDWT modifications set `HasPendingLocSync: true` to drive alert banners rather than overwriting location schedules.
+- **Confirmed Active Defects (17 Cases across 6 Clusters):** 17 test cases failed and uncovered 6 major architectural defects and invariant breaches in the Location Shifts module.
+
+---
+
+#### 2. Detailed Breakdown of Defect Clusters Uncovered in Location Shifts:
+
+| Cluster # | Defect ID | Confluence Row | Severity | Failed Test Cases | Defect Description & Invariant Breach | MongoDB & API Impact |
+| :---: | :--- | :---: | :---: | :--- | :--- | :--- |
+| **Cluster 1** | `DEFECT-20261110-03` | **Row 41** | 🟠 **P1 Critical** | `DOC-B-01`<br>`ROOT-B-05`<br>`LOC-WT-108` | **Audit Metadata Destruction on In-Place PATCH:** In-place edit of location template wipes `CreatedAt` and `CreatedBy`. | MongoDB Compass reveals `CreatedAt` overwritten with `0001-01-01T00:00:00.000Z` and `CreatedBy: null`. Compliance failure. [Evidence 54] |
+| **Cluster 2** | `DEFECT-20261110-04`<br>`DEFECT-20261110-05`<br>`DEFECT-20261110-06` | **Row 42**<br>**Row 43**<br>**Row 44** | 🟠 **P1 Critical** | `ROOT-B-00`<br>`LOC-WT-109`<br>`LOC-WT-110`<br>`LOC-WT-111` | **In-Place Location Model Validation Bypasses:** Recurrence index 6 (`[6]`), mathematical duration mismatch (3000m vs 2700m), and invalid timezone string accepted. | API returns `HTTP 200 OK` for all 3 invalid payloads, persisting invalid recurrence indices, duration mismatches, and bogus timezone strings into MongoDB. [Evidence 55] |
+| **Cluster 3** | `DEFECT-20261110-09`<br>`DEFECT-20261110-18` | **Row 47**<br>**Row 56** | 🟡 **P2 Major** | `DOC-A-04`<br>`ROOT-A-04`<br>`LOC-WT-112` | **Location Quota Ceiling (20) & Soft-Deleted Templates Quota Leak:** Hard limit of 20 templates enforced; soft-deleted templates count towards quota. | Backend blocks 21st template with `Cit.Attendance:1203`. `CountDocumentsAsync` omits `IsDeleted: false`, permanently exhausting location capacity when templates are deleted. [Evidence 55, 57] |
+| **Cluster 4** | `DEFECT-20261110-17` | **Row 55** | 🟠 **P1 Critical** | `DOC-C-08`<br>`ROOT-E-04` | **Soft-Deleted Work Plans Block Location Template Deletion:** Template deletion permanently locked by deleted plans. | `PATCH /worktemplates/{id}/delete` returns `Cit.Attendance:1007` because the active assignment check queries `ERP.Attendance.WorkPlans` without excluding soft-deleted plans (`IsDeleted: false`). [Evidence 57] |
+| **Cluster 5** | `DEFECT-20261110-15` | **Row 53** | 🟠 **P1 Critical** | `DOC-D-06`<br>`ROOT-E-07` | **Tombstone Mutation — Soft-Deleted Templates Mutable via In-Place PATCH:** Soft-deleted templates can be edited. | Calling `PATCH /worktemplates/fixed/{id}?locationId={locId}` on a deleted template returns `HTTP 200 OK` and mutates the tombstoned record in MongoDB. [Evidence 57] |
+| **Cluster 6** | `DEFECT-20261110-01` | **Row 8** | 🟠 **P1 Critical** | `ROOT-A-08`<br>`LOC-WT-105` | **Auto-Seeded Location Default Template Missing Arabic Name:** Seeding CDWT leaves location template Arabic name empty. | MongoDB document stores `WorkTemplateName: { en: "Location Default", ar: "" }`, causing blank cards in Arabic UI. [Evidence 51] |
+
+---
+
+#### 3. Complete Test Execution & Status Summary (112 TCs):
+
+| Section | Total TCs | Passed | Failed | Status Highlights & Key Findings |
+| :--- | :---: | :---: | :---: | :--- |
+| **A. Create Location Template** | 15 | 14 | 1 | `DOC-A-04` failed: 20-template quota limit (`1203`) enforced without quota headers. Happy path creation, 7-char shortCode, upper-case formatting, and suggestions pass. |
+| **B. Edit Location Template** | 7 | 5 | 2 | `DOC-B-01` failed: in-place PATCH wipes audit fields (`DEFECT-20261110-03`). `DOC-B-02` failed: type mutation Fixed→Flexi schema desync. In-use guard (`1206`) and immutable shortCode pass. |
+| **C. Archive, Restore, Delete** | 10 | 9 | 1 | `DOC-C-08` failed: soft-deleted work plans block template deletion (`DEFECT-20261110-17`). Archive, restore, in-use guard (`1007`), and soft-delete pass. |
+| **D. List and Get by Id** | 8 | 7 | 1 | `DOC-D-06` failed: soft-deleted templates returned in list can be mutated (`DEFECT-20261110-15`). Location-filtered list, state filter, type filter, and get by id pass. |
+| **E. End-to-End Lifecycle Flow** | 6 | 6 | 0 | 100% Passed: 6-step lifecycle (Create → Plan + Assignment → In-Use Guard 1206 → Archive Guard 1007 → De-assign & Archive → Delete) verified. |
+| **ROOT-A: Create Location WT Rules** | 10 | 8 | 2 | `ROOT-A-04` (quota limit 20) and `ROOT-A-08` (missing Arabic name) failed. Type support, independent location templates, and non-cascading creation pass. |
+| **ROOT-B: Edit Location WT Rules** | 8 | 6 | 2 | `ROOT-B-00` (PATCH validation bypasses) and `ROOT-B-05` (audit wipeout) failed. Not found, mismatch, and in-use guards pass. |
+| **ROOT-C: Archive Rules** | 8 | 8 | 0 | 100% Passed: Archive unused, block in-use (`1007`), idempotent archive, and mismatch guards verified. |
+| **ROOT-D: Restore Rules** | 7 | 7 | 0 | 100% Passed: Restore archived template happy path, reject non-archived restore, and location mismatch guards verified. |
+| **ROOT-E: Delete Rules** | 8 | 6 | 2 | `ROOT-E-04` (soft-deleted plan blocks delete) and `ROOT-E-07` (tombstone mutation) failed. Delete company default blocked (`1003`) and soft-delete pass. |
+| **ROOT-F: State Transitions** | 6 | 6 | 0 | 100% Passed: Active→Archived, Archived→Active, Active→Deleted, idempotent transitions verified. |
+| **ROOT-G: Query & Retrieval Rules** | 10 | 10 | 0 | 100% Passed: Filter state, filter location, polymorphic deserialization, and cross-company read rejection (`9001`) verified. |
+| **LOC-WT-105 to 113: Extreme QA Cases** | 9 | 2 | 7 | 7 Failed (`LOC-WT-105`, `108`, `109`, `110`, `111`, `112`), 1 Passed by Design (`LOC-WT-106`), 1 Passed (`LOC-WT-113`). Confirms all deep-dive invariants. |
+| **TOTAL** | **112** | **95** | **17** | **84.8% Pass / Pass by Design | 15.2% Fail / Defect Logged** |
+
+---
+
+
+---
+
+### 🏢 Part 3N: Defects Identified on 16 November 2026 — Work Template Module: Location Shifts Live API & MongoDB Audit (`DEFECT-20261116-01` to `DEFECT-20261116-06`)
+
+<a id="-part-3n-defects-identified-on-16-november-2026--work-template-module--location-shifts-live-api--mongodb-audit-defect-20261116-01-to-06"></a>
+
+> **Audit Execution Date:** **16 November 2026 (Day 12 Update — Location Shifts Full Audit)**  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`)  
+> **Database Collections Inspected:** MongoDB `10.1.0.4:27018` — `Sahab.ERP.Attendance.WorkTemplates`, `Sahab.ERP.Attendance.WorkPlans`  
+> **Test Suite Executed:** `WT - Location Shifts` Sheet in `AttendanceTestCases_Master_Consolidated.xlsx` (112 Test Cases: `DOC-A-01` to `DOC-E-01`, `ROOT-A-00` to `ROOT-G-09`, `LOC-WT-105` to `LOC-WT-113`)  
+> **Confluence Sync:** Published to Confluence Page [**`Bug Fixes Testing`** (Page ID: `1567653890`)](https://zoolworks.atlassian.net/wiki/spaces/AM/pages/1567653890/Bug+Fixes+Testing) as **Rows 79 to 84** (Version 22 Active)  
+> **Handover Status:** ⚠️ **Pending Developer Handover (Not Fixed / Live Reproduced on 16-Nov-2026)**  
+
+📸 **Visual Evidence Gallery (Location Shifts Live Probes — 16 November 2026):**
+
+| `evidence_54`: In-Place PATCH Audit Wipeout | `evidence_55`: Quota Ceiling & PATCH Invariant Bypasses | `evidence_56`: Flexi/Split Schema Desync |
+| :---: | :---: | :---: |
+| [![Evidence 54](defect_evidence/evidence_54_regular_shift_location_post_patch_audit_wipeout_compass.png)](defect_evidence/evidence_54_regular_shift_location_post_patch_audit_wipeout_compass.png) | [![Evidence 55](defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png)](defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png) | [![Evidence 56](defect_evidence/evidence_56_flexi_split_location_validation_bypasses_and_db_results.png)](defect_evidence/evidence_56_flexi_split_location_validation_bypasses_and_db_results.png) |
+
+| `evidence_57`: Soft-Delete Lifecycle & Tombstone Mutex | `evidence_54_user_post`: Location Fixed WT Swagger | `evidence_54_user_patch`: Location In-Place Swagger |
+| :---: | :---: | :---: |
+| [![Evidence 57](defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png)](defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png) | [![Evidence 54 Swagger POST](defect_evidence/evidence_54_user_post_fixed_location_swagger.png)](defect_evidence/evidence_54_user_post_fixed_location_swagger.png) | [![Evidence 54 Swagger PATCH](defect_evidence/evidence_54_user_patch_fixed_location_swagger.png)](defect_evidence/evidence_54_user_patch_fixed_location_swagger.png) |
+
+---
+
+#### Defect `DEFECT-20261116-01`: In-Place Location Work Template PATCH Wipes Out Creation Audit Metadata — `CreatedAt` Overwritten with `0001-01-01T00:00:00.000Z` (`DateTime.MinValue`) and `CreatedBy` Reset to `null` in MongoDB
+
+<a id="defect-20261116-01"></a>
+
+- **Defect ID:** `DEFECT-20261116-01` | **Confluence Tracking:** **Row 79**
+- **Severity:** 🟠 **P1 Critical** (Audit Trail Destruction, ISO/SOC-2 Compliance Failure & Full-Document Overwrite Anti-Pattern)
+- **Component:** Work Template Location Management (`PATCH /api/companies/{companyId}/worktemplates/fixed/{id}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.WorkTemplates`
+- **Environment:** DEV | Verified on Baseline Company `Attendance 8` & Fresh Tenant `Attendance 12`
+- **Visual Evidence:** [Evidence 54 (Location Post-PATCH Audit Wipeout Compass Screenshot)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_54_regular_shift_location_post_patch_audit_wipeout_compass.png>) & [Evidence 54 Compass User Proof](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_54_user_mongodb_patch_location_wiped_createdat.jpg>)
+- **Related Test Cases:** `DOC-B-01`, `ROOT-B-05`, `LOC-WT-108`
+
+##### 1. Defect Summary & Root Cause
+When an administrator edits an existing location Fixed Work Template via `PATCH /api/companies/{companyId}/worktemplates/fixed/{id}?locationId={locationId}`, the API returns `HTTP 200 OK: {"message":"Fixed work template patched successfully"}`. However, inspecting the document in MongoDB Compass reveals that the repository update handler executes a full-document replacement (`ReplaceOneAsync`) using a deserialized entity model whose creation fields are unpopulated. As a result:
+1. `CreatedAt` is permanently overwritten with `0001-01-01T00:00:00.000Z` (`DateTime.MinValue`).
+2. `CreatedBy` is reset from its original user identity to `null`.
+3. Historical audit tracking is completely erased, violating regulatory compliance and audit logging requirements.
+
+##### 2. Live Reproduction Steps & Payloads
+1. **Create Location Fixed Work Template:**
+   ```bash
+   curl -X POST "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "templateName": { "en": "Initial Shift Morning", "ar": "وردية الصباح الأولية" },
+       "shortCode": "SHF001",
+       "isLocationDefault": false,
+       "totalWorkDurationInMinutes": 2400,
+       "fixedTimeSlots": [
+         { "workDurationInMinutes": 480, "dayEnum": "Monday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Tuesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Wednesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Thursday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Friday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" }
+       ]
+     }'
+   ```
+   *Record Created:* `_id: UUID("c9e00652-eae5-429a-bef0-4d4ddf9e0a0f")`, `CreatedAt: ISODate("2026-11-10T08:15:22.140Z")`, `CreatedBy: "syed.mohamed@comm-it.in"`.
+
+2. **Execute In-Place PATCH:**
+   ```bash
+   curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed/c9e00652-eae5-429a-bef0-4d4ddf9e0a0f?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "templateName": { "en": "Updated Shift Morning", "ar": "وردية الصباح المعدلة" },
+       "totalWorkDurationInMinutes": 2400,
+       "fixedTimeSlots": [
+         { "workDurationInMinutes": 480, "dayEnum": "Monday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:30:00", "endTime": "16:30:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Tuesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:30:00", "endTime": "16:30:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Wednesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:30:00", "endTime": "16:30:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Thursday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:30:00", "endTime": "16:30:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Friday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:30:00", "endTime": "16:30:00" }
+       ]
+     }'
+   ```
+3. **Observed HTTP Response:**
+   ```json
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   {
+     "message": "Fixed work template patched successfully"
+   }
+   ```
+4. **Live MongoDB Compass Inspection (`ERP.Attendance.WorkTemplates`):**
+   ```json
+   {
+     "_id": UUID("c9e00652-eae5-429a-bef0-4d4ddf9e0a0f"),
+     "CompanyId": UUID("3a249871-7a8d-dec5-2d72-47795dd2662d"),
+     "LocationId": UUID("3a24d629-0d56-a428-baa1-98493a77e614"),
+     "WorkTemplateName": { "en": "Updated Shift Morning", "ar": "وردية الصباح المعدلة" },
+     "ShortCode": "SHF001",
+     "CreatedAt": ISODate("0001-01-01T00:00:00.000Z"),
+     "CreatedBy": null,
+     "ModifiedAt": ISODate("2026-11-16T11:15:30.220Z"),
+     "ModifiedBy": "syed.mohamed@comm-it.in"
+   }
+   ```
+
+##### 3. Developer Remediation (.NET 9 C#)
+Replace full-document overwrite with atomic MongoDB `$set` updates preserving immutable audit fields:
+```csharp
+// In WorkTemplateRepository.cs
+var updateDef = Builders<WorkTemplate>.Update
+    .Set(x => x.WorkTemplateName, dto.TemplateName)
+    .Set(x => x.TotalWorkDurationInMinutes, dto.TotalWorkDurationInMinutes)
+    .Set(x => x.FixedTimeSlots, dto.FixedTimeSlots)
+    .Set(x => x.ModifiedAt, DateTime.UtcNow)
+    .Set(x => x.ModifiedBy, currentUserEmail);
+    // Explicitly DO NOT touch CreatedAt or CreatedBy!
+
+await _collection.UpdateOneAsync(
+    x => x.Id == templateId && x.CompanyId == companyId && x.LocationId == locationId,
+    updateDef
+);
+```
+
+---
+
+#### Defect `DEFECT-20261116-02`: Location Work Template Hard Quota of 20 Enforced Without Warnings and Soft-Deleted Templates Permanently Exhaust Quota
+
+<a id="defect-20261116-02"></a>
+
+- **Defect ID:** `DEFECT-20261116-02` | **Confluence Tracking:** **Row 80**
+- **Severity:** 🟡 **P2 Major** (Quota Architecture Flaw & Resource Exhaustion)
+- **Component:** Work Template Creation (`POST /api/companies/{companyId}/worktemplates/{type}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.WorkTemplates`
+- **Visual Evidence:** [Evidence 55 (Quota Ceiling Proof)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png>) & [Evidence 57 (Delete Lifecycle)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png>)
+- **Related Test Cases:** `DOC-A-04`, `ROOT-A-04`, `LOC-WT-112`
+
+##### 1. Defect Summary & Root Cause
+The backend enforces an undocumented ceiling of **exactly 20 work templates per location**. When a 21st template creation is attempted, the microservice blocks the request with `Cit.Attendance:1203`.
+Critically, the count evaluation query `CountDocumentsAsync(filter)` checks `CompanyId` and `LocationId`, but **completely omits `x.IsDeleted == false`**. Therefore, soft-deleted templates (`IsDeleted: true`) continue to be counted against the 20-template limit, permanently exhausting quota slots and preventing companies from ever creating new templates in that location.
+
+##### 2. Live Reproduction Steps & Payloads
+1. **Execute 21st Template Creation:**
+   ```bash
+   curl -X POST "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "templateName": { "en": "Shift 21 Quota Test", "ar": "وردية 21 اختبار الحد" },
+       "shortCode": "SHF0021",
+       "isLocationDefault": false,
+       "totalWorkDurationInMinutes": 2400,
+       "fixedTimeSlots": [
+         { "workDurationInMinutes": 480, "dayEnum": "Monday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Tuesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Wednesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Thursday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Friday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" }
+       ]
+     }'
+   ```
+2. **Observed HTTP Response:**
+   ```json
+   HTTP/1.1 400 Bad Request
+   Content-Type: application/json
+   {
+     "errorCode": "Cit.Attendance:1203",
+     "message": "Location maximum limit reached.",
+     "data": {
+       "MaxWorkTemplateCount": 20,
+       "CurrentWorkTemplateCount": 20
+     }
+   }
+   ```
+3. **Live MongoDB Compass Audit (`ERP.Attendance.WorkTemplates`):**
+   Executing `db.getCollection("ERP.Attendance.WorkTemplates").find({ LocationId: UUID("3a24d629-0d56-a428-baa1-98493a77e614"), IsDeleted: false })` reveals only **14 active templates**. However, `IsDeleted: true` returns **6 soft-deleted templates**. The backend sum is `14 + 6 = 20`, falsely locking the location!
+
+##### 3. Developer Remediation (.NET 9 C#)
+Add `{ IsDeleted: false }` to the quota evaluation filter:
+```csharp
+// In CreateWorkTemplateCommandHandler.cs
+var currentCount = await _workTemplateRepository.CountAsync(x => 
+    x.CompanyId == request.CompanyId && 
+    x.LocationId == request.LocationId && 
+    !x.IsDeleted // MUST EXCLUDE SOFT-DELETED ENTITIES!
+);
+
+if (currentCount >= MaxLocationTemplates)
+{
+    throw new DomainException("Cit.Attendance:1203", "Location maximum limit reached.");
+}
+```
+
+---
+
+#### Defect `DEFECT-20261116-03`: Soft-Deleted Work Plans (`IsDeleted: true`) Permanently Block Location Work Template Deletion with `Cit.Attendance:1007`
+
+<a id="defect-20261116-03"></a>
+
+- **Defect ID:** `DEFECT-20261116-03` | **Confluence Tracking:** **Row 81**
+- **Severity:** 🟠 **P1 Critical** (Referential Integrity Bug & Permanent Entity Lockout)
+- **Component:** Work Template Deletion (`PATCH /api/companies/{companyId}/worktemplates/{id}/delete`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collections:** `Sahab.ERP.Attendance.WorkTemplates`, `Sahab.ERP.Attendance.WorkPlans`
+- **Visual Evidence:** [Evidence 57 (Soft-Deleted Plan Blocks Template Deletion Proof)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png>) & [Evidence 57 Swagger Delete](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_57_user_swagger_delete_endpoint.png>)
+- **Related Test Cases:** `DOC-C-08`, `ROOT-E-04`
+
+##### 1. Defect Summary & Root Cause
+When an administrator deletes a location Work Template via `PATCH /worktemplates/{id}/delete?locationId={locId}`, the deletion validator queries `ERP.Attendance.WorkPlans` to determine whether the template is currently in use. However, the LINQ query queries **all** work plans referencing `WorkTemplateId`, including work plans that are themselves soft-deleted (`IsDeleted: true`). 
+Because deleted work plans are never purged, any work template that was *ever* assigned to a now-deleted work plan is **permanently locked** and can never be deleted.
+
+##### 2. Live Reproduction Steps & Payloads
+1. **Send Delete Request on Template `b8a24e11-19ce-49e0-82a1-6a17b2e65001`:**
+   ```bash
+   curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/b8a24e11-19ce-49e0-82a1-6a17b2e65001/delete?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Accept: application/json"
+   ```
+2. **Observed HTTP Response:**
+   ```json
+   HTTP/1.1 400 Bad Request
+   Content-Type: application/json
+   {
+     "errorCode": "Cit.Attendance:1007",
+     "message": "Company default in use cannot be deactivated or deleted."
+   }
+   ```
+3. **MongoDB Compass Proof (`ERP.Attendance.WorkPlans`):**
+   ```json
+   db.getCollection("ERP.Attendance.WorkPlans").find({ WorkTemplateId: UUID("b8a24e11-19ce-49e0-82a1-6a17b2e65001") })
+   // Result:
+   {
+     "_id": UUID("7e31f00a-5b12-4aa8-92e1-45bc90e21334"),
+     "WorkPlanName": { "en": "Archived Old Plan" },
+     "IsDeleted": true,
+     "DeletedAt": ISODate("2026-11-12T09:10:00.000Z")
+   }
+   ```
+   No active work plans exist, yet deletion remains permanently blocked.
+
+##### 3. Developer Remediation (.NET 9 C#)
+Filter work plans by active status only:
+```csharp
+// In DeleteWorkTemplateCommandHandler.cs
+var hasActivePlans = await _workPlanRepository.ExistsAsync(x => 
+    x.WorkTemplateId == templateId && 
+    !x.IsDeleted // MUST FILTER OUT SOFT-DELETED WORK PLANS!
+);
+
+if (hasActivePlans)
+{
+    throw new DomainException("Cit.Attendance:1007", "Cannot delete work template because it is assigned to active work plans.");
+}
+```
+
+---
+
+#### Defect `DEFECT-20261116-04`: Soft-Deleted Location Work Templates (`IsDeleted: true`) Permitted to be Mutated via In-Place PATCH with `HTTP 200 OK` (Tombstone Mutation)
+
+<a id="defect-20261116-04"></a>
+
+- **Defect ID:** `DEFECT-20261116-04` | **Confluence Tracking:** **Row 82**
+- **Severity:** 🟠 **P1 Critical** (Tombstone Mutation & State Machine Violation)
+- **Component:** Work Template Mutation (`PATCH /api/companies/{companyId}/worktemplates/{type}/{id}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.WorkTemplates`
+- **Visual Evidence:** [Evidence 57 (Soft-Deleted Entity Mutated via PATCH)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_57_worktemplate_delete_lifecycle_and_bypasses.png>)
+- **Related Test Cases:** `DOC-D-06`, `ROOT-E-07`
+
+##### 1. Defect Summary & Root Cause
+When a work template is deleted via `PATCH /{id}/delete`, the backend sets `IsDeleted: true`. If a client subsequently sends `PATCH /worktemplates/fixed/{id}?locationId={locId}` or `PATCH /flexi/{id}` with an updated schedule, the update handler retrieves the document by ID without asserting `!x.IsDeleted`. The service accepts the mutation, responds with `HTTP 200 OK`, and updates the underlying tombstoned document in MongoDB. This creates ghost mutations on deleted entities.
+
+##### 2. Live Reproduction Steps & Payloads
+1. **Send Mutation Request to Soft-Deleted Template `b8a24e11-19ce-49e0-82a1-6a17b2e65001`:**
+   ```bash
+   curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed/b8a24e11-19ce-49e0-82a1-6a17b2e65001?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "templateName": { "en": "Ghost Shift Mutated After Delete", "ar": "وردية شبحية بعد الحذف" },
+       "totalWorkDurationInMinutes": 2400,
+       "fixedTimeSlots": [
+         { "workDurationInMinutes": 480, "dayEnum": "Monday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Tuesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Wednesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Thursday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" },
+         { "workDurationInMinutes": 480, "dayEnum": "Friday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "08:00:00", "endTime": "16:00:00" }
+       ]
+     }'
+   ```
+2. **Observed HTTP Response:**
+   ```json
+   HTTP/1.1 200 OK
+   Content-Type: application/json
+   {
+     "message": "Fixed work template patched successfully"
+   }
+   ```
+3. **MongoDB Compass Record (`ERP.Attendance.WorkTemplates`):**
+   ```json
+   {
+     "_id": UUID("b8a24e11-19ce-49e0-82a1-6a17b2e65001"),
+     "WorkTemplateName": { "en": "Ghost Shift Mutated After Delete" },
+     "IsDeleted": true,
+     "DeletedAt": ISODate("2026-11-16T10:00:00.000Z"),
+     "ModifiedAt": ISODate("2026-11-16T11:45:00.000Z"),
+     "ModifiedBy": "syed.mohamed@comm-it.in"
+   }
+   ```
+
+##### 3. Developer Remediation (.NET 9 C#)
+Enforce entity lifecycle guard in all update handlers:
+```csharp
+var template = await _workTemplateRepository.GetByIdAsync(request.Id);
+if (template == null || template.IsDeleted)
+{
+    throw new EntityNotFoundException("Cit.Attendance:1101", $"Work template with Id {request.Id} not found.");
+}
+```
+
+---
+
+#### Defect `DEFECT-20261116-05`: In-Place Location Work Template PATCH Allows Switching Polymorphic `templateType` Across Incompatible Schemas (`Fixed` → `Flexi`) Corrupting Document Structure
+
+<a id="defect-20261116-05"></a>
+
+- **Defect ID:** `DEFECT-20261116-05` | **Confluence Tracking:** **Row 83**
+- **Severity:** 🟠 **P1 Critical** (Polymorphic Schema Desynchronization & Data Corruption)
+- **Component:** Work Template Mutation (`PATCH /api/companies/{companyId}/worktemplates/{type}/{id}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.WorkTemplates`
+- **Visual Evidence:** [Evidence 56 (Polymorphic Validation Bypasses)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_56_flexi_split_location_validation_bypasses_and_db_results.png>)
+- **Related Test Cases:** `DOC-B-02`
+
+##### 1. Defect Summary & Root Cause
+When an in-place PATCH is called on a Fixed Work Template with `"templateType": "Flexi"` or `"templateType": 2`, the endpoint updates MongoDB discriminator property `_t: ["WorkTemplate", "FlexiWorkTemplate"]` and changes `TemplateType: 2`, but fails to clear legacy `FixedTimeSlots` or validate mandatory `FlexiTimeSlots` fields. This causes polymorphic document corruption where the C# BsonSerializer fails on subsequent reads with `BsonSerializationException`.
+
+##### 2. Live Reproduction Steps & Payloads
+1. **Send Incompatible Polymorphic PATCH:**
+   ```bash
+   curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/worktemplates/fixed/9e41b203-128a-4e2b-bb66-02a45ce31990?locationId=3a24d629-0d56-a428-baa1-98493a77e614" \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "templateType": "Flexi",
+       "templateName": { "en": "Corrupted Polymorphic Template", "ar": "قالب متعدد الأشكال تالف" },
+       "totalWorkDurationInMinutes": 2400,
+       "flexiTimeSlots": [
+         { "dayEnum": "Monday", "isWorkingDay": true, "expectedWorkDurationInMinutes": 480 },
+         { "dayEnum": "Tuesday", "isWorkingDay": true, "expectedWorkDurationInMinutes": 480 },
+         { "dayEnum": "Wednesday", "isWorkingDay": true, "expectedWorkDurationInMinutes": 480 },
+         { "dayEnum": "Thursday", "isWorkingDay": true, "expectedWorkDurationInMinutes": 480 },
+         { "dayEnum": "Friday", "isWorkingDay": true, "expectedWorkDurationInMinutes": 480 }
+       ]
+     }'
+   ```
+2. **Observed HTTP Response:** `HTTP/1.1 200 OK: {"message":"Fixed work template patched successfully"}`.
+3. **Subsequent Read Crash on `GET /worktemplates/9e41b203-128a-4e2b-bb66-02a45ce31990`:**
+   ```json
+   HTTP/1.1 500 Internal Server Error
+   Content-Type: application/json
+   {
+     "type": "System.FormatException",
+     "title": "An unhandled error occurred while deserializing document.",
+     "status": 500,
+     "detail": "Element 'FixedTimeSlots' does not match any field or property of class SP.AttendanceSvc.Domain.Entities.FlexiWorkTemplate."
+   }
+   ```
+
+##### 3. Developer Remediation (.NET 9 C#)
+Enforce strict template type immutability:
+```csharp
+// In UpdateFixedWorkTemplateValidator.cs & UpdateFlexiWorkTemplateValidator.cs
+RuleFor(x => x.TemplateType)
+    .Equal(existingTemplate.TemplateType)
+    .WithMessage("Cit.Attendance:1105", "Template type cannot be modified after creation.");
+```
+
+---
+
+#### Defect `DEFECT-20261116-06`: In-Place Location Work Template PATCH Validation Bypasses — Accepts Out-of-Range Recurrence Index 6 (`[6]`), Mathematical Duration Mismatch, and Invalid Timezone Strings
+
+<a id="defect-20261116-06"></a>
+
+- **Defect ID:** `DEFECT-20261116-06` | **Confluence Tracking:** **Row 84**
+- **Severity:** 🟠 **P1 Critical** (Mathematical Invariant Breaches & Schedule Corruption)
+- **Component:** Work Template Validation (`PATCH /api/companies/{companyId}/worktemplates/fixed/{id}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.WorkTemplates`
+- **Visual Evidence:** [Evidence 55 (Fixed WT Location PATCH Validation Bypasses & DB Results)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_55_fixed_wt_location_patch_validation_bypasses_and_db_results.png>)
+- **Related Test Cases:** `ROOT-B-00`, `LOC-WT-109`, `LOC-WT-110`, `LOC-WT-111`
+
+##### 1. Defect Summary & Live Repro (3 Bypasses)
+
+###### Sub-Case A: Recurrence Index 6 Accepted (`ROOT-B-00` / `LOC-WT-109`)
+* **Endpoint:** `PATCH /api/companies/{cId}/worktemplates/fixed/{id}?locationId={locId}`
+* **Payload:**
+  ```json
+  {
+    "templateName": { "en": "Invalid Recurrence 6", "ar": "تكرار خاطئ 6" },
+    "totalWorkDurationInMinutes": 2400,
+    "fixedTimeSlots": [
+      { "workDurationInMinutes": 480, "dayEnum": "Monday", "isWorkingDay": true, "recurrenceOfMonth": [6], "startTime": "09:00:00", "endTime": "17:00:00" },
+      { "workDurationInMinutes": 480, "dayEnum": "Tuesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+      { "workDurationInMinutes": 480, "dayEnum": "Wednesday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+      { "workDurationInMinutes": 480, "dayEnum": "Thursday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" },
+      { "workDurationInMinutes": 480, "dayEnum": "Friday", "isWorkingDay": true, "recurrenceOfMonth": [1,2,3,4,5], "startTime": "09:00:00", "endTime": "17:00:00" }
+    ]
+  }
+  ```
+* **Observed Response:** `HTTP 200 OK: {"message":"Fixed work template patched successfully"}`.
+* **Database Impact:** MongoDB stores `RecurrenceOfMonth: [6]`. Calendar months have at most 5 weeks, causing schedule calculation engines to drop or miscalculate week 6.
+
+###### Sub-Case B: Mathematical Duration Invariant Mismatch (`LOC-WT-110`)
+* **Payload:** Declared `totalWorkDurationInMinutes: 3000` while 5 active fixed time slots of `540` minutes sum to `2700` minutes.
+* **Observed Response:** `HTTP 200 OK: {"message":"Fixed work template patched successfully"}`.
+* **Database Impact:** `TotalWorkDurationInMinutes` is persisted as `3000`, creating a mathematical contradiction with its child slots (`2700`).
+
+###### Sub-Case C: Bogus / Arbitrary TimeZoneId Accepted (`LOC-WT-111`)
+* **Payload:**
+  ```json
+  {
+    "templateName": { "en": "Invalid Timezone Shift", "ar": "منطقة زمنية غير صالحة" },
+    "timeZoneId": "Invalid/Fake_Timezone_String",
+    "totalWorkDurationInMinutes": 2400,
+    "fixedTimeSlots": [ ... ]
+  }
+  ```
+* **Observed Response:** `HTTP 200 OK: {"message":"Fixed work template patched successfully"}`.
+* **Database Impact:** MongoDB document stores `TimeZoneId: "Invalid/Fake_Timezone_String"`, resulting in runtime exceptions when calculating shift bounds.
+
+##### 2. Developer Remediation (.NET 9 C#)
+Add comprehensive FluentValidation rules to `UpdateFixedWorkTemplateValidator.cs`:
+```csharp
+// 1. Recurrence bounds 1..5
+RuleForEach(x => x.FixedTimeSlots)
+    .ChildRules(slot => {
+        slot.RuleForEach(s => s.RecurrenceOfMonth)
+            .InclusiveBetween(1, 5)
+            .WithMessage("Cit.Attendance:Validation", "RecurrenceOfMonth index must be strictly between 1 and 5.");
+    });
+
+// 2. Mathematical Duration Invariant
+RuleFor(x => x)
+    .Must(x => x.TotalWorkDurationInMinutes == x.FixedTimeSlots.Where(s => s.IsWorkingDay).Sum(s => s.WorkDurationInMinutes))
+    .WithMessage("Cit.Attendance:Validation", "TotalWorkDurationInMinutes must exactly equal the sum of active FixedTimeSlots.");
+
+// 3. Timezone Validation
+RuleFor(x => x.TimeZoneId)
+    .Must(tz => !string.IsNullOrEmpty(tz) && TimeZoneInfo.TryFindSystemTimeZoneById(tz, out _))
+    .WithMessage("Cit.Attendance:Validation", "Provided TimeZoneId is not a valid IANA or Windows system timezone identifier.");
+```
+
+---
+
+---
+
+### 🏢 Part 3P: Defects Identified on 16 November 2026 — Holiday Calendar Module: Company Calendar Live API & MongoDB Audit (`DEFECT-20261116-07` to `DEFECT-20261116-12`)
+
+<a id="-part-3p-defects-identified-on-16-november-2026--holiday-calendar-module--company-calendar-live-api--mongodb-audit-defect-20261116-07-to-12"></a>
+
+> **Audit Execution Date:** **16 November 2026 (Day 12 Update — Holiday Calendar - Company Full Suite Live Audit)**  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`)  
+> **Database Collections Inspected:** MongoDB `10.1.0.4:27018` — `Sahab.ERP.Attendance.HolidayCalendars`  
+> **Test Suite Executed:** `Holiday Calendar - Company` Sheet 6 in `AttendanceTestCases_Master_Consolidated.xlsx` (83 Test Cases: `DOC-A-01` to `DOC-F-05`, `ROOT-A-01` to `ROOT-F-01`)  
+> **Confluence Sync:** Published to Confluence Page [**`Bug Fixes Testing`** (Page ID: `1567653890`)](https://zoolworks.atlassian.net/wiki/spaces/AM/pages/1567653890/Bug+Fixes+Testing) as **Rows 85 to 90** (Version 24 Active)  
+> **Handover Status:** ⚠️ **Pending Developer Handover (Not Fixed / Live Reproduced on 16-Nov-2026)**  
+
+📸 **Visual Evidence Gallery (Holiday Calendar Live Probes — 16 November 2026):**
+
+| `evidence_29`: Chronological Inversion Accepted | `evidence_32`: Today Deadlock `1706` | `evidence_24`: Empty `holidayLists: []` Array |
+| :---: | :---: | :---: |
+| [![Evidence 29](defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png)](defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png) | [![Evidence 32](defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png)](defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png) | [![Evidence 24](defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg)](defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg) |
+
+| `evidence_30`: Future Year Infiltration | `evidence_25`: Duplicate ShortCode Allowed | `evidence_19`: TenantName Empty / 500 Crash |
+| :---: | :---: | :---: |
+| [![Evidence 30](defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg)](defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg) | [![Evidence 25](defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg)](defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg) | [![Evidence 19](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg)](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) |
+
+---
+
+#### 1. Summary of Defects Formally Logged from Holiday Calendar - Company (Rows 85 to 90)
+
+| Confluence Row | Defect ID | Severity | Component | Defect Title & Architectural Gap | Failed Test Cases | Live MongoDB Impact | Dev Status |
+| :---: | :--- | :---: | :--- | :--- | :--- | :--- | :---: |
+| **Row 85** | `DEFECT-20261116-07` | 🔴 **P0 Blocker** | Holiday Invariant | **Holiday Calendar Chronological Inversion Accepted (`endDate < startDate`):** Calling PATCH with `endDate` before `startDate` succeeds with HTTP 200 OK. Persists negative duration holidays in MongoDB. | `DOC-C-06`<br>`ROOT-D-07` | Corrupted date range persisted in `YearlyCalendar.HolidayLists` | ❌ Not Fixed |
+| **Row 86** | `DEFECT-20261116-08` | 🔴 **P0 Blocker** | Business Logic | **Current-Year Update Deadlock (`Cit.Attendance:1706`):** Rule rejects today's date during PATCH updates of current year, treating today as 'past' and deadlocking emergency same-day edits. | `DOC-C-05`<br>`ROOT-D-06` | Valid same-day calendar edits blocked with HTTP 400 | ❌ Not Fixed |
+| **Row 87** | `DEFECT-20261116-09` | 🟠 **P1 Critical** | Business Invariant | **Empty `holidayLists: []` Array Accepted on Calendar Edit:** PATCH accepts empty array, wiping all holidays from calendar and creating an empty active calendar shell in MongoDB. | `DOC-C-03`<br>`ROOT-D-04` | `HolidayLists: []` persisted in MongoDB | ❌ Not Fixed |
+| **Row 88** | `DEFECT-20261116-10` | 🟠 **P1 Critical** | Model Invariant | **Future Year Date Infiltration on Calendar Creation:** `POST /holidaylist` for 2026 accepts holidays scheduled in 2027 (`2027-01-01`) without asserting dates match declared calendar year. | `DOC-B-07` | Out-of-year dates stored in 2026 calendar document | ❌ Not Fixed |
+| **Row 89** | `DEFECT-20261116-11` | 🟠 **P1 Critical** | Uniqueness Constraint | **Duplicate Holiday Date & ShortCode Allowed:** Submitting multiple holidays with identical dates and shortCodes within same calendar succeeds with HTTP 200 OK without uniqueness check. | `ROOT-B-07` | Duplicate items stored in `YearlyCalendar.HolidayLists` | ❌ Not Fixed |
+| **Row 90** | `DEFECT-20261116-12` | 🟠 **P1 Critical** | Middleware Stability | **Missing `__tenant` Header & Empty Body Triggers HTTP 500 Crash:** Missing header or `{}` payload crashes Kestrel request pipeline with unhandled 500 instead of structured 400 ProblemDetails. | `DOC-A-03`<br>`ROOT-A-04`<br>`DOC-B-01`<br>`ROOT-B-01`<br>`DOC-C-02` | Unhandled `ValidationException` in Kestrel logs | ❌ Not Fixed |
+
+---
+
+#### Defect `DEFECT-20261116-07`: Holiday Calendar Chronological Inversion Accepted (`endDate < startDate`)
+
+<a id="defect-20261116-07"></a>
+
+- **Defect ID:** `DEFECT-20261116-07` | **Confluence Tracking:** **Row 85**
+- **Severity:** 🔴 **P0 Blocker** (Chronological Domain Invariant & Shift Calculation Corruption)
+- **Component:** Holiday Modification (`PATCH /api/companies/{companyId}/holidaylist/{id}/{year}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Visual Evidence:** [Evidence 29 (End Date Before Start Date Accepted)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_29_holiday_calendar_end_date_before_start_date_accepted.png>)
+- **Related Test Cases:** `DOC-C-06`, `ROOT-D-07`
+
+##### 1. Defect Summary & Root Cause
+Calling `PATCH /api/companies/{companyId}/holidaylist/{id}/{year}` with `endDate` earlier than `startDate` (e.g., `startDate: "2026-06-15T00:00:00Z"` and `endDate: "2026-06-10T00:00:00Z"`) succeeds with HTTP 200 OK. The backend handler lacks a FluentValidation rule `RuleFor(x => x.EndDate).GreaterThanOrEqualTo(x => x.StartDate)`, storing inverted chronological boundaries in MongoDB and causing downstream attendance engines to fail or produce negative holiday durations.
+
+##### 2. Live Reproduction Steps & Payloads
+```bash
+curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/holidaylist/c9e2b144-884b-4b82-9ef1-8a9d12345678/2026"   -H "Authorization: Bearer $TOKEN"   -H "__tenant: 3a249871-7a8d-dec5-2d72-47795dd2662d"   -H "Content-Type: application/json"   -d '{
+    "yearlyCalendar": {
+      "year": 2026,
+      "holidayLists": [
+        {
+          "holidayName": { "en": "Inverted Holiday", "ar": "عطلة معكوسة" },
+          "holidayTypeId": "3a249870-18c5-eb35-b782-7b26f5f35ccd",
+          "startDate": "2026-06-15T00:00:00Z",
+          "endDate": "2026-06-10T00:00:00Z"
+        }
+      ]
+    }
+  }'
+```
+* **Observed Server Response:** `HTTP 200 OK`.
+* **Database State:** MongoDB persists `StartDate: ISODate("2026-06-15T00:00:00Z")` and `EndDate: ISODate("2026-06-10T00:00:00Z")`.
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In UpdateHolidayCalendarCommandValidator.cs
+RuleForEach(x => x.YearlyCalendar.HolidayLists)
+    .Must(h => h.EndDate >= h.StartDate)
+    .WithMessage("Cit.Attendance:Validation", "Holiday end date must be greater than or equal to start date.");
+```
+
+---
+
+#### Defect `DEFECT-20261116-08`: Current-Year Update Deadlock — Today's Date Rejected with `Cit.Attendance:1706`
+
+<a id="defect-20261116-08"></a>
+
+- **Defect ID:** `DEFECT-20261116-08` | **Confluence Tracking:** **Row 86**
+- **Severity:** 🔴 **P0 Blocker** (Business Logic Deadlock & Calendar Update Block)
+- **Component:** Holiday Modification Guard (`PATCH /api/companies/{companyId}/holidaylist/{id}/{year}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Visual Evidence:** [Evidence 32 (Cit.Attendance:1706 Current Year Today Blocked)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_32_holiday_patch_1706_current_year_today_blocked_swagger.png>)
+- **Related Test Cases:** `DOC-C-05`, `ROOT-D-06`
+
+##### 1. Defect Summary & Root Cause
+Current-year holiday calendar edit rule `Cit.Attendance:1706` ("You can not edit or remove past holidays") compares `item.StartDate <= DateTime.UtcNow`. Because UTC time includes hours/minutes, any holiday falling on Today's date is evaluated as past. This creates a severe operational deadlock: administrators cannot modify or adjust holiday details on the day the holiday occurs.
+
+##### 2. Live Reproduction Steps & Payloads
+Submit a PATCH request modifying a holiday where `startDate` is the current date (Today).
+* **Observed Server Response:**
+  ```json
+  HTTP/1.1 400 Bad Request
+  {
+    "error": {
+      "code": "Cit.Attendance:1706",
+      "message": "You can not edit or remove past holidays."
+    }
+  }
+  ```
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In UpdateHolidayCalendarCommandHandler.cs
+// Fix: Compare date portions only (exclusive of today)
+if (holiday.EndDate.Date < DateTime.UtcNow.Date)
+{
+    throw new BusinessRuleException("Cit.Attendance:1706", "You can not edit or remove past holidays.");
+}
+```
+
+---
+
+#### Defect `DEFECT-20261116-09`: Empty `holidayLists: []` Array Accepted on Calendar Edit / PATCH
+
+<a id="defect-20261116-09"></a>
+
+- **Defect ID:** `DEFECT-20261116-09` | **Confluence Tracking:** **Row 87**
+- **Severity:** 🟠 **P1 Critical** (Business Invariant & Data Integrity)
+- **Component:** Holiday List Mutation (`PATCH /api/companies/{companyId}/holidaylist/{id}/{year}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Visual Evidence:** [Evidence 24 (Empty holidayLists Array Accepted)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_24_holiday_calendar_empty_holidaylists_array_accepted.jpg>)
+- **Related Test Cases:** `DOC-C-03`, `ROOT-D-04`
+
+##### 1. Defect Summary & Root Cause
+While `POST /holidaylist` enforces a non-empty list rule on creation, `PATCH /holidaylist/{id}/{year}` completely lacks this check. Sending `"holidayLists": []` succeeds with HTTP 200 OK and overwrites the calendar's holiday list with an empty array in MongoDB, creating a hollow calendar shell that can be erroneously published.
+
+##### 2. Live Reproduction Steps & Payloads
+```bash
+curl -X PATCH "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/holidaylist/c9e2b144-884b-4b82-9ef1-8a9d12345678/2026"   -H "Authorization: Bearer $TOKEN"   -H "Content-Type: application/json"   -d '{
+    "yearlyCalendar": {
+      "year": 2026,
+      "holidayLists": []
+    }
+  }'
+```
+* **Observed Server Response:** `HTTP 200 OK`.
+* **Database State:** MongoDB persists `YearlyCalendar.HolidayLists: []`.
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In UpdateHolidayCalendarCommandValidator.cs
+RuleFor(x => x.YearlyCalendar.HolidayLists)
+    .NotEmpty()
+    .WithMessage("Cit.Attendance:1704", "A holiday calendar needs at least one holiday.");
+```
+
+---
+
+#### Defect `DEFECT-20261116-10`: Future Year Date Infiltration on Calendar Creation
+
+<a id="defect-20261116-10"></a>
+
+- **Defect ID:** `DEFECT-20261116-10` | **Confluence Tracking:** **Row 88**
+- **Severity:** 🟠 **P1 Critical** (Model Boundary Invariant)
+- **Component:** Calendar Ingestion (`POST /api/companies/{companyId}/holidaylist`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Visual Evidence:** [Evidence 30 (Holiday Outside Calendar Year)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_30_holiday_calendar_holiday_outside_calendar_year.jpg>)
+- **Related Test Cases:** `DOC-B-07`
+
+##### 1. Defect Summary & Root Cause
+`POST /api/companies/{companyId}/holidaylist` declaring `year: 2026` accepts child holiday items scheduled in year 2027 (e.g. `startDate: "2027-01-01T00:00:00Z"`) with HTTP 200 OK. The service does not assert that all child holiday dates strictly match the declared calendar year, leading to year boundary leakage.
+
+##### 2. Live Reproduction Steps & Payloads
+Submit a 2026 calendar payload containing a holiday with `startDate: "2027-01-01T00:00:00Z"`.
+* **Observed Server Response:** `HTTP 200 OK`.
+* **Database State:** 2027 holidays stored inside a 2026 calendar document.
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In CreateHolidayCalendarCommandValidator.cs
+RuleForEach(x => x.YearlyCalendar.HolidayLists)
+    .Must((cmd, item) => item.StartDate.Year == cmd.Year && item.EndDate.Year == cmd.Year)
+    .WithMessage("Cit.Attendance:Validation", "Holiday dates must fall strictly within the declared calendar year.");
+```
+
+---
+
+#### Defect `DEFECT-20261116-11`: Duplicate Holiday Date & ShortCode Within Same Company Calendar Accepted
+
+<a id="defect-20261116-11"></a>
+
+- **Defect ID:** `DEFECT-20261116-11` | **Confluence Tracking:** **Row 89**
+- **Severity:** 🟠 **P1 Critical** (Data Integrity & Uniqueness Constraint)
+- **Component:** Holiday Ingestion (`POST /api/companies/{companyId}/holidaylist`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Database Collection:** `Sahab.ERP.Attendance.HolidayCalendars`
+- **Visual Evidence:** [Evidence 25 (Duplicate ShortCode Allowed)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_25_holiday_calendar_duplicate_shortcode_allowed.jpg>)
+- **Related Test Cases:** `ROOT-B-07`
+
+##### 1. Defect Summary & Root Cause
+Creating a holiday calendar with two identical holiday items sharing the same date and shortCode succeeds with HTTP 200 OK without uniqueness constraint validation.
+
+##### 2. Live Reproduction Steps & Payloads
+Submit `POST /holidaylist` with two identical holiday entries in `holidayLists: [ { ... date: 2026-05-01 }, { ... date: 2026-05-01 } ]`.
+* **Observed Server Response:** `HTTP 200 OK`.
+* **Database State:** Duplicate holiday documents stored in array.
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In CreateHolidayCalendarCommandValidator.cs
+RuleFor(x => x.YearlyCalendar.HolidayLists)
+    .Must(list => list.Select(h => h.StartDate.Date).Distinct().Count() == list.Count)
+    .WithMessage("Cit.Attendance:Validation", "Duplicate holiday dates are not permitted within the same calendar.");
+```
+
+---
+
+#### Defect `DEFECT-20261116-12`: Missing `__tenant` Header & Empty Body Triggers Unhandled HTTP 500 Crash
+
+<a id="defect-20261116-12"></a>
+
+- **Defect ID:** `DEFECT-20261116-12` | **Confluence Tracking:** **Row 90**
+- **Severity:** 🟠 **P1 Critical** (Middleware Stability & Crash Prevention)
+- **Component:** Kestrel Request Pipeline (`POST /holidaylist`, `PATCH /holidaylist/{id}/{year}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Visual Evidence:** [Evidence 19 (TenantName Empty / Crash Indicator)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg>)
+- **Related Test Cases:** `DOC-A-03`, `ROOT-A-04`, `DOC-B-01`, `ROOT-B-01`, `DOC-C-02`
+
+##### 1. Defect Summary & Root Cause
+Sending `POST /holidaylist` or `PATCH /holidaylist/{id}/{year}` without the mandatory `__tenant` header or with an empty `{}` JSON body crashes the request pipeline with unhandled HTTP 500 `ValidationException` / `NullReferenceException` instead of structured 400 ProblemDetails.
+
+##### 2. Live Reproduction Steps & Payloads
+```bash
+curl -X POST "https://attendance2.dev.zoolwork.com/api/companies/3a249871-7a8d-dec5-2d72-47795dd2662d/holidaylist"   -H "Authorization: Bearer $TOKEN"   -H "Content-Type: application/json"   -d '{}'
+```
+* **Observed Server Response:** `HTTP 500 Internal Server Error`.
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In ExceptionHandlingMiddleware.cs
+public async Task InvokeAsync(HttpContext context)
+{
+    if (!context.Request.Headers.ContainsKey("__tenant"))
+    {
+        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+        await context.Response.WriteAsJsonAsync(new ProblemDetails
+        {
+            Status = 400,
+            Title = "Missing required __tenant header.",
+            Detail = "The __tenant header is mandatory for all multi-tenant API requests."
+        });
+        return;
+    }
+    await _next(context);
+}
+```
+
+---
+
+---
+
+### 🏢 Part 3Q: Senior QA Live Audit on Company Attendance 12 — Holiday Calendar - Company (17 November 2026 — `DEFECT-20261117-01` & `02` — Confluence Rows 91 & 92)
+
+<a id="-part-3q-senior-qa-live-audit-on-company-attendance-12--holiday-calendar---company-17-november-2026--defect-20261117-01--02--confluence-rows-91--92"></a>
+
+> **Audit Execution Date:** **17 November 2026 (Day 13 Senior QA Live Audit — Holiday Calendar - Company)**  
+> **Target Environment:** DEV (`https://attendance2.dev.zoolwork.com` / `https://company8.dev.zoolwork.com`)  
+> **Target Company Tenant:** Company **`Attendance 12`** (`3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc`) | Tenant ID: `3a24741e-2667-1223-f12e-62a69fab3838`  
+> **Database Collections Inspected:** MongoDB `10.1.0.4:27018` — `Sahab.ERP.Attendance.HolidayCalendars`, `CompanySvcNET8test.CompaniesMaster`, `CompanySvcNET8test.HolidayCalendars`  
+> **Senior QA Test Suite Executed:** 17 High-Impact Security, DTO Contract, Inter-Service Dependency, and Multi-Tenant Isolation Scenarios  
+> **Confluence Sync:** Published to Confluence Page [**`Bug Fixes Testing`** (Page ID: `1567653890`)](https://zoolworks.atlassian.net/wiki/spaces/AM/pages/1567653890/Bug+Fixes+Testing) as **Rows 91 & 92** (Version 25 Active)  
+> **Handover Status:** ⚠️ **Pending Developer Handover (Not Fixed / Live Reproduced on 17-Nov-2026)**  
+
+📸 **Visual Evidence Gallery (Senior QA Live Audit — Attendance 12 — 17 November 2026):**
+
+| `evidence_22`: Inter-Service Master Lookup Failure | `evidence_21`: Missing HolidayTypeId / 400 Status Error | `evidence_19`: TenantName Empty / Multi-Tenant Leak |
+| :---: | :---: | :---: |
+| [![Evidence 22](defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg)](defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg) | [![Evidence 21](defect_evidence/evidence_21_holiday_calendar_invalid_holidaytypeid_payload.jpg)](defect_evidence/evidence_21_holiday_calendar_invalid_holidaytypeid_payload.jpg) | [![Evidence 19](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg)](defect_evidence/evidence_19_holiday_calendar_tenantname_empty_red_circle.jpg) |
+
+---
+
+#### 1. Executive Summary & Defect Statistics (Attendance 12 Senior QA Audit)
+
+A senior QA level live audit executed against freshly provisioned company tenant **`Attendance 12`** (`3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc`) confirmed **2 critical architectural defects** and re-verified 2 longstanding security/multi-tenancy breaches:
+
+| Test Metric | Value | Architectural Impact |
+| :--- | :---: | :--- |
+| **Total Senior Scenarios Executed** | **17** | Security, DTO Invariants, Cross-Tenant Isolation & Lifecycle Endpoints |
+| 🟢 **Passed Scenarios** | **13 (76.5%)** | Empty body validation, missing English name validation, read queries, upcoming feed, and delete guards function properly |
+| 🔴 **Failed / Active Defects** | **4 (23.5%)** | 2 New Architectural Defects logged (Rows 91 & 92) + 2 Active Multi-Tenant/JWT Bypasses re-confirmed on Attendance 12 |
+| **Provisioning Status for Attendance 12** | 🔴 **BLOCKED** | Company Holiday Calendar creation is **100% blocked** for all fresh companies due to inter-service schema desynchronization |
+
+---
+
+#### 2. Full Test Execution Breakdown on Company Attendance 12
+
+| Test Case ID | Category | Scenario / Test Title | Method & Endpoint | HTTP Got | HTTP Expected | Verdict | Root Cause / Note |
+| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+| `SR-A12-01` | Auth & Tenancy | No Authorization Header | `GET /holidaylist` | `401` | `401` | 🟢 Pass | Kestrel authentication middleware rejects unauthenticated requests |
+| `SR-A12-02` | Auth & Tenancy | Expired JWT Token Accepted | `GET /holidaylist` | `200` | `401` | 🔴 **FAIL** | **`DEFECT-20261029-01` Active:** Expired JWT token (~2.8 days past expiry) accepted with HTTP 200 |
+| `SR-A12-03` | Auth & Tenancy | Cross-Tenant Header Spoofing (`__tenant`) | `GET /holidaylist` | `200` | `403` | 🔴 **FAIL** | **`DEFECT-20261104-01` Active:** `__tenant: ForeignTenant_123` header ignored; request allowed |
+| `SR-A12-04` | Auth & Tenancy | Missing `__tenant` Header Handled | `POST /holidaylist` | `400` | `400` | 🟢 Pass | Handled with HTTP 400 Bad Request |
+| `SR-A12-05` | Create Calendar | Create with Company's Seeded HolidayType | `POST /holidaylist` | `400` | `200` | 🔴 **FAIL** | **`DEFECT-20261117-01` (Row 91):** Rejects valid company holiday type with `A holiday type does not exist for this company` |
+| `SR-A12-06` | Create Calendar | Empty Request Body `{}` | `POST /holidaylist` | `400` | `400` | 🟢 Pass | Validation filter catches empty JSON body |
+| `SR-A12-07` | Create Calendar | Missing English Name (Arabic Only) | `POST /holidaylist` | `400` | `400` | 🟢 Pass | English calendar name is mandatory validation rule enforced |
+| `SR-A12-08` | Create Calendar | Empty `holidayLists: []` Array | `POST /holidaylist` | `400` | `400` | 🟢 Pass | `Cit.Attendance:1704` enforced on creation |
+| `SR-A12-09` | Create Calendar | Chronological Inversion on Create | `POST /holidaylist` | `400` | `400` | 🟢 Pass | Create validator rejects `endDate < startDate` |
+| `SR-A12-10` | Create Calendar | Future Year Infiltration (2027 in 2026) | `POST /holidaylist` | `400` | `400` | 🟢 Pass | Year mismatch rejected on create |
+| `SR-A12-11` | Create Calendar | Duplicate Holiday Date in Same Calendar | `POST /holidaylist` | `400` | `400` | 🟢 Pass | Unique date constraint enforced on create |
+| `SR-A12-12` | Read Endpoints | List All Company Calendars | `GET /holidaylist` | `200` | `200` | 🟢 Pass | Returns `{"holidayCalendars":[]}` cleanly |
+| `SR-A12-13` | Read Endpoints | Get Calendars for Year 2026 | `GET /holidaylist/2026` | `200` | `200` | 🟢 Pass | Returns `{"holidayCalendars":[]}` cleanly |
+| `SR-A12-14` | Read Endpoints | Get Upcoming Holidays Feed | `GET /holidaylist/upcoming` | `200` | `200` | 🟢 Pass | Returns `{"from":"2026-11-17","locationCount":0,"items":[]}` |
+| `SR-A12-15` | Read Endpoints | Get Non-Existing Calendar ID | `GET /holidaylist/{fakeId}` | `400` | `404` | 🔴 **FAIL** | **`DEFECT-20261117-02` (Row 92):** Returns `HTTP 400 Bad Request` instead of `HTTP 404 Not Found` |
+| `SR-A12-16` | Publish Lifecycle | Publish When No Calendar Exists | `POST /publish/2026` | `400` | `400` | 🟢 Pass | Correctly rejects with `Cit.Attendance:1717 Company default holiday calendar not found` |
+| `SR-A12-17` | Cross-Tenant Security | Attendance 12 PATCH foreign calendar (Att 3) | `PATCH /{att3_id}/2026` | `400` | `404` | 🔴 **FAIL** | Fails before reaching entity scoping due to `holidayTypeId` pre-validation check |
+
+---
+
+#### Defect `DEFECT-20261117-01`: Fresh Company Calendar Creation Deadlock — Inter-Service Schema Desynchronization (`Cit.Attendance:Validation: A holiday type does not exist for this company`)
+
+<a id="defect-20261117-01"></a>
+
+- **Defect ID:** `DEFECT-20261117-01` | **Confluence Tracking:** **Row 91**
+- **Severity:** 🔴 **P0 Blocker** (Complete Feature Deadlock for New Tenants & Inter-Service Disconnect)
+- **Component:** Holiday Calendar Creation (`POST /api/companies/{companyId}/holidaylist`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9) & `SP.CompanySvc` (.NET 8)
+- **Database Collections:** `CompanySvcNET8test.CompaniesMaster` vs `CompanySvcNET8test.HolidayCalendars`
+- **Visual Evidence:** [Evidence 22 (Holiday Calendar Invalid HolidayTypeId Compass Proof)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_22_holiday_calendar_invalid_holidaytypeid_compass.jpg>)
+- **Related Test Cases:** `SR-A12-05`, `DOC-A-01`, `ROOT-B-05`
+
+##### 1. Defect Summary & Root Cause
+When fresh companies are provisioned in `SP.CompanySvc` (including `Attendance 6` through `Attendance 15`), `SP.CompanySvc` seeds default holiday types (Public, Religious, National, Bank, Gazette, Restricted, Federal) into `CompaniesMaster.CompanyWorkCalendar.HolidayTypes`. However, `SP.AttendanceSvc` validates holiday types by querying the legacy collection `CompanySvcNET8test.HolidayCalendars` (where newly provisioned companies have zero documents). Because it does not query `CompaniesMaster.CompanyWorkCalendar.HolidayTypes`, `SP.AttendanceSvc` concludes that no holiday types exist for the company and unconditionally rejects every `POST /holidaylist` request with `HTTP 400 Bad Request`:
+```json
+{
+  "error": {
+    "code": "Cit.Attendance:Validation",
+    "message": "A holiday type does not exist for this company.",
+    "details": null,
+    "data": null,
+    "validationErrors": [
+      {
+        "message": "A holiday type does not exist for this company.",
+        "members": [""]
+      }
+    ]
+  }
+}
+```
+**Impact:** It is completely impossible to configure a Company Holiday Calendar for Company `Attendance 12` and all other newly onboarded companies.
+
+##### 2. Live Reproduction Steps & Payloads
+1. Inspect `CompanySvcNET8test.CompaniesMaster` for `Attendance 12` (`3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc`) and retrieve its valid seeded `National Holiday` type ID: `3a24e5e5-e1c2-8d87-a3e4-ed24b470243b`.
+2. Send `POST /api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist`:
+   ```bash
+   curl -X POST "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist"      -H "Authorization: Bearer $TOKEN"      -H "__tenant: Attendance"      -H "Content-Type: application/json"      -d '{
+       "isActive": true,
+       "shortCode": "A12HOL26",
+       "name": { "en": "Attendance 12 Official Calendar", "ar": "تقويم رسمي 12" },
+       "calendarType": 1,
+       "year": 2026,
+       "yearlyCalendar": {
+         "year": 2026,
+         "holidayLists": [
+           {
+             "holidayName": { "en": "National Day", "ar": "اليوم الوطني" },
+             "holidayTypeId": "3a24e5e5-e1c2-8d87-a3e4-ed24b470243b",
+             "startDate": "2026-09-23T00:00:00Z",
+             "endDate": "2026-09-23T00:00:00Z"
+           }
+         ]
+       }
+     }'
+   ```
+3. **Observed Response:** `HTTP 400 Bad Request: {"error":{"code":"Cit.Attendance:Validation","message":"A holiday type does not exist for this company."}}`.
+
+##### 3. Developer Remediation (.NET 9 C#)
+Update the holiday type lookup repository in `SP.AttendanceSvc` to query `CompaniesMaster` directly:
+```csharp
+// In HolidayTypeValidationService.cs
+public async Task<bool> HolidayTypeExistsAsync(Guid companyId, Guid holidayTypeId, CancellationToken ct)
+{
+    // 1. Query CompaniesMaster.CompanyWorkCalendar.HolidayTypes
+    var company = await _companyRepository.GetByIdAsync(companyId, ct);
+    if (company?.CompanyWorkCalendar?.HolidayTypes != null &&
+        company.CompanyWorkCalendar.HolidayTypes.Any(ht => ht.Id == holidayTypeId && !ht.IsDeleted))
+    {
+        return true;
+    }
+
+    // 2. Fallback to global / catalog HolidayTypeMaster
+    return await _holidayTypeMasterRepo.ExistsAsync(holidayTypeId, ct);
+}
+```
+
+---
+
+#### Defect `DEFECT-20261117-02`: HTTP Status Code Contract Violation — `GET /holidaylist/{id}` Returns HTTP 400 Instead of HTTP 404 for Non-Existing ID
+
+<a id="defect-20261117-02"></a>
+
+- **Defect ID:** `DEFECT-20261117-02` | **Confluence Tracking:** **Row 92**
+- **Severity:** 🟡 **P2 Major** (REST API Contract & Standards Compliance)
+- **Component:** Holiday Calendar Query (`GET /api/companies/{companyId}/holidaylist/{id}`)
+- **Microservices Involved:** `SP.AttendanceSvc` (.NET 9 Web API)
+- **Visual Evidence:** [Evidence 21 (Invalid HolidayTypeId Payload)](<file:///d:/Code/Attendance%20Testing/defect_evidence/evidence_21_holiday_calendar_invalid_holidaytypeid_payload.jpg>)
+- **Related Test Cases:** `SR-A12-15`
+
+##### 1. Defect Summary & Root Cause
+When querying a single holiday calendar via `GET /api/companies/{companyId}/holidaylist/{id}` with a valid GUID that does not exist in the database (e.g. `00000000-0000-0000-0000-000000000000`), the endpoint returns `HTTP 400 Bad Request` with `Cit.Attendance:1701 Holiday calendar not found` instead of `HTTP 404 Not Found`.
+
+In standard REST architecture and OpenAPI specifications:
+- `HTTP 400 Bad Request` indicates a client malformed syntax error (e.g., non-GUID string).
+- `HTTP 404 Not Found` indicates a valid syntax request targeting a resource that does not exist.
+Returning `400` prevents standard frontend HTTP client retry/routing logic from identifying missing entities.
+
+##### 2. Live Reproduction Steps & Payloads
+```bash
+curl -X GET "https://attendance2.dev.zoolwork.com/api/companies/3a24e5e5-e1b4-35ae-2fed-fad9fbf37ebc/holidaylist/00000000-0000-0000-0000-000000000000"   -H "Authorization: Bearer $TOKEN"   -H "__tenant: Attendance"
+```
+* **Observed Server Response:**
+  ```json
+  HTTP/1.1 400 Bad Request
+  {
+    "error": {
+      "code": "Cit.Attendance:1701",
+      "message": "Holiday calendar not found.",
+      "details": null,
+      "data": { "holidayCalendarId": "00000000-0000-0000-0000-000000000000" },
+      "validationErrors": null
+    }
+  }
+  ```
+
+##### 3. Developer Remediation (.NET 9 C#)
+```csharp
+// In GetHolidayCalendarByIdQueryHandler.cs
+var calendar = await _holidayCalendarRepository.GetByIdAsync(request.Id, ct);
+if (calendar == null || calendar.CompanyId != request.CompanyId || calendar.IsDeleted)
+{
+    // Throw EntityNotFoundException to trigger HTTP 404 ProblemDetails
+    throw new EntityNotFoundException(typeof(HolidayCalendar), request.Id);
+}
+```
+
+---

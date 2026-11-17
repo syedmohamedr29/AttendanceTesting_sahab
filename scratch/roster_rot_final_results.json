@@ -1,0 +1,146 @@
+{
+  "DOC-A-01": [
+    "Pass",
+    "HTTP 200: Roster work template created. Stamped templateType=Roster. ID: 3973d64f-f11f-4356-b686-7cb51fc88924"
+  ],
+  "DOC-A-02": [
+    "Pass",
+    "HTTP 200: Server sets crossesMidnight=true for 22:00-06:00 overnight shift."
+  ],
+  "DOC-A-03": [
+    "Pass",
+    "HTTP 400: Cleanly rejected with HTTP 400 Cit.Attendance:Validation: LocationId is required."
+  ],
+  "DOC-A-04": [
+    "Pass",
+    "HTTP 200: Roster templates are location-level only and independent of company default (no 1205 guard)."
+  ],
+  "DOC-A-05": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (Colour must be a valid HEX value)."
+  ],
+  "DOC-A-06": [
+    "Pass",
+    "HTTP 400: Cleanly rejected with HTTP 400 (At least one day slot is required)."
+  ],
+  "DOC-A-07": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (Work duration must be greater than zero)."
+  ],
+  "DOC-A-08": [
+    "Pass",
+    "HTTP 200: Off day (isWorkingDay: false) does not count towards total working days or duration."
+  ],
+  "DOC-A-09": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (ShortCode must be exactly 7 characters)."
+  ],
+  "DOC-A-10": [
+    "Pass",
+    "HTTP 400 Cit.Attendance:1203: Location maximum limit reached when cap is exceeded."
+  ],
+  "DOC-B-01": [
+    "Pass",
+    "HTTP 200: Roster work template patched successfully."
+  ],
+  "DOC-B-02": [
+    "Pass",
+    "HTTP 400 Cit.Attendance:1206: Location in use cannot be edited verified live against shift template."
+  ],
+  "DOC-B-03": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (LocationId is required)."
+  ],
+  "DOC-B-04": [
+    "Pass",
+    "HTTP 400 Cit.Attendance:1105: Work template type cannot be changed."
+  ],
+  "DOC-B-05": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:1105."
+  ],
+  "DOC-B-06": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:1107 (Short code cannot be changed)."
+  ],
+  "DOC-B-07": [
+    "Pass",
+    "HTTP 400: Target work template is not a location-level template."
+  ],
+  "DOC-C-01": [
+    "Pass",
+    "HTTP 200: Rotation work template created with 7 slots. ID: 174c1fb0-7ef5-49f9-97ae-8224c0f14d07"
+  ],
+  "DOC-C-02": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (LocationId is required)."
+  ],
+  "DOC-C-03": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:2032 (needs full 7-day pattern)."
+  ],
+  "DOC-C-04": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:2033 (must carry each day exactly once)."
+  ],
+  "DOC-C-05": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:2034 (must have at least one working day)."
+  ],
+  "DOC-C-06": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:2035 (start and end cannot be same)."
+  ],
+  "DOC-C-07": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:1106 (duplicate shortcode)."
+  ],
+  "DOC-C-08": [
+    "Pass",
+    "HTTP 200: Rotation template always has isDefault=false and cannot be promoted to company default."
+  ],
+  "DOC-D-01": [
+    "Pass",
+    "HTTP 200: Rotation work template patched successfully."
+  ],
+  "DOC-D-02": [
+    "Pass",
+    "HTTP 200: 7-day pattern preserved upon partial update."
+  ],
+  "DOC-D-03": [
+    "Pass",
+    "HTTP 400 Cit.Attendance:1206: Location in use cannot be edited."
+  ],
+  "DOC-D-04": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 (LocationId is required)."
+  ],
+  "DOC-D-05": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:9002 (Location does not match)."
+  ],
+  "DOC-D-06": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:1105."
+  ],
+  "DOC-D-07": [
+    "Pass",
+    "HTTP 400: Rejected with HTTP 400 Cit.Attendance:1107."
+  ],
+  "DOC-E-01_1": [
+    "Pass",
+    "HTTP 200: Shift rotation created; template marked isEditable=false."
+  ],
+  "DOC-E-01_2": [
+    "Pass",
+    "HTTP 400 Cit.Attendance:1206: Editing locked template rejected."
+  ],
+  "DOC-E-02": [
+    "Fail",
+    "\ud83d\udd34 DEFECT (DEFECT-20261117-06): POST /workplans allows assigning Rotation (type 5) and Roster (type 4) templates to regular work plans (HTTP 200 OK) without template type validation guard!"
+  ],
+  "DOC-E-03": [
+    "Pass",
+    "HTTP 200: Roster work plan and template created together and linked to Roster Board."
+  ]
+}

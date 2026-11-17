@@ -1,0 +1,362 @@
+[
+  {
+    "row": 2,
+    "tc_id": "DOC-A-01",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Create a roster template",
+    "input": "shortCode: \"MRN0001\", colour: \"#12B886\", Sun\u2013Thu working 07:00\u201315:00 (480 min), Fri\u2013Sat off",
+    "expected": "HTTP 200 \"Roster work template created\"; templateType=Roster (4), colour and slots stored",
+    "pri": "P0",
+    "type": "smoke"
+  },
+  {
+    "row": 3,
+    "tc_id": "DOC-A-02",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Night shift across midnight",
+    "input": "working day 22:00\u201306:00, 480 min (crossesMidnight not sent, or sent wrong)",
+    "expected": "HTTP 200; server sets crossesMidnight=true because end < start; 480 minutes stored",
+    "pri": "P0",
+    "type": "regression"
+  },
+  {
+    "row": 4,
+    "tc_id": "DOC-A-03",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "No location",
+    "input": "locationId omitted",
+    "expected": "HTTP 400 Sbp:Validation, \"LocationId is required. Roster work templates are location-level only.\"",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 5,
+    "tc_id": "DOC-A-04",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "No company default needed",
+    "input": "company without a company default",
+    "expected": "HTTP 200 \u2014 unlike regular location templates (no 1205)",
+    "pri": "P1",
+    "type": "regression"
+  },
+  {
+    "row": 6,
+    "tc_id": "DOC-A-05",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Colour format",
+    "input": "colour: \"green\" / \"#12B88\" / missing",
+    "expected": "HTTP 400 \"Colour must be a valid HEX value (e.g. #12B886).\" / \"Colour is required.\"",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 7,
+    "tc_id": "DOC-A-06",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Slot rules",
+    "input": "empty rosterTimeSlots; two slots for Mon",
+    "expected": "HTTP 400 \"At least one day slot is required.\" / \"RosterTimeSlots cannot contain duplicate days.\"",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 8,
+    "tc_id": "DOC-A-07",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Working day timing",
+    "input": "working day with workDurationInMinutes: 0, or start = end",
+    "expected": "HTTP 400 \"Each working day must have a work duration greater than zero.\" / \"A working day's start and end time cannot be the same.\"",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 9,
+    "tc_id": "DOC-A-08",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Off day with times",
+    "input": "off day (isWorkingDay: false) sent with 22:00\u201306:00",
+    "expected": "HTTP 200; crossesMidnight=false on the off day; the off day is not counted as working",
+    "pri": "P2",
+    "type": "edge"
+  },
+  {
+    "row": 10,
+    "tc_id": "DOC-A-09",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Short code rules",
+    "input": "6 chars / duplicate in company",
+    "expected": "HTTP 400 Sbp:Validation (exactly 7 letters/digits) / Cit.Attendance:1106",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 11,
+    "tc_id": "DOC-A-10",
+    "section": "A. Roster Template \u2014 Create",
+    "scenario": "Location cap",
+    "input": "location already has 20 templates (all types counted together)",
+    "expected": "HTTP 400 Cit.Attendance:1203",
+    "pri": "P2",
+    "type": "negative"
+  },
+  {
+    "row": 12,
+    "tc_id": "DOC-B-01",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Edit name, colour, timings",
+    "input": "{rosterWt}",
+    "expected": "HTTP 200 \"Roster work template patched\"; same id; changes stored",
+    "pri": "P0",
+    "type": "smoke"
+  },
+  {
+    "row": 13,
+    "tc_id": "DOC-B-02",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Template used by a shift",
+    "input": "{rosterWtUsed}",
+    "expected": "HTTP 400 Cit.Attendance:1206 (\"Location in use cannot be edited.\"). Shift timing is edited through PATCH /workplans/roster/{id} instead",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 14,
+    "tc_id": "DOC-B-03",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "No location",
+    "input": "locationId omitted",
+    "expected": "HTTP 400 Sbp:Validation, \"LocationId is required\u2026\"",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 15,
+    "tc_id": "DOC-B-04",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Roster endpoint on a regular template",
+    "input": "PATCH /roster/{fixedTemplateId}",
+    "expected": "HTTP 400 Cit.Attendance:1105 (type cannot change)",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 16,
+    "tc_id": "DOC-B-05",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Regular endpoint on a roster template",
+    "input": "PATCH /fixed/{rosterWt}",
+    "expected": "HTTP 400 Cit.Attendance:1105; template stays Roster",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 17,
+    "tc_id": "DOC-B-06",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Short code change",
+    "input": "shortCode: \"OTHER01\"",
+    "expected": "HTTP 400 Cit.Attendance:1107",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 18,
+    "tc_id": "DOC-B-07",
+    "section": "B. Roster Template \u2014 Edit",
+    "scenario": "Target is a company template",
+    "input": "id = company default version",
+    "expected": "HTTP 400 InvalidState, \"The target work template is not a location-level template.\"",
+    "pri": "P2",
+    "type": "negative"
+  },
+  {
+    "row": 19,
+    "tc_id": "DOC-C-01",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Create a rotation template",
+    "input": "shortCode: \"ROTDAY1\", 7 rows: Sun\u2013Thu working 08:00\u201316:00 (480 min), Fri\u2013Sat off",
+    "expected": "HTTP 200 \"Rotation work template created\"; templateType=Rotation (5), 7 slots stored",
+    "pri": "P0",
+    "type": "smoke"
+  },
+  {
+    "row": 20,
+    "tc_id": "DOC-C-02",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "No location",
+    "input": "locationId omitted",
+    "expected": "HTTP 400 Sbp:Validation, \"LocationId is required. Rotation work templates are location-level only.\"",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 21,
+    "tc_id": "DOC-C-03",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Fewer than 7 days",
+    "input": "only Sun\u2013Thu rows",
+    "expected": "HTTP 400 Cit.Attendance:2032 (\"\u2026needs a full weekly pattern covering all seven days.\")",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 22,
+    "tc_id": "DOC-C-04",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Duplicate or unset day",
+    "input": "Mon twice, or a row with dayEnum: 0",
+    "expected": "HTTP 400 Sbp:Validation duplicate-days message / Cit.Attendance:2033 (\"\u2026must carry each day of the week exactly once.\")",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 23,
+    "tc_id": "DOC-C-05",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "No working day",
+    "input": "all 7 rows off",
+    "expected": "HTTP 400 Cit.Attendance:2034 (\"\u2026must have at least one working day.\")",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 24,
+    "tc_id": "DOC-C-06",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Working day without timing",
+    "input": "working day with 0 minutes or start = end",
+    "expected": "HTTP 400 Sbp:Validation or Cit.Attendance:2035 (\"Each working day needs a start time, a different end time, and a work duration greater than zero.\")",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 25,
+    "tc_id": "DOC-C-07",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Short code and cap",
+    "input": "duplicate code / location at 20 templates",
+    "expected": "HTTP 400 Cit.Attendance:1106 / 1203",
+    "pri": "P2",
+    "type": "negative"
+  },
+  {
+    "row": 26,
+    "tc_id": "DOC-C-08",
+    "section": "C. Rotation Template \u2014 Create",
+    "scenario": "Never a company default",
+    "input": "after C-01",
+    "expected": "isDefault=false; the template appears only with templateType=rotation in the list",
+    "pri": "P2",
+    "type": "regression"
+  },
+  {
+    "row": 27,
+    "tc_id": "DOC-D-01",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Edit name and timings",
+    "input": "{rotationWt}, full 7-row pattern with new times",
+    "expected": "HTTP 200 \"Rotation work template patched\"; same id",
+    "pri": "P0",
+    "type": "smoke"
+  },
+  {
+    "row": 28,
+    "tc_id": "DOC-D-02",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Partial pattern edit stays complete",
+    "input": "send only changed rows",
+    "expected": "saved pattern still has all 7 days (the merged result is re-checked); a merge that leaves no working day \u2192 2034",
+    "pri": "P1",
+    "type": "regression"
+  },
+  {
+    "row": 29,
+    "tc_id": "DOC-D-03",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Used by a rotation plan",
+    "input": "{rotationWtUsed}",
+    "expected": "HTTP 400 Cit.Attendance:1206; NOT changed",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 30,
+    "tc_id": "DOC-D-04",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "No location / company template",
+    "input": "locationId omitted / id = company template",
+    "expected": "HTTP 400 Sbp:Validation \"LocationId is required\u2026\" / Cit.Attendance:2031 (\"The selected work template is not a location work template.\")",
+    "pri": "P1",
+    "type": "negative"
+  },
+  {
+    "row": 31,
+    "tc_id": "DOC-D-05",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Wrong location",
+    "input": "locationId={locationA2} for a {locationA1} template",
+    "expected": "HTTP 400 Cit.Attendance:9002",
+    "pri": "P2",
+    "type": "negative"
+  },
+  {
+    "row": 32,
+    "tc_id": "DOC-D-06",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Type guards",
+    "input": "PATCH /fixed/{rotationWt} or PATCH /rotation/{fixedTemplateId}",
+    "expected": "HTTP 400 Cit.Attendance:1105",
+    "pri": "P0",
+    "type": "negative"
+  },
+  {
+    "row": 33,
+    "tc_id": "DOC-D-07",
+    "section": "D. Rotation Template \u2014 Edit",
+    "scenario": "Short code change",
+    "input": "shortCode: \"OTHER01\"",
+    "expected": "HTTP 400 Cit.Attendance:1107",
+    "pri": "P2",
+    "type": "negative"
+  },
+  {
+    "row": 34,
+    "tc_id": "DOC-E-01",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 1",
+    "input": "Create a rotation template, then a shift rotation that uses it",
+    "expected": "rotation created; template now in use",
+    "pri": "P0",
+    "type": "integration"
+  },
+  {
+    "row": 35,
+    "tc_id": "DOC-E-01",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 2",
+    "input": "Edit the rotation template",
+    "expected": "400 1206",
+    "pri": "P0",
+    "type": "integration"
+  },
+  {
+    "row": 36,
+    "tc_id": "DOC-E-02",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 1",
+    "input": "Try to use a Rotation or Roster template in a regular work plan (POST /workplans)",
+    "expected": "expected: rejected (only rotation plans may use type 5, only shifts use type 4). See known issues \u2014 no such check was found in the regular plan create",
+    "pri": "P1",
+    "type": "integration"
+  },
+  {
+    "row": 37,
+    "tc_id": "DOC-E-03",
+    "section": "E. Cross-Feature",
+    "scenario": "Step 1",
+    "input": "Create a shift through POST /workplans/roster",
+    "expected": "a Roster template + Roster work plan created together; the template is listed with templateType=roster",
+    "pri": "P1",
+    "type": "integration"
+  }
+]
